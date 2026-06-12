@@ -1,0 +1,71 @@
+{
+  "categoryId": "colors",
+  "items": [
+    {
+      "id": "color_kirmizi",
+      "nameTr": "Kırmızı",
+      "nameEn": "Red",
+      "imagePath": "color_red",
+      "category": "colors",
+      "difficultyLevel": 1,
+      "funFact": "Kırmızı dikkat çeken bir renktir.",
+      "descriptionTr": "Kırmızı canlı ve güçlü bir renktir. Elma, çilek ve domates kırmızı olabilir. Trafik ışıklarında kırmızı dur anlamına gelir. Bu renk kolayca fark edilir.",
+      "soundClueText": "Elma, çilek ve domateste görebileceğimiz, trafik ışığında dur anlamına gelen canlı bir renktir. Acaba bu hangi renktir?"
+    },
+    {
+      "id": "color_mavi",
+      "nameTr": "Mavi",
+      "nameEn": "Blue",
+      "imagePath": "color_blue",
+      "category": "colors",
+      "difficultyLevel": 1,
+      "funFact": "Gökyüzü çoğu zaman mavi görünür.",
+      "descriptionTr": "Mavi sakin ve güzel bir renktir. Gökyüzü ve deniz mavi görünebilir. Birçok çocuk mavi rengi sever. Mavi renk bize huzurlu bir his verebilir.",
+      "soundClueText": "Gökyüzünde ve denizde sık gördüğümüz, sakin ve huzurlu hissettiren bir renktir. Acaba bu hangi renktir?"
+    },
+    {
+      "id": "color_sari",
+      "nameTr": "Sarı",
+      "nameEn": "Yellow",
+      "imagePath": "color_yellow",
+      "category": "colors",
+      "difficultyLevel": 1,
+      "funFact": "Güneş sarı renkle anlatılır.",
+      "descriptionTr": "Sarı parlak ve neşeli bir renktir. Güneş, muz ve bazı çiçekler sarı olabilir. Sarı renk ışığı ve sıcaklığı hatırlatır. Kolay fark edilen renklerden biridir.",
+      "soundClueText": "Güneşi, muzu ve bazı çiçekleri hatırlatan, parlak ve neşeli bir renktir. Acaba bu hangi renktir?"
+    },
+    {
+      "id": "color_yesil",
+      "nameTr": "Yeşil",
+      "nameEn": "Green",
+      "imagePath": "color_green",
+      "category": "colors",
+      "difficultyLevel": 1,
+      "funFact": "Ağaç yaprakları genellikle yeşildir.",
+      "descriptionTr": "Yeşil doğayı hatırlatan bir renktir. Ağaçlar, çimenler ve bazı sebzeler yeşildir. Yeşil renk sakin ve taze bir his verebilir. Doğada sık gördüğümüz renklerden biridir.",
+      "soundClueText": "Ağaçlarda, çimenlerde ve bazı sebzelerde gördüğümüz, doğayı hatırlatan taze bir renktir. Acaba bu hangi renktir?"
+    },
+    {
+      "id": "color_mor",
+      "nameTr": "Mor",
+      "nameEn": "Purple",
+      "imagePath": "color_purple",
+      "category": "colors",
+      "difficultyLevel": 2,
+      "funFact": "Mor üzüm mor renkte olabilir.",
+      "descriptionTr": "Mor güzel ve dikkat çekici bir renktir. Üzüm, patlıcan ve bazı çiçekler mor olabilir. Mor renk bazen hayal gücünü hatırlatır. Farklı tonları açık veya koyu olabilir.",
+      "soundClueText": "Üzümde, patlıcanda ve bazı çiçeklerde görebileceğimiz, hayal gücünü hatırlatan bir renktir. Acaba bu hangi renktir?"
+    },
+    {
+      "id": "color_turuncu",
+      "nameTr": "Turuncu",
+      "nameEn": "Orange",
+      "imagePath": "color_orange",
+      "category": "colors",
+      "difficultyLevel": 2,
+      "funFact": "Portakal turuncu renktedir.",
+      "descriptionTr": "Turuncu sıcak ve enerjik bir renktir. Portakal, havuç ve sonbahar yaprakları turuncu olabilir. Sarı ile kırmızının karışımına benzer. Neşeli bir renktir.",
+      "soundClueText": "Portakalda, havuçta ve sonbahar yapraklarında görebileceğimiz sıcak ve enerjik bir renktir. Acaba bu hangi renktir?"
+    }
+  ]
+}

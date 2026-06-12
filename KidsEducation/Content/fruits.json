@@ -1,0 +1,71 @@
+{
+  "categoryId": "fruits",
+  "items": [
+    {
+      "id": "fruit_elma",
+      "nameTr": "Elma",
+      "nameEn": "Apple",
+      "imagePath": "fruit_apple",
+      "category": "fruits",
+      "difficultyLevel": 1,
+      "funFact": "Elma sağlıklı bir meyvedir.",
+      "descriptionTr": "Elma kırmızı, yeşil veya sarı renkte olabilir. Tatlı ve sulu bir meyvedir. Ağaçta yetişir. Elma yemek vücudumuza enerji verir.",
+      "soundClueText": "Kırmızı, yeşil ya da sarı olabilen, ağaçta yetişen, tatlı ve sulu bir meyvedir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_muz",
+      "nameTr": "Muz",
+      "nameEn": "Banana",
+      "imagePath": "fruit_banana",
+      "category": "fruits",
+      "difficultyLevel": 1,
+      "funFact": "Muz potasyum içerir.",
+      "descriptionTr": "Muz sarı renkli, yumuşak ve tatlı bir meyvedir. Kabuğu soyularak yenir. Çocukların sevdiği meyvelerden biridir. Muz vücudumuza enerji verir.",
+      "soundClueText": "Sarı renkli, yumuşak ve tatlıdır. Kabuğu soyularak yenir ve enerji verir. Acaba bu hangi meyvedir?"
+    },
+    {
+      "id": "fruit_cilek",
+      "nameTr": "Çilek",
+      "nameEn": "Strawberry",
+      "imagePath": "fruit_strawberry",
+      "category": "fruits",
+      "difficultyLevel": 1,
+      "funFact": "Çileğin üzerinde küçük tohumlar vardır.",
+      "descriptionTr": "Çilek kırmızı renkli ve güzel kokulu bir meyvedir. Üzerinde küçük tohumlar bulunur. Tatlı ve hafif ekşi bir tadı olabilir. Çilek genellikle yaz aylarında sevilerek yenir.",
+      "soundClueText": "Kırmızı renkli, güzel kokulu, üzerinde küçük tohumları olan tatlı bir meyvedir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_portakal",
+      "nameTr": "Portakal",
+      "nameEn": "Orange",
+      "imagePath": "fruit_orange",
+      "category": "fruits",
+      "difficultyLevel": 1,
+      "funFact": "Portakal C vitamini içerir.",
+      "descriptionTr": "Portakal turuncu renkli ve sulu bir meyvedir. Kabuğu soyularak yenir. İçinden tatlı ve ferah bir su çıkar. Portakal özellikle kış aylarında çok sevilir.",
+      "soundClueText": "Turuncu renkli, kabuğu soyulan ve içinden ferah bir su çıkan sulu bir meyvedir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_uzum",
+      "nameTr": "Üzüm",
+      "nameEn": "Grape",
+      "imagePath": "fruit_grape",
+      "category": "fruits",
+      "difficultyLevel": 2,
+      "funFact": "Üzüm salkım halinde yetişir.",
+      "descriptionTr": "Üzüm küçük tanelerden oluşan bir meyvedir. Salkım halinde yetişir. Mor, yeşil veya siyah renkte olabilir. Üzüm tatlı tadıyla çocukların sevdiği meyvelerdendir.",
+      "soundClueText": "Küçük tanelerden oluşur, salkım halinde yetişir ve mor, yeşil ya da siyah renkte olabilir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_karpuz",
+      "nameTr": "Karpuz",
+      "nameEn": "Watermelon",
+      "imagePath": "fruit_watermelon",
+      "category": "fruits",
+      "difficultyLevel": 2,
+      "funFact": "Karpuzun büyük kısmı sudur.",
+      "descriptionTr": "Karpuz büyük ve sulu bir meyvedir. Dışı yeşil, içi genellikle kırmızıdır. Yaz aylarında serinlemek için çok sevilir. Tatlı ve ferah bir tadı vardır.",
+      "soundClueText": "Dışı yeşil, içi genellikle kırmızı olan, yazın serinlemek için sevilen büyük ve sulu bir meyvedir. Acaba bu nedir?"
+    }
+  ]
+}

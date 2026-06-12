@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="KidsEducation.Views.Controls.BottomTabBar"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="this">
+
+    <Border
+        BackgroundColor="#FBFCFF"
+        Stroke="#E7EBF5"
+        StrokeThickness="0.5"
+        StrokeShape="RoundRectangle 0">
+
+        <Grid ColumnDefinitions="*,*,*,*" Padding="0,8,0,18" HeightRequest="78">
+
+            <!-- Ana Sayfa -->
+            <VerticalStackLayout Grid.Column="0" Spacing="3" WidthRequest="82" HeightRequest="52" HorizontalOptions="Center" VerticalOptions="Center">
+                <Image x:Name="HomeIcon" Source="tab_home.png" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" Opacity="0.45" />
+                <Label x:Name="HomeLabel" Text="Ana Sayfa" FontSize="10" TextColor="#667085" HorizontalOptions="Center" LineBreakMode="NoWrap" />
+                <BoxView x:Name="HomeDot" WidthRequest="5" HeightRequest="5" CornerRadius="3" Color="#6E64F7" HorizontalOptions="Center" Opacity="0" />
+                <VerticalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnHomeTapped" />
+                </VerticalStackLayout.GestureRecognizers>
+            </VerticalStackLayout>
+
+            <!-- İlerleme -->
+            <VerticalStackLayout Grid.Column="1" Spacing="3" WidthRequest="82" HeightRequest="52" HorizontalOptions="Center" VerticalOptions="Center">
+                <Image x:Name="ProgressIcon" Source="tab_progress.png" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" Opacity="0.45" />
+                <Label x:Name="ProgressLabel" Text="İlerleme" FontSize="10" TextColor="#667085" HorizontalOptions="Center" LineBreakMode="NoWrap" />
+                <BoxView x:Name="ProgressDot" WidthRequest="5" HeightRequest="5" CornerRadius="3" Color="#6E64F7" HorizontalOptions="Center" Opacity="0" />
+                <VerticalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnProgressTapped" />
+                </VerticalStackLayout.GestureRecognizers>
+            </VerticalStackLayout>
+
+            <!-- Başarımlar -->
+            <VerticalStackLayout Grid.Column="2" Spacing="3" WidthRequest="82" HeightRequest="52" HorizontalOptions="Center" VerticalOptions="Center">
+                <Image x:Name="AchievementsIcon" Source="tab_achievements.png" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" Opacity="0.45" />
+                <Label x:Name="AchievementsLabel" Text="Başarımlar" FontSize="10" TextColor="#667085" HorizontalOptions="Center" LineBreakMode="NoWrap" />
+                <BoxView x:Name="AchievementsDot" WidthRequest="5" HeightRequest="5" CornerRadius="3" Color="#6E64F7" HorizontalOptions="Center" Opacity="0" />
+                <VerticalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnAchievementsTapped" />
+                </VerticalStackLayout.GestureRecognizers>
+            </VerticalStackLayout>
+
+            <!-- Profil -->
+            <VerticalStackLayout Grid.Column="3" Spacing="3" WidthRequest="82" HeightRequest="52" HorizontalOptions="Center" VerticalOptions="Center">
+                <Image x:Name="ProfileIcon" Source="tab_profile.png" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" Opacity="0.45" />
+                <Label x:Name="ProfileLabel" Text="Profil" FontSize="10" TextColor="#667085" HorizontalOptions="Center" LineBreakMode="NoWrap" />
+                <BoxView x:Name="ProfileDot" WidthRequest="5" HeightRequest="5" CornerRadius="3" Color="#6E64F7" HorizontalOptions="Center" Opacity="0" />
+                <VerticalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnProfileTapped" />
+                </VerticalStackLayout.GestureRecognizers>
+            </VerticalStackLayout>
+
+        </Grid>
+    </Border>
+
+</ContentView>

@@ -1,0 +1,49 @@
+{
+  "categoryId": "seasons",
+  "items": [
+    {
+      "id": "season_ilkbahar",
+      "nameTr": "İlkbahar",
+      "nameEn": "Spring",
+      "imagePath": "season_spring",
+      "category": "seasons",
+      "difficultyLevel": 1,
+      "funFact": "İlkbaharda çiçekler açar.",
+      "descriptionTr": "İlkbahar doğanın canlandığı mevsimdir. Ağaçlar yaprak açar ve çiçekler büyür. Hava yavaş yavaş ısınır. Kuş sesleri daha çok duyulabilir.",
+      "soundClueText": "Doğanın canlandığı, çiçeklerin açtığı ve havanın yavaş yavaş ısındığı mevsimdir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "season_yaz",
+      "nameTr": "Yaz",
+      "nameEn": "Summer",
+      "imagePath": "season_summer",
+      "category": "seasons",
+      "difficultyLevel": 1,
+      "funFact": "Yaz en sıcak mevsimdir.",
+      "descriptionTr": "Yaz sıcak ve güneşli bir mevsimdir. İnsanlar denize gidebilir, dondurma yiyebilir ve açık havada oyun oynayabilir. Yazın bol su içmek önemlidir.",
+      "soundClueText": "Sıcak ve güneşli günleri, denizi, dondurmayı ve açık havada oyunları hatırlatan mevsimdir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "season_sonbahar",
+      "nameTr": "Sonbahar",
+      "nameEn": "Autumn",
+      "imagePath": "season_autumn",
+      "category": "seasons",
+      "difficultyLevel": 1,
+      "funFact": "Sonbaharda yapraklar dökülür.",
+      "descriptionTr": "Sonbaharda hava serinlemeye başlar. Ağaç yaprakları sarı, turuncu ve kırmızı renklere dönebilir. Bazı yapraklar yere düşer. Bu mevsim doğada renk değişimini gösterir.",
+      "soundClueText": "Havanın serinlediği, yaprakların sarı ve turuncu renklere dönüp döküldüğü mevsimdir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "season_kis",
+      "nameTr": "Kış",
+      "nameEn": "Winter",
+      "imagePath": "season_winter",
+      "category": "seasons",
+      "difficultyLevel": 1,
+      "funFact": "Kış en soğuk mevsimdir.",
+      "descriptionTr": "Kış soğuk bir mevsimdir. Bazı yerlerde kar yağabilir. İnsanlar kalın giysiler giyerek ısınır. Kışın sıcak kalmak ve hasta olmamak için dikkatli olmak gerekir.",
+      "soundClueText": "Soğuk havaları, kalın giysileri ve bazı yerlerde kar yağmasını hatırlatan mevsimdir. Acaba bu hangisidir?"
+    }
+  ]
+}

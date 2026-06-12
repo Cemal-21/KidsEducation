@@ -1,0 +1,114 @@
+{
+  "categories": [
+    {
+      "id": "animals",
+      "nameTr": "Hayvanlar",
+      "nameEn": "Animals",
+      "emoji": "🐾",
+      "image": "category_animals.png",
+      "colorHex": "#FF6B9D",
+      "colorHex2": "#FF4757",
+      "availableForAgeGroups": [ 1, 2, 3 ]
+    },
+    {
+      "id": "fruits",
+      "nameTr": "Meyveler",
+      "nameEn": "Fruits",
+      "emoji": "🍎",
+      "image": "category_fruits.png",
+      "colorHex": "#FF9500",
+      "colorHex2": "#FF6B35",
+      "availableForAgeGroups": [ 1, 2, 3 ]
+    },
+    {
+      "id": "vegetables",
+      "nameTr": "Sebzeler",
+      "nameEn": "Vegetables",
+      "emoji": "🥦",
+      "image": "category_vegetables.png",
+      "colorHex": "#34C759",
+      "colorHex2": "#00B894",
+      "availableForAgeGroups": [ 1, 2, 3 ]
+    },
+    {
+      "id": "colors",
+      "nameTr": "Renkler",
+      "nameEn": "Colors",
+      "emoji": "🎨",
+      "image": "category_colors.png",
+      "colorHex": "#AF52DE",
+      "colorHex2": "#FF6B9D",
+      "availableForAgeGroups": [ 1, 2, 3 ]
+    },
+    {
+      "id": "shapes",
+      "nameTr": "Şekiller",
+      "nameEn": "Shapes",
+      "emoji": "🔷",
+      "image": "category_shapes.png",
+      "colorHex": "#5856D6",
+      "colorHex2": "#4C44C6",
+      "availableForAgeGroups": [ 1, 2, 3 ]
+    },
+    {
+      "id": "vehicles",
+      "nameTr": "Araçlar",
+      "nameEn": "Vehicles",
+      "emoji": "🚗",
+      "image": "category_vehicles.png",
+      "colorHex": "#007AFF",
+      "colorHex2": "#0056CC",
+      "availableForAgeGroups": [ 2, 3 ]
+    },
+    {
+      "id": "numbers",
+      "nameTr": "Sayılar",
+      "nameEn": "Numbers",
+      "emoji": "🔢",
+      "image": "category_numbers.png",
+      "colorHex": "#FF3B30",
+      "colorHex2": "#C0392B",
+      "availableForAgeGroups": [ 2, 3 ]
+    },
+    {
+      "id": "body",
+      "nameTr": "Vücudumuz",
+      "nameEn": "Body",
+      "emoji": "🧠",
+      "image": "category_body.png",
+      "colorHex": "#FF6B9D",
+      "colorHex2": "#E84393",
+      "availableForAgeGroups": [ 2, 3 ]
+    },
+    {
+      "id": "letters",
+      "nameTr": "Harfler",
+      "nameEn": "Letters",
+      "emoji": "🔤",
+      "image": "category_letters.png",
+      "colorHex": "#FF9500",
+      "colorHex2": "#E67E00",
+      "availableForAgeGroups": [ 3 ]
+    },
+    {
+      "id": "english",
+      "nameTr": "İngilizce",
+      "nameEn": "English",
+      "emoji": "🇬🇧",
+      "image": "category_english.png",
+      "colorHex": "#34C759",
+      "colorHex2": "#27AE60",
+      "availableForAgeGroups": [ 3 ]
+    },
+    {
+      "id": "seasons",
+      "nameTr": "Mevsimler",
+      "nameEn": "Seasons",
+      "emoji": "🍂",
+      "image": "category_seasons.png",
+      "colorHex": "#FF9500",
+      "colorHex2": "#FF6B35",
+      "availableForAgeGroups": [ 3 ]
+    }
+  ]
+}

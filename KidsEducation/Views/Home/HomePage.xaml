@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:AnimatedPage
+    x:Class="KidsEducation.Views.Home.HomePage"
+    x:Name="HomeRoot"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:KidsEducation.ViewModels.Home"
+    xmlns:models="clr-namespace:KidsEducation.Models"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    xmlns:views="clr-namespace:KidsEducation.Views"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{StaticResource AppBackground}">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <Border Grid.Row="0" Stroke="Transparent" StrokeShape="RoundRectangle 0,0,30,30">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#5148D4" Offset="0.0" />
+                    <GradientStop Color="#3A86FF" Offset="0.55" />
+                    <GradientStop Color="#21C7A8" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid Padding="20,42,20,16" RowDefinitions="Auto,Auto" RowSpacing="12">
+                <Grid Grid.Row="0" ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                    <VerticalStackLayout Grid.Column="0" Spacing="2" VerticalOptions="Center">
+                        <Label Text="{Binding TodayDateText}" FontSize="11" TextColor="#BFFFFFFF" />
+                        <Label Text="{Binding ActiveProfile.Name, StringFormat='Merhaba, {0}! 👋'}" FontSize="24" FontFamily="OpenSansSemibold" FontAttributes="Bold" TextColor="White" LineBreakMode="TailTruncation" />
+                        <Label Text="Keşfe hazır mısın?" FontSize="12" TextColor="#D8FFFFFF" LineBreakMode="TailTruncation" />
+                    </VerticalStackLayout>
+
+                    <controls:TappableBorder
+                        Grid.Column="1"
+                        Command="{Binding GoToProfileSelectionCommand}"
+                        WidthRequest="52"
+                        HeightRequest="52"
+                        BackgroundColor="#2AFFFFFF"
+                        Stroke="#44FFFFFF"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 17"
+                        Padding="4"
+                        VerticalOptions="Center">
+                        <Grid>
+                            <Label Text="{Binding ActiveProfile.AvatarEmoji}" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="👑" FontSize="12" HorizontalOptions="End" VerticalOptions="Start" TranslationX="5" TranslationY="-5" />
+                        </Grid>
+                    </controls:TappableBorder>
+                </Grid>
+
+                <Grid Grid.Row="1" ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                    <Border Grid.Column="0" Style="{StaticResource HeroStatPill}" BackgroundColor="#2CFFC857" Padding="10,8">
+                        <HorizontalStackLayout Spacing="6" HorizontalOptions="Center">
+                            <Label Text="🔥" FontSize="18" VerticalOptions="Center" />
+                            <VerticalStackLayout Spacing="0" VerticalOptions="Center">
+                                <Label Text="{Binding ActiveProfile.StreakDays}" FontSize="16" FontAttributes="Bold" TextColor="#FFE08A" />
+                                <Label Text="gün seri" FontSize="9" TextColor="#CCFFFFFF" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="1" Style="{StaticResource HeroStatPill}" Padding="10,8">
+                        <HorizontalStackLayout Spacing="6" HorizontalOptions="Center">
+                            <Label Text="⭐" FontSize="18" VerticalOptions="Center" />
+                            <VerticalStackLayout Spacing="0" VerticalOptions="Center">
+                                <Label Text="{Binding ActiveProfile.TotalStars}" FontSize="16" FontAttributes="Bold" TextColor="White" />
+                                <Label Text="yıldız" FontSize="9" TextColor="#CCFFFFFF" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="2" Style="{StaticResource HeroStatPill}" Padding="10,8">
+                        <HorizontalStackLayout Spacing="6" HorizontalOptions="Center">
+                            <Label Text="🏆" FontSize="18" VerticalOptions="Center" />
+                            <VerticalStackLayout Spacing="0" VerticalOptions="Center">
+                                <Label Text="{Binding ActiveProfile.TotalXpFormatted}" FontSize="16" FontAttributes="Bold" TextColor="White" />
+                                <Label Text="XP" FontSize="9" TextColor="#CCFFFFFF" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <CollectionView
+            x:Name="CategoriesCollection"
+            Grid.Row="1"
+            ItemsSource="{Binding Categories}"
+            Margin="18,0,18,0">
+
+            <CollectionView.Header>
+                <VerticalStackLayout Padding="0,22,0,16" Spacing="20">
+                    <VerticalStackLayout Spacing="10" IsVisible="{Binding HasLastLesson}">
+                        <Label Text="kaldığın yerden devam et" Style="{StaticResource SectionLabel}" />
+                        <controls:TappableBorder
+                            Command="{Binding ContinueLastLessonCommand}"
+                            BackgroundColor="{StaticResource SurfaceWhite}"
+                            Stroke="{StaticResource BorderLight}"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 22"
+                            Padding="14">
+                            <controls:TappableBorder.Shadow>
+                                <Shadow Brush="#14000000" Offset="0,8" Radius="18" Opacity="0.16" />
+                            </controls:TappableBorder.Shadow>
+
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                                <Border Grid.Column="0" WidthRequest="58" HeightRequest="58" BackgroundColor="{StaticResource SurfaceSoft}" Stroke="Transparent" StrokeShape="RoundRectangle 18">
+                                    <Label Text="{Binding LastLesson.CategoryEmoji}" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+
+                                <VerticalStackLayout Grid.Column="1" Spacing="5" VerticalOptions="Center">
+                                    <Label Text="{Binding LastLesson.Title}" FontSize="15" FontFamily="OpenSansSemibold" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" LineBreakMode="TailTruncation" />
+                                    <Label Text="{Binding LastLesson.CategoryAndChapter}" FontSize="12" TextColor="{StaticResource TextMuted}" LineBreakMode="TailTruncation" />
+                                    <Grid RowDefinitions="Auto,Auto" RowSpacing="4" Margin="0,3,0,0">
+                                        <Border Grid.Row="0" HeightRequest="6" BackgroundColor="#E8EAF8" Stroke="Transparent" StrokeShape="RoundRectangle 10">
+                                            <Border HorizontalOptions="Start" HeightRequest="6" WidthRequest="{Binding LastLesson.ProgressBarWidth}" BackgroundColor="{StaticResource BrandMint}" Stroke="Transparent" StrokeShape="RoundRectangle 10" />
+                                        </Border>
+                                        <Label Grid.Row="1" Text="{Binding LastLesson.ProgressText}" FontSize="10" TextColor="{StaticResource TextMuted}" />
+                                    </Grid>
+                                </VerticalStackLayout>
+
+                                <Border Grid.Column="2" WidthRequest="42" HeightRequest="42" BackgroundColor="{StaticResource BrandCoral}" Stroke="Transparent" StrokeShape="RoundRectangle 15" VerticalOptions="Center">
+                                    <Label Text="▶" FontSize="15" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+                            </Grid>
+                        </controls:TappableBorder>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="bugünün görevi" Style="{StaticResource SectionLabel}" />
+                        <Border
+                            BackgroundColor="{StaticResource SurfaceWhite}"
+                            Stroke="{StaticResource BorderLight}"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 24"
+                            Padding="14">
+                            <Border.Shadow>
+                                <Shadow Brush="#12000000" Offset="0,8" Radius="18" Opacity="0.16" />
+                            </Border.Shadow>
+
+                            <VerticalStackLayout Spacing="12">
+                                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                                    <Border Grid.Column="0" WidthRequest="46" HeightRequest="46" BackgroundColor="#FFF4D8" Stroke="#FFE3A3" StrokeThickness="1" StrokeShape="RoundRectangle 16">
+                                        <Label Text="🎯" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                                    </Border>
+
+                                    <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                        <Label Text="{Binding DailyGoal.HeadlineText}" FontSize="16" FontFamily="OpenSansSemibold" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" LineBreakMode="TailTruncation" />
+                                        <Label Text="{Binding DailyGoal.RewardText}" FontSize="11" TextColor="{StaticResource TextMuted}" LineBreakMode="TailTruncation" />
+                                    </VerticalStackLayout>
+
+                                    <Border Grid.Column="2" BackgroundColor="#F1EEFF" Stroke="#DCD6FF" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="10,7" VerticalOptions="Center">
+                                        <Label Text="{Binding DailyGoal.CompletionText}" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource BrandPurple}" />
+                                    </Border>
+                                </Grid>
+
+                                <VerticalStackLayout Spacing="9" BindableLayout.ItemsSource="{Binding DailyGoal.Quests}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate x:DataType="models:DailyQuestInfo">
+                                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                                                <Border Grid.Column="0" WidthRequest="36" HeightRequest="36" BackgroundColor="{StaticResource SurfaceSoft}" Stroke="Transparent" StrokeShape="RoundRectangle 13" VerticalOptions="Center">
+                                                    <Label Text="{Binding Emoji}" FontSize="19" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                </Border>
+
+                                                <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                                    <Label Text="{Binding Title}" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" LineBreakMode="TailTruncation" />
+                                                    <Grid HeightRequest="6">
+                                                        <Border BackgroundColor="#E8EAF8" Stroke="Transparent" StrokeShape="RoundRectangle 10" />
+                                                        <Border HorizontalOptions="Start" WidthRequest="{Binding ProgressBarWidth}" BackgroundColor="{StaticResource BrandMint}" Stroke="Transparent" StrokeShape="RoundRectangle 10" />
+                                                    </Grid>
+                                                </VerticalStackLayout>
+
+                                                <Label Grid.Column="2" Text="{Binding StatusText}" FontSize="11" FontAttributes="Bold" TextColor="{StaticResource TextMuted}" VerticalOptions="Center" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </VerticalStackLayout>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <Grid IsVisible="False" ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                            <Border Grid.Column="0" BackgroundColor="#E9FFF8" Stroke="#C8F4E8" StrokeThickness="1" StrokeShape="RoundRectangle 18" Padding="10,13">
+                                <VerticalStackLayout Spacing="3" HorizontalOptions="Center">
+                                    <Label Text="📖" FontSize="23" HorizontalOptions="Center" />
+                                    <Label Text="{Binding DailyGoal.RemainingLessons}" FontSize="18" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                    <Label Text="ders kaldı" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" LineBreakMode="NoWrap" />
+                                </VerticalStackLayout>
+                            </Border>
+
+                            <Border Grid.Column="1" BackgroundColor="#FFF4D8" Stroke="#FFE3A3" StrokeThickness="1" StrokeShape="RoundRectangle 18" Padding="10,13">
+                                <VerticalStackLayout Spacing="3" HorizontalOptions="Center">
+                                    <Label Text="⏱️" FontSize="23" HorizontalOptions="Center" />
+                                    <Label Text="{Binding DailyGoal.RemainingMinutes, StringFormat='{0} dk'}" FontSize="18" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                    <Label Text="hedefe kalan" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" LineBreakMode="NoWrap" />
+                                </VerticalStackLayout>
+                            </Border>
+
+                            <Border Grid.Column="2" BackgroundColor="#F1EEFF" Stroke="#DCD6FF" StrokeThickness="1" StrokeShape="RoundRectangle 18" Padding="10,13">
+                                <VerticalStackLayout Spacing="3" HorizontalOptions="Center">
+                                    <Label Text="✅" FontSize="23" HorizontalOptions="Center" />
+                                    <Label Text="{Binding DailyGoal.CompletionText}" FontSize="18" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                    <Label Text="tamamlandı" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" LineBreakMode="NoWrap" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </Grid>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="şarkı molası" Style="{StaticResource SectionLabel}" />
+                        <controls:TappableBorder
+                            Command="{Binding GoToSongsCommand}"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 24"
+                            Padding="0">
+                            <controls:TappableBorder.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#B15CFF" Offset="0.0" />
+                                    <GradientStop Color="#FF6BCB" Offset="0.55" />
+                                    <GradientStop Color="#FFC857" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </controls:TappableBorder.Background>
+                            <controls:TappableBorder.Shadow>
+                                <Shadow Brush="#18000000" Offset="0,8" Radius="18" Opacity="0.16" />
+                            </controls:TappableBorder.Shadow>
+
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14" Padding="16,14">
+                                <Border
+                                    Grid.Column="0"
+                                    WidthRequest="58"
+                                    HeightRequest="58"
+                                    BackgroundColor="#30FFFFFF"
+                                    Stroke="#40FFFFFF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 20"
+                                    VerticalOptions="Center">
+                                    <Label Text="🎵" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+
+                                <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                    <Label Text="Çocuk Şarkıları" FontSize="17" FontAttributes="Bold" TextColor="White" LineBreakMode="TailTruncation" />
+                                    <Label Text="Ritim, sözler ve sesli okuma" FontSize="12" TextColor="#EFFFFFFF" LineBreakMode="TailTruncation" />
+                                </VerticalStackLayout>
+
+                                <Border
+                                    Grid.Column="2"
+                                    WidthRequest="38"
+                                    HeightRequest="38"
+                                    BackgroundColor="#24FFFFFF"
+                                    Stroke="#30FFFFFF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 14"
+                                    VerticalOptions="Center">
+                                    <Label Text="▶" FontSize="14" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+                            </Grid>
+                        </controls:TappableBorder>
+                    </VerticalStackLayout>
+                    
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="hafıza oyunu" Style="{StaticResource SectionLabel}" />
+                        <controls:TappableBorder
+                            Command="{Binding GoToMemoryGameCommand}"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 24"
+                            Padding="0">
+                            <controls:TappableBorder.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#43E97B" Offset="0.0" />
+                                    <GradientStop Color="#38F9D7" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </controls:TappableBorder.Background>
+                            <controls:TappableBorder.Shadow>
+                                <Shadow Brush="#18000000" Offset="0,8" Radius="18" Opacity="0.16" />
+                            </controls:TappableBorder.Shadow>
+
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14" Padding="16,14">
+                                <Border
+                                    Grid.Column="0"
+                                    WidthRequest="58"
+                                    HeightRequest="58"
+                                    BackgroundColor="#30FFFFFF"
+                                    Stroke="#40FFFFFF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 20"
+                                    VerticalOptions="Center">
+                                    <Label Text="🧠" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+
+                                <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                    <Label Text="Hafıza Oyunu" FontSize="17" FontAttributes="Bold" TextColor="White" LineBreakMode="TailTruncation" />
+                                    <Label Text="Kartları eşleştir, hafızanı test et" FontSize="12" TextColor="#EFFFFFFF" LineBreakMode="TailTruncation" />
+                                </VerticalStackLayout>
+
+                                <Border
+                                    Grid.Column="2"
+                                    WidthRequest="38"
+                                    HeightRequest="38"
+                                    BackgroundColor="#24FFFFFF"
+                                    Stroke="#30FFFFFF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 14"
+                                    VerticalOptions="Center">
+                                    <Label Text="▶" FontSize="14" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+                            </Grid>
+                        </controls:TappableBorder>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="yakınlaştırma oyunu" Style="{StaticResource SectionLabel}" />
+                        <controls:TappableBorder
+                            Command="{Binding GoToZoomGameCommand}"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 24"
+                            Padding="0">
+                            <controls:TappableBorder.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#FF9A3C" Offset="0.0" />
+                                    <GradientStop Color="#FF6B6B" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </controls:TappableBorder.Background>
+                            <controls:TappableBorder.Shadow>
+                                <Shadow Brush="#18000000" Offset="0,8" Radius="18" Opacity="0.16" />
+                            </controls:TappableBorder.Shadow>
+
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14" Padding="16,14">
+                                <Border
+                                    Grid.Column="0"
+                                    WidthRequest="58"
+                                    HeightRequest="58"
+                                    BackgroundColor="#30FFFFFF"
+                                    Stroke="#40FFFFFF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 20"
+                                    VerticalOptions="Center">
+                                    <Label Text="🔍" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+
+                                <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                    <Label Text="Yakınlaştırma Oyunu" FontSize="17" FontAttributes="Bold" TextColor="White" LineBreakMode="TailTruncation" />
+                                    <Label Text="Yakından bak, doğru cevabı bul" FontSize="12" TextColor="#EFFFFFFF" LineBreakMode="TailTruncation" />
+                                </VerticalStackLayout>
+
+                                <Border
+                                    Grid.Column="2"
+                                    WidthRequest="38"
+                                    HeightRequest="38"
+                                    BackgroundColor="#24FFFFFF"
+                                    Stroke="#30FFFFFF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 14"
+                                    VerticalOptions="Center">
+                                    <Label Text="▶" FontSize="14" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+                            </Grid>
+                        </controls:TappableBorder>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="sesli tahmin" Style="{StaticResource SectionLabel}" />
+                        <controls:TappableBorder
+                            Command="{Binding GoToSoundGameCommand}"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 24"
+                            Padding="0">
+                            <controls:TappableBorder.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#00C6FF" Offset="0.0" />
+                                    <GradientStop Color="#7F53FF" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </controls:TappableBorder.Background>
+                            <controls:TappableBorder.Shadow>
+                                <Shadow Brush="#18000000" Offset="0,8" Radius="18" Opacity="0.16" />
+                            </controls:TappableBorder.Shadow>
+
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14" Padding="16,14">
+                                <Border
+                                    Grid.Column="0"
+                                    WidthRequest="58"
+                                    HeightRequest="58"
+                                    BackgroundColor="#30FFFFFF"
+                                    Stroke="#40FFFFFF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 20"
+                                    VerticalOptions="Center">
+                                    <Label Text="🔊" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+
+                                <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                    <Label Text="Sesli Tahmin" FontSize="17" FontAttributes="Bold" TextColor="White" LineBreakMode="TailTruncation" />
+                                    <Label Text="İpucunu dinle, doğru görseli seç" FontSize="12" TextColor="#EFFFFFFF" LineBreakMode="TailTruncation" />
+                                </VerticalStackLayout>
+
+                                <Border
+                                    Grid.Column="2"
+                                    WidthRequest="38"
+                                    HeightRequest="38"
+                                    BackgroundColor="#24FFFFFF"
+                                    Stroke="#30FFFFFF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 14"
+                                    VerticalOptions="Center">
+                                    <Label Text="▶" FontSize="14" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+                            </Grid>
+                        </controls:TappableBorder>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="balon patlat" Style="{StaticResource SectionLabel}" />
+                        <controls:TappableBorder
+                            Command="{Binding GoToBalloonGameCommand}"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 24"
+                            Padding="0">
+                            <controls:TappableBorder.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#00D2FF" Offset="0.0" />
+                                    <GradientStop Color="#3A7BD5" Offset="0.55" />
+                                    <GradientStop Color="#21C7A8" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </controls:TappableBorder.Background>
+                            <controls:TappableBorder.Shadow>
+                                <Shadow Brush="#18000000" Offset="0,8" Radius="18" Opacity="0.16" />
+                            </controls:TappableBorder.Shadow>
+
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14" Padding="16,14">
+                                <Border
+                                    Grid.Column="0"
+                                    WidthRequest="58"
+                                    HeightRequest="58"
+                                    BackgroundColor="#30FFFFFF"
+                                    Stroke="#40FFFFFF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 20"
+                                    VerticalOptions="Center">
+                                    <Label Text="🎈" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+
+                                <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                    <Label Text="Balon Patlat" FontSize="17" FontAttributes="Bold" TextColor="White" LineBreakMode="TailTruncation" />
+                                    <Label Text="Hedefi hızlı bul, combo yap" FontSize="12" TextColor="#EFFFFFFF" LineBreakMode="TailTruncation" />
+                                </VerticalStackLayout>
+
+                                <Border
+                                    Grid.Column="2"
+                                    WidthRequest="38"
+                                    HeightRequest="38"
+                                    BackgroundColor="#24FFFFFF"
+                                    Stroke="#30FFFFFF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 14"
+                                    VerticalOptions="Center">
+                                    <Label Text="▶" FontSize="14" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+                            </Grid>
+                        </controls:TappableBorder>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="10" IsVisible="{Binding HasSmartSuggestion}">
+                        <Label Text="akilli ogrenme yolu" Style="{StaticResource SectionLabel}" />
+                        <controls:TappableBorder
+                            Command="{Binding GoToSmartSuggestionCommand}"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 24"
+                            Padding="0">
+                            <controls:TappableBorder.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#101828" Offset="0.0" />
+                                    <GradientStop Color="#2563EB" Offset="0.52" />
+                                    <GradientStop Color="#14B8A6" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </controls:TappableBorder.Background>
+                            <controls:TappableBorder.Shadow>
+                                <Shadow Brush="#18000000" Offset="0,8" Radius="18" Opacity="0.16" />
+                            </controls:TappableBorder.Shadow>
+
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14" Padding="16,14">
+                                <Border
+                                    Grid.Column="0"
+                                    WidthRequest="58"
+                                    HeightRequest="58"
+                                    BackgroundColor="#30FFFFFF"
+                                    Stroke="#40FFFFFF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 20"
+                                    VerticalOptions="Center">
+                                    <Label Text="{Binding SmartSuggestion.Emoji}" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+
+                                <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                    <Label Text="{Binding SmartSuggestion.Headline}" FontSize="17" FontAttributes="Bold" TextColor="White" LineBreakMode="TailTruncation" />
+                                    <Label Text="{Binding SmartSuggestion.Subtitle}" FontSize="12" TextColor="#EFFFFFFF" LineBreakMode="TailTruncation" />
+                                    <Label Text="{Binding SmartSuggestion.ReasonText}" FontSize="10" TextColor="#CCFFFFFF" LineBreakMode="TailTruncation" />
+                                </VerticalStackLayout>
+
+                                <Border
+                                    Grid.Column="2"
+                                    BackgroundColor="#24FFFFFF"
+                                    Stroke="#30FFFFFF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 14"
+                                    Padding="10,7"
+                                    VerticalOptions="Center">
+                                    <Label Text="Basla" FontSize="12" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+                            </Grid>
+                        </controls:TappableBorder>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="veli rehberi" Style="{StaticResource SectionLabel}" />
+                        <controls:TappableBorder
+                            Command="{Binding GoToCurriculumActivitiesCommand}"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 24"
+                            Padding="0">
+                            <controls:TappableBorder.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#3F8F6B" Offset="0.0" />
+                                    <GradientStop Color="#3A86FF" Offset="0.55" />
+                                    <GradientStop Color="#6C63FF" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </controls:TappableBorder.Background>
+                            <controls:TappableBorder.Shadow>
+                                <Shadow Brush="#18000000" Offset="0,8" Radius="18" Opacity="0.16" />
+                            </controls:TappableBorder.Shadow>
+
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14" Padding="16,14">
+                                <Border
+                                    Grid.Column="0"
+                                    WidthRequest="58"
+                                    HeightRequest="58"
+                                    BackgroundColor="#30FFFFFF"
+                                    Stroke="#40FFFFFF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 20"
+                                    VerticalOptions="Center">
+                                    <Label Text="🎓" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+
+                                <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                    <Label Text="MEB Uyumlu Ev Etkinlikleri" FontSize="17" FontAttributes="Bold" TextColor="White" LineBreakMode="TailTruncation" />
+                                    <Label Text="Gelişim alanları, öneriler ve veli raporu" FontSize="12" TextColor="#EFFFFFFF" LineBreakMode="TailTruncation" />
+                                </VerticalStackLayout>
+
+                                <Border
+                                    Grid.Column="2"
+                                    BackgroundColor="#24FFFFFF"
+                                    Stroke="#30FFFFFF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 14"
+                                    Padding="10,7"
+                                    VerticalOptions="Center">
+                                    <Label Text="Veli" FontSize="12" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+                            </Grid>
+                        </controls:TappableBorder>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="yeni oyunlar" Style="{StaticResource SectionLabel}" />
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                            <controls:TappableBorder
+                                Grid.Column="0"
+                                Command="{Binding GoToSequenceGameCommand}"
+                                BackgroundColor="#FFF7ED"
+                                Stroke="#FED7AA"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 20"
+                                Padding="12">
+                                <VerticalStackLayout Spacing="7">
+                                    <Label Text="🔢" FontSize="28" />
+                                    <Label Text="Siralama" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" LineBreakMode="TailTruncation" />
+                                    <Label Text="Siradaki dogru parcayi sec" FontSize="11" TextColor="{StaticResource TextMuted}" LineBreakMode="TailTruncation" />
+                                </VerticalStackLayout>
+                            </controls:TappableBorder>
+
+                            <controls:TappableBorder
+                                Grid.Column="1"
+                                Command="{Binding GoToStoryGameCommand}"
+                                BackgroundColor="#EEF2FF"
+                                Stroke="#C7D2FE"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 20"
+                                Padding="12">
+                                <VerticalStackLayout Spacing="7">
+                                    <Label Text="📖" FontSize="28" />
+                                    <Label Text="Hikaye Modu" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" LineBreakMode="TailTruncation" />
+                                    <Label Text="Hikayeyi oku, cevabi bul" FontSize="11" TextColor="{StaticResource TextMuted}" LineBreakMode="TailTruncation" />
+                                </VerticalStackLayout>
+                            </controls:TappableBorder>
+                        </Grid>
+                    </VerticalStackLayout>
+
+                    <Label Text="konular" Style="{StaticResource SectionLabel}" />
+                </VerticalStackLayout>
+            </CollectionView.Header>
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="12" VerticalItemSpacing="12" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Category">
+                    <Grid HeightRequest="184">
+                        <controls:TappableBorder
+                            Command="{Binding Source={x:Reference CategoriesCollection}, Path=BindingContext.SelectCategoryCommand}"
+                            CommandParameter="{Binding .}"
+                            Stroke="#10000000"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 24"
+                            Padding="0">
+                            <controls:TappableBorder.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="{Binding ColorHex}" Offset="0.0" />
+                                    <GradientStop Color="{Binding ColorHex2}" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </controls:TappableBorder.Background>
+                            <controls:TappableBorder.Shadow>
+                                <Shadow Brush="#18000000" Offset="0,8" Radius="16" Opacity="0.15" />
+                            </controls:TappableBorder.Shadow>
+
+                            <Grid RowDefinitions="124,60">
+                                <Border BackgroundColor="#22FFFFFF" WidthRequest="34" HeightRequest="34" Stroke="#30FFFFFF" StrokeThickness="1" StrokeShape="RoundRectangle 12" HorizontalOptions="End" VerticalOptions="Start" Margin="0,10,10,0">
+                                    <Label Text="{Binding Emoji}" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+
+                                <Border
+                                    Grid.Row="0"
+                                    Margin="8,9,8,0"
+                                    BackgroundColor="#28FFFFFF"
+                                    Stroke="#20FFFFFF"
+                                    StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 21"
+                                    Padding="0">
+                                    <Grid>
+                                        <Border BackgroundColor="#18FFFFFF" Stroke="Transparent" StrokeShape="RoundRectangle 18" Margin="9" />
+                                        <Image
+                                            Source="{Binding Image}"
+                                            Aspect="AspectFill"
+                                            HorizontalOptions="Fill"
+                                            VerticalOptions="Fill"
+                                            Margin="0" />
+                                    </Grid>
+                                </Border>
+
+                                <Border Grid.Row="1" BackgroundColor="#32000000" Stroke="Transparent" StrokeShape="RoundRectangle 0,0,24,24" Padding="12,9">
+                                    <VerticalStackLayout Spacing="6">
+                                        <Label Text="{Binding NameTr}" FontSize="16" FontFamily="OpenSansSemibold" FontAttributes="Bold" TextColor="White" LineBreakMode="TailTruncation" />
+                                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="7">
+                                            <Border Grid.Column="0" HeightRequest="5" BackgroundColor="#32FFFFFF" Stroke="Transparent" StrokeShape="RoundRectangle 8" VerticalOptions="Center">
+                                                <Border HorizontalOptions="Start" HeightRequest="5" WidthRequest="{Binding ProgressBarWidth}" BackgroundColor="White" Stroke="Transparent" StrokeShape="RoundRectangle 8" />
+                                            </Border>
+                                            <Label Grid.Column="1" Text="{Binding ProgressPercent, StringFormat='%{0}'}" FontSize="10" TextColor="#DDFFFFFF" VerticalOptions="Center" />
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </Border>
+                            </Grid>
+                        </controls:TappableBorder>
+
+                        <Border BackgroundColor="#90FFFFFF" Stroke="Transparent" StrokeShape="RoundRectangle 24" IsVisible="{Binding IsLocked}">
+                            <Border BackgroundColor="White" Stroke="{StaticResource BorderLight}" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="10,7" HorizontalOptions="Center" VerticalOptions="Center">
+                                <HorizontalStackLayout Spacing="5">
+                                    <Label Text="🔒" FontSize="14" VerticalOptions="Center" />
+                                    <Label Text="Premium" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource TextMuted}" VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                            </Border>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.Footer>
+                <BoxView HeightRequest="18" Opacity="0" />
+            </CollectionView.Footer>
+        </CollectionView>
+
+        <controls:BottomTabBar Grid.Row="2" IsHomeActive="True" />
+
+    </Grid>
+</views:AnimatedPage>

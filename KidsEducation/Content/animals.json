@@ -1,0 +1,71 @@
+{
+  "categoryId": "animals",
+  "items": [
+    {
+      "id": "animal_kedi",
+      "nameTr": "Kedi",
+      "nameEn": "Cat",
+      "imagePath": "animal_cat",
+      "category": "animals",
+      "difficultyLevel": 1,
+      "funFact": "Kediler çok iyi duyar.",
+      "descriptionTr": "Kedi evcil bir hayvandır. Evlerde insanlarla birlikte yaşayabilir. Miyav sesi çıkarır ve oyun oynamayı sever. Yumuşak tüyleri vardır. Kediler karanlıkta insanlardan daha iyi görebilir.",
+      "soundClueText": "Evlerde yaşayabilen, yumuşak tüylü, miyavlayan ve oyun oynamayı seven sevimli bir hayvandır. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_kopek",
+      "nameTr": "Köpek",
+      "nameEn": "Dog",
+      "imagePath": "animal_dog",
+      "category": "animals",
+      "difficultyLevel": 1,
+      "funFact": "Köpekler kokuları çok iyi ayırt eder.",
+      "descriptionTr": "Köpek sadık ve sevecen bir hayvandır. Havlayarak ses çıkarır. İnsanlarla oyun oynamayı ve gezmeyi sever. Köpekler çok güçlü koku alma duyusuna sahiptir.",
+      "soundClueText": "Havlayarak ses çıkaran, insanlarla gezmeyi seven ve kokuları çok iyi ayırt edebilen sadık bir hayvandır. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_fil",
+      "nameTr": "Fil",
+      "nameEn": "Elephant",
+      "imagePath": "animal_elephant",
+      "category": "animals",
+      "difficultyLevel": 1,
+      "funFact": "Filler hortumlarıyla su içebilir.",
+      "descriptionTr": "Fil büyük ve güçlü bir hayvandır. Uzun hortumunu su içmek, yiyecek almak ve koklamak için kullanır. Büyük kulakları vardır. Filler sürü halinde yaşamayı sever.",
+      "soundClueText": "Çok büyük bir gövdesi, uzun bir hortumu ve kocaman kulakları olan güçlü bir hayvandır. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_aslan",
+      "nameTr": "Aslan",
+      "nameEn": "Lion",
+      "imagePath": "animal_lion",
+      "category": "animals",
+      "difficultyLevel": 1,
+      "funFact": "Aslan güçlü sesiyle tanınır.",
+      "descriptionTr": "Aslan güçlü bir vahşi hayvandır. Genellikle sıcak bölgelerde yaşar. Erkek aslanların başında yele bulunur. Aslanlar aile grupları halinde yaşayabilir.",
+      "soundClueText": "Güçlü sesiyle tanınan, sıcak bölgelerde yaşayan ve başında yelesi olabilen vahşi bir hayvandır. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_zurafa",
+      "nameTr": "Zürafa",
+      "nameEn": "Giraffe",
+      "imagePath": "animal_giraffe",
+      "category": "animals",
+      "difficultyLevel": 1,
+      "funFact": "Zürafa çok uzun boyludur.",
+      "descriptionTr": "Zürafa uzun boynu ile tanınır. Ağaçların yüksek dallarındaki yaprakları yiyebilir. Benekli bir derisi vardır. Zürafalar sakin ve zarif hayvanlardır.",
+      "soundClueText": "Çok uzun boynu sayesinde ağaçların yüksek dallarındaki yapraklara ulaşabilen benekli bir hayvandır. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_penguen",
+      "nameTr": "Penguen",
+      "nameEn": "Penguin",
+      "imagePath": "animal_penguin",
+      "category": "animals",
+      "difficultyLevel": 2,
+      "funFact": "Penguenler çok iyi yüzer.",
+      "descriptionTr": "Penguen uçamayan bir kuştur. Ama suda çok iyi yüzer. Genellikle soğuk bölgelerde yaşar. Siyah beyaz tüyleriyle kolayca tanınır.",
+      "soundClueText": "Uçamayan ama suda çok iyi yüzen, siyah beyaz görünüşlü ve soğuk yerleri seven bir kuştur. Acaba bu nedir?"
+    }
+  ]
+}

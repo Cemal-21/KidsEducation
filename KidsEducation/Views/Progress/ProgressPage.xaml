@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:AnimatedPage
+    x:Class="KidsEducation.Views.Progress.ProgressPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:KidsEducation.ViewModels.Progress"
+    xmlns:models="clr-namespace:KidsEducation.Models"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    xmlns:converters="clr-namespace:KidsEducation.Converters"
+    xmlns:views="clr-namespace:KidsEducation.Views"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#F0F2FA">
+
+    <ContentPage.Resources>
+        <Color x:Key="TextPrimary">#172033</Color>
+        <Color x:Key="TextMuted">#6B7280</Color>
+        <Color x:Key="BrandPurpleLight">#6C62F5</Color>
+        <Color x:Key="SurfaceWhite">#FFFFFF</Color>
+        <Color x:Key="BorderLight">#E8E8F0</Color>
+        <converters:BoolToFullOpacityConverter x:Key="BoolToFullOpacityConverter" />
+
+        <Style x:Key="SectionLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="{StaticResource TextMuted}" />
+            <Setter Property="CharacterSpacing" Value="0" />
+            <Setter Property="TextTransform" Value="Uppercase" />
+        </Style>
+
+        <Style x:Key="StatCard" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="{StaticResource SurfaceWhite}" />
+            <Setter Property="Stroke" Value="{StaticResource BorderLight}" />
+            <Setter Property="StrokeThickness" Value="0.5" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 16" />
+            <Setter Property="Padding" Value="12,14" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- HEADER -->
+        <Border Grid.Row="0" Stroke="Transparent" StrokeShape="RoundRectangle 0,0,32,32">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#5148D4" Offset="0.0" />
+                    <GradientStop Color="#4C44C6" Offset="0.5" />
+                    <GradientStop Color="#3A6BD4" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid Padding="22,52,22,24" RowDefinitions="Auto,Auto" RowSpacing="16">
+                <VerticalStackLayout Grid.Row="0" Spacing="3">
+                    <Label Text="İlerleme" FontSize="26" FontAttributes="Bold" TextColor="White" />
+                    <Label Text="{Binding ActiveProfile.Name, StringFormat='{0} istatistikleri'}" FontSize="13" TextColor="#AAFFFFFF" />
+                </VerticalStackLayout>
+
+                <Grid Grid.Row="1" ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                    <Border Grid.Column="0" BackgroundColor="#24FFFFFF" Stroke="#36FFFFFF" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="10,10">
+                        <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                            <Label Text="{Binding WeeklyLessons}" FontSize="20" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                            <Label Text="bu hafta ders" FontSize="10" TextColor="#AAFFFFFF" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="1" BackgroundColor="#28FFD66B" Stroke="#40FFD66B" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="10,10">
+                        <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                            <Label Text="{Binding WeeklyStars}" FontSize="20" FontAttributes="Bold" TextColor="#FFD66B" HorizontalOptions="Center" />
+                            <Label Text="bu hafta yıldız" FontSize="10" TextColor="#AAFFFFFF" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="2" BackgroundColor="#24FFFFFF" Stroke="#36FFFFFF" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="10,10">
+                        <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                            <Label Text="{Binding ActiveProfile.StreakDays}" FontSize="20" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                            <Label Text="gün seri 🔥" FontSize="10" TextColor="#AAFFFFFF" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <!-- İÇERİK -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="18,22,18,16" Spacing="20">
+
+                <!-- Haftalık Aktivite — düzeltilmiş bar grafik -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="haftalık aktivite" Style="{StaticResource SectionLabel}" />
+                    <Border BackgroundColor="{StaticResource SurfaceWhite}" Stroke="{StaticResource BorderLight}" StrokeThickness="0.5" StrokeShape="RoundRectangle 20" Padding="16,16">
+                        <VerticalStackLayout Spacing="10">
+
+                            <!-- Bar'lar — sabit 80px yükseklik alanı -->
+                            <Grid ColumnDefinitions="*,*,*,*,*,*,*" ColumnSpacing="8" HeightRequest="100">
+
+                                <!-- Pzt -->
+                                <Grid Grid.Column="0" RowDefinitions="*,Auto" RowSpacing="6">
+                                    <Border
+                                        Grid.Row="0"
+                                        BackgroundColor="{Binding Day1Color}"
+                                        Stroke="Transparent"
+                                        StrokeShape="RoundRectangle 8"
+                                        WidthRequest="32"
+                                        HeightRequest="{Binding Day1Height}"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="End" />
+                                    <Label Grid.Row="1" Text="Pzt" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                </Grid>
+
+                                <!-- Sal -->
+                                <Grid Grid.Column="1" RowDefinitions="*,Auto" RowSpacing="6">
+                                    <Border
+                                        Grid.Row="0"
+                                        BackgroundColor="{Binding Day2Color}"
+                                        Stroke="Transparent"
+                                        StrokeShape="RoundRectangle 8"
+                                        WidthRequest="32"
+                                        HeightRequest="{Binding Day2Height}"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="End" />
+                                    <Label Grid.Row="1" Text="Sal" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                </Grid>
+
+                                <!-- Çar -->
+                                <Grid Grid.Column="2" RowDefinitions="*,Auto" RowSpacing="6">
+                                    <Border
+                                        Grid.Row="0"
+                                        BackgroundColor="{Binding Day3Color}"
+                                        Stroke="Transparent"
+                                        StrokeShape="RoundRectangle 8"
+                                        WidthRequest="32"
+                                        HeightRequest="{Binding Day3Height}"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="End" />
+                                    <Label Grid.Row="1" Text="Çar" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                </Grid>
+
+                                <!-- Per -->
+                                <Grid Grid.Column="3" RowDefinitions="*,Auto" RowSpacing="6">
+                                    <Border
+                                        Grid.Row="0"
+                                        BackgroundColor="{Binding Day4Color}"
+                                        Stroke="Transparent"
+                                        StrokeShape="RoundRectangle 8"
+                                        WidthRequest="32"
+                                        HeightRequest="{Binding Day4Height}"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="End" />
+                                    <Label Grid.Row="1" Text="Per" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                </Grid>
+
+                                <!-- Cum -->
+                                <Grid Grid.Column="4" RowDefinitions="*,Auto" RowSpacing="6">
+                                    <Border
+                                        Grid.Row="0"
+                                        BackgroundColor="{Binding Day5Color}"
+                                        Stroke="Transparent"
+                                        StrokeShape="RoundRectangle 8"
+                                        WidthRequest="32"
+                                        HeightRequest="{Binding Day5Height}"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="End" />
+                                    <Label Grid.Row="1" Text="Cum" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                </Grid>
+
+                                <!-- Cmt -->
+                                <Grid Grid.Column="5" RowDefinitions="*,Auto" RowSpacing="6">
+                                    <Border
+                                        Grid.Row="0"
+                                        BackgroundColor="{Binding Day6Color}"
+                                        Stroke="Transparent"
+                                        StrokeShape="RoundRectangle 8"
+                                        WidthRequest="32"
+                                        HeightRequest="{Binding Day6Height}"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="End" />
+                                    <Label Grid.Row="1" Text="Cmt" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                </Grid>
+
+                                <!-- Paz -->
+                                <Grid Grid.Column="6" RowDefinitions="*,Auto" RowSpacing="6">
+                                    <Border
+                                        Grid.Row="0"
+                                        BackgroundColor="{Binding Day7Color}"
+                                        Stroke="Transparent"
+                                        StrokeShape="RoundRectangle 8"
+                                        WidthRequest="32"
+                                        HeightRequest="{Binding Day7Height}"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="End" />
+                                    <Label Grid.Row="1" Text="Paz" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                </Grid>
+
+                            </Grid>
+
+                            <!-- Renk açıklaması -->
+                            <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
+                                <HorizontalStackLayout Spacing="5">
+                                    <Border WidthRequest="10" HeightRequest="10" BackgroundColor="#6C62F5" Stroke="Transparent" StrokeShape="RoundRectangle 3" VerticalOptions="Center" />
+                                    <Label Text="oynandı" FontSize="10" TextColor="{StaticResource TextMuted}" VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Border WidthRequest="10" HeightRequest="10" BackgroundColor="#EDE8FF" Stroke="Transparent" StrokeShape="RoundRectangle 3" VerticalOptions="Center" />
+                                    <Label Text="oynanmadı" FontSize="10" TextColor="{StaticResource TextMuted}" VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Border WidthRequest="10" HeightRequest="10" BackgroundColor="#4C44C6" Stroke="Transparent" StrokeShape="RoundRectangle 3" VerticalOptions="Center" />
+                                    <Label Text="bugün" FontSize="10" TextColor="{StaticResource TextMuted}" VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                            </HorizontalStackLayout>
+
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Kategori Bazlı İlerleme -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="konu bazlı ilerleme" Style="{StaticResource SectionLabel}" />
+                    <CollectionView ItemsSource="{Binding CategoryStats}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:CategoryStat">
+                                <Border BackgroundColor="{StaticResource SurfaceWhite}" Stroke="{StaticResource BorderLight}" StrokeThickness="0.5" StrokeShape="RoundRectangle 16" Padding="14,12" Margin="0,0,0,10">
+                                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                                        <Border Grid.Column="0" WidthRequest="44" HeightRequest="44" BackgroundColor="{Binding ColorHex}" Stroke="Transparent" StrokeShape="RoundRectangle 14">
+                                            <Label Text="{Binding Emoji}" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        </Border>
+                                        <VerticalStackLayout Grid.Column="1" Spacing="6" VerticalOptions="Center">
+                                            <Label Text="{Binding NameTr}" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                            <Border HeightRequest="6" BackgroundColor="#EDE8FF" Stroke="Transparent" StrokeShape="RoundRectangle 10">
+                                                <Border HorizontalOptions="Start" HeightRequest="6" WidthRequest="{Binding ProgressBarWidth}" BackgroundColor="#6C62F5" Stroke="Transparent" StrokeShape="RoundRectangle 10" />
+                                            </Border>
+                                        </VerticalStackLayout>
+                                        <Label Grid.Column="2" Text="{Binding ProgressPercent, StringFormat='%{0}'}" FontSize="14" FontAttributes="Bold" TextColor="#6C62F5" VerticalOptions="Center" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+                <!-- Genel İstatistikler -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="genel istatistikler" Style="{StaticResource SectionLabel}" />
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+                        <Border Grid.Column="0" Grid.Row="0" Style="{StaticResource StatCard}">
+                            <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                <Label Text="📚" FontSize="24" HorizontalOptions="Center" />
+                                <Label Text="{Binding ActiveProfile.TotalLessonsCompleted}" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                <Label Text="toplam ders" FontSize="11" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="0" Style="{StaticResource StatCard}">
+                            <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                <Label Text="⭐" FontSize="24" HorizontalOptions="Center" />
+                                <Label Text="{Binding ActiveProfile.TotalStars}" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                <Label Text="toplam yıldız" FontSize="11" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="1" Style="{StaticResource StatCard}">
+                            <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                <Label Text="🏆" FontSize="24" HorizontalOptions="Center" />
+                                <Label Text="{Binding ActiveProfile.TotalXpFormatted}" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                <Label Text="toplam XP" FontSize="11" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource StatCard}">
+                            <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                <Label Text="🔥" FontSize="24" HorizontalOptions="Center" />
+                                <Label Text="{Binding ActiveProfile.StreakDays}" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                <Label Text="gün seri" FontSize="11" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- TAB BAR -->
+        <controls:BottomTabBar Grid.Row="2" IsProgressActive="True" />
+
+    </Grid>
+</views:AnimatedPage>

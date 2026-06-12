@@ -1,0 +1,71 @@
+{
+  "categoryId": "vegetables",
+  "items": [
+    {
+      "id": "vegetable_brokoli",
+      "nameTr": "Brokoli",
+      "nameEn": "Broccoli",
+      "imagePath": "vegetable_broccoli",
+      "category": "vegetables",
+      "difficultyLevel": 1,
+      "funFact": "Brokoli küçük ağaçlara benzer.",
+      "descriptionTr": "Brokoli yeşil renkli sağlıklı bir sebzedir. Görünüşü küçük ağaçlara benzer. Yemeklerde ve çorbalarda kullanılabilir. Brokoli vücudumuz için yararlı besinler içerir.",
+      "soundClueText": "Yeşil renklidir, görünüşü küçük ağaçlara benzer ve sağlıklı yemeklerde kullanılabilir. Acaba bu hangi sebzedir?"
+    },
+    {
+      "id": "vegetable_havuc",
+      "nameTr": "Havuç",
+      "nameEn": "Carrot",
+      "imagePath": "vegetable_carrot",
+      "category": "vegetables",
+      "difficultyLevel": 1,
+      "funFact": "Havuç turuncu rengiyle tanınır.",
+      "descriptionTr": "Havuç turuncu renkli bir sebzedir. Toprağın altında yetişir. Çiğ olarak yenebilir veya yemeklerde kullanılabilir. Havuç göz sağlığı için yararlı besinler içerir.",
+      "soundClueText": "Turuncu renkli, toprağın altında yetişen ve göz sağlığı için yararlı besinler içeren sebzedir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_domates",
+      "nameTr": "Domates",
+      "nameEn": "Tomato",
+      "imagePath": "vegetable_tomato",
+      "category": "vegetables",
+      "difficultyLevel": 1,
+      "funFact": "Domates kırmızı ve suludur.",
+      "descriptionTr": "Domates kırmızı renkli ve sulu bir yiyecektir. Salatalarda, yemeklerde ve çorbalarda kullanılır. Tatlımsı ve hafif ekşi bir tadı vardır. Domates sofralarda çok sık yer alır.",
+      "soundClueText": "Kırmızı renkli, sulu, salatalarda ve yemeklerde sık kullanılan yiyecektir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_salatalik",
+      "nameTr": "Salatalık",
+      "nameEn": "Cucumber",
+      "imagePath": "vegetable_cucumber",
+      "category": "vegetables",
+      "difficultyLevel": 1,
+      "funFact": "Salatalık ferahlatıcıdır.",
+      "descriptionTr": "Salatalık yeşil renkli ve ferah bir sebzedir. İçinde bol su bulunur. Genellikle salatalarda kullanılır. Çıtır çıtır yapısıyla çocukların sevebileceği bir sebzedir.",
+      "soundClueText": "Yeşil renkli, ferahlatıcı, içinde bol su bulunan ve salatalarda kullanılan sebzedir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_patates",
+      "nameTr": "Patates",
+      "nameEn": "Potato",
+      "imagePath": "vegetable_potato",
+      "category": "vegetables",
+      "difficultyLevel": 1,
+      "funFact": "Patates toprağın altında yetişir.",
+      "descriptionTr": "Patates toprağın altında yetişen bir sebzedir. Haşlanabilir, fırınlanabilir veya yemeklerde kullanılabilir. Yumuşak bir tadı vardır. Patates birçok farklı yemekte kullanılır.",
+      "soundClueText": "Toprağın altında yetişir; haşlanabilir, fırınlanabilir ve birçok yemekte kullanılabilir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_biber",
+      "nameTr": "Biber",
+      "nameEn": "Pepper",
+      "imagePath": "vegetable_pepper",
+      "category": "vegetables",
+      "difficultyLevel": 2,
+      "funFact": "Biber farklı renklerde olabilir.",
+      "descriptionTr": "Biber yeşil, kırmızı veya sarı renkte olabilir. Yemeklere lezzet verir. Bazı biberler tatlı, bazıları acı olabilir. Çocuklar için tatlı biberleri tanımak daha uygundur.",
+      "soundClueText": "Yeşil, kırmızı ya da sarı olabilir; bazıları tatlı, bazıları acı olabilir ve yemeklere lezzet verir. Acaba bu nedir?"
+    }
+  ]
+}

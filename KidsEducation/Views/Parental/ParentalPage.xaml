@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:AnimatedPage
+    x:Class="KidsEducation.Views.Parental.ParentalPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:KidsEducation.ViewModels.Parental"
+    xmlns:models="clr-namespace:KidsEducation.Models"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    xmlns:views="clr-namespace:KidsEducation.Views"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#F0F2FA">
+
+    <ContentPage.Resources>
+        <Color x:Key="TextPrimary">#172033</Color>
+        <Color x:Key="TextMuted">#6B7280</Color>
+        <Color x:Key="BrandPurpleLight">#6C62F5</Color>
+        <Color x:Key="SurfaceWhite">#FFFFFF</Color>
+        <Color x:Key="BorderLight">#E8E8F0</Color>
+
+        <Style x:Key="SectionLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="{StaticResource TextMuted}" />
+            <Setter Property="CharacterSpacing" Value="0" />
+            <Setter Property="TextTransform" Value="Uppercase" />
+        </Style>
+
+        <Style x:Key="SettingCard" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="{StaticResource SurfaceWhite}" />
+            <Setter Property="Stroke" Value="{StaticResource BorderLight}" />
+            <Setter Property="StrokeThickness" Value="0.5" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 16" />
+            <Setter Property="Padding" Value="16,14" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- HEADER -->
+        <Border Grid.Row="0" Stroke="Transparent" StrokeShape="RoundRectangle 0,0,32,32">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#5148D4" Offset="0.0" />
+                    <GradientStop Color="#4C44C6" Offset="0.5" />
+                    <GradientStop Color="#3A6BD4" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid Padding="22,52,22,24" ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                <controls:TappableBorder
+                    Grid.Column="0"
+                    Command="{Binding GoBackCommand}"
+                    WidthRequest="40" HeightRequest="40"
+                    BackgroundColor="#22FFFFFF"
+                    Stroke="#33FFFFFF" StrokeThickness="1"
+                    StrokeShape="RoundRectangle 13"
+                    VerticalOptions="Center">
+                    <Label Text="←" FontSize="20" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+                </controls:TappableBorder>
+
+                <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                    <Label Text="Ebeveyn Paneli" FontSize="24" FontAttributes="Bold" TextColor="White" />
+                    <Label Text="Ayarlar ve haftalık rapor" FontSize="13" TextColor="#AAFFFFFF" />
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+
+        <!-- İÇERİK -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="18,22,18,34" Spacing="20">
+
+                <!-- Haftalık Rapor -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="haftalık rapor" Style="{StaticResource SectionLabel}" />
+                    <Border BackgroundColor="{StaticResource SurfaceWhite}" Stroke="{StaticResource BorderLight}" StrokeThickness="0.5" StrokeShape="RoundRectangle 20" Padding="16,14">
+                        <VerticalStackLayout Spacing="14">
+                            <Label Text="{Binding Report.ProfileName, StringFormat='{0} bu hafta'}" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+                                <Border Grid.Column="0" Grid.Row="0" Style="{StaticResource SettingCard}">
+                                    <VerticalStackLayout Spacing="3" HorizontalOptions="Center">
+                                        <Label Text="📚" FontSize="22" HorizontalOptions="Center" />
+                                        <Label Text="{Binding Report.WeeklyLessons}" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                        <Label Text="ders" FontSize="11" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                </Border>
+                                <Border Grid.Column="1" Grid.Row="0" Style="{StaticResource SettingCard}">
+                                    <VerticalStackLayout Spacing="3" HorizontalOptions="Center">
+                                        <Label Text="⭐" FontSize="22" HorizontalOptions="Center" />
+                                        <Label Text="{Binding Report.WeeklyStars}" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                        <Label Text="yıldız" FontSize="11" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                </Border>
+                                <Border Grid.Column="0" Grid.Row="1" Style="{StaticResource SettingCard}">
+                                    <VerticalStackLayout Spacing="3" HorizontalOptions="Center">
+                                        <Label Text="🔥" FontSize="22" HorizontalOptions="Center" />
+                                        <Label Text="{Binding Report.StreakDays}" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                        <Label Text="gün seri" FontSize="11" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                </Border>
+                                <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource SettingCard}">
+                                    <VerticalStackLayout Spacing="3" HorizontalOptions="Center">
+                                        <Label Text="⏱️" FontSize="22" HorizontalOptions="Center" />
+                                        <Label Text="{Binding Report.DailyLimitText}" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                        <Label Text="bugün" FontSize="11" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                </Border>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Premium Haftalık Yorum -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="haftalık yorum" Style="{StaticResource SectionLabel}" />
+                    <Border BackgroundColor="{StaticResource SurfaceWhite}" Stroke="{StaticResource BorderLight}" StrokeThickness="0.5" StrokeShape="RoundRectangle 20" Padding="16,14">
+                        <VerticalStackLayout Spacing="12">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                <Border Grid.Column="0" WidthRequest="44" HeightRequest="44" BackgroundColor="#F5F1FF" Stroke="#DDD6FF" StrokeThickness="1" StrokeShape="RoundRectangle 15">
+                                    <Label Text="✨" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+                                <VerticalStackLayout Grid.Column="1" Spacing="3" VerticalOptions="Center">
+                                    <Label Text="{Binding WeeklyInsightTitle}" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                    <Label Text="{Binding WeeklyInsightText}" FontSize="12" TextColor="{StaticResource TextMuted}" LineBreakMode="WordWrap" />
+                                </VerticalStackLayout>
+                            </Grid>
+
+                            <Border BackgroundColor="#F0FFFA" Stroke="#C8F4E8" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="12,10">
+                                <Label Text="{Binding NextBestStepText}" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" LineBreakMode="WordWrap" />
+                            </Border>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- MEB Uyumlu Gelişim Alanları -->
+                <VerticalStackLayout Spacing="10" IsVisible="{Binding HasSkillInsights}">
+                    <Label Text="MEB uyumlu gelişim alanları" Style="{StaticResource SectionLabel}" />
+                    <Border BackgroundColor="{StaticResource SurfaceWhite}" Stroke="{StaticResource BorderLight}" StrokeThickness="0.5" StrokeShape="RoundRectangle 20" Padding="16,14">
+                        <VerticalStackLayout Spacing="16">
+                            <Label Text="Oyunlar; bilişsel gelişim, dil gelişimi ve yönerge takibi gibi okul öncesi destek alanlarıyla eşleştirilir." FontSize="12" TextColor="{StaticResource TextMuted}" LineBreakMode="WordWrap" />
+
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Öne çıkan beceriler" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                <CollectionView ItemsSource="{Binding TopSkills}">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="vm:SkillSummaryInfo">
+                                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" Padding="0,6">
+                                                <Border Grid.Column="0" WidthRequest="38" HeightRequest="38" BackgroundColor="#F0FFFA" Stroke="#C8F4E8" StrokeThickness="1" StrokeShape="RoundRectangle 13">
+                                                    <Label Text="{Binding Emoji}" FontSize="19" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                </Border>
+                                                <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                                    <Label Text="{Binding Title}" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                                    <Label Text="{Binding SummaryText}" FontSize="11" TextColor="{StaticResource TextMuted}" LineBreakMode="TailTruncation" />
+                                                </VerticalStackLayout>
+                                                <Border Grid.Column="2" BackgroundColor="#F5F1FF" Stroke="#DDD6FF" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="9,5" VerticalOptions="Center">
+                                                    <Label Text="{Binding AccuracyText}" FontSize="12" FontAttributes="Bold" TextColor="#5148D4" />
+                                                </Border>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Evde destek önerileri" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                <CollectionView ItemsSource="{Binding SupportSkills}">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="vm:SkillSummaryInfo">
+                                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" Padding="0,6">
+                                                <Border Grid.Column="0" WidthRequest="38" HeightRequest="38" BackgroundColor="#FFF4D8" Stroke="#FFE3A3" StrokeThickness="1" StrokeShape="RoundRectangle 13">
+                                                    <Label Text="{Binding Emoji}" FontSize="19" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                </Border>
+                                                <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                                    <Label Text="{Binding Title}" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                                    <Label Text="{Binding Suggestion}" FontSize="12" TextColor="{StaticResource TextMuted}" LineBreakMode="WordWrap" />
+                                                </VerticalStackLayout>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- MEB Uyumlu Ev Etkinlikleri -->
+                <VerticalStackLayout Spacing="10" IsVisible="{Binding HasCurriculumActivities}">
+                    <Label Text="MEB uyumlu ev etkinlikleri" Style="{StaticResource SectionLabel}" />
+                    <Border BackgroundColor="{StaticResource SurfaceWhite}" Stroke="{StaticResource BorderLight}" StrokeThickness="0.5" StrokeShape="RoundRectangle 20" Padding="16,14">
+                        <VerticalStackLayout Spacing="12">
+                            <Label Text="Oyunlardan sonra evde yapılabilecek kısa aile katılımı etkinlikleri." FontSize="12" TextColor="{StaticResource TextMuted}" LineBreakMode="WordWrap" />
+                            <CollectionView ItemsSource="{Binding CurriculumActivities}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="models:CurriculumActivity">
+                                        <Border BackgroundColor="#FBFCFF" Stroke="#E8E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 16" Padding="14,12" Margin="0,0,0,10">
+                                            <VerticalStackLayout Spacing="8">
+                                                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                                                    <Border Grid.Column="0" WidthRequest="40" HeightRequest="40" BackgroundColor="#F5F1FF" Stroke="#DDD6FF" StrokeThickness="1" StrokeShape="RoundRectangle 14">
+                                                        <Label Text="{Binding Emoji}" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                    </Border>
+                                                    <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                                        <Label Text="{Binding Title}" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                                        <Label Text="{Binding MebArea}" FontSize="11" TextColor="#5148D4" LineBreakMode="WordWrap" />
+                                                    </VerticalStackLayout>
+                                                    <Border Grid.Column="2" BackgroundColor="#F0FFFA" Stroke="#C8F4E8" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="8,5" VerticalOptions="Center">
+                                                        <Label Text="{Binding DurationText}" FontSize="11" FontAttributes="Bold" TextColor="#1E8A6A" />
+                                                    </Border>
+                                                </Grid>
+
+                                                <Label Text="{Binding Goal}" FontSize="12" TextColor="{StaticResource TextMuted}" LineBreakMode="WordWrap" />
+                                                <Label Text="{Binding StepsText}" FontSize="12" TextColor="{StaticResource TextPrimary}" LineBreakMode="WordWrap" />
+
+                                                <Border BackgroundColor="#FFF4D8" Stroke="#FFE3A3" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="10,8">
+                                                    <VerticalStackLayout Spacing="2">
+                                                        <Label Text="{Binding Materials, StringFormat='Materyal: {0}'}" FontSize="11" TextColor="{StaticResource TextMuted}" LineBreakMode="WordWrap" />
+                                                        <Label Text="{Binding ParentPrompt, StringFormat='Veli sorusu: {0}'}" FontSize="11" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" LineBreakMode="WordWrap" />
+                                                    </VerticalStackLayout>
+                                                </Border>
+                                            </VerticalStackLayout>
+                                        </Border>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Zorlanılan Konular -->
+                <VerticalStackLayout Spacing="10" IsVisible="{Binding HasWeakCategories}">
+                    <Label Text="zorlandığı konular" Style="{StaticResource SectionLabel}" />
+                    <Border BackgroundColor="{StaticResource SurfaceWhite}" Stroke="{StaticResource BorderLight}" StrokeThickness="0.5" StrokeShape="RoundRectangle 20" Padding="16,14">
+                        <VerticalStackLayout Spacing="12">
+                            <Label Text="Bu hafta bu konularda daha fazla pratik işine yarayabilir" FontSize="12" TextColor="{StaticResource TextMuted}" />
+                            <CollectionView ItemsSource="{Binding WeakCategories}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:WeakCategoryInfo">
+                                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" Padding="0,7">
+                                            <Border Grid.Column="0" WidthRequest="38" HeightRequest="38" BackgroundColor="#FFF4D8" Stroke="#FFE3A3" StrokeThickness="1" StrokeShape="RoundRectangle 13">
+                                                <Label Text="{Binding Emoji}" FontSize="19" HorizontalOptions="Center" VerticalOptions="Center" />
+                                            </Border>
+                                            <Label Grid.Column="1" Text="{Binding NameTr}" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
+                                            <Border Grid.Column="2" BackgroundColor="#FFF0F0" Stroke="#FFD9D9" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="9,5" VerticalOptions="Center">
+                                                <Label Text="{Binding AccuracyText}" FontSize="12" FontAttributes="Bold" TextColor="#E0584F" />
+                                            </Border>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Günlük Süre Limiti -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="günlük süre limiti" Style="{StaticResource SectionLabel}" />
+                    <Border Style="{StaticResource SettingCard}">
+                        <VerticalStackLayout Spacing="12">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Grid.Column="0" Text="Günlük oyun süresi" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
+                                <Label Grid.Column="1" Text="{Binding DailyLimitText}" FontSize="14" FontAttributes="Bold" TextColor="#6C62F5" VerticalOptions="Center" />
+                            </Grid>
+                            <Slider Minimum="0" Maximum="120" Value="{Binding DailyLimitMinutes}" ThumbColor="#6C62F5" MinimumTrackColor="#6C62F5" MaximumTrackColor="#EDE8FF" />
+                            <Label Text="0 = sınırsız, maksimum 120 dakika" FontSize="11" TextColor="{StaticResource TextMuted}" />
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Genel Ayarlar -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="genel ayarlar" Style="{StaticResource SectionLabel}" />
+                    <Border Style="{StaticResource SettingCard}">
+                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                            <Label Grid.Column="0" Text="🔊" FontSize="22" VerticalOptions="Center" />
+                            <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                <Label Text="Ses Efektleri" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                <Label Text="Oyun seslerini aç/kapat" FontSize="12" TextColor="{StaticResource TextMuted}" />
+                            </VerticalStackLayout>
+                            <Switch Grid.Column="2" IsToggled="{Binding SoundEnabled}" ThumbColor="#6C62F5" OnColor="#EDE8FF" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                    <Border Style="{StaticResource SettingCard}">
+                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                            <Label Grid.Column="0" Text="📊" FontSize="22" VerticalOptions="Center" />
+                            <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                <Label Text="Haftalık Rapor" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                <Label Text="Her pazar özet bildirimi" FontSize="12" TextColor="{StaticResource TextMuted}" />
+                            </VerticalStackLayout>
+                            <Switch Grid.Column="2" IsToggled="{Binding WeeklyReportEnabled}" ThumbColor="#6C62F5" OnColor="#EDE8FF" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Kategori Görünürlüğü -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="kategori görünürlüğü" Style="{StaticResource SectionLabel}" />
+                    <CollectionView ItemsSource="{Binding CategoryToggles}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="vm:CategoryToggle">
+                                <controls:TappableBorder
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ParentalViewModel}}, Path=ToggleCategoryCommand}"
+                                    CommandParameter="{Binding .}"
+                                    BackgroundColor="{StaticResource SurfaceWhite}"
+                                    Stroke="{StaticResource BorderLight}"
+                                    StrokeThickness="0.5"
+                                    StrokeShape="RoundRectangle 16"
+                                    Padding="16,12"
+                                    Margin="0,0,0,10">
+                                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                                        <Label Grid.Column="0" Text="{Binding Emoji}" FontSize="24" VerticalOptions="Center" />
+                                        <Label Grid.Column="1" Text="{Binding NameTr}" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
+                                        <Label Grid.Column="2" Text="{Binding VisibilityIcon}" FontSize="20" VerticalOptions="Center" />
+                                    </Grid>
+                                </controls:TappableBorder>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+                <!-- Kaydet Butonu — TappableBorder -->
+                <controls:TappableBorder
+                    Command="{Binding SaveSettingsCommand}"
+                    BackgroundColor="#6C62F5"
+                    Stroke="Transparent"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="0,16">
+                    <Label Text="✅  Ayarları Kaydet" FontSize="16" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                </controls:TappableBorder>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</views:AnimatedPage>

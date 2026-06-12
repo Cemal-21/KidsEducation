@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="KidsEducation.Views.Controls.CelebrationOverlay"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    IsVisible="False"
+    InputTransparent="False">
+
+    <!-- Yarı saydam arka plan -->
+    <Grid>
+        <BoxView Color="#88000000" />
+
+        <!-- Konfeti parçacıkları — code-behind'dan dinamik eklenir -->
+        <AbsoluteLayout x:Name="ConfettiCanvas" />
+
+        <!-- Merkez kutlama kartı -->
+        <Border
+            BackgroundColor="White"
+            Stroke="Transparent"
+            StrokeShape="RoundRectangle 28"
+            Padding="32,28"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="280">
+
+            <Border.Shadow>
+                <Shadow Brush="#33000000" Offset="0,8" Radius="24" Opacity="0.3" />
+            </Border.Shadow>
+
+            <VerticalStackLayout Spacing="12" HorizontalOptions="Center">
+
+                <Label
+                    x:Name="CelebrationEmoji"
+                    Text="🎉"
+                    FontSize="64"
+                    HorizontalOptions="Center" />
+
+                <Label
+                    x:Name="CelebrationTitle"
+                    Text="Harika!"
+                    FontSize="26"
+                    FontAttributes="Bold"
+                    TextColor="#172033"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center" />
+
+                <Label
+                    x:Name="CelebrationSubtitle"
+                    Text="Tebrikler, ders tamamlandı!"
+                    FontSize="14"
+                    TextColor="#6B7280"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center" />
+
+                <!-- Yıldız satırı -->
+                <HorizontalStackLayout
+                    x:Name="StarsRow"
+                    Spacing="8"
+                    HorizontalOptions="Center"
+                    Margin="0,4,0,0">
+                    <Label x:Name="Star1" Text="⭐" FontSize="32" Opacity="0" />
+                    <Label x:Name="Star2" Text="⭐" FontSize="32" Opacity="0" />
+                    <Label x:Name="Star3" Text="⭐" FontSize="32" Opacity="0" />
+                </HorizontalStackLayout>
+
+                <Border
+                    BackgroundColor="#6C62F5"
+                    Stroke="Transparent"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="0,14"
+                    Margin="0,8,0,0">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnDismissTapped" />
+                    </Border.GestureRecognizers>
+                    <Label
+                        Text="Devam Et →"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        HorizontalOptions="Center" />
+                </Border>
+
+            </VerticalStackLayout>
+        </Border>
+    </Grid>
+</ContentView>

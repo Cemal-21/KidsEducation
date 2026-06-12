@@ -1,0 +1,60 @@
+{
+  "categoryId": "numbers",
+  "items": [
+    {
+      "id": "number_1",
+      "nameTr": "Bir",
+      "nameEn": "One",
+      "imagePath": "number_one",
+      "category": "numbers",
+      "difficultyLevel": 1,
+      "funFact": "Bir tek bir şeyi anlatır.",
+      "descriptionTr": "Bir sayısı tek bir nesneyi anlatır. Bir elma, bir top veya bir kalem diyebiliriz. Saymaya başlarken ilk öğrendiğimiz sayılardan biridir.",
+      "soundClueText": "Tek bir nesneyi anlatan, saymaya başlarken öğrendiğimiz ilk sayılardan biridir. Acaba bu hangi sayıdır?"
+    },
+    {
+      "id": "number_2",
+      "nameTr": "İki",
+      "nameEn": "Two",
+      "imagePath": "number_two",
+      "category": "numbers",
+      "difficultyLevel": 1,
+      "funFact": "İki bir çift olabilir.",
+      "descriptionTr": "İki sayısı iki tane nesneyi anlatır. İki gözümüz, iki kulağımız ve iki elimiz vardır. İki sayısı saymayı öğrenirken çok önemlidir.",
+      "soundClueText": "İki gözümüz ve iki kulağımız gibi çift olan şeyleri anlatan sayıdır. Acaba bu hangi sayıdır?"
+    },
+    {
+      "id": "number_3",
+      "nameTr": "Üç",
+      "nameEn": "Three",
+      "imagePath": "number_three",
+      "category": "numbers",
+      "difficultyLevel": 1,
+      "funFact": "Üçgenin üç köşesi vardır.",
+      "descriptionTr": "Üç sayısı üç tane nesneyi anlatır. Üç kalem veya üç oyuncak diyebiliriz. Üçgen şeklinin de üç köşesi vardır.",
+      "soundClueText": "Üçgenin köşe sayısını anlatan ve üç tane nesneyi sayarken kullandığımız sayıdır. Acaba bu hangi sayıdır?"
+    },
+    {
+      "id": "number_4",
+      "nameTr": "Dört",
+      "nameEn": "Four",
+      "imagePath": "number_four",
+      "category": "numbers",
+      "difficultyLevel": 1,
+      "funFact": "Karenin dört kenarı vardır.",
+      "descriptionTr": "Dört sayısı dört tane nesneyi anlatır. Bir masanın dört ayağı olabilir. Kare şeklinin dört kenarı ve dört köşesi vardır.",
+      "soundClueText": "Karenin kenar sayısını ve bir masanın ayak sayısını anlatabilen sayıdır. Acaba bu hangi sayıdır?"
+    },
+    {
+      "id": "number_5",
+      "nameTr": "Beş",
+      "nameEn": "Five",
+      "imagePath": "number_five",
+      "category": "numbers",
+      "difficultyLevel": 1,
+      "funFact": "Bir elde beş parmak vardır.",
+      "descriptionTr": "Beş sayısı beş tane nesneyi anlatır. Bir elimizde beş parmak bulunur. Beşe kadar saymak günlük hayatta sık kullanılır.",
+      "soundClueText": "Bir eldeki parmakların sayısını anlatan sayıdır. Acaba bu hangi sayıdır?"
+    }
+  ]
+}

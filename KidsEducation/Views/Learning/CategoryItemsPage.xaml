@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:AnimatedPage
+    x:Class="KidsEducation.Views.Learning.CategoryItemsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:KidsEducation.Models"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    xmlns:views="clr-namespace:KidsEducation.Views"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{StaticResource AppBackground}">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- HEADER — gradient, kategori rengi -->
+        <Border Grid.Row="0" Stroke="Transparent" StrokeShape="RoundRectangle 0,0,32,32">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="{Binding CategoryColorHex}" Offset="0.0" />
+                    <GradientStop Color="{Binding CategoryColorHex2}" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid Padding="22,52,22,24" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
+
+                <!-- Geri butonu -->
+                <controls:TappableBorder
+                    Grid.Column="0"
+                    Command="{Binding GoBackCommand}"
+                    WidthRequest="44" HeightRequest="44"
+                    BackgroundColor="#22FFFFFF"
+                    Stroke="#33FFFFFF" StrokeThickness="1"
+                    StrokeShape="RoundRectangle 15"
+                    VerticalOptions="Center">
+                    <Label Text="←" FontSize="22" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+                </controls:TappableBorder>
+
+                <!-- Başlık -->
+                <VerticalStackLayout Grid.Column="1" Spacing="3" VerticalOptions="Center">
+                    <Label
+                        Text="{Binding Title}"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        LineBreakMode="TailTruncation" />
+                    <Label
+                        Text="Bir nesne seç ve öğrenmeye başla."
+                        FontSize="13"
+                        TextColor="#CCFFFFFF" />
+                </VerticalStackLayout>
+
+                <!-- Kategori emoji -->
+                <Border
+                    Grid.Column="2"
+                    WidthRequest="50" HeightRequest="50"
+                    BackgroundColor="#22FFFFFF"
+                    Stroke="#33FFFFFF" StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    VerticalOptions="Center">
+                    <Label
+                        Text="{Binding CategoryEmoji}"
+                        FontSize="26"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                </Border>
+
+            </Grid>
+        </Border>
+
+        <!-- İÇERİK -->
+        <CollectionView
+            x:Name="ItemsCollection"
+            Grid.Row="1"
+            ItemsSource="{Binding Items}"
+            Margin="16,14,16,24">
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    Orientation="Vertical"
+                    Span="2"
+                    HorizontalItemSpacing="12"
+                    VerticalItemSpacing="12" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:LearningItem">
+                    <controls:TappableBorder
+                        Command="{Binding Source={x:Reference ItemsCollection}, Path=BindingContext.SelectItemCommand}"
+                        CommandParameter="{Binding .}"
+                        BackgroundColor="White"
+                        Stroke="#EEF1F7"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 24"
+                        Padding="0"
+                        HeightRequest="178">
+
+                        <controls:TappableBorder.Shadow>
+                            <Shadow Brush="#10000000" Offset="0,4" Radius="10" Opacity="0.1" />
+                        </controls:TappableBorder.Shadow>
+
+                        <Grid RowDefinitions="122,56">
+                            <Border
+                                Grid.Row="0"
+                                Margin="8,8,8,0"
+                                BackgroundColor="#F8FAFF"
+                                Stroke="Transparent"
+                                StrokeShape="RoundRectangle 20"
+                                Padding="0">
+                                <Grid>
+                                    <Border
+                                        BackgroundColor="#12FFFFFF"
+                                        Stroke="Transparent"
+                                        StrokeShape="RoundRectangle 18"
+                                        Margin="10" />
+                                    <Image
+                                        Source="{Binding ImagePath}"
+                                        HeightRequest="116"
+                                        WidthRequest="150"
+                                        Aspect="AspectFit"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center" />
+                                </Grid>
+                            </Border>
+
+                            <Border
+                                Grid.Row="1"
+                                BackgroundColor="#FBFCFF"
+                                Stroke="#EEF1F7"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 0,0,24,24"
+                                Padding="10,7">
+                                <VerticalStackLayout Spacing="2">
+                                    <Label
+                                        Text="{Binding NameTr}"
+                                        FontSize="15"
+                                        FontAttributes="Bold"
+                                        TextColor="#172033"
+                                        HorizontalTextAlignment="Center"
+                                        LineBreakMode="TailTruncation" />
+                                    <Label
+                                        Text="{Binding NameEn}"
+                                        FontSize="12"
+                                        TextColor="#6B7280"
+                                        HorizontalTextAlignment="Center"
+                                        LineBreakMode="TailTruncation" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </Grid>
+                    </controls:TappableBorder>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</views:AnimatedPage>

@@ -1,0 +1,71 @@
+{
+  "categoryId": "shapes",
+  "items": [
+    {
+      "id": "shape_daire",
+      "nameTr": "Daire",
+      "nameEn": "Circle",
+      "imagePath": "shape_circle",
+      "category": "shapes",
+      "difficultyLevel": 1,
+      "funFact": "Dairenin köşesi yoktur.",
+      "descriptionTr": "Daire yuvarlak bir şekildir. Köşesi ve kenarı yoktur. Top, tabak ve saat daireye benzeyebilir. Daireyi çevremizde sık sık görebiliriz.",
+      "soundClueText": "Köşesi ve kenarı olmayan, top, tabak ve saat gibi nesnelerde görebileceğimiz yuvarlak şekildir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "shape_kare",
+      "nameTr": "Kare",
+      "nameEn": "Square",
+      "imagePath": "shape_square",
+      "category": "shapes",
+      "difficultyLevel": 1,
+      "funFact": "Karenin dört eşit kenarı vardır.",
+      "descriptionTr": "Kare dört kenarlı bir şekildir. Tüm kenarları birbirine eşittir. Bazı kutular ve pencereler kareye benzeyebilir. Kare düzenli ve kolay tanınan bir şekildir.",
+      "soundClueText": "Dört eşit kenarı olan, bazı kutu ve pencerelerde görebileceğimiz düzenli şekildir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "shape_ucgen",
+      "nameTr": "Üçgen",
+      "nameEn": "Triangle",
+      "imagePath": "shape_triangle",
+      "category": "shapes",
+      "difficultyLevel": 1,
+      "funFact": "Üçgenin üç köşesi vardır.",
+      "descriptionTr": "Üçgen üç kenarlı ve üç köşeli bir şekildir. Çatıların bazı bölümleri üçgene benzeyebilir. Trafik işaretlerinde üçgen şekli görülebilir. Üçgeni sayarak kolayca tanıyabiliriz.",
+      "soundClueText": "Üç kenarı ve üç köşesi olan, bazı çatılarda ve trafik işaretlerinde görebileceğimiz şekildir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "shape_dikdortgen",
+      "nameTr": "Dikdörtgen",
+      "nameEn": "Rectangle",
+      "imagePath": "shape_rectangle",
+      "category": "shapes",
+      "difficultyLevel": 1,
+      "funFact": "Dikdörtgenin karşılıklı kenarları eşittir.",
+      "descriptionTr": "Dikdörtgen dört kenarlı bir şekildir. Karşılıklı kenarları birbirine eşittir. Kitap, kapı ve telefon dikdörtgene benzeyebilir. Günlük hayatta çok sık görülür.",
+      "soundClueText": "Dört kenarı olan, kitap, kapı ve telefon gibi nesnelerde sık görebileceğimiz şekildir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "shape_yildiz",
+      "nameTr": "Yıldız",
+      "nameEn": "Star",
+      "imagePath": "shape_star",
+      "category": "shapes",
+      "difficultyLevel": 2,
+      "funFact": "Yıldız şekli süslemelerde sık kullanılır.",
+      "descriptionTr": "Yıldız sivri uçları olan özel bir şekildir. Gökyüzündeki yıldızları hatırlatır. Ödül ve süslemelerde yıldız şekli kullanılabilir. Çocukların kolayca sevdiği şekillerden biridir.",
+      "soundClueText": "Sivri uçları olan, gökyüzünü, ödülleri ve süslemeleri hatırlatan özel şekildir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "shape_kalp",
+      "nameTr": "Kalp",
+      "nameEn": "Heart",
+      "imagePath": "shape_heart",
+      "category": "shapes",
+      "difficultyLevel": 2,
+      "funFact": "Kalp şekli sevgiyi anlatmak için kullanılır.",
+      "descriptionTr": "Kalp yuvarlak ve sivri bölümleri olan bir şekildir. Genellikle sevgiyi anlatmak için kullanılır. Kartlarda ve çizimlerde kalp şekli görebiliriz. Tanıması kolay ve sevimli bir şekildir.",
+      "soundClueText": "Sevgiyi anlatmak için kullanılan, yuvarlak ve sivri bölümleri olan sevimli şekildir. Acaba bu hangisidir?"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Curriculum.CurriculumActivitiesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:KidsEducation.Models"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#F7F8FC">
+
+    <Grid RowDefinitions="Auto,*">
+        <Border Grid.Row="0" Stroke="Transparent" StrokeShape="RoundRectangle 0,0,30,30">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#2563EB" Offset="0.0" />
+                    <GradientStop Color="#14B8A6" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid Padding="18,44,18,20" ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                <controls:TappableBorder
+                    Grid.Column="0"
+                    Command="{Binding GoBackCommand}"
+                    WidthRequest="42"
+                    HeightRequest="42"
+                    BackgroundColor="#22FFFFFF"
+                    Stroke="#33FFFFFF"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14">
+                    <Label Text="‹" FontSize="30" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-4,0,0" />
+                </controls:TappableBorder>
+
+                <VerticalStackLayout Grid.Column="1" Spacing="3" VerticalOptions="Center">
+                    <Label Text="{Binding Headline}" FontSize="23" FontAttributes="Bold" TextColor="White" LineBreakMode="TailTruncation" />
+                    <Label Text="{Binding Subtitle}" FontSize="12" TextColor="#DFFFFFFF" LineBreakMode="WordWrap" />
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Activities}" Margin="16,18,16,16">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:CurriculumActivity">
+                    <Border BackgroundColor="White" Stroke="#E7EAF3" StrokeThickness="1" StrokeShape="RoundRectangle 18" Padding="14,12" Margin="0,0,0,12">
+                        <VerticalStackLayout Spacing="9">
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                                <Border Grid.Column="0" WidthRequest="44" HeightRequest="44" BackgroundColor="#EEF2FF" Stroke="#C7D2FE" StrokeThickness="1" StrokeShape="RoundRectangle 15">
+                                    <Label Text="{Binding Emoji}" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+
+                                <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                    <Label Text="{Binding Title}" FontSize="16" FontAttributes="Bold" TextColor="#172033" />
+                                    <Label Text="{Binding MebArea}" FontSize="11" TextColor="#2563EB" LineBreakMode="WordWrap" />
+                                </VerticalStackLayout>
+
+                                <Border Grid.Column="2" BackgroundColor="#ECFDF5" Stroke="#A7F3D0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="8,5" VerticalOptions="Center">
+                                    <Label Text="{Binding DurationText}" FontSize="11" FontAttributes="Bold" TextColor="#047857" />
+                                </Border>
+                            </Grid>
+
+                            <Label Text="{Binding Goal}" FontSize="12" TextColor="#667085" LineBreakMode="WordWrap" />
+                            <Label Text="{Binding StepsText}" FontSize="12" TextColor="#172033" LineBreakMode="WordWrap" />
+
+                            <Border BackgroundColor="#FFFBEB" Stroke="#FDE68A" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="10,8">
+                                <VerticalStackLayout Spacing="3">
+                                    <Label Text="{Binding Materials, StringFormat='Materyal: {0}'}" FontSize="11" TextColor="#667085" LineBreakMode="WordWrap" />
+                                    <Label Text="{Binding ParentPrompt, StringFormat='Veli sorusu: {0}'}" FontSize="11" FontAttributes="Bold" TextColor="#172033" LineBreakMode="WordWrap" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

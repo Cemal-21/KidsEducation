@@ -1,0 +1,71 @@
+{
+  "categoryId": "english",
+  "items": [
+    {
+      "id": "english_hello",
+      "nameTr": "Merhaba",
+      "nameEn": "Hello",
+      "imagePath": "english_hello",
+      "category": "english",
+      "difficultyLevel": 1,
+      "funFact": "Hello İngilizcede merhaba demektir.",
+      "descriptionTr": "Merhaba kelimesinin İngilizcesi Hello kelimesidir. Birini selamlarken Hello diyebiliriz. İngilizce öğrenirken selamlaşma kelimeleri iyi bir başlangıçtır.",
+      "soundClueText": "İngilizcede birini selamlarken kullanılan kısa ve nazik bir ifadedir. Acaba bu hangi kelimedir?"
+    },
+    {
+      "id": "english_goodbye",
+      "nameTr": "Hoşça kal",
+      "nameEn": "Goodbye",
+      "imagePath": "english_goodbye",
+      "category": "english",
+      "difficultyLevel": 1,
+      "funFact": "Goodbye vedalaşırken kullanılır.",
+      "descriptionTr": "Hoşça kal kelimesinin İngilizcesi Goodbye kelimesidir. Bir yerden ayrılırken Goodbye diyebiliriz. Bu kelime nazik bir vedalaşma ifadesidir.",
+      "soundClueText": "İngilizcede bir yerden ayrılırken ya da vedalaşırken kullanılan nazik bir ifadedir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "english_thank_you",
+      "nameTr": "Teşekkür ederim",
+      "nameEn": "Thank you",
+      "imagePath": "english_thank_you",
+      "category": "english",
+      "difficultyLevel": 1,
+      "funFact": "Thank you teşekkür etmek için kullanılır.",
+      "descriptionTr": "Teşekkür ederim kelimesinin İngilizcesi Thank you ifadesidir. Biri bize yardım ettiğinde Thank you diyebiliriz. Nazik konuşmak iletişimi güzelleştirir.",
+      "soundClueText": "İngilizcede biri bize yardım ettiğinde ya da güzel bir şey yaptığında söylenen teşekkür ifadesidir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "english_apple",
+      "nameTr": "Elma",
+      "nameEn": "Apple",
+      "imagePath": "english_apple",
+      "category": "english",
+      "difficultyLevel": 1,
+      "funFact": "Apple İngilizcede elma demektir.",
+      "descriptionTr": "Elma kelimesinin İngilizcesi Apple kelimesidir. Apple kelimesini meyveleri öğrenirken kullanırız. İngilizce kelimeleri nesnelerle eşleştirmek öğrenmeyi kolaylaştırır.",
+      "soundClueText": "İngilizcede kırmızı, yeşil ya da sarı olabilen tatlı bir meyveyi anlatan kelimedir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "english_cat",
+      "nameTr": "Kedi",
+      "nameEn": "Cat",
+      "imagePath": "english_cat",
+      "category": "english",
+      "difficultyLevel": 1,
+      "funFact": "Cat İngilizcede kedi demektir.",
+      "descriptionTr": "Kedi kelimesinin İngilizcesi Cat kelimesidir. Cat kısa ve kolay bir kelimedir. Hayvanları İngilizce öğrenirken Cat iyi bir başlangıç kelimesidir.",
+      "soundClueText": "İngilizcede miyavlayan, yumuşak tüylü ve evlerde yaşayabilen sevimli hayvanı anlatan kelimedir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "english_red",
+      "nameTr": "Kırmızı",
+      "nameEn": "Red",
+      "imagePath": "english_red",
+      "category": "english",
+      "difficultyLevel": 1,
+      "funFact": "Red İngilizcede kırmızı demektir.",
+      "descriptionTr": "Kırmızı renginin İngilizcesi Red kelimesidir. Elma veya çilek kırmızı olabilir. Renkleri İngilizce öğrenmek günlük konuşmada işe yarar.",
+      "soundClueText": "İngilizcede elma, çilek ve trafik ışığında dur anlamını hatırlatan rengi anlatan kelimedir. Acaba bu hangisidir?"
+    }
+  ]
+}

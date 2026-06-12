@@ -1,0 +1,71 @@
+{
+  "categoryId": "vehicles",
+  "items": [
+    {
+      "id": "vehicle_araba",
+      "nameTr": "Araba",
+      "nameEn": "Car",
+      "imagePath": "vehicle_car",
+      "category": "vehicles",
+      "difficultyLevel": 1,
+      "funFact": "Arabalar tekerlekleriyle hareket eder.",
+      "descriptionTr": "Araba yolda giden bir araçtır. İnsanları bir yerden başka bir yere taşır. Genellikle dört tekerleği vardır. Arabaya binerken emniyet kemeri takmak önemlidir.",
+      "soundClueText": "Yolda giden, genellikle dört tekerleği olan ve insanları bir yerden başka bir yere taşıyan araçtır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_otobus",
+      "nameTr": "Otobüs",
+      "nameEn": "Bus",
+      "imagePath": "vehicle_bus",
+      "category": "vehicles",
+      "difficultyLevel": 1,
+      "funFact": "Otobüs birçok yolcu taşıyabilir.",
+      "descriptionTr": "Otobüs büyük bir kara taşıtıdır. Aynı anda birçok insanı taşıyabilir. Şehir içinde veya şehirler arasında kullanılabilir. Otobüse duraklardan binilir.",
+      "soundClueText": "Aynı anda birçok yolcu taşıyabilen, duraklardan binilen büyük kara taşıtıdır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_ucak",
+      "nameTr": "Uçak",
+      "nameEn": "Airplane",
+      "imagePath": "vehicle_plane",
+      "category": "vehicles",
+      "difficultyLevel": 1,
+      "funFact": "Uçak gökyüzünde yolculuk yapar.",
+      "descriptionTr": "Uçak havada giden bir taşıttır. Uzak yerlere daha hızlı gitmemizi sağlar. Kanatları ve motorları vardır. Uçaklar havaalanından kalkar ve iner.",
+      "soundClueText": "Kanatları ve motorları olan, havada giderek uzak yerlere hızlıca ulaşmamızı sağlayan taşıttır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_tren",
+      "nameTr": "Tren",
+      "nameEn": "Train",
+      "imagePath": "vehicle_train",
+      "category": "vehicles",
+      "difficultyLevel": 2,
+      "funFact": "Tren rayların üzerinde gider.",
+      "descriptionTr": "Tren raylar üzerinde hareket eden bir taşıttır. Yolcu veya yük taşıyabilir. Birçok vagonu olabilir. Tren yolculukları uzun mesafelerde kullanışlıdır.",
+      "soundClueText": "Rayların üzerinde hareket eden, yolcu veya yük taşıyabilen ve vagonları olabilen taşıttır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_bisiklet",
+      "nameTr": "Bisiklet",
+      "nameEn": "Bicycle",
+      "imagePath": "vehicle_bicycle",
+      "category": "vehicles",
+      "difficultyLevel": 2,
+      "funFact": "Bisiklet pedalla hareket eder.",
+      "descriptionTr": "Bisiklet iki tekerlekli bir taşıttır. Pedal çevirerek hareket eder. Bisiklete binerken kask takmak güvenlidir. Hem eğlenceli hem de hareketli bir ulaşım aracıdır.",
+      "soundClueText": "İki tekerleği olan, pedal çevirerek hareket eden ve kaskla kullanılması güvenli olan taşıttır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_gemi",
+      "nameTr": "Gemi",
+      "nameEn": "Ship",
+      "imagePath": "vehicle_ship",
+      "category": "vehicles",
+      "difficultyLevel": 2,
+      "funFact": "Gemi suyun üzerinde ilerler.",
+      "descriptionTr": "Gemi denizde giden büyük bir taşıttır. İnsanları veya eşyaları taşıyabilir. Limanlardan hareket eder. Gemi yolculukları su üzerinde yapılır.",
+      "soundClueText": "Suyun üzerinde ilerleyen, limanlardan hareket eden ve insan ya da eşya taşıyabilen büyük taşıttır. Acaba bu nedir?"
+    }
+  ]
+}

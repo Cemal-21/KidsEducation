@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Game.StoryGamePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    xmlns:converters="clr-namespace:KidsEducation.Converters"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{StaticResource PlaygroundBackground}">
+
+    <ContentPage.Resources>
+        <converters:BoolToColorConverter x:Key="BoolToColorConverter" />
+        <converters:BoolToEmojiConverter x:Key="BoolToEmojiConverter" />
+        <converters:BoolToTextConverter x:Key="BoolToTextConverter" />
+        <converters:BoolToZeroOpacityConverter x:Key="BoolToZeroOpacityConverter" />
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Padding="16,36,16,10" ColumnSpacing="10">
+            <controls:TappableBorder Grid.Column="0" Command="{Binding GoBackCommand}" WidthRequest="42" HeightRequest="42" BackgroundColor="{StaticResource SurfaceWhite}" Stroke="#FFE2C1" StrokeThickness="1" StrokeShape="RoundRectangle 16">
+                <Label Text="‹" FontSize="30" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-4,0,0" />
+            </controls:TappableBorder>
+
+            <VerticalStackLayout Grid.Column="1" Spacing="5" VerticalOptions="Center">
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Grid.Column="0" Text="Hikaye Modu 📖" FontSize="12" TextColor="{StaticResource TextMuted}" FontAttributes="Bold" />
+                    <Label Grid.Column="1" Text="{Binding Progress, StringFormat='{0:P0}'}" FontSize="12" TextColor="{StaticResource BrandPurple}" FontAttributes="Bold" />
+                </Grid>
+                <ProgressBar Progress="{Binding Progress}" ProgressColor="{StaticResource BrandMint}" BackgroundColor="#FFE9CC" HeightRequest="8" />
+            </VerticalStackLayout>
+
+            <Border Grid.Column="2" BackgroundColor="{StaticResource SurfaceWhite}" Stroke="#FFE2C1" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="9,6" VerticalOptions="Center">
+                <Label Text="{Binding DisplayRoundNumber, StringFormat='{0}'}" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+            </Border>
+        </Grid>
+
+        <VerticalStackLayout Grid.Row="1" Padding="16,0,16,10" Spacing="12">
+            <Border BackgroundColor="{StaticResource SurfaceWhite}" Stroke="#FFE3C5" StrokeThickness="1" StrokeShape="RoundRectangle 24" Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Border BackgroundColor="#EEF2FF" Stroke="#C7D2FE" StrokeThickness="1" StrokeShape="RoundRectangle 16" Padding="12,10">
+                        <Label Text="Hikayeyi oku ve dogru gorseli sec" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalTextAlignment="Center" />
+                    </Border>
+                    <Label Text="{Binding StoryText}" FontSize="16" TextColor="{StaticResource TextPrimary}" LineBreakMode="WordWrap" HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Grid ColumnDefinitions="*,*" RowDefinitions="104,104" ColumnSpacing="10" RowSpacing="10">
+                <controls:TappableBorder Grid.Row="0" Grid.Column="0" Command="{Binding SelectOptionCommand}" CommandParameter="{Binding CurrentRound.Options[0].Id}" BackgroundColor="#FFFFFF" Stroke="#FFE2C1" StrokeThickness="1" StrokeShape="RoundRectangle 18" Padding="8">
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="5">
+                        <Image Source="{Binding CurrentRound.Options[0].ImagePath}" HeightRequest="52" WidthRequest="52" Aspect="AspectFit" />
+                        <Label Text="{Binding CurrentRound.Options[0].NameTr}" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation" MaxLines="1" />
+                    </VerticalStackLayout>
+                </controls:TappableBorder>
+                <controls:TappableBorder Grid.Row="0" Grid.Column="1" Command="{Binding SelectOptionCommand}" CommandParameter="{Binding CurrentRound.Options[1].Id}" BackgroundColor="#F0FFFA" Stroke="#C8F4E8" StrokeThickness="1" StrokeShape="RoundRectangle 18" Padding="8">
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="5">
+                        <Image Source="{Binding CurrentRound.Options[1].ImagePath}" HeightRequest="52" WidthRequest="52" Aspect="AspectFit" />
+                        <Label Text="{Binding CurrentRound.Options[1].NameTr}" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation" MaxLines="1" />
+                    </VerticalStackLayout>
+                </controls:TappableBorder>
+                <controls:TappableBorder Grid.Row="1" Grid.Column="0" Command="{Binding SelectOptionCommand}" CommandParameter="{Binding CurrentRound.Options[2].Id}" BackgroundColor="#F5F1FF" Stroke="#DDD6FF" StrokeThickness="1" StrokeShape="RoundRectangle 18" Padding="8">
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="5">
+                        <Image Source="{Binding CurrentRound.Options[2].ImagePath}" HeightRequest="52" WidthRequest="52" Aspect="AspectFit" />
+                        <Label Text="{Binding CurrentRound.Options[2].NameTr}" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation" MaxLines="1" />
+                    </VerticalStackLayout>
+                </controls:TappableBorder>
+                <controls:TappableBorder Grid.Row="1" Grid.Column="1" Command="{Binding SelectOptionCommand}" CommandParameter="{Binding CurrentRound.Options[3].Id}" BackgroundColor="#FFF2F6" Stroke="#FFD7E2" StrokeThickness="1" StrokeShape="RoundRectangle 18" Padding="8">
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="5">
+                        <Image Source="{Binding CurrentRound.Options[3].ImagePath}" HeightRequest="52" WidthRequest="52" Aspect="AspectFit" />
+                        <Label Text="{Binding CurrentRound.Options[3].NameTr}" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation" MaxLines="1" />
+                    </VerticalStackLayout>
+                </controls:TappableBorder>
+            </Grid>
+        </VerticalStackLayout>
+
+        <Border Grid.Row="2" HeightRequest="56" BackgroundColor="#FFF1C7" Stroke="#FFE0A3" StrokeThickness="1" Padding="14,8" Opacity="{Binding ShowFeedback, Converter={StaticResource BoolToZeroOpacityConverter}}">
+            <Label FontSize="15" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" TextColor="{StaticResource TextPrimary}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding LastAnswerCorrect, Converter={StaticResource BoolToEmojiConverter}}" />
+                        <Span Text="  " />
+                        <Span Text="{Binding LastAnswerCorrect, Converter={StaticResource BoolToTextConverter}}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </Border>
+    </Grid>
+</ContentPage>

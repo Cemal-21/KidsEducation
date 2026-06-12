@@ -1,0 +1,71 @@
+{
+  "categoryId": "body",
+  "items": [
+    {
+      "id": "body_goz",
+      "nameTr": "Göz",
+      "nameEn": "Eye",
+      "imagePath": "body_eye",
+      "category": "body",
+      "difficultyLevel": 1,
+      "funFact": "Gözler görmemizi sağlar.",
+      "descriptionTr": "Gözlerimiz çevremizi görmemizi sağlar. Renkleri, şekilleri ve hareketleri gözlerimizle fark ederiz. Gözlerimizi korumak önemlidir. Çok yakından ekrana bakmamak gözlerimiz için daha iyidir.",
+      "soundClueText": "Renkleri, şekilleri ve hareketleri fark etmemizi sağlayan duyu organımızdır. Acaba bu hangisi?"
+    },
+    {
+      "id": "body_kulak",
+      "nameTr": "Kulak",
+      "nameEn": "Ear",
+      "imagePath": "body_ear",
+      "category": "body",
+      "difficultyLevel": 1,
+      "funFact": "Kulaklar sesleri duyar.",
+      "descriptionTr": "Kulaklarımız sesleri duymamızı sağlar. Müzik, konuşma ve doğadaki sesleri kulaklarımızla duyarız. Çok yüksek sesler kulaklarımızı rahatsız edebilir. Bu yüzden kulaklarımızı korumalıyız.",
+      "soundClueText": "Müzikleri, konuşmaları ve çevremizdeki sesleri duymamıza yardım eden duyu organımızdır. Acaba bu hangisi?"
+    },
+    {
+      "id": "body_burun",
+      "nameTr": "Burun",
+      "nameEn": "Nose",
+      "imagePath": "body_nose",
+      "category": "body",
+      "difficultyLevel": 1,
+      "funFact": "Burun kokuları algılar.",
+      "descriptionTr": "Burnumuz kokuları almamıza yardım eder. Çiçeklerin, yemeklerin ve temiz havanın kokusunu burnumuzla hissederiz. Burun nefes almamıza da yardımcı olur.",
+      "soundClueText": "Çiçeklerin, yemeklerin ve temiz havanın kokusunu almamıza, ayrıca nefes almamıza yardım eder. Acaba bu hangisi?"
+    },
+    {
+      "id": "body_agiz",
+      "nameTr": "Ağız",
+      "nameEn": "Mouth",
+      "imagePath": "body_mouth",
+      "category": "body",
+      "difficultyLevel": 1,
+      "funFact": "Ağız konuşmaya ve yemek yemeye yardım eder.",
+      "descriptionTr": "Ağzımızla konuşur, yemek yer ve tatları hissederiz. Dişlerimiz yiyecekleri çiğnemeye yardım eder. Ağzımızın sağlığı için dişlerimizi düzenli fırçalamalıyız.",
+      "soundClueText": "Konuşmak, yemek yemek ve tatları hissetmek için kullandığımız vücut bölümüdür. Acaba bu hangisi?"
+    },
+    {
+      "id": "body_el",
+      "nameTr": "El",
+      "nameEn": "Hand",
+      "imagePath": "body_hand",
+      "category": "body",
+      "difficultyLevel": 1,
+      "funFact": "Ellerimizle eşyaları tutarız.",
+      "descriptionTr": "Ellerimiz eşyaları tutmamıza yardım eder. Kalem tutabilir, oyuncaklarla oynayabilir ve resim yapabiliriz. Ellerimizi temiz tutmak sağlığımız için önemlidir.",
+      "soundClueText": "Kalem tutmak, oyuncaklarla oynamak ve eşyaları kavramak için kullandığımız vücut bölümüdür. Acaba bu hangisi?"
+    },
+    {
+      "id": "body_ayak",
+      "nameTr": "Ayak",
+      "nameEn": "Foot",
+      "imagePath": "body_foot",
+      "category": "body",
+      "difficultyLevel": 1,
+      "funFact": "Ayaklarımız yürümemizi sağlar.",
+      "descriptionTr": "Ayaklarımız yürümemize, koşmamıza ve zıplamamıza yardım eder. Ayakkabılar ayaklarımızı korur. Dengede durmak için ayaklarımız çok önemlidir.",
+      "soundClueText": "Yürümek, koşmak, zıplamak ve dengede durmak için kullandığımız vücut bölümüdür. Acaba bu hangisi?"
+    }
+  ]
+}

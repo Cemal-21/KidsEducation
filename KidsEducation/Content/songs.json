@@ -1,0 +1,488 @@
+{
+  "songs": [
+    {
+      "id": "ari-viz-viz-viz",
+      "title": "Arı Vız Vız Vız",
+      "subtitle": "Neşeli ritim ve hareket şarkısı",
+      "category": "Hareket",
+      "emoji": "🐝",
+      "colorHex": "#FFC857",
+      "colorHex2": "#FF8A4C",
+      "durationText": "MP3",
+      "tempoText": "Neşeli",
+      "levelText": "3-7 yaş",
+      "audioFile": "Cocuk-Sarkilari-Ari-Viz-Viz-Viz.mp3",
+      "lines": [
+        "Yaz geldi çiçekler açtı",
+        "Arılar hep dolaştı",
+        "Yaz geldi çiçekler açtı",
+        "Arılar hep dolaştı",
+        "Arı vız vız vız",
+        "Arı vız vız vız",
+        "Arı vız vız vız",
+        "Diye dolaşır",
+        "Arı vız vız vız",
+        "Arı vız vız vız",
+        "Arı vız vız vız",
+        "Diye çalışır"
+      ],
+      "syncedLines": [
+        {
+          "startMs": 0,
+          "endMs": 3500,
+          "text": "Yaz geldi çiçekler açtı"
+        },
+        {
+          "startMs": 3500,
+          "endMs": 6500,
+          "text": "Arılar hep dolaştı"
+        },
+        {
+          "startMs": 6500,
+          "endMs": 10000,
+          "text": "Yaz geldi çiçekler açtı"
+        },
+        {
+          "startMs": 10000,
+          "endMs": 13000,
+          "text": "Arılar hep dolaştı"
+        },
+        {
+          "startMs": 13000,
+          "endMs": 15500,
+          "text": "Arı vız vız vız"
+        },
+        {
+          "startMs": 15500,
+          "endMs": 18000,
+          "text": "Arı vız vız vız"
+        },
+        {
+          "startMs": 18000,
+          "endMs": 20500,
+          "text": "Arı vız vız vız"
+        },
+        {
+          "startMs": 20500,
+          "endMs": 23500,
+          "text": "Diye dolaşır"
+        },
+        {
+          "startMs": 23500,
+          "endMs": 26000,
+          "text": "Arı vız vız vız"
+        },
+        {
+          "startMs": 26000,
+          "endMs": 28500,
+          "text": "Arı vız vız vız"
+        },
+        {
+          "startMs": 28500,
+          "endMs": 31000,
+          "text": "Arı vız vız vız"
+        },
+        {
+          "startMs": 31000,
+          "endMs": 35000,
+          "text": "Diye çalışır"
+        }
+      ]
+    },
+    {
+      "id": "baby-shark",
+      "title": "Baby Shark",
+      "subtitle": "Ritimli tekrar ve dans şarkısı",
+      "category": "Dans",
+      "emoji": "🦈",
+      "colorHex": "#00C6FF",
+      "colorHex2": "#3A86FF",
+      "durationText": "MP3",
+      "tempoText": "Hareketli",
+      "levelText": "3-7 yaş",
+      "audioFile": "Cocuk-Sarkilari-Baby-Shark.mp3",
+      "lines": [
+        "Baby shark, doo doo doo doo doo doo.",
+        "Baby shark, doo doo doo doo doo doo.",
+        "Baby shark, doo doo doo doo doo doo.",
+        "Baby shark!",
+        "Mommy shark, doo doo doo doo doo doo.",
+        "Mommy shark, doo doo doo doo doo doo.",
+        "Mommy shark, doo doo doo doo doo doo.",
+        "Mommy shark!",
+        "Daddy shark, doo doo doo doo doo doo.",
+        "Daddy shark, doo doo doo doo doo doo.",
+        "Daddy shark, doo doo doo doo doo doo.",
+        "Daddy shark!",
+        "Grandma shark, doo doo doo doo doo doo.",
+        "Grandma shark, doo doo doo doo doo doo.",
+        "Grandma shark, doo doo doo doo doo doo.",
+        "Grandma shark!",
+        "Grandpa shark, doo doo doo doo doo doo.",
+        "Grandpa shark, doo doo doo doo doo doo.",
+        "Grandpa shark, doo doo doo doo doo doo.",
+        "Grandpa shark!",
+        "Let's go hunt, doo doo doo doo doo doo.",
+        "Let's go hunt, doo doo doo doo doo doo.",
+        "Let's go hunt, doo doo doo doo doo doo.",
+        "Let's go hunt!",
+        "Run away, doo doo doo doo doo doo.",
+        "Run away, doo doo doo doo doo doo.",
+        "Run away, doo doo doo doo doo doo.",
+        "Run away!",
+        "Safe at last, doo doo doo doo doo doo.",
+        "Safe at last, doo doo doo doo doo doo.",
+        "Safe at last, doo doo doo doo doo doo.",
+        "Safe at last!",
+        "It's the end, doo doo doo doo doo doo.",
+        "It's the end, doo doo doo doo doo doo.",
+        "It's the end, doo doo doo doo doo doo.",
+        "It's the end!"
+      ],
+      "syncedLines": [
+        {
+          "startMs": 0,
+          "endMs": 3300,
+          "text": "Baby shark, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 3300,
+          "endMs": 6600,
+          "text": "Baby shark, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 6600,
+          "endMs": 9900,
+          "text": "Baby shark, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 9900,
+          "endMs": 12200,
+          "text": "Baby shark!"
+        },
+        {
+          "startMs": 12200,
+          "endMs": 15500,
+          "text": "Mommy shark, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 15500,
+          "endMs": 18800,
+          "text": "Mommy shark, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 18800,
+          "endMs": 22100,
+          "text": "Mommy shark, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 22100,
+          "endMs": 24400,
+          "text": "Mommy shark!"
+        },
+        {
+          "startMs": 24400,
+          "endMs": 27700,
+          "text": "Daddy shark, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 27700,
+          "endMs": 31000,
+          "text": "Daddy shark, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 31000,
+          "endMs": 34300,
+          "text": "Daddy shark, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 34300,
+          "endMs": 36600,
+          "text": "Daddy shark!"
+        },
+        {
+          "startMs": 36600,
+          "endMs": 39900,
+          "text": "Grandma shark, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 39900,
+          "endMs": 43200,
+          "text": "Grandma shark, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 43200,
+          "endMs": 46500,
+          "text": "Grandma shark, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 46500,
+          "endMs": 48800,
+          "text": "Grandma shark!"
+        },
+        {
+          "startMs": 48800,
+          "endMs": 52100,
+          "text": "Grandpa shark, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 52100,
+          "endMs": 55400,
+          "text": "Grandpa shark, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 55400,
+          "endMs": 58700,
+          "text": "Grandpa shark, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 58700,
+          "endMs": 61000,
+          "text": "Grandpa shark!"
+        },
+        {
+          "startMs": 61000,
+          "endMs": 64300,
+          "text": "Let's go hunt, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 64300,
+          "endMs": 67600,
+          "text": "Let's go hunt, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 67600,
+          "endMs": 70900,
+          "text": "Let's go hunt, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 70900,
+          "endMs": 73200,
+          "text": "Let's go hunt!"
+        },
+        {
+          "startMs": 73200,
+          "endMs": 76500,
+          "text": "Run away, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 76500,
+          "endMs": 79800,
+          "text": "Run away, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 79800,
+          "endMs": 83100,
+          "text": "Run away, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 83100,
+          "endMs": 85400,
+          "text": "Run away!"
+        },
+        {
+          "startMs": 85400,
+          "endMs": 88700,
+          "text": "Safe at last, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 88700,
+          "endMs": 92000,
+          "text": "Safe at last, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 92000,
+          "endMs": 95300,
+          "text": "Safe at last, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 95300,
+          "endMs": 97600,
+          "text": "Safe at last!"
+        },
+        {
+          "startMs": 97600,
+          "endMs": 100900,
+          "text": "It's the end, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 100900,
+          "endMs": 104200,
+          "text": "It's the end, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 104200,
+          "endMs": 107500,
+          "text": "It's the end, doo doo doo doo doo doo."
+        },
+        {
+          "startMs": 107500,
+          "endMs": 110000,
+          "text": "It's the end!"
+        }
+      ]
+    },
+    {
+      "id": "otobusun-tekerlegi",
+      "title": "Otobüsün Tekerleği",
+      "subtitle": "Taşıtlar ve hareketlerle öğrenme",
+      "category": "Taşıtlar",
+      "emoji": "🚌",
+      "colorHex": "#43E97B",
+      "colorHex2": "#21C7A8",
+      "durationText": "MP3",
+      "tempoText": "Ritmik",
+      "levelText": "3-7 yaş",
+      "audioFile": "Cocuk-Sarkilari-Otobusun-Tekerlegi.mp3",
+      "lines": [
+        "Otobüsün tekerleği yuvarlak yuvarlak",
+        "Otobüsün tekerleği yuvarlak yuvarlak",
+        "Dönüyor",
+        "Çocuklar otobüse bindiler bindiler",
+        "Çocuklar otobüse bindiler bindiler",
+        "Oturdular",
+        "Otobüs zıpladı zıp zıp zıp",
+        "Otobüs zıpladı zıp zıp zıp",
+        "Zıp zıp zıp zıp",
+        "Yağmur yağdı şıp şıp şıp",
+        "Yağmur yağdı şıp şıp şıp",
+        "Şıp şıp şıp şıp",
+        "Korna çaldı düt düt düt",
+        "Korna çaldı düt düt düt",
+        "Düt düt düt düt",
+        "Bebek de ağladı vav vav vav",
+        "Bebek de ağladı vav vav vav",
+        "Vav vav vav vav",
+        "Annesi bebeği salladı pış pış pış",
+        "Annesi bebeği salladı pış pış pış",
+        "Pış pış pış pış",
+        "Paralar kutuya atıldı çın çın çın",
+        "Paralar kutuya atıldı çın çın çın",
+        "Çın çın çın çın",
+        "Otobüsün motoru bağırdı rın rın rın",
+        "Otobüsün motoru bağırdı rın rın rın",
+        "Rın rın rın rın",
+        "Otobüsün kapısı açıldı kapandı açıldı",
+        "Otobüsün kapısı kapandı",
+        "Ve açıldı",
+        "Otobüsün tekerleği yuvarlak yuvarlak",
+        "Otobüsün tekerleği yuvarlak yuvarlak",
+        "Dönüyor"
+      ],
+      "syncedLines": [
+        { "startMs": 0, "endMs": 3600, "text": "Otobüsün tekerleği yuvarlak yuvarlak" },
+        { "startMs": 3600, "endMs": 7200, "text": "Otobüsün tekerleği yuvarlak yuvarlak" },
+        { "startMs": 7200, "endMs": 9300, "text": "Dönüyor" },
+        { "startMs": 9300, "endMs": 12800, "text": "Çocuklar otobüse bindiler bindiler" },
+        { "startMs": 12800, "endMs": 16300, "text": "Çocuklar otobüse bindiler bindiler" },
+        { "startMs": 16300, "endMs": 18400, "text": "Oturdular" },
+        { "startMs": 18400, "endMs": 21600, "text": "Otobüs zıpladı zıp zıp zıp" },
+        { "startMs": 21600, "endMs": 24800, "text": "Otobüs zıpladı zıp zıp zıp" },
+        { "startMs": 24800, "endMs": 27400, "text": "Zıp zıp zıp zıp" },
+        { "startMs": 27400, "endMs": 30600, "text": "Yağmur yağdı şıp şıp şıp" },
+        { "startMs": 30600, "endMs": 33800, "text": "Yağmur yağdı şıp şıp şıp" },
+        { "startMs": 33800, "endMs": 36400, "text": "Şıp şıp şıp şıp" },
+        { "startMs": 36400, "endMs": 39600, "text": "Korna çaldı düt düt düt" },
+        { "startMs": 39600, "endMs": 42800, "text": "Korna çaldı düt düt düt" },
+        { "startMs": 42800, "endMs": 45400, "text": "Düt düt düt düt" },
+        { "startMs": 45400, "endMs": 48600, "text": "Bebek de ağladı vav vav vav" },
+        { "startMs": 48600, "endMs": 51800, "text": "Bebek de ağladı vav vav vav" },
+        { "startMs": 51800, "endMs": 54400, "text": "Vav vav vav vav" },
+        { "startMs": 54400, "endMs": 58000, "text": "Annesi bebeği salladı pış pış pış" },
+        { "startMs": 58000, "endMs": 61600, "text": "Annesi bebeği salladı pış pış pış" },
+        { "startMs": 61600, "endMs": 64200, "text": "Pış pış pış pış" },
+        { "startMs": 64200, "endMs": 67800, "text": "Paralar kutuya atıldı çın çın çın" },
+        { "startMs": 67800, "endMs": 71400, "text": "Paralar kutuya atıldı çın çın çın" },
+        { "startMs": 71400, "endMs": 74000, "text": "Çın çın çın çın" },
+        { "startMs": 74000, "endMs": 77600, "text": "Otobüsün motoru bağırdı rın rın rın" },
+        { "startMs": 77600, "endMs": 81200, "text": "Otobüsün motoru bağırdı rın rın rın" },
+        { "startMs": 81200, "endMs": 83800, "text": "Rın rın rın rın" },
+        { "startMs": 83800, "endMs": 87500, "text": "Otobüsün kapısı açıldı kapandı açıldı" },
+        { "startMs": 87500, "endMs": 90400, "text": "Otobüsün kapısı kapandı" },
+        { "startMs": 90400, "endMs": 92500, "text": "Ve açıldı" },
+        { "startMs": 92500, "endMs": 96100, "text": "Otobüsün tekerleği yuvarlak yuvarlak" },
+        { "startMs": 96100, "endMs": 99700, "text": "Otobüsün tekerleği yuvarlak yuvarlak" },
+        { "startMs": 99700, "endMs": 102500, "text": "Dönüyor" }
+      ]
+    },
+    {
+      "id": "pazara-gidelim",
+      "title": "Pazara Gidelim",
+      "subtitle": "Meyve, sebze ve günlük yaşam şarkısı",
+      "category": "Günlük Yaşam",
+      "emoji": "🧺",
+      "colorHex": "#B15CFF",
+      "colorHex2": "#FF6BCB",
+      "durationText": "MP3",
+      "tempoText": "Neşeli",
+      "levelText": "3-7 yaş",
+      "audioFile": "Cocuk-Sarkilari-Pazara-Gidelim.mp3",
+      "lines": [
+        "Pazara gidelim, bir elma alalım",
+        "Pazara gidip bir elma alıp n'apalım",
+        "Katır kutur katır kutur yiyelim",
+        "Pazara gidelim, bir çilek alalım",
+        "Pazara gidip bir çilek alıp n'apalım",
+        "Tatlı tatlı tatlı tatlı yiyelim",
+        "Pazara gidelim, bir karpuz alalım",
+        "Pazara gidip bir karpuz alıp n'apalım",
+        "Dilim dilim dilim dilim yiyelim",
+        "Pazara gidelim, bir kiraz alalım",
+        "Pazara gidip bir kiraz alıp n'apalım",
+        "Tane tane tane tane yiyelim",
+        "Pazara gidelim, portakal alalım",
+        "Pazara gidip portakal alıp n'apalım",
+        "Şapır şupur şapır şupur yiyelim",
+        "Pazara gidelim bir tavuk alalım",
+        "Pazara gidip bir tavuk alıp n'apalım",
+        "Gıt gıt gıdak gıt gıt gıdak diyelim",
+        "Hapur hupur hapur hupur yiyelim",
+        "Pazara gidelim bir kedi alalım",
+        "Pazara gidip bir kedi alıp n'apalım",
+        "Miyav miyav miyav miyav diyelim",
+        "Hapur hupur hapur hupur yemeyelim",
+        "Pazara gidelim bir köpek alalım",
+        "Pazara gidip bir köpek alıp n'apalım",
+        "Hav hav hav hav hav hav diyelim",
+        "Hapur hupur hapur hupur yemeyelim",
+        "Pazara gidelim bir ördek alalım",
+        "Pazara gidip bir ördek alıp n'apalım",
+        "Vak vak vak vak vak vak diyelim",
+        "Hapur hupur hapur hupur yiyelim"
+      ],
+      "syncedLines": [
+        { "startMs": 0, "endMs": 3600, "text": "Pazara gidelim, bir elma alalım" },
+        { "startMs": 3600, "endMs": 7600, "text": "Pazara gidip bir elma alıp n'apalım" },
+        { "startMs": 7600, "endMs": 11000, "text": "Katır kutur katır kutur yiyelim" },
+        { "startMs": 11000, "endMs": 14600, "text": "Pazara gidelim, bir çilek alalım" },
+        { "startMs": 14600, "endMs": 18600, "text": "Pazara gidip bir çilek alıp n'apalım" },
+        { "startMs": 18600, "endMs": 22000, "text": "Tatlı tatlı tatlı tatlı yiyelim" },
+        { "startMs": 22000, "endMs": 25600, "text": "Pazara gidelim, bir karpuz alalım" },
+        { "startMs": 25600, "endMs": 29600, "text": "Pazara gidip bir karpuz alıp n'apalım" },
+        { "startMs": 29600, "endMs": 33000, "text": "Dilim dilim dilim dilim yiyelim" },
+        { "startMs": 33000, "endMs": 36600, "text": "Pazara gidelim, bir kiraz alalım" },
+        { "startMs": 36600, "endMs": 40600, "text": "Pazara gidip bir kiraz alıp n'apalım" },
+        { "startMs": 40600, "endMs": 44000, "text": "Tane tane tane tane yiyelim" },
+        { "startMs": 44000, "endMs": 47600, "text": "Pazara gidelim, portakal alalım" },
+        { "startMs": 47600, "endMs": 51600, "text": "Pazara gidip portakal alıp n'apalım" },
+        { "startMs": 51600, "endMs": 55000, "text": "Şapır şupur şapır şupur yiyelim" },
+        { "startMs": 55000, "endMs": 58600, "text": "Pazara gidelim bir tavuk alalım" },
+        { "startMs": 58600, "endMs": 62600, "text": "Pazara gidip bir tavuk alıp n'apalım" },
+        { "startMs": 62600, "endMs": 66000, "text": "Gıt gıt gıdak gıt gıt gıdak diyelim" },
+        { "startMs": 66000, "endMs": 69400, "text": "Hapur hupur hapur hupur yiyelim" },
+        { "startMs": 69400, "endMs": 73000, "text": "Pazara gidelim bir kedi alalım" },
+        { "startMs": 73000, "endMs": 77000, "text": "Pazara gidip bir kedi alıp n'apalım" },
+        { "startMs": 77000, "endMs": 80400, "text": "Miyav miyav miyav miyav diyelim" },
+        { "startMs": 80400, "endMs": 83800, "text": "Hapur hupur hapur hupur yemeyelim" },
+        { "startMs": 83800, "endMs": 87400, "text": "Pazara gidelim bir köpek alalım" },
+        { "startMs": 87400, "endMs": 91400, "text": "Pazara gidip bir köpek alıp n'apalım" },
+        { "startMs": 91400, "endMs": 94800, "text": "Hav hav hav hav hav hav diyelim" },
+        { "startMs": 94800, "endMs": 98200, "text": "Hapur hupur hapur hupur yemeyelim" },
+        { "startMs": 98200, "endMs": 101800, "text": "Pazara gidelim bir ördek alalım" },
+        { "startMs": 101800, "endMs": 105800, "text": "Pazara gidip bir ördek alıp n'apalım" },
+        { "startMs": 105800, "endMs": 109200, "text": "Vak vak vak vak vak vak diyelim" },
+        { "startMs": 109200, "endMs": 113000, "text": "Hapur hupur hapur hupur yiyelim" }
+      ]
+    }
+  ]
+}

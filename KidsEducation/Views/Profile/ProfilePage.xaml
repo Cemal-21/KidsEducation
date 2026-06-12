@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:AnimatedPage
+    x:Class="KidsEducation.Views.Profile.ProfilePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:KidsEducation.ViewModels.Profile"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    xmlns:converters="clr-namespace:KidsEducation.Converters"
+    xmlns:views="clr-namespace:KidsEducation.Views"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#F0F2FA">
+
+    <ContentPage.Resources>
+        <Color x:Key="TextPrimary">#172033</Color>
+        <Color x:Key="TextMuted">#6B7280</Color>
+        <Color x:Key="BrandPurpleLight">#6C62F5</Color>
+        <Color x:Key="SurfaceWhite">#FFFFFF</Color>
+        <Color x:Key="BorderLight">#E8E8F0</Color>
+        <converters:BoolToFullOpacityConverter x:Key="BoolToFullOpacityConverter" />
+
+        <Style x:Key="SectionLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="{StaticResource TextMuted}" />
+            <Setter Property="CharacterSpacing" Value="0" />
+            <Setter Property="TextTransform" Value="Uppercase" />
+        </Style>
+
+        <Style x:Key="StatCard" TargetType="Border">
+            <Setter Property="BackgroundColor" Value="{StaticResource SurfaceWhite}" />
+            <Setter Property="Stroke" Value="{StaticResource BorderLight}" />
+            <Setter Property="StrokeThickness" Value="0.5" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 16" />
+            <Setter Property="Padding" Value="12,14" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- HEADER -->
+        <Border Grid.Row="0" Stroke="Transparent" StrokeShape="RoundRectangle 0,0,32,32">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#5148D4" Offset="0.0" />
+                    <GradientStop Color="#4C44C6" Offset="0.5" />
+                    <GradientStop Color="#3A6BD4" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <VerticalStackLayout Padding="22,52,22,28" Spacing="16">
+                <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                    <Border WidthRequest="80" HeightRequest="80" BackgroundColor="#2AFFFFFF" Stroke="#44FFFFFF" StrokeThickness="1.5" StrokeShape="RoundRectangle 26" HorizontalOptions="Center">
+                        <Grid>
+                            <Label Text="{Binding ActiveProfile.AvatarEmoji}" FontSize="44" HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="👑" FontSize="14" HorizontalOptions="End" VerticalOptions="Start" TranslationX="6" TranslationY="-6" />
+                        </Grid>
+                    </Border>
+                    <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                        <Label Text="{Binding ActiveProfile.Name}" FontSize="24" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                        <Label Text="{Binding ActiveProfile.AgeGroupName}" FontSize="13" TextColor="#AAFFFFFF" HorizontalOptions="Center" />
+                        <Label Text="{Binding ActiveProfile.AgeRange}" FontSize="12" TextColor="#77FFFFFF" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+
+                <Border BackgroundColor="#28FFD66B" Stroke="#40FFD66B" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="16,10" HorizontalOptions="Center">
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="🔥" FontSize="20" VerticalOptions="Center" />
+                        <Label Text="{Binding ActiveProfile.StreakDays, StringFormat='{0} günlük seri!'}" FontSize="15" FontAttributes="Bold" TextColor="#FFD66B" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </Border>
+
+        <!-- İÇERİK -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="18,22,18,16" Spacing="20">
+
+                <!-- İstatistikler -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="istatistikler" Style="{StaticResource SectionLabel}" />
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+                        <Border Grid.Column="0" Grid.Row="0" Style="{StaticResource StatCard}">
+                            <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                <Label Text="📚" FontSize="26" HorizontalOptions="Center" />
+                                <Label Text="{Binding ActiveProfile.TotalLessonsCompleted}" FontSize="24" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                <Label Text="ders tamamlandı" FontSize="11" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="0" Style="{StaticResource StatCard}">
+                            <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                <Label Text="⭐" FontSize="26" HorizontalOptions="Center" />
+                                <Label Text="{Binding ActiveProfile.TotalStars}" FontSize="24" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                <Label Text="yıldız kazanıldı" FontSize="11" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+                        <Border Grid.Column="0" Grid.Row="1" Style="{StaticResource StatCard}">
+                            <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                <Label Text="🏆" FontSize="26" HorizontalOptions="Center" />
+                                <Label Text="{Binding ActiveProfile.TotalXpFormatted}" FontSize="24" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                <Label Text="toplam XP" FontSize="11" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+                        <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource StatCard}">
+                            <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                <Label Text="🏅" FontSize="26" HorizontalOptions="Center" />
+                                <Label Text="{Binding EarnedBadgeCount}" FontSize="24" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                <Label Text="rozet kazanıldı" FontSize="11" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+                </VerticalStackLayout>
+
+                <!-- Streak Takvimi -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="son 28 gün" Style="{StaticResource SectionLabel}" />
+                    <Border BackgroundColor="{StaticResource SurfaceWhite}" Stroke="{StaticResource BorderLight}" StrokeThickness="0.5" StrokeShape="RoundRectangle 20" Padding="16,14">
+                        <VerticalStackLayout Spacing="10">
+                            <Grid ColumnDefinitions="*,*,*,*,*,*,*" ColumnSpacing="4">
+                                <Label Grid.Column="0" Text="Pzt" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                <Label Grid.Column="1" Text="Sal" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                <Label Grid.Column="2" Text="Çar" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                <Label Grid.Column="3" Text="Per" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                <Label Grid.Column="4" Text="Cum" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                <Label Grid.Column="5" Text="Cmt" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                <Label Grid.Column="6" Text="Paz" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                            </Grid>
+
+                            <CollectionView ItemsSource="{Binding CalendarWeeks}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="x:String">
+                                        <Grid ColumnDefinitions="*,*,*,*,*,*,*" ColumnSpacing="4" Margin="0,2">
+                                            <Border Grid.Column="0" WidthRequest="32" HeightRequest="32" BackgroundColor="{Binding Day0Color}" Stroke="Transparent" StrokeShape="RoundRectangle 8" HorizontalOptions="Center" />
+                                            <Border Grid.Column="1" WidthRequest="32" HeightRequest="32" BackgroundColor="{Binding Day1Color}" Stroke="Transparent" StrokeShape="RoundRectangle 8" HorizontalOptions="Center" />
+                                            <Border Grid.Column="2" WidthRequest="32" HeightRequest="32" BackgroundColor="{Binding Day2Color}" Stroke="Transparent" StrokeShape="RoundRectangle 8" HorizontalOptions="Center" />
+                                            <Border Grid.Column="3" WidthRequest="32" HeightRequest="32" BackgroundColor="{Binding Day3Color}" Stroke="Transparent" StrokeShape="RoundRectangle 8" HorizontalOptions="Center" />
+                                            <Border Grid.Column="4" WidthRequest="32" HeightRequest="32" BackgroundColor="{Binding Day4Color}" Stroke="Transparent" StrokeShape="RoundRectangle 8" HorizontalOptions="Center" />
+                                            <Border Grid.Column="5" WidthRequest="32" HeightRequest="32" BackgroundColor="{Binding Day5Color}" Stroke="Transparent" StrokeShape="RoundRectangle 8" HorizontalOptions="Center" />
+                                            <Border Grid.Column="6" WidthRequest="32" HeightRequest="32" BackgroundColor="{Binding Day6Color}" Stroke="Transparent" StrokeShape="RoundRectangle 8" HorizontalOptions="Center" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+                            <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
+                                <HorizontalStackLayout Spacing="5">
+                                    <Border WidthRequest="12" HeightRequest="12" BackgroundColor="#6C62F5" Stroke="Transparent" StrokeShape="RoundRectangle 3" VerticalOptions="Center" />
+                                    <Label Text="oynandı" FontSize="11" TextColor="{StaticResource TextMuted}" VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Border WidthRequest="12" HeightRequest="12" BackgroundColor="#EDE8FF" Stroke="Transparent" StrokeShape="RoundRectangle 3" VerticalOptions="Center" />
+                                    <Label Text="oynanmadı" FontSize="11" TextColor="{StaticResource TextMuted}" VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- Profil Değiştir — TappableBorder -->
+                <controls:TappableBorder
+                    Command="{Binding SwitchProfileCommand}"
+                    BackgroundColor="{StaticResource SurfaceWhite}"
+                    Stroke="{StaticResource BorderLight}"
+                    StrokeThickness="0.5"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="16,14">
+                    <Grid ColumnDefinitions="Auto,*,Auto">
+                        <Label Grid.Column="0" Text="👥" FontSize="22" VerticalOptions="Center" />
+                        <Label Grid.Column="1" Text="Profil Değiştir" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" Margin="12,0,0,0" />
+                        <Label Grid.Column="2" Text="›" FontSize="22" TextColor="{StaticResource TextMuted}" VerticalOptions="Center" />
+                    </Grid>
+                </controls:TappableBorder>
+
+                <!-- Ebeveyn Paneli — TappableBorder -->
+                <controls:TappableBorder
+                    Command="{Binding GoToPreferencesCommand}"
+                    BackgroundColor="{StaticResource SurfaceWhite}"
+                    Stroke="{StaticResource BorderLight}"
+                    StrokeThickness="0.5"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="16,14">
+                    <Grid ColumnDefinitions="Auto,*,Auto">
+                        <Label Grid.Column="0" Text="⚙️" FontSize="22" VerticalOptions="Center" />
+                        <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center" Margin="12,0,0,0">
+                            <Label Text="Profil ve Tercihler" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                            <Label Text="Seslendirme, tema ve ses seviyesi" FontSize="11" TextColor="{StaticResource TextMuted}" />
+                        </VerticalStackLayout>
+                        <Label Grid.Column="2" Text="›" FontSize="22" TextColor="{StaticResource TextMuted}" VerticalOptions="Center" />
+                    </Grid>
+                </controls:TappableBorder>
+
+                <controls:TappableBorder
+                    Command="{Binding GoToParentalCommand}"
+                    BackgroundColor="{StaticResource SurfaceWhite}"
+                    Stroke="{StaticResource BorderLight}"
+                    StrokeThickness="0.5"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="16,14">
+                    <Grid ColumnDefinitions="Auto,*,Auto">
+                        <Label Grid.Column="0" Text="👨‍👩‍👧" FontSize="22" VerticalOptions="Center" />
+                        <Label Grid.Column="1" Text="Ebeveyn Paneli" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" Margin="12,0,0,0" />
+                        <Label Grid.Column="2" Text="›" FontSize="22" TextColor="{StaticResource TextMuted}" VerticalOptions="Center" />
+                    </Grid>
+                </controls:TappableBorder>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- TAB BAR -->
+        <controls:BottomTabBar Grid.Row="2" IsProfileActive="True" />
+
+    </Grid>
+</views:AnimatedPage>

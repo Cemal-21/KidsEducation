@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Game.BalloonGamePage"
+    x:Name="BalloonPageRoot"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    xmlns:converters="clr-namespace:KidsEducation.Converters"
+    xmlns:models="clr-namespace:KidsEducation.Models"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{StaticResource PlaygroundBackground}">
+
+    <ContentPage.Resources>
+        <converters:BoolToColorConverter x:Key="BoolToColorConverter" />
+        <converters:BoolToEmojiConverter x:Key="BoolToEmojiConverter" />
+        <converters:BoolToTextConverter x:Key="BoolToTextConverter" />
+        <converters:BoolToZeroOpacityConverter x:Key="BoolToZeroOpacityConverter" />
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Padding="16,36,16,10" ColumnSpacing="10">
+            <controls:TappableBorder
+                Grid.Column="0"
+                Command="{Binding GoBackCommand}"
+                WidthRequest="42"
+                HeightRequest="42"
+                BackgroundColor="{StaticResource SurfaceWhite}"
+                Stroke="#FFE2C1"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 16">
+                <Label Text="‹" FontSize="30" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-4,0,0" />
+            </controls:TappableBorder>
+
+            <VerticalStackLayout Grid.Column="1" Spacing="5" VerticalOptions="Center">
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Grid.Column="0" Text="Balon Patlat 🎈" FontSize="12" TextColor="{StaticResource TextMuted}" FontAttributes="Bold" />
+                    <Label Grid.Column="1" Text="{Binding Progress, StringFormat='{0:P0}'}" FontSize="12" TextColor="{StaticResource BrandPurple}" FontAttributes="Bold" />
+                </Grid>
+                <ProgressBar Progress="{Binding Progress}" ProgressColor="{StaticResource BrandMint}" BackgroundColor="#FFE9CC" HeightRequest="8" />
+            </VerticalStackLayout>
+
+            <Border
+                Grid.Column="2"
+                BackgroundColor="{StaticResource SurfaceWhite}"
+                Stroke="#FFE2C1"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 14"
+                Padding="9,6"
+                VerticalOptions="Center">
+                <Label FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding DisplayRoundNumber}" />
+                            <Span Text="/" TextColor="{StaticResource TextMuted}" />
+                            <Span Text="{Binding TotalRounds}" TextColor="{StaticResource TextMuted}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Border>
+        </Grid>
+
+        <VerticalStackLayout Grid.Row="1" Padding="16,0,16,8" Spacing="12">
+            <Border
+                BackgroundColor="{StaticResource SurfaceWhite}"
+                Stroke="#FFE3C5"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 24"
+                Padding="14">
+                <Border.Shadow>
+                    <Shadow Brush="#12000000" Offset="0,6" Radius="16" Opacity="0.14" />
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="11">
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                        <VerticalStackLayout Grid.Column="0" Spacing="3">
+                            <Label Text="Şu balonu patlat" FontSize="12" TextColor="{StaticResource TextMuted}" FontAttributes="Bold" />
+                            <Label
+                                Text="{Binding TargetText}"
+                                FontSize="24"
+                                FontFamily="OpenSansSemibold"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource TextPrimary}"
+                                LineBreakMode="WordWrap"
+                                MaxLines="2" />
+                        </VerticalStackLayout>
+
+                        <Border Grid.Column="1" BackgroundColor="#F1EEFF" Stroke="#DCD6FF" StrokeThickness="1" StrokeShape="RoundRectangle 16" Padding="10,7" VerticalOptions="Center">
+                            <Label Text="{Binding ComboText}" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource BrandPurple}" />
+                        </Border>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                        <Label Grid.Column="0" Text="{Binding TimeLeft, StringFormat='{0} sn'}" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource BrandCoral}" VerticalOptions="Center" />
+                        <ProgressBar Grid.Column="1" Progress="{Binding TimeProgress}" ProgressColor="{StaticResource BrandCoral}" BackgroundColor="#FFE7EF" HeightRequest="9" VerticalOptions="Center" />
+                    </Grid>
+
+                    <Border
+                        HeightRequest="36"
+                        Padding="10,6"
+                        Stroke="Transparent"
+                        StrokeShape="RoundRectangle 12"
+                        BackgroundColor="{Binding LastAnswerCorrect, Converter={StaticResource BoolToColorConverter}}"
+                        Opacity="{Binding ShowFeedback, Converter={StaticResource BoolToZeroOpacityConverter}}">
+                        <Label FontSize="15" FontAttributes="Bold" HorizontalOptions="Center" TextColor="{StaticResource TextPrimary}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding LastAnswerCorrect, Converter={StaticResource BoolToEmojiConverter}}" />
+                                    <Span Text="  " />
+                                    <Span Text="{Binding FeedbackText}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Border>
+                </VerticalStackLayout>
+            </Border>
+
+            <Grid
+                RowDefinitions="150,150"
+                ColumnDefinitions="*,*"
+                ColumnSpacing="12"
+                RowSpacing="12"
+                BindableLayout.ItemsSource="{Binding Balloons}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:BalloonOption">
+                        <controls:TappableBorder
+                            Grid.Row="{Binding Row}"
+                            Grid.Column="{Binding Column}"
+                            Command="{Binding Source={x:Reference BalloonPageRoot}, Path=BindingContext.PopBalloonCommand}"
+                            CommandParameter="{Binding .}"
+                            BackgroundColor="{Binding BackgroundColor}"
+                            Stroke="{Binding StrokeColor}"
+                            StrokeThickness="2"
+                            StrokeShape="RoundRectangle 72"
+                            Padding="12"
+                            Opacity="{Binding PopOpacity}"
+                            Scale="{Binding PopScale}">
+                            <Grid>
+                                <Ellipse Fill="#28FFFFFF" WidthRequest="76" HeightRequest="48" HorizontalOptions="Start" VerticalOptions="Start" Margin="12,8,0,0" />
+                                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="7">
+                                    <Image Source="{Binding ImagePath}" HeightRequest="74" WidthRequest="74" Aspect="AspectFit" />
+                                    <Label Text="{Binding NameTr}" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation" MaxLines="1" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </controls:TappableBorder>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </Grid>
+        </VerticalStackLayout>
+
+        <Border
+            Grid.Row="2"
+            HeightRequest="56"
+            BackgroundColor="#E0FFF4"
+            Stroke="#C8F4E8"
+            StrokeThickness="1"
+            Padding="14,8">
+            <Label
+                Text="Hızlı bul, combo yap, yıldızları kap!"
+                FontSize="12"
+                FontAttributes="Bold"
+                TextColor="{StaticResource TextPrimary}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                HorizontalTextAlignment="Center"
+                LineBreakMode="TailTruncation" />
+        </Border>
+
+    </Grid>
+</ContentPage>

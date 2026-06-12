@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Çözüm Öğeleri/">
+    <File Path="gitignore.txt" />
+  </Folder>
+  <Project Path="KidsEducation/KidsEducation.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>

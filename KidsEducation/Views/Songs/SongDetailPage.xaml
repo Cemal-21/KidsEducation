@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Songs.SongDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    xmlns:models="clr-namespace:KidsEducation.Models"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{StaticResource AppBackground}">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <Grid Grid.Row="0" Padding="20,46,20,14" ColumnDefinitions="Auto,*" ColumnSpacing="12">
+            <controls:TappableBorder
+                Grid.Column="0"
+                Command="{Binding GoBackCommand}"
+                WidthRequest="44"
+                HeightRequest="44"
+                BackgroundColor="{StaticResource SurfaceWhite}"
+                Stroke="{StaticResource BorderLight}"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 15">
+                <Label Text="‹" FontSize="30" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-4,0,0" />
+            </controls:TappableBorder>
+
+            <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                <Label Text="{Binding Song.Title}" FontSize="24" FontFamily="OpenSansSemibold" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" LineBreakMode="TailTruncation" />
+                <Label Text="{Binding Song.Subtitle}" FontSize="13" TextColor="{StaticResource TextMuted}" LineBreakMode="TailTruncation" />
+            </VerticalStackLayout>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,4,20,20" Spacing="16">
+
+                <Border Stroke="Transparent" StrokeShape="RoundRectangle 30" Padding="20">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="{Binding Song.ColorHex}" Offset="0.0" />
+                            <GradientStop Color="{Binding Song.ColorHex2}" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Shadow>
+                        <Shadow Brush="#18000000" Offset="0,10" Radius="24" Opacity="0.18" />
+                    </Border.Shadow>
+
+                    <VerticalStackLayout Spacing="16">
+                        <Border
+                            WidthRequest="112"
+                            HeightRequest="112"
+                            BackgroundColor="#30FFFFFF"
+                            Stroke="#40FFFFFF"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 36"
+                            HorizontalOptions="Center">
+                            <Label Text="{Binding Song.Emoji}" FontSize="62" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+
+                        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                            <Border Grid.Column="0" BackgroundColor="#24FFFFFF" Stroke="#30FFFFFF" StrokeThickness="1" StrokeShape="RoundRectangle 15" Padding="10,8">
+                                <VerticalStackLayout Spacing="1" HorizontalOptions="Center">
+                                    <Label Text="{Binding Song.DurationText}" FontSize="15" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                                    <Label Text="süre" FontSize="10" TextColor="#E6FFFFFF" HorizontalOptions="Center" />
+                                </VerticalStackLayout>
+                            </Border>
+                            <Border Grid.Column="1" BackgroundColor="#24FFFFFF" Stroke="#30FFFFFF" StrokeThickness="1" StrokeShape="RoundRectangle 15" Padding="10,8">
+                                <VerticalStackLayout Spacing="1" HorizontalOptions="Center">
+                                    <Label Text="{Binding Song.TempoText}" FontSize="15" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                                    <Label Text="tempo" FontSize="10" TextColor="#E6FFFFFF" HorizontalOptions="Center" />
+                                </VerticalStackLayout>
+                            </Border>
+                            <Border Grid.Column="2" BackgroundColor="#24FFFFFF" Stroke="#30FFFFFF" StrokeThickness="1" StrokeShape="RoundRectangle 15" Padding="10,8">
+                                <VerticalStackLayout Spacing="1" HorizontalOptions="Center">
+                                    <Label Text="{Binding Song.LevelText}" FontSize="15" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                                    <Label Text="seviye" FontSize="10" TextColor="#E6FFFFFF" HorizontalOptions="Center" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </Grid>
+
+                        <VerticalStackLayout Spacing="7">
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                                <Label Grid.Column="0" Text="{Binding CurrentTimeText}" FontSize="12" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" />
+                                <ProgressBar Grid.Column="1" Progress="{Binding Progress}" ProgressColor="White" BackgroundColor="#35FFFFFF" HeightRequest="9" VerticalOptions="Center" />
+                                <Label Grid.Column="2" Text="{Binding DurationTimeText}" FontSize="12" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" />
+                            </Grid>
+
+                            <Border
+                                IsVisible="{Binding HasLoadError}"
+                                BackgroundColor="#FFF2F6"
+                                Stroke="#FFD7E2"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 14"
+                                Padding="10,8">
+                                <Label Text="{Binding LoadErrorText}" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalTextAlignment="Center" />
+                            </Border>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="şarkı sözleri" Style="{StaticResource SectionLabel}" />
+                    <Border BackgroundColor="{StaticResource SurfaceWhite}" Stroke="{StaticResource BorderLight}" StrokeThickness="1" StrokeShape="RoundRectangle 24" Padding="18,16">
+                        <VerticalStackLayout BindableLayout.ItemsSource="{Binding Song.DisplayLines}" Spacing="7">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="models:SongLyricLine">
+                                    <Label
+                                        Text="{Binding Text}"
+                                        FontSize="17"
+                                        TextColor="{StaticResource TextPrimary}"
+                                        HorizontalTextAlignment="Center"
+                                        LineBreakMode="WordWrap"
+                                        Margin="0,2" />
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Grid Grid.Row="2" Padding="20,10,20,22" BackgroundColor="{StaticResource AppBackground}">
+            <controls:TappableBorder
+                Command="{Binding PlayPauseCommand}"
+                BackgroundColor="{StaticResource BrandCoral}"
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 20"
+                Padding="0,16">
+                <controls:TappableBorder.Shadow>
+                    <Shadow Brush="#33FF6B8A" Offset="0,8" Radius="16" Opacity="0.25" />
+                </controls:TappableBorder.Shadow>
+                <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                    <Label Text="{Binding PlayButtonIcon}" FontSize="17" TextColor="White" VerticalOptions="Center" />
+                    <Label Text="{Binding PlayButtonText}" FontSize="18" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </controls:TappableBorder>
+        </Grid>
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,60 @@
+{
+  "categoryId": "letters",
+  "items": [
+    {
+      "id": "letter_a",
+      "nameTr": "A Harfi",
+      "nameEn": "Letter A",
+      "imagePath": "letter_a",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "A alfabedeki ilk harflerden biridir.",
+      "descriptionTr": "A harfi birçok kelimede kullanılır. Araba, armut ve ay kelimeleri A harfiyle başlar. Harfleri öğrenmek okumaya başlamanın ilk adımlarından biridir.",
+      "soundClueText": "Araba, armut ve ay gibi kelimelerin başında duyulan harftir. Acaba bu hangi harftir?"
+    },
+    {
+      "id": "letter_b",
+      "nameTr": "B Harfi",
+      "nameEn": "Letter B",
+      "imagePath": "letter_b",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "B harfi balık kelimesinde vardır.",
+      "descriptionTr": "B harfi bazı kelimelerin başında yer alır. Balık, bebek ve bulut kelimeleri B harfiyle başlar. Harfleri tanıdıkça kelimeleri okumak kolaylaşır.",
+      "soundClueText": "Balık, bebek ve bulut gibi kelimelerin başında duyulan harftir. Acaba bu hangi harftir?"
+    },
+    {
+      "id": "letter_c",
+      "nameTr": "C Harfi",
+      "nameEn": "Letter C",
+      "imagePath": "letter_c",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "C harfi cam kelimesinde bulunur.",
+      "descriptionTr": "C harfi Türkçede kullanılan harflerden biridir. Cam, ceviz ve civciv kelimelerinde C harfi vardır. Harfleri sesleriyle birlikte öğrenmek önemlidir.",
+      "soundClueText": "Cam, ceviz ve civciv gibi kelimelerde duyulan harftir. Acaba bu hangi harftir?"
+    },
+    {
+      "id": "letter_c_tr",
+      "nameTr": "Ç Harfi",
+      "nameEn": "Letter Ç",
+      "imagePath": "letter_c_tr",
+      "category": "letters",
+      "difficultyLevel": 2,
+      "funFact": "Ç harfi Türkçeye özel harflerdendir.",
+      "descriptionTr": "Ç harfi Türkçede sık kullanılan özel harflerden biridir. Çilek, çocuk ve çanta kelimeleri Ç harfiyle başlar. Bu harfin sesi C harfinden farklıdır.",
+      "soundClueText": "Çilek, çocuk ve çanta gibi kelimelerin başında duyulan Türkçeye özel harftir. Acaba bu hangi harftir?"
+    },
+    {
+      "id": "letter_d",
+      "nameTr": "D Harfi",
+      "nameEn": "Letter D",
+      "imagePath": "letter_d",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "D harfi dondurma kelimesinde vardır.",
+      "descriptionTr": "D harfi birçok kelimede bulunur. Deniz, dondurma ve defter kelimeleri D harfiyle başlar. Harfleri öğrenirken örnek kelimeler söylemek faydalıdır.",
+      "soundClueText": "Deniz, dondurma ve defter gibi kelimelerin başında duyulan harftir. Acaba bu hangi harftir?"
+    }
+  ]
+}
