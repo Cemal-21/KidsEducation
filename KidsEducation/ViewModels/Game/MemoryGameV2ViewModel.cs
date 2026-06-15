@@ -70,7 +70,7 @@ public partial class MemoryGameV2ViewModel : ObservableObject
     [ObservableProperty] private bool _showFeedback;
     [ObservableProperty] private string _feedbackEmoji = "⭐";
 
-    public int TotalPairs => PairCount;
+    public int TotalPairs => Math.Min(PairCount, Cards.Count / 2);
     public double Progress => TotalPairs == 0 ? 0 : (double)MatchedPairs / TotalPairs;
     public string ProgressText => $"{MatchedPairs}/{TotalPairs} eşleşti";
 
@@ -134,6 +134,10 @@ public partial class MemoryGameV2ViewModel : ObservableObject
 
             foreach (var card in allCards.OrderBy(_ => Guid.NewGuid()))
                 Cards.Add(card);
+
+            OnPropertyChanged(nameof(TotalPairs));
+            OnPropertyChanged(nameof(Progress));
+            OnPropertyChanged(nameof(ProgressText));
         }
         finally
         {

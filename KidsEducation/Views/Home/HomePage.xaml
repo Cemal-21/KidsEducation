@@ -42,9 +42,14 @@
                         VerticalOptions="Center">
                         <Grid>
                             <Image Source="{Binding ActiveProfile.AvatarEmoji, Converter={StaticResource EmojiIconConverter}}"
-                                   WidthRequest="38" HeightRequest="38"
-                                   Aspect="AspectFit"
-                                   HorizontalOptions="Center" VerticalOptions="Center" />
+                                   WidthRequest="46" HeightRequest="46"
+                                   Aspect="AspectFill"
+                                   HorizontalOptions="Fill" VerticalOptions="Fill">
+                                <Image.Clip>
+                                    <RoundRectangleGeometry CornerRadius="14"
+                                        Rect="0,0,46,46"/>
+                                </Image.Clip>
+                            </Image>
                             <Image Source="ui_crown_3d.png"
                                    WidthRequest="18" HeightRequest="18"
                                    HorizontalOptions="End" VerticalOptions="Start"

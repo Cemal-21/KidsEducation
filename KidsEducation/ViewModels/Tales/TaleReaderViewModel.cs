@@ -76,15 +76,22 @@ public partial class TaleReaderViewModel : ObservableObject
     [RelayCommand]
     public async Task PlayAudioAsync()
     {
-        if (CurrentPage is null || string.IsNullOrEmpty(CurrentPage.AudioFile)) return;
+        if (CurrentPage is null) return;
         if (IsPlaying) return;
 
         IsPlaying = true;
         try
         {
-            await _audioService.PlayFileAsync(CurrentPage.AudioFile);
+            var played = false;
+            if (!string.IsNullOrWhiteSpace(CurrentPage.AudioFile))
+                played = await _audioService.TryPlayFileAsync(CurrentPage.AudioFile);
+
+            if (!played && !string.IsNullOrWhiteSpace(CurrentPage.Text))
+                await _audioService.SpeakTextAsync(CurrentPage.Text);
         }
-        catch { }
+        catch
+        {
+        }
         finally
         {
             IsPlaying = false;

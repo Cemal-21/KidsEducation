@@ -83,6 +83,9 @@ public class ContentService
         if (string.IsNullOrWhiteSpace(categoryId))
             return new List<LearningItem>();
 
+        if (categoryId.Equals("mixed", StringComparison.OrdinalIgnoreCase))
+            return await GetAllPlayableItemsAsync();
+
         if (_itemsCache.TryGetValue(categoryId, out var cached))
             return cached;
 
@@ -137,8 +140,8 @@ public class ContentService
     /// </summary>
     public async Task<List<LearningItem>> GetMixedGameItemsAsync(ChildProfile profile, int count = 6, int difficultyLevel = 0)
     {
-        var categories = await GetCategoriesAsync(profile);
         var allItems = new List<LearningItem>();
+        var categories = await GetCategoriesAsync(profile);
 
         foreach (var category in categories)
         {
@@ -147,6 +150,28 @@ public class ContentService
         }
 
         return PickGameItems(allItems, count, difficultyLevel);
+    }
+
+    private async Task<List<LearningItem>> GetAllPlayableItemsAsync()
+    {
+        if (_itemsCache.TryGetValue("mixed", out var cached))
+            return cached;
+
+        var categories = await LoadAllCategoriesAsync();
+        var allItems = new List<LearningItem>();
+
+        foreach (var category in categories)
+        {
+            if (string.IsNullOrWhiteSpace(category.Id) ||
+                category.Id.Equals("mixed", StringComparison.OrdinalIgnoreCase))
+                continue;
+
+            var items = await GetItemsAsync(category.Id);
+            allItems.AddRange(items);
+        }
+
+        _itemsCache["mixed"] = allItems;
+        return allItems;
     }
 
     private static List<LearningItem> PickGameItems(List<LearningItem> items, int count, int difficultyLevel)

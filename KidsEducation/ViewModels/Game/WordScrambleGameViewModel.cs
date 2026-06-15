@@ -1,3 +1,4 @@
+using System.Globalization;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using KidsEducation.Enums;
@@ -80,7 +81,7 @@ public partial class WordScrambleGameViewModel : ObservableObject
 
         var item = _items[CurrentIndex];
         CurrentItem = item;
-        _targetWord = item.NameTr.ToUpperInvariant();
+        _targetWord = item.NameTr.ToUpper(new CultureInfo("tr-TR"));
         IsChecking = false;
         ShowCorrectFeedback = false;
         ShowWrongFeedback = false;

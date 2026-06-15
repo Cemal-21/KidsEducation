@@ -184,6 +184,15 @@ public partial class BalloonGameViewModel : ObservableObject
         if (CurrentSession is null)
             return;
 
+        if (CurrentRoundIndex < 0 || CurrentRoundIndex >= CurrentSession.Rounds.Count)
+        {
+            CurrentRound = null;
+            Balloons.Clear();
+            CanAnswer = false;
+            StopTimer();
+            return;
+        }
+
         CurrentRound = CurrentSession.Rounds[CurrentRoundIndex];
         OnPropertyChanged(nameof(TargetText));
 

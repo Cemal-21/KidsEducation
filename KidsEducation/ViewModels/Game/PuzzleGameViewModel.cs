@@ -71,6 +71,14 @@ public partial class PuzzleGameViewModel : ObservableObject
             OnPropertyChanged(nameof(Progress));
             OnPropertyChanged(nameof(DisplayNumber));
 
+            if (_puzzleItems.Count == 0)
+            {
+                CurrentItem = null;
+                Pieces.Clear();
+                PromptText = "Bu oyun için henüz görsel içerik bulunamadı.";
+                return;
+            }
+
             LoadPuzzle(_puzzleItems[0]);
         }
         finally

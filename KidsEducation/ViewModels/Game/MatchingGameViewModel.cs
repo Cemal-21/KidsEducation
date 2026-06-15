@@ -1,3 +1,4 @@
+using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using KidsEducation.Enums;
@@ -26,6 +27,7 @@ public partial class MatchingGameViewModel : ObservableObject
 
     private MatchCard? _selectedImage;
     private MatchCard? _selectedName;
+    private bool _isBusy;
     private List<LearningItem> _allItems = new();
     private string _categoryId = string.Empty;
 
@@ -65,20 +67,37 @@ public partial class MatchingGameViewModel : ObservableObject
         _selectedName = null;
         OnPropertyChanged(nameof(ProgressPercent));
 
-        var images = selected.Select(item => new MatchCard
+        if (selected.Count == 0)
         {
-            ItemId = item.Id,
-            ImagePath = item.ImagePath,
-            NameTr = item.NameTr,
-            CardType = MatchCardType.Image
+            ImageCards = new List<MatchCard>();
+            NameCards = new List<MatchCard>();
+            return;
+        }
+
+        var images = selected.Select(item =>
+        {
+            var card = new MatchCard
+            {
+                ItemId = item.Id,
+                ImagePath = item.ImagePath,
+                NameTr = item.NameTr,
+                CardType = MatchCardType.Image
+            };
+            card.SelectCommand = new AsyncRelayCommand(() => SelectImageCardAsync(card));
+            return card;
         }).OrderBy(_ => Guid.NewGuid()).ToList();
 
-        var names = selected.Select(item => new MatchCard
+        var names = selected.Select(item =>
         {
-            ItemId = item.Id,
-            ImagePath = item.ImagePath,
-            NameTr = item.NameTr,
-            CardType = MatchCardType.Name
+            var card = new MatchCard
+            {
+                ItemId = item.Id,
+                ImagePath = item.ImagePath,
+                NameTr = item.NameTr,
+                CardType = MatchCardType.Name
+            };
+            card.SelectCommand = new AsyncRelayCommand(() => SelectNameCardAsync(card));
+            return card;
         }).OrderBy(_ => Guid.NewGuid()).ToList();
 
         ImageCards = images;
@@ -88,9 +107,9 @@ public partial class MatchingGameViewModel : ObservableObject
     [RelayCommand]
     public async Task SelectImageCardAsync(MatchCard card)
     {
-        if (card.IsMatched || card.IsSelected) return;
+        if (card is null) return;
+        if (_isBusy || card.IsMatched || card.IsSelected) return;
 
-        // Önceki seçimi kaldır
         if (_selectedImage is not null)
             _selectedImage.IsSelected = false;
 
@@ -104,7 +123,8 @@ public partial class MatchingGameViewModel : ObservableObject
     [RelayCommand]
     public async Task SelectNameCardAsync(MatchCard card)
     {
-        if (card.IsMatched || card.IsSelected) return;
+        if (card is null) return;
+        if (_isBusy || card.IsMatched || card.IsSelected) return;
 
         if (_selectedName is not null)
             _selectedName.IsSelected = false;
@@ -120,6 +140,7 @@ public partial class MatchingGameViewModel : ObservableObject
     {
         if (_selectedImage is null || _selectedName is null) return;
 
+        _isBusy = true;
         var img = _selectedImage;
         var name = _selectedName;
         _selectedImage = null;
@@ -138,6 +159,7 @@ public partial class MatchingGameViewModel : ObservableObject
             await _audioService.PlayCorrectAsync();
             await ShowFeedbackAsync("⭐");
 
+            _isBusy = false;
             if (MatchedCount >= TotalPairs)
                 await CompleteAsync();
         }
@@ -155,6 +177,7 @@ public partial class MatchingGameViewModel : ObservableObject
             name.IsWrong = false;
             img.IsSelected = false;
             name.IsSelected = false;
+            _isBusy = false;
         }
     }
 
@@ -204,6 +227,7 @@ public partial class MatchCard : ObservableObject
     public string ImagePath { get; set; } = string.Empty;
     public string NameTr { get; set; } = string.Empty;
     public MatchCardType CardType { get; set; }
+    public ICommand? SelectCommand { get; set; }
 
     [ObservableProperty] private bool _isSelected;
     [ObservableProperty] private bool _isMatched;

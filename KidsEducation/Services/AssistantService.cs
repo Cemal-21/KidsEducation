@@ -6,54 +6,57 @@ public class AssistantService
     {
         ["home"] = new[]
         {
-            "Merhaba! Bugün ne öğrenmek istersin? 🌟",
-            "Günün kelimesine baktın mı? Hemen incele!",
-            "Oyunlar bölümünde yeni maceralar seni bekliyor 🎮",
-            "Mikrofona tıkla ve 'Hayvanlar' de — seni oraya götüreyim!",
-            "Konular bölümünden istediğin kategoriyi seçebilirsin 📚",
+            "Merhaba. Bugün ne öğrenmek istersin?",
+            "Oyunlar bölümünde kısa ve eğlenceli etkinlikler var.",
+            "Mikrofona dokunup hayvanlar, oyunlar veya şarkılar diyebilirsin.",
+            "Konular bölümünden istediğin kategoriyi hızlıca açabilirim.",
+            "Yazı alanına gitmek istediğin bölümü yazman yeterli."
         },
         ["games"] = new[]
         {
-            "Hangi oyunu denemek istersin? Hepsini dene! 🎯",
-            "Nokta Birleştir'i denedin mi? Çok eğlenceli!",
-            "Çizim Tanıma'da şekil çizebilirsin ✏️",
-            "Aile Yarışması'nda ebeveynine meydan oku! 👨‍👧",
+            "Hangi oyunu denemek istersin?",
+            "Nokta birleştir, çizim ya da kelime oyunlarını açabilirim.",
+            "Bir oyuna gitmek için adını söylemen yeterli.",
+            "İstersen ana sayfaya da dönebiliriz."
         },
         ["learningmodules"] = new[]
         {
-            "Hangi konuyu öğrenmek istersin? 🐾",
-            "Hayvanlar kategorisini denedin mi?",
-            "Her kategoride eğlenceli kelimeler var! 🌈",
+            "Hangi konuyu öğrenmek istersin?",
+            "Hayvanlar, meyveler, sayılar veya harfler diyebilirsin.",
+            "Her kategoride resimler, sesler ve oyunlar seni bekliyor.",
+            "İstersen aradığın konuyu yazı alanına da yazabilirsin."
         },
         ["category"] = new[]
         {
-            "Resimlere bak ve kelimeleri öğren! 👀",
-            "Bir kelimeye tıkla, sesini dinle 🔊",
-            "Buradan oyun oynayabilirsin de!",
+            "Resimlere bakıp kelimeleri öğrenebilirsin.",
+            "Bir kelimeye dokununca sesini dinleyebilirsin.",
+            "Bu kategoriyle ilgili oyunları da açabilirim.",
+            "Başka bir kategoriye geçmek istersen adını söyle."
         },
         ["connectdots"] = new[]
         {
-            "Numaraları sırayla birleştir! 1'den başla ☝️",
-            "Parmağını bir sonraki noktaya götür",
-            "Tüm noktaları birleştirince bir şekil çıkacak! 🎨",
+            "Numaraları sırayla birleştir. Birden başla.",
+            "Parmağını bir sonraki noktaya götür.",
+            "Tüm noktaları birleştirince şekil tamamlanacak."
         },
         ["drawinggame"] = new[]
         {
-            "Parmağınla şekli çiz, sonra 'Tahmin Et'e bas! ✏️",
-            "Temiz bir şekil çiz, AI daha kolay tanır",
-            "Çizimi temizlemek için çöp kutusuna bas 🗑",
+            "Parmağınla şekli çiz, sonra tahmin ettir.",
+            "Çizimi temiz yapmak tahmini kolaylaştırır.",
+            "Baştan denemek istersen temizle düğmesine dokun."
         },
         ["multiplayer"] = new[]
         {
-            "Ebeveyn telefona IP adresini gir, çocuk bağlansın! 📡",
-            "Aynı Wi-Fi ağında olmanız gerekiyor",
-            "Ebeveyn soruları hazırlar, çocuk cevaplar! 🏆",
+            "Aile yarışması için iki cihazın aynı Wi-Fi ağında olması gerekir.",
+            "Ebeveyn soruları hazırlar, çocuk cevaplar.",
+            "Bağlantı sorununda ana sayfaya dönüp yeniden deneyebilirsin."
         },
         ["default"] = new[]
         {
-            "Sana yardım etmemi ister misin? 🤗",
-            "Mikrofona tıkla ve ne yapmak istediğini söyle!",
-            "Buraya tıklayarak bana soru sorabilirsin 💬",
+            "Sana yardım etmek için buradayım.",
+            "Mikrofona dokunup ne yapmak istediğini söyleyebilirsin.",
+            "Yazı alanına bölüm adını yazıp hızlıca gidebilirsin.",
+            "Hayvanlar, oyunlar, şarkılar, konular veya ana sayfa diyebilirsin."
         },
     };
 
@@ -61,15 +64,18 @@ public class AssistantService
 
     public string GetTip(string pageKey)
     {
-        var tips = PageTips.TryGetValue(pageKey, out var t) ? t : PageTips["default"];
+        var tips = PageTips.TryGetValue(pageKey, out var pageTips)
+            ? pageTips
+            : PageTips["default"];
+
         return tips[_rng.Next(tips.Length)];
     }
 
     public string GetVoiceExampleCommand(string pageKey) => pageKey switch
     {
-        "home"           => "\"Oyunlar\" veya \"Hayvanlar\" de",
-        "games"          => "\"Nokta birleştir\" veya \"Çizim\" de",
-        "learningmodules"=> "\"Meyveler\" veya \"Renkler\" de",
-        _                => "\"Ana sayfa\" veya \"Geri dön\" de",
+        "home" => "\"Oyunlar\" veya \"Hayvanlar\" de.",
+        "games" => "\"Nokta birleştir\" veya \"Çizim\" de.",
+        "learningmodules" => "\"Meyveler\" veya \"Renkler\" de.",
+        _ => "\"Ana sayfa\" veya \"Geri dön\" de."
     };
 }

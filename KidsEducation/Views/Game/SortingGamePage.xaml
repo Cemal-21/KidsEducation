@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <views:AnimatedPage
     x:Class="KidsEducation.Views.Game.SortingGamePage"
+    x:Name="PageRoot"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:KidsEducation.ViewModels.Game"
@@ -96,7 +97,8 @@
 
                 <!-- Shuffled cards -->
                 <CollectionView ItemsSource="{Binding Cards}"
-                                SelectionMode="None">
+                                SelectionMode="None"
+                                HeightRequest="340">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="3"
                                          HorizontalItemSpacing="10" VerticalItemSpacing="10"/>
@@ -113,7 +115,7 @@
                                 </Border.Shadow>
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.TapCardCommand}"
+                                        Command="{Binding BindingContext.TapCardCommand, Source={x:Reference PageRoot}}"
                                         CommandParameter="{Binding .}"/>
                                 </Border.GestureRecognizers>
                                 <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="6">

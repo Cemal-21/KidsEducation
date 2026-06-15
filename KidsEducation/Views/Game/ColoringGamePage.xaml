@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="KidsEducation.Views.Game.ColoringGamePage"
+    x:Name="PageRoot"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:KidsEducation.ViewModels.Game"
@@ -69,7 +70,7 @@
             <VerticalStackLayout Padding="16,16,16,16" Spacing="16">
 
                 <!-- Bölgeler -->
-                <CollectionView ItemsSource="{Binding Regions}">
+                <CollectionView ItemsSource="{Binding Regions}" HeightRequest="320">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="3"
                                          HorizontalItemSpacing="10" VerticalItemSpacing="10" />
@@ -85,7 +86,7 @@
                                 Padding="6">
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ColorRegionCommand}"
+                                        Command="{Binding BindingContext.ColorRegionCommand, Source={x:Reference PageRoot}}"
                                         CommandParameter="{Binding .}" />
                                 </Border.GestureRecognizers>
                                 <Label Text="{Binding Label}"
@@ -133,7 +134,7 @@
                                 WidthRequest="44" HeightRequest="44">
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SelectColorCommand}"
+                                        Command="{Binding BindingContext.SelectColorCommand, Source={x:Reference PageRoot}}"
                                         CommandParameter="{Binding .}" />
                                 </Border.GestureRecognizers>
                             </Border>

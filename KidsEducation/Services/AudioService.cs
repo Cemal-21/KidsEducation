@@ -8,6 +8,8 @@ public class AudioService
     private readonly AppPreferencesService _preferences;
     private IAudioPlayer? _speechPlayer;
     private IAudioPlayer? _musicPlayer;
+    private readonly List<IAudioPlayer> _effectPlayers = new();
+    private readonly object _effectLock = new();
     private string? _currentMusicFile;
 
     public AudioService(IAudioManager audioManager, AppPreferencesService preferences)
@@ -83,12 +85,12 @@ public class AudioService
 
     // ── Oyun ses efektleri ────────────────────────────────────
 
-    public async Task PlayCorrectAsync() => await PlayAsync("sound_correct.mp3");
-    public async Task PlayWrongAsync() => await PlayAsync("sound_wrong.mp3");
-    public async Task PlayStarAsync() => await PlayAsync("sound_star.mp3");
-    public async Task PlayCompleteAsync() => await PlayAsync("sound_complete.mp3");
-    public async Task PlayClickAsync() => await PlayAsync("sound_click.mp3");
-    public async Task PlayFailAsync() => await PlayAsync("sound_fail.mp3");
+    public async Task PlayCorrectAsync() => _ = await TryPlayFileAsync("sound_correct.mp3");
+    public async Task PlayWrongAsync() => _ = await TryPlayFileAsync("sound_wrong.mp3");
+    public async Task PlayStarAsync() => _ = await TryPlayFileAsync("sound_star.mp3");
+    public async Task PlayCompleteAsync() => _ = await TryPlayFileAsync("sound_complete.mp3");
+    public async Task PlayClickAsync() => _ = await TryPlayFileAsync("sound_click.mp3");
+    public async Task PlayFailAsync() => _ = await TryPlayFileAsync("sound_fail.mp3");
 
     // ── İsim sesi: Audio/speech_tr_kedi.mp3 ──────────────────
     public async Task PlayItemSoundAsync(string itemId, bool? male = null)
@@ -176,23 +178,71 @@ public class AudioService
 
     // ── Yardımcı metodlar ─────────────────────────────────────
 
-    public async Task PlayFileAsync(string fileName) => await PlayAsync(fileName);
+    public async Task PlayFileAsync(string fileName) => await TryPlayFileAsync(fileName);
 
-    private async Task PlayAsync(string fileName)
+    public async Task<bool> TryPlayFileAsync(string fileName)
+    {
+        if (await PlayAsync(fileName))
+            return true;
+
+        if (!fileName.Contains('/') && !fileName.Contains('\\'))
+            return await PlayAsync($"Audio/{fileName}");
+
+        return false;
+    }
+
+    private async Task<bool> PlayAsync(string fileName)
     {
         if (!_preferences.EffectsEnabled)
-            return;
+            return false;
 
         try
         {
             var stream = await FileSystem.OpenAppPackageFileAsync(fileName);
             var player = _audioManager.CreatePlayer(stream);
             player.Volume = _preferences.MasterVolume;
+            player.PlaybackEnded += OnEffectPlaybackEnded;
+            lock (_effectLock)
+                _effectPlayers.Add(player);
             player.Play();
+            return true;
         }
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine($"[AudioService] {fileName} oynatılamadı: {ex.Message}");
+            return false;
+        }
+    }
+
+    private void OnEffectPlaybackEnded(object? sender, EventArgs e)
+    {
+        if (sender is not IAudioPlayer player) return;
+
+        player.PlaybackEnded -= OnEffectPlaybackEnded;
+
+        bool removed;
+        lock (_effectLock)
+            removed = _effectPlayers.Remove(player);
+
+        if (!removed) return;
+
+        _ = DisposeEffectPlayerLaterAsync(player);
+    }
+
+    private static async Task DisposeEffectPlayerLaterAsync(IAudioPlayer player)
+    {
+        await Task.Delay(1500);
+        try
+        {
+            if (player is IDisposable disposable)
+                disposable.Dispose();
+        }
+        catch (ObjectDisposedException)
+        {
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[AudioService] Player dispose hatası: {ex.Message}");
         }
     }
     public async Task SpeakAsync(string key, bool male = false)

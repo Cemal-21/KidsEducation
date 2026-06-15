@@ -4,6 +4,7 @@
              xmlns:vm="clr-namespace:KidsEducation.ViewModels.Game"
              xmlns:models="clr-namespace:KidsEducation.ViewModels.Game"
              x:Class="KidsEducation.Views.Game.WordScrambleGamePage"
+             x:Name="PageRoot"
              x:DataType="vm:WordScrambleGameViewModel"
              Shell.NavBarIsVisible="False"
              BackgroundColor="{StaticResource AppBackground}">
@@ -77,7 +78,7 @@
                                             BackgroundColor="#FFEFE8" Margin="3" Padding="10,6">
                                         <Border.GestureRecognizers>
                                             <TapGestureRecognizer
-                                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.RemoveLetterCommand}"
+                                                Command="{Binding BindingContext.RemoveLetterCommand, Source={x:Reference PageRoot}}"
                                                 CommandParameter="{Binding .}"/>
                                         </Border.GestureRecognizers>
                                         <Label Text="{Binding Letter}" FontSize="22" FontAttributes="Bold"
@@ -98,7 +99,7 @@
                                         BackgroundColor="{StaticResource SurfaceWhite}" Margin="4" Padding="14,10">
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.PlaceLetterCommand}"
+                                            Command="{Binding BindingContext.PlaceLetterCommand, Source={x:Reference PageRoot}}"
                                             CommandParameter="{Binding .}"/>
                                     </Border.GestureRecognizers>
                                     <Label Text="{Binding Letter}" FontSize="24" FontAttributes="Bold"

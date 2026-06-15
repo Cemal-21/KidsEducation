@@ -66,6 +66,14 @@ public partial class FindMarkGameViewModel : ObservableObject
         CorrectCount = 0;
         _mistakes = 0;
 
+        if (_allItems.Count == 0)
+        {
+            Options = new List<FindMarkOption>();
+            QuestionText = "Bu konu için henüz içerik bulunamadı.";
+            IsLoading = false;
+            return;
+        }
+
         await NextRoundAsync();
         IsLoading = false;
     }
@@ -77,6 +85,9 @@ public partial class FindMarkGameViewModel : ObservableObject
             await CompleteAsync();
             return;
         }
+
+        if (_allItems.Count == 0)
+            return;
 
         IsAnswered = false;
 

@@ -4,13 +4,13 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:KidsEducation.ViewModels.Game"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
     Shell.NavBarIsVisible="False"
     BackgroundColor="#F0F2FA">
 
     <ContentPage.Resources>
         <Color x:Key="TextPrimary">#172033</Color>
         <Color x:Key="TextMuted">#6B7280</Color>
-        <Color x:Key="SurfaceWhite">#FFFFFF</Color>
         <Color x:Key="BorderLight">#E8E8F0</Color>
     </ContentPage.Resources>
 
@@ -20,15 +20,14 @@
         <Border Grid.Row="0" BackgroundColor="#FFFFFF" Stroke="{StaticResource BorderLight}"
                 StrokeThickness="0.5" StrokeShape="RoundRectangle 0,0,24,24" Padding="16,44,16,16">
             <Grid ColumnDefinitions="Auto,*,Auto">
-                <Border Grid.Column="0" WidthRequest="40" HeightRequest="40"
+                <controls:TappableBorder Grid.Column="0"
+                        Command="{Binding GoBackCommand}"
+                        WidthRequest="40" HeightRequest="40"
                         BackgroundColor="#F1EEFF" Stroke="#DDD6FF" StrokeThickness="1"
                         StrokeShape="RoundRectangle 14">
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoBackCommand}" />
-                    </Border.GestureRecognizers>
                     <Label Text="←" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"
                            TextColor="#6C62F5" />
-                </Border>
+                </controls:TappableBorder>
 
                 <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="2">
                     <Label Text="Eşleştir" FontSize="18" FontAttributes="Bold"
@@ -45,7 +44,6 @@
                     </Label>
                 </VerticalStackLayout>
 
-                <!-- Hata sayacı -->
                 <Border Grid.Column="2" BackgroundColor="#FFF0F0" Stroke="#FFCCCC"
                         StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="10,6">
                     <Label FontSize="13" FontAttributes="Bold" TextColor="#EF4444">
@@ -62,73 +60,74 @@
 
         <!-- OYUN ALANI -->
         <ScrollView Grid.Row="1">
-            <Grid ColumnDefinitions="*,*" ColumnSpacing="12" Padding="16,20,16,20" RowDefinitions="Auto">
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Padding="14,16,14,16">
 
                 <!-- SOL: Görseller -->
                 <VerticalStackLayout Grid.Column="0" Spacing="10">
                     <Label Text="🖼️ Görseller" FontSize="12" FontAttributes="Bold"
-                           TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" Margin="0,0,0,4" />
-                    <CollectionView ItemsSource="{Binding ImageCards}">
-                        <CollectionView.ItemTemplate>
+                           TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" Margin="0,0,0,2"/>
+
+                    <VerticalStackLayout Spacing="10"
+                                         BindableLayout.ItemsSource="{Binding ImageCards}">
+                        <BindableLayout.ItemTemplate>
                             <DataTemplate x:DataType="vm:MatchCard">
-                                <Border
+                                <controls:TappableBorder
+                                    Command="{Binding SelectCommand}"
                                     BackgroundColor="{Binding BackgroundColor}"
                                     Stroke="{Binding BorderColor}"
-                                    StrokeThickness="2"
+                                    StrokeThickness="2.5"
                                     StrokeShape="RoundRectangle 18"
-                                    Padding="8" Margin="0,0,0,10"
-                                    HeightRequest="100">
-                                    <Border.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SelectImageCardCommand}"
-                                            CommandParameter="{Binding .}" />
-                                    </Border.GestureRecognizers>
-                                    <Image Source="{Binding ImagePath}" Aspect="AspectFit"
-                                           HorizontalOptions="Fill" VerticalOptions="Fill" />
-                                </Border>
+                                    HeightRequest="110"
+                                    Padding="10">
+                                    <Image Source="{Binding ImagePath}"
+                                           Aspect="AspectFit"
+                                           HorizontalOptions="Fill"
+                                           VerticalOptions="Fill"/>
+                                </controls:TappableBorder>
                             </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
                 </VerticalStackLayout>
 
                 <!-- SAĞ: İsimler -->
                 <VerticalStackLayout Grid.Column="1" Spacing="10">
                     <Label Text="📝 İsimler" FontSize="12" FontAttributes="Bold"
-                           TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" Margin="0,0,0,4" />
-                    <CollectionView ItemsSource="{Binding NameCards}">
-                        <CollectionView.ItemTemplate>
+                           TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" Margin="0,0,0,2"/>
+
+                    <VerticalStackLayout Spacing="10"
+                                         BindableLayout.ItemsSource="{Binding NameCards}">
+                        <BindableLayout.ItemTemplate>
                             <DataTemplate x:DataType="vm:MatchCard">
-                                <Border
+                                <controls:TappableBorder
+                                    Command="{Binding SelectCommand}"
                                     BackgroundColor="{Binding BackgroundColor}"
                                     Stroke="{Binding BorderColor}"
-                                    StrokeThickness="2"
+                                    StrokeThickness="2.5"
                                     StrokeShape="RoundRectangle 18"
-                                    Padding="8" Margin="0,0,0,10"
-                                    HeightRequest="100">
-                                    <Border.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SelectNameCardCommand}"
-                                            CommandParameter="{Binding .}" />
-                                    </Border.GestureRecognizers>
+                                    HeightRequest="110"
+                                    Padding="10">
                                     <Label Text="{Binding NameTr}"
-                                           FontSize="16" FontAttributes="Bold"
+                                           FontSize="17" FontAttributes="Bold"
                                            TextColor="#172033"
-                                           HorizontalOptions="Center" VerticalOptions="Center"
-                                           HorizontalTextAlignment="Center" />
-                                </Border>
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           HorizontalTextAlignment="Center"
+                                           LineBreakMode="WordWrap"/>
+                                </controls:TappableBorder>
                             </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
                 </VerticalStackLayout>
+
             </Grid>
         </ScrollView>
 
-        <!-- GERİ BİLDİRİM (animasyon) -->
+        <!-- GERİ BİLDİRİM -->
         <Border Grid.Row="1" IsVisible="{Binding ShowFeedback}"
                 BackgroundColor="#CC000000" StrokeShape="RoundRectangle 20"
                 Padding="28,20" HorizontalOptions="Center" VerticalOptions="Center">
-            <Label Text="{Binding FeedbackEmoji}" FontSize="60"
-                   HorizontalOptions="Center" VerticalOptions="Center" />
+            <Label Text="{Binding FeedbackEmoji}" FontSize="64"
+                   HorizontalOptions="Center" VerticalOptions="Center"/>
         </Border>
 
         <!-- İLERLEME ÇUBUĞU -->
@@ -136,13 +135,13 @@
                 StrokeThickness="0.5" StrokeShape="RoundRectangle 24,24,0,0" Padding="20,14,20,28">
             <VerticalStackLayout Spacing="8">
                 <Grid ColumnDefinitions="*,Auto">
-                    <Label Grid.Column="0" Text="İlerleme" FontSize="12" TextColor="{StaticResource TextMuted}" />
+                    <Label Grid.Column="0" Text="İlerleme" FontSize="12" TextColor="{StaticResource TextMuted}"/>
                     <Label Grid.Column="1" FontSize="12" FontAttributes="Bold" TextColor="#6C62F5">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="{Binding MatchedCount}" />
-                                <Span Text="/" />
-                                <Span Text="{Binding TotalPairs}" />
+                                <Span Text="{Binding MatchedCount}"/>
+                                <Span Text="/"/>
+                                <Span Text="{Binding TotalPairs}"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -150,7 +149,7 @@
                 <ProgressBar Progress="{Binding ProgressPercent}"
                              ProgressColor="#6C62F5"
                              BackgroundColor="#EDE8FF"
-                             HeightRequest="8" />
+                             HeightRequest="8"/>
             </VerticalStackLayout>
         </Border>
 

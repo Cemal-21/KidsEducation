@@ -165,6 +165,13 @@ public partial class SoundGameViewModel : ObservableObject
         if (CurrentSession is null)
             return;
 
+        if (CurrentRoundIndex < 0 || CurrentRoundIndex >= CurrentSession.Rounds.Count)
+        {
+            CurrentRound = null;
+            CanAnswer = false;
+            return;
+        }
+
         CurrentRound = CurrentSession.Rounds[CurrentRoundIndex];
     }
 
