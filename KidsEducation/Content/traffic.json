@@ -1,0 +1,93 @@
+{
+  "categoryId": "traffic",
+  "items": [
+    {
+      "id": "traffic_stop",
+      "nameTr": "Dur",
+      "nameEn": "Stop",
+      "imagePath": "traffic_stop.png",
+      "category": "traffic",
+      "difficultyLevel": 1,
+      "funFact": "Dur işareti güvenli geçiş için beklememizi söyler.",
+      "descriptionTr": "Dur işareti, hareket etmeden önce tamamen durmamız gerektiğini anlatır.",
+      "soundClueText": "Kırmızı sekizgen işaret bize ne yapmamızı söyler?"
+    },
+    {
+      "id": "traffic_light",
+      "nameTr": "Trafik Işığı",
+      "nameEn": "Traffic Light",
+      "imagePath": "traffic_light.png",
+      "category": "traffic",
+      "difficultyLevel": 1,
+      "funFact": "Kırmızı dur, yeşil geç anlamına gelir.",
+      "descriptionTr": "Trafik ışığı, araç ve yayaların sırayla ilerlemesini sağlar.",
+      "soundClueText": "Kırmızı, sarı ve yeşil ışıkları olan işaret nedir?"
+    },
+    {
+      "id": "traffic_crosswalk",
+      "nameTr": "Yaya Geçidi",
+      "nameEn": "Crosswalk",
+      "imagePath": "traffic_crosswalk.png",
+      "category": "traffic",
+      "difficultyLevel": 1,
+      "funFact": "Yaya geçidi güvenli karşıya geçme alanıdır.",
+      "descriptionTr": "Yaya geçidi, insanların yolu daha güvenli geçmesi için ayrılmış yerdir.",
+      "soundClueText": "Karşıya geçerken kullanmamız gereken çizgili alan nedir?"
+    },
+    {
+      "id": "traffic_school",
+      "nameTr": "Okul Geçidi",
+      "nameEn": "School Crossing",
+      "imagePath": "traffic_school.png",
+      "category": "traffic",
+      "difficultyLevel": 2,
+      "funFact": "Okul çevresinde araçlar daha dikkatli olmalıdır.",
+      "descriptionTr": "Okul geçidi, çocukların bulunduğu bölgede dikkat edilmesi gerektiğini gösterir.",
+      "soundClueText": "Çocukların okula yakın geçtiğini anlatan işaret nedir?"
+    },
+    {
+      "id": "traffic_bike",
+      "nameTr": "Bisiklet Yolu",
+      "nameEn": "Bike Lane",
+      "imagePath": "traffic_bike.png",
+      "category": "traffic",
+      "difficultyLevel": 2,
+      "funFact": "Bisiklet yolu bisikletlilerin güvenli ilerlemesine yardım eder.",
+      "descriptionTr": "Bisiklet yolu, bisiklet kullananlar için ayrılmış özel yoldur.",
+      "soundClueText": "Bisikletlilere ayrılan yolun işareti nedir?"
+    },
+    {
+      "id": "traffic_no_parking",
+      "nameTr": "Park Yasak",
+      "nameEn": "No Parking",
+      "imagePath": "traffic_no_parking.png",
+      "category": "traffic",
+      "difficultyLevel": 2,
+      "funFact": "Park yasağı yolu açık tutmak için kullanılır.",
+      "descriptionTr": "Park yasak işareti, aracın orada bırakılmaması gerektiğini anlatır.",
+      "soundClueText": "Aracı burada bırakma anlamına gelen işaret nedir?"
+    },
+    {
+      "id": "traffic_speed",
+      "nameTr": "Hız Sınırı",
+      "nameEn": "Speed Limit",
+      "imagePath": "traffic_speed.png",
+      "category": "traffic",
+      "difficultyLevel": 2,
+      "funFact": "Hız sınırı güvenli sürüş için belirlenir.",
+      "descriptionTr": "Hız sınırı, araçların en fazla ne kadar hızlı gidebileceğini gösterir.",
+      "soundClueText": "Araçların ne kadar hızlı gidebileceğini gösteren işaret nedir?"
+    },
+    {
+      "id": "traffic_warning",
+      "nameTr": "Dikkat",
+      "nameEn": "Warning",
+      "imagePath": "traffic_warning.png",
+      "category": "traffic",
+      "difficultyLevel": 2,
+      "funFact": "Dikkat işareti çevreyi daha iyi kontrol etmemizi ister.",
+      "descriptionTr": "Dikkat işareti, ileride önemli veya tehlikeli bir durum olabileceğini anlatır.",
+      "soundClueText": "Tehlikeye karşı uyarı veren üçgen işaret nedir?"
+    }
+  ]
+}

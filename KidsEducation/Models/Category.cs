@@ -23,6 +23,7 @@ public class Category
 
     public int ProgressPercent { get; set; }
     public double ProgressBarWidth => 120 * ProgressPercent / 100.0;
+    public double ProgressNormalized => ProgressPercent / 100.0;
     public bool IsLocked { get; set; }
 
     public bool IsAvailableFor(ChildProfile profile) =>

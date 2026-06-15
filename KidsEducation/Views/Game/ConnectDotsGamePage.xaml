@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Game.ConnectDotsGamePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:KidsEducation.Converters"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#F8F7FF">
+
+    <ContentPage.Resources>
+        <converters:InverseBoolConverter x:Key="InverseBool" />
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- ══ HEADER ══ -->
+        <Border Grid.Row="0" Stroke="Transparent" StrokeShape="RoundRectangle 0,0,24,24">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#5148D4" Offset="0.0"/>
+                    <GradientStop Color="#7B6FE8" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid ColumnDefinitions="Auto,*,Auto" Padding="16,44,16,16" ColumnSpacing="12">
+                <!-- Geri -->
+                <Border Grid.Column="0"
+                        WidthRequest="40" HeightRequest="40"
+                        BackgroundColor="#2AFFFFFF" Stroke="#40FFFFFF"
+                        StrokeThickness="1" StrokeShape="RoundRectangle 14">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackCommand}" />
+                    </Border.GestureRecognizers>
+                    <Label Text="‹" FontSize="22" FontAttributes="Bold"
+                           TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Border>
+                <!-- Başlık -->
+                <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                    <Label Text="Nokta Birleştir" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+                    <Label Text="Noktaları sırayla birleştirerek şekli keşfet!"
+                           FontSize="11" TextColor="#CCFFFFFF"/>
+                </VerticalStackLayout>
+                <!-- Şekil emojisi -->
+                <Border Grid.Column="2"
+                        WidthRequest="44" HeightRequest="44"
+                        BackgroundColor="#2AFFFFFF" Stroke="#30FFFFFF"
+                        StrokeThickness="1" StrokeShape="RoundRectangle 14">
+                    <Label Text="{Binding CurrentShape.Emoji}"
+                           FontSize="24" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- ══ CANVAS ══ -->
+        <GraphicsView Grid.Row="1"
+                      x:Name="DotsCanvas"
+                      BackgroundColor="Transparent"
+                      StartInteraction="DotsCanvas_StartInteraction"
+                      DragInteraction="DotsCanvas_DragInteraction"
+                      EndInteraction="DotsCanvas_EndInteraction"
+                      CancelInteraction="DotsCanvas_CancelInteraction"
+                      Margin="8,8,8,0" />
+
+        <!-- ══ BOTTOM BAR ══ -->
+        <Border Grid.Row="2"
+                BackgroundColor="White"
+                Stroke="#E8E5FF" StrokeThickness="1"
+                StrokeShape="RoundRectangle 24,24,0,0"
+                Padding="20,16">
+            <Border.Shadow>
+                <Shadow Brush="#205148D4" Offset="0,-4" Radius="16" Opacity="0.15"/>
+            </Border.Shadow>
+
+            <!-- Oynama sırasında: ipucu -->
+            <VerticalStackLayout Spacing="10"
+                                 IsVisible="{Binding IsCompleted, Converter={StaticResource InverseBool}}">
+                <Label Text="{Binding HintText}"
+                       FontSize="16" FontAttributes="Bold"
+                       TextColor="#5148D4"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"/>
+                <ProgressBar
+                    x:Name="ProgressIndicator"
+                    ProgressColor="#5148D4"
+                    BackgroundColor="#EEF0FF"
+                    HeightRequest="6" />
+            </VerticalStackLayout>
+
+            <!-- Tamamlandığında: kutlama -->
+            <VerticalStackLayout Spacing="12"
+                                 IsVisible="{Binding IsCompleted}">
+                <Label Text="{Binding CompletionText}"
+                       FontSize="28" FontAttributes="Bold"
+                       TextColor="#15803D"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"/>
+                <Label Text="Harika! Tüm noktaları birleştirdin! 🎉"
+                       FontSize="13" TextColor="#4B5563"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"/>
+                <Border
+                    BackgroundColor="#5148D4"
+                    Stroke="Transparent"
+                    StrokeShape="RoundRectangle 18"
+                    Padding="0,14"
+                    HorizontalOptions="Fill">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NextShapeCommand}" />
+                    </Border.GestureRecognizers>
+                    <Label Text="Sonraki Şekil →"
+                           FontSize="16" FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Center"/>
+                </Border>
+            </VerticalStackLayout>
+        </Border>
+
+    </Grid>
+</ContentPage>

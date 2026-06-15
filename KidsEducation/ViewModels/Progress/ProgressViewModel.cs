@@ -9,9 +9,13 @@ public partial class ProgressViewModel : ObservableObject
 {
     private readonly ProfileService _profileService;
     private readonly ContentService _contentService;
+    private readonly ModuleProgressService _moduleProgressService;
 
     [ObservableProperty] private ChildProfile? _activeProfile;
     [ObservableProperty] private List<CategoryStat> _categoryStats = new();
+    [ObservableProperty] private List<ModuleProgressInfo> _moduleProgress = new();
+    [ObservableProperty] private List<GameHistoryItem> _gameHistory = new();
+    [ObservableProperty] private bool _hasGameHistory;
     [ObservableProperty] private bool _isLoading = true;
 
     // Haftalık özet
@@ -36,10 +40,14 @@ public partial class ProgressViewModel : ObservableObject
     [ObservableProperty] private string _day6Color = "#EDE8FF";
     [ObservableProperty] private string _day7Color = "#EDE8FF";
 
-    public ProgressViewModel(ProfileService profileService, ContentService contentService)
+    public ProgressViewModel(
+        ProfileService profileService,
+        ContentService contentService,
+        ModuleProgressService moduleProgressService)
     {
         _profileService = profileService;
         _contentService = contentService;
+        _moduleProgressService = moduleProgressService;
     }
 
     [RelayCommand]
@@ -52,12 +60,20 @@ public partial class ProgressViewModel : ObservableObject
             if (ActiveProfile is null) return;
 
             await LoadCategoryStatsAsync();
+            await LoadModuleProgressAsync();
             LoadWeeklyActivity();
+            LoadGameHistory();
         }
         finally
         {
             IsLoading = false;
         }
+    }
+
+    private async Task LoadModuleProgressAsync()
+    {
+        var categories = await _contentService.GetCategoriesAsync(ActiveProfile!);
+        ModuleProgress = _moduleProgressService.BuildModuleProgress(categories, ActiveProfile!);
     }
 
     private async Task LoadCategoryStatsAsync()
@@ -138,4 +154,51 @@ public partial class ProgressViewModel : ObservableObject
             .Where(cp => cp.LastPlayedAt >= weekStart)
             .Sum(cp => cp.BestStars);
     }
+
+    private void LoadGameHistory()
+    {
+        GameHistory = ActiveProfile!.CategoryProgresses.Values
+            .Where(cp => cp.PlayCount > 0 && cp.LastPlayedAt > DateTime.MinValue)
+            .OrderByDescending(cp => cp.LastPlayedAt)
+            .Take(20)
+            .Select(cp =>
+            {
+                var cat = CategoryStats.FirstOrDefault(c => c.CategoryId == cp.CategoryId);
+                return new GameHistoryItem
+                {
+                    CategoryId = cp.CategoryId,
+                    CategoryName = cat?.NameTr ?? cp.CategoryId,
+                    Emoji = cat?.Emoji ?? "🎮",
+                    PlayCount = cp.PlayCount,
+                    BestStars = cp.BestStars,
+                    LastPlayedAt = cp.LastPlayedAt,
+                    DateText = FormatDate(cp.LastPlayedAt)
+                };
+            })
+            .ToList();
+
+        HasGameHistory = GameHistory.Count > 0;
+    }
+
+    private static string FormatDate(DateTime dt)
+    {
+        var local = dt.ToLocalTime();
+        var today = DateTime.Today;
+        if (local.Date == today) return "Bugün";
+        if (local.Date == today.AddDays(-1)) return "Dün";
+        return local.ToString("d MMM");
+    }
+}
+
+public class GameHistoryItem
+{
+    public string CategoryId { get; set; } = string.Empty;
+    public string CategoryName { get; set; } = string.Empty;
+    public string Emoji { get; set; } = "🎮";
+    public int PlayCount { get; set; }
+    public int BestStars { get; set; }
+    public DateTime LastPlayedAt { get; set; }
+    public string DateText { get; set; } = string.Empty;
+    public string StarsText => BestStars > 0 ? new string('⭐', Math.Min(BestStars, 3)) : "—";
+    public string PlayCountText => $"{PlayCount} oyun";
 }

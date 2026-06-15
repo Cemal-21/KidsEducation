@@ -8,9 +8,42 @@
       "imagePath": "season_spring",
       "category": "seasons",
       "difficultyLevel": 1,
-      "funFact": "İlkbaharda çiçekler açar.",
-      "descriptionTr": "İlkbahar doğanın canlandığı mevsimdir. Ağaçlar yaprak açar ve çiçekler büyür. Hava yavaş yavaş ısınır. Kuş sesleri daha çok duyulabilir.",
-      "soundClueText": "Doğanın canlandığı, çiçeklerin açtığı ve havanın yavaş yavaş ısındığı mevsimdir. Acaba bu hangisidir?"
+      "funFact": "İlkbaharda çiçek açan ağaçlara 'kiraz çiçeği' denir ve Japonya'da büyük kutlamalar yapılır.",
+      "descriptionTr": "İlkbahar Mart, Nisan ve Mayıs aylarını kapsar. Doğanın yeniden canlandığı bu mevsimde ağaçlar yaprak açar, çiçekler büyür. Hava yavaş yavaş ısınır ve yağmurlar sık düşer. Kuş sesleri her yerde duyulur ve hayvanlar kış uykusundan uyanır.",
+      "soundClueText": "Doğanın canlandığı, çiçeklerin açtığı, kuşların ötüştüğü ve havanın ısınmaya başladığı mevsimdir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "season_ilkbahar_mart",
+      "nameTr": "Mart",
+      "nameEn": "March",
+      "imagePath": "season_spring",
+      "category": "seasons",
+      "difficultyLevel": 2,
+      "funFact": "Mart ayında 21 Mart İlkbahar Ekinoksu gerçekleşir; gece ve gündüz eşit uzunluktadır.",
+      "descriptionTr": "Mart, yılın üçüncü ayıdır ve ilkbaharın ilk ayıdır. Havalar ısınmaya başlar ama hâlâ serin günler olabilir. Karlar erir, toprak uyanır. 8 Mart Dünya Kadınlar Günü bu ayda kutlanır.",
+      "soundClueText": "İlkbaharın ilk ayıdır, karların eridiği ve havanın ısınmaya başladığı aydır. Acaba bu hangi aydır?"
+    },
+    {
+      "id": "season_ilkbahar_nisan",
+      "nameTr": "Nisan",
+      "nameEn": "April",
+      "imagePath": "season_spring",
+      "category": "seasons",
+      "difficultyLevel": 2,
+      "funFact": "23 Nisan Ulusal Egemenlik ve Çocuk Bayramı tüm dünyada çocuklara armağan edilmiştir.",
+      "descriptionTr": "Nisan, yılın dördüncü ayıdır. Yağmurlar sıklaşır ve her yer yeşillenir. Lale çiçekleri açar. En önemlisi 23 Nisan Ulusal Egemenlik ve Çocuk Bayramı bu ayda kutlanır.",
+      "soundClueText": "Yağmurların sıklaştığı, lalelerin açtığı ve 23'ünde Çocuk Bayramı'nın kutlandığı aydır. Acaba bu hangi aydır?"
+    },
+    {
+      "id": "season_ilkbahar_mayis",
+      "nameTr": "Mayıs",
+      "nameEn": "May",
+      "imagePath": "season_spring",
+      "category": "seasons",
+      "difficultyLevel": 2,
+      "funFact": "19 Mayıs Atatürk'ü Anma, Gençlik ve Spor Bayramı her yıl coşkuyla kutlanır.",
+      "descriptionTr": "Mayıs, yılın beşinci ayıdır ve ilkbaharın son ayıdır. Hava güzelleşir, doğa tam anlamıyla çiçek açar. 19 Mayıs Gençlik ve Spor Bayramı bu ayda kutlanır. Anneler Günü de Mayıs ayındadır.",
+      "soundClueText": "İlkbaharın son ayıdır, 19'unda Gençlik Bayramı kutlanır ve Anneler Günü bu aya denk gelir. Acaba bu hangi aydır?"
     },
     {
       "id": "season_yaz",
@@ -19,9 +52,42 @@
       "imagePath": "season_summer",
       "category": "seasons",
       "difficultyLevel": 1,
-      "funFact": "Yaz en sıcak mevsimdir.",
-      "descriptionTr": "Yaz sıcak ve güneşli bir mevsimdir. İnsanlar denize gidebilir, dondurma yiyebilir ve açık havada oyun oynayabilir. Yazın bol su içmek önemlidir.",
-      "soundClueText": "Sıcak ve güneşli günleri, denizi, dondurmayı ve açık havada oyunları hatırlatan mevsimdir. Acaba bu hangisidir?"
+      "funFact": "Yaz gündönümünde yılın en uzun günü yaşanır ve güneş en erken doğar, en geç batar.",
+      "descriptionTr": "Yaz Haziran, Temmuz ve Ağustos aylarını kapsar. Hava çok sıcak ve güneşlidir. İnsanlar denize gidebilir, dondurma yiyebilir ve açık havada oyun oynayabilir. Okullar tatil olur ve çocuklar daha fazla oynayabilir. Yazın bol su içmek çok önemlidir.",
+      "soundClueText": "Sıcak ve güneşli, okulların tatil olduğu, denize gidilen ve dondurma yenen mevsimdir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "season_yaz_haziran",
+      "nameTr": "Haziran",
+      "nameEn": "June",
+      "imagePath": "season_summer",
+      "category": "seasons",
+      "difficultyLevel": 2,
+      "funFact": "21 Haziran yaz gündönümüdür ve yılın en uzun günüdür.",
+      "descriptionTr": "Haziran, yılın altıncı ayıdır ve yazın ilk ayıdır. Sıcaklıklar artar, okullar kapanır. Yazın en uzun günü olan 21 Haziran bu aydadır. Çocuklar için yaz tatili heyecanı başlar.",
+      "soundClueText": "Yazın ilk ayıdır, okulların kapandığı ve yaz tatilinin başladığı aydır. Acaba bu hangi aydır?"
+    },
+    {
+      "id": "season_yaz_temmuz",
+      "nameTr": "Temmuz",
+      "nameEn": "July",
+      "imagePath": "season_summer",
+      "category": "seasons",
+      "difficultyLevel": 2,
+      "funFact": "Temmuz genellikle yılın en sıcak ayıdır.",
+      "descriptionTr": "Temmuz, yılın yedinci ayıdır. Yılın en sıcak günleri genellikle bu ayda yaşanır. Plajlar ve tatil yerleri kalabalık olur. Bol su içmek ve güneşten korunmak önemlidir.",
+      "soundClueText": "Yazın en sıcak ayıdır, plajların kalabalıklaştığı ve güneşten korunmanın çok önemli olduğu aydır. Acaba bu hangi aydır?"
+    },
+    {
+      "id": "season_yaz_agustos",
+      "nameTr": "Ağustos",
+      "nameEn": "August",
+      "imagePath": "season_summer",
+      "category": "seasons",
+      "difficultyLevel": 2,
+      "funFact": "30 Ağustos Zafer Bayramı Türkiye'nin en önemli bayramlarından biridir.",
+      "descriptionTr": "Ağustos, yılın sekizinci ayıdır ve yazın son ayıdır. Hava hâlâ çok sıcaktır. 30 Ağustos Zafer Bayramı bu ayda kutlanır. Okul hazırlıkları başlar, yaz sona yaklaşır.",
+      "soundClueText": "Yazın son ayıdır, 30'unda Zafer Bayramı kutlanır ve okul hazırlıklarının başladığı aydır. Acaba bu hangi aydır?"
     },
     {
       "id": "season_sonbahar",
@@ -30,9 +96,42 @@
       "imagePath": "season_autumn",
       "category": "seasons",
       "difficultyLevel": 1,
-      "funFact": "Sonbaharda yapraklar dökülür.",
-      "descriptionTr": "Sonbaharda hava serinlemeye başlar. Ağaç yaprakları sarı, turuncu ve kırmızı renklere dönebilir. Bazı yapraklar yere düşer. Bu mevsim doğada renk değişimini gösterir.",
-      "soundClueText": "Havanın serinlediği, yaprakların sarı ve turuncu renklere dönüp döküldüğü mevsimdir. Acaba bu hangisidir?"
+      "funFact": "Yaprakların renkli dökülmesi sırasındaki manzaraya 'yaprak dansı' denir.",
+      "descriptionTr": "Sonbahar Eylül, Ekim ve Kasım aylarını kapsar. Hava serinlemeye başlar. Ağaç yaprakları sarı, turuncu ve kırmızı renklere dönüp yere düşer. Okullar yeniden açılır. Meyve hasadı yapılır, tarla işleri tamamlanır.",
+      "soundClueText": "Havanın serinlediği, yaprakların renklenip döküldüğü, okulların açıldığı ve meyve hasadının yapıldığı mevsimdir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "season_sonbahar_eylul",
+      "nameTr": "Eylül",
+      "nameEn": "September",
+      "imagePath": "season_autumn",
+      "category": "seasons",
+      "difficultyLevel": 2,
+      "funFact": "Eylül ayında okullar açılır ve yeni bir öğrenim yılı başlar.",
+      "descriptionTr": "Eylül, yılın dokuzuncu ayıdır ve sonbaharın ilk ayıdır. Hava serinlemeye başlar. Okullar açılır, yeni öğrenim yılı başlar. Üzüm ve diğer meyveler bu ayda hasat edilir.",
+      "soundClueText": "Sonbaharın ilk ayıdır, okulların açıldığı ve meyve hasadının yoğunlaştığı aydır. Acaba bu hangi aydır?"
+    },
+    {
+      "id": "season_sonbahar_ekim",
+      "nameTr": "Ekim",
+      "nameEn": "October",
+      "imagePath": "season_autumn",
+      "category": "seasons",
+      "difficultyLevel": 2,
+      "funFact": "29 Ekim Cumhuriyet Bayramı Türkiye'nin en büyük millî bayramıdır.",
+      "descriptionTr": "Ekim, yılın onuncu ayıdır. Yapraklar renklenir ve dökülür. 29 Ekim Cumhuriyet Bayramı bu ayda kutlanır. Havalar iyice serin olur, montlar giyilmeye başlanır.",
+      "soundClueText": "Yaprakların en çok renklenerek döküldüğü ve 29'unda Cumhuriyet Bayramı'nın kutlandığı aydır. Acaba bu hangi aydır?"
+    },
+    {
+      "id": "season_sonbahar_kasim",
+      "nameTr": "Kasım",
+      "nameEn": "November",
+      "imagePath": "season_autumn",
+      "category": "seasons",
+      "difficultyLevel": 2,
+      "funFact": "10 Kasım, Atatürk'ü saygıyla andığımız özel bir gündür.",
+      "descriptionTr": "Kasım, yılın on birinci ayıdır ve sonbaharın son ayıdır. Hava soğumaya başlar, ilk donlar görülebilir. 10 Kasım'da Atatürk'ü saygıyla anarız. Ağaçların çoğu yapraklarını dökmüştür.",
+      "soundClueText": "Sonbaharın son ayıdır, soğukların arttığı ve 10'unda Atatürk'ü andığımız aydır. Acaba bu hangi aydır?"
     },
     {
       "id": "season_kis",
@@ -41,9 +140,42 @@
       "imagePath": "season_winter",
       "category": "seasons",
       "difficultyLevel": 1,
-      "funFact": "Kış en soğuk mevsimdir.",
-      "descriptionTr": "Kış soğuk bir mevsimdir. Bazı yerlerde kar yağabilir. İnsanlar kalın giysiler giyerek ısınır. Kışın sıcak kalmak ve hasta olmamak için dikkatli olmak gerekir.",
-      "soundClueText": "Soğuk havaları, kalın giysileri ve bazı yerlerde kar yağmasını hatırlatan mevsimdir. Acaba bu hangisidir?"
+      "funFact": "Kar tanelerinin her birinin şekli birbirinden tamamen farklıdır — hiçbiri birbirine benzemez.",
+      "descriptionTr": "Kış Aralık, Ocak ve Şubat aylarını kapsar. Hava çok soğur, kar yağabilir. İnsanlar kalın giysiler giyerek ısınır. Bazı hayvanlar kış uykusuna yatar. Doğa dinlenir ve bahara hazırlanır.",
+      "soundClueText": "Çok soğuk günlerin, karın, kalın giysilerin ve bazı hayvanların uykuya yattığı mevsimdir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "season_kis_aralik",
+      "nameTr": "Aralık",
+      "nameEn": "December",
+      "imagePath": "season_winter",
+      "category": "seasons",
+      "difficultyLevel": 2,
+      "funFact": "21 Aralık kış gündönümüdür ve yılın en kısa günüdür.",
+      "descriptionTr": "Aralık, yılın on ikinci ve son ayıdır, kışın ilk ayıdır. Yılın en kısa günü olan 21 Aralık bu aydadır. Dünyada pek çok ülkede yılbaşı kutlamaları yapılır. Hava soğuk, geceler uzundur.",
+      "soundClueText": "Yılın son ayıdır, kışın başladığı ve yılın en kısa gününün yaşandığı aydır. Acaba bu hangi aydır?"
+    },
+    {
+      "id": "season_kis_ocak",
+      "nameTr": "Ocak",
+      "nameEn": "January",
+      "imagePath": "season_winter",
+      "category": "seasons",
+      "difficultyLevel": 2,
+      "funFact": "Ocak ayı, yeni bir yılın başlangıcıdır.",
+      "descriptionTr": "Ocak, yılın ilk ayıdır. Kışın en soğuk günleri genellikle bu ayda yaşanır. Kar yağışları en sık bu ayda olabilir. Yeni yılın başlangıcıdır ve herkes yeni planlar yapar.",
+      "soundClueText": "Yılın ilk ve kışın en soğuk ayıdır, karların en çok yağdığı ve yeni yılın başladığı aydır. Acaba bu hangi aydır?"
+    },
+    {
+      "id": "season_kis_subat",
+      "nameTr": "Şubat",
+      "nameEn": "February",
+      "imagePath": "season_winter",
+      "category": "seasons",
+      "difficultyLevel": 2,
+      "funFact": "Şubat yılın en kısa ayıdır, sadece 28 ya da 29 günü vardır.",
+      "descriptionTr": "Şubat, yılın ikinci ayıdır ve kışın son ayıdır. Yılın en kısa ayıdır; 28 ya da 29 gün sürer. 14 Şubat Sevgililer Günü bu ayda kutlanır. Kışın sona yaklaştığının habercisidir.",
+      "soundClueText": "Yılın en kısa ve kışın son ayıdır, 14'ünde Sevgililer Günü kutlanır. Acaba bu hangi aydır?"
     }
   ]
 }

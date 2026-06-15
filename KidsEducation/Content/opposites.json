@@ -1,0 +1,93 @@
+{
+  "categoryId": "opposites",
+  "items": [
+    {
+      "id": "opposite_big",
+      "nameTr": "Büyük",
+      "nameEn": "Big",
+      "imagePath": "opposite_big.png",
+      "category": "opposites",
+      "difficultyLevel": 1,
+      "funFact": "Büyük olan nesneler daha fazla yer kaplar.",
+      "descriptionTr": "Büyük, küçükten daha geniş veya daha yüksek olan şeyleri anlatır.",
+      "soundClueText": "Küçük olmayan, daha fazla yer kaplayan kavram nedir?"
+    },
+    {
+      "id": "opposite_small",
+      "nameTr": "Küçük",
+      "nameEn": "Small",
+      "imagePath": "opposite_small.png",
+      "category": "opposites",
+      "difficultyLevel": 1,
+      "funFact": "Küçük şeyleri taşımak genellikle daha kolaydır.",
+      "descriptionTr": "Küçük, az yer kaplayan ve boyutu daha minik olan şeyleri anlatır.",
+      "soundClueText": "Büyük olmayan, minik olan kavram nedir?"
+    },
+    {
+      "id": "opposite_hot",
+      "nameTr": "Sıcak",
+      "nameEn": "Hot",
+      "imagePath": "opposite_hot.png",
+      "category": "opposites",
+      "difficultyLevel": 1,
+      "funFact": "Sıcaklık arttığında dondurma daha hızlı erir.",
+      "descriptionTr": "Sıcak, ısı veren ya da yüksek sıcaklığı olan şeyler için kullanılır.",
+      "soundClueText": "Güneşli bir günde hissettiğimiz ısı kavramı nedir?"
+    },
+    {
+      "id": "opposite_cold",
+      "nameTr": "Soğuk",
+      "nameEn": "Cold",
+      "imagePath": "opposite_cold.png",
+      "category": "opposites",
+      "difficultyLevel": 1,
+      "funFact": "Buz soğuk olduğu için suyu serinletir.",
+      "descriptionTr": "Soğuk, düşük sıcaklığı olan ve üşüten şeyleri anlatır.",
+      "soundClueText": "Buz gibi olan, üşüten kavram nedir?"
+    },
+    {
+      "id": "opposite_fast",
+      "nameTr": "Hızlı",
+      "nameEn": "Fast",
+      "imagePath": "opposite_fast.png",
+      "category": "opposites",
+      "difficultyLevel": 2,
+      "funFact": "Çita dünyanın en hızlı kara hayvanlarından biridir.",
+      "descriptionTr": "Hızlı, kısa sürede çok yol alan veya çabuk yapılan şeyleri anlatır.",
+      "soundClueText": "Yavaşın zıttı olan, çabuk hareket eden kavram nedir?"
+    },
+    {
+      "id": "opposite_slow",
+      "nameTr": "Yavaş",
+      "nameEn": "Slow",
+      "imagePath": "opposite_slow.png",
+      "category": "opposites",
+      "difficultyLevel": 2,
+      "funFact": "Yavaş ilerlemek bazen daha dikkatli olmayı sağlar.",
+      "descriptionTr": "Yavaş, acele etmeden ve daha uzun sürede hareket etmektir.",
+      "soundClueText": "Hızlının zıttı olan kavram nedir?"
+    },
+    {
+      "id": "opposite_open",
+      "nameTr": "Açık",
+      "nameEn": "Open",
+      "imagePath": "opposite_open.png",
+      "category": "opposites",
+      "difficultyLevel": 2,
+      "funFact": "Açık kapıdan içeri girebiliriz.",
+      "descriptionTr": "Açık, kapalı olmayan ya da kullanılabilir durumda olan şeyleri anlatır.",
+      "soundClueText": "Kapalı olmayan kavram nedir?"
+    },
+    {
+      "id": "opposite_closed",
+      "nameTr": "Kapalı",
+      "nameEn": "Closed",
+      "imagePath": "opposite_closed.png",
+      "category": "opposites",
+      "difficultyLevel": 2,
+      "funFact": "Kapalı kutunun içindekini görmek için açmak gerekir.",
+      "descriptionTr": "Kapalı, açık olmayan ve geçişe izin vermeyen durumdur.",
+      "soundClueText": "Açığın zıttı olan kavram nedir?"
+    }
+  ]
+}

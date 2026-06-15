@@ -1,0 +1,102 @@
+{
+  "stories": [
+    {
+      "id": "story_kedi",
+      "titleTr": "Kedim Mimi",
+      "emoji": "🐱",
+      "coverEmoji": "🐱",
+      "difficulty": 1,
+      "words": [
+        { "wordTr": "Kedim", "itemId": "animal_cat", "isKeyword": false },
+        { "wordTr": "Mimi", "itemId": "", "isKeyword": false },
+        { "wordTr": "markete", "itemId": "", "isKeyword": false },
+        { "wordTr": "gitti.", "itemId": "", "isKeyword": false },
+        { "wordTr": "Meyve", "itemId": "fruit_apple", "isKeyword": true },
+        { "wordTr": "aldı,", "itemId": "", "isKeyword": false },
+        { "wordTr": "sebze", "itemId": "vegetable_carrot", "isKeyword": true },
+        { "wordTr": "aldı.", "itemId": "", "isKeyword": false },
+        { "wordTr": "Evde", "itemId": "", "isKeyword": false },
+        { "wordTr": "mutlu", "itemId": "emotion_happy", "isKeyword": true },
+        { "wordTr": "oldu.", "itemId": "", "isKeyword": false }
+      ]
+    },
+    {
+      "id": "story_kopek",
+      "titleTr": "Köpek Dost",
+      "emoji": "🐶",
+      "coverEmoji": "🐶",
+      "difficulty": 1,
+      "words": [
+        { "wordTr": "Köpeğim", "itemId": "animal_dog", "isKeyword": true },
+        { "wordTr": "parkta", "itemId": "", "isKeyword": false },
+        { "wordTr": "koştu.", "itemId": "", "isKeyword": false },
+        { "wordTr": "Kırmızı", "itemId": "color_red", "isKeyword": true },
+        { "wordTr": "top", "itemId": "", "isKeyword": false },
+        { "wordTr": "buldu.", "itemId": "", "isKeyword": false },
+        { "wordTr": "Çok", "itemId": "", "isKeyword": false },
+        { "wordTr": "mutlu", "itemId": "emotion_happy", "isKeyword": true },
+        { "wordTr": "oldu!", "itemId": "", "isKeyword": false }
+      ]
+    },
+    {
+      "id": "story_mevsimler",
+      "titleTr": "Dört Mevsim",
+      "emoji": "🌸",
+      "coverEmoji": "🍂",
+      "difficulty": 2,
+      "words": [
+        { "wordTr": "İlkbaharda", "itemId": "season_spring", "isKeyword": true },
+        { "wordTr": "çiçekler", "itemId": "", "isKeyword": false },
+        { "wordTr": "açtı.", "itemId": "", "isKeyword": false },
+        { "wordTr": "Yazın", "itemId": "season_summer", "isKeyword": true },
+        { "wordTr": "güneş", "itemId": "", "isKeyword": false },
+        { "wordTr": "güldü.", "itemId": "", "isKeyword": false },
+        { "wordTr": "Sonbaharda", "itemId": "season_autumn", "isKeyword": true },
+        { "wordTr": "yapraklar", "itemId": "", "isKeyword": false },
+        { "wordTr": "döküldü.", "itemId": "", "isKeyword": false },
+        { "wordTr": "Kışın", "itemId": "season_winter", "isKeyword": true },
+        { "wordTr": "kar", "itemId": "", "isKeyword": false },
+        { "wordTr": "yağdı.", "itemId": "", "isKeyword": false }
+      ]
+    },
+    {
+      "id": "story_renkler",
+      "titleTr": "Rengarenk Dünya",
+      "emoji": "🌈",
+      "coverEmoji": "🌈",
+      "difficulty": 1,
+      "words": [
+        { "wordTr": "Gökyüzü", "itemId": "", "isKeyword": false },
+        { "wordTr": "mavi,", "itemId": "color_blue", "isKeyword": true },
+        { "wordTr": "çimen", "itemId": "", "isKeyword": false },
+        { "wordTr": "yeşildir.", "itemId": "color_green", "isKeyword": true },
+        { "wordTr": "Güneş", "itemId": "", "isKeyword": false },
+        { "wordTr": "sarı,", "itemId": "color_yellow", "isKeyword": true },
+        { "wordTr": "gül", "itemId": "", "isKeyword": false },
+        { "wordTr": "kırmızıdır.", "itemId": "color_red", "isKeyword": true },
+        { "wordTr": "Dünya", "itemId": "", "isKeyword": false },
+        { "wordTr": "ne", "itemId": "", "isKeyword": false },
+        { "wordTr": "güzel!", "itemId": "", "isKeyword": false }
+      ]
+    },
+    {
+      "id": "story_hayvanlar",
+      "titleTr": "Çiftlik Günü",
+      "emoji": "🐄",
+      "coverEmoji": "🌾",
+      "difficulty": 2,
+      "words": [
+        { "wordTr": "İnek", "itemId": "animal_cow", "isKeyword": true },
+        { "wordTr": "böğürdü,", "itemId": "", "isKeyword": false },
+        { "wordTr": "at", "itemId": "animal_horse", "isKeyword": true },
+        { "wordTr": "kişnedi.", "itemId": "", "isKeyword": false },
+        { "wordTr": "Koyun", "itemId": "animal_sheep", "isKeyword": true },
+        { "wordTr": "meler,", "itemId": "", "isKeyword": false },
+        { "wordTr": "tavuk", "itemId": "", "isKeyword": false },
+        { "wordTr": "gıdaklar.", "itemId": "", "isKeyword": false },
+        { "wordTr": "Çiftlik", "itemId": "", "isKeyword": false },
+        { "wordTr": "canlıdır!", "itemId": "", "isKeyword": false }
+      ]
+    }
+  ]
+}

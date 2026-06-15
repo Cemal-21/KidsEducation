@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:KidsEducation.ViewModels.Game"
+             x:Class="KidsEducation.Views.Game.MathGamePage"
+             x:DataType="vm:MathGameViewModel"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource AppBackground}">
+
+    <Grid RowDefinitions="Auto,*" Padding="0">
+
+        <!-- Header -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*" Padding="16,48,16,12"
+              BackgroundColor="{StaticResource BrandMint}">
+            <Button Grid.Column="0" Text="←" FontSize="20" TextColor="White"
+                    BackgroundColor="Transparent" Command="{Binding GoBackCommand}" WidthRequest="44"/>
+            <StackLayout Grid.Column="1" VerticalOptions="Center" Spacing="4">
+                <Label Text="Matematik" FontSize="16" FontAttributes="Bold"
+                       TextColor="White" HorizontalOptions="Center"/>
+                <Label FontSize="13" TextColor="#CCFFFFFF" HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding DisplayNumber}"/>
+                            <Span Text=" / "/>
+                            <Span Text="{Binding TotalRounds}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </Grid>
+
+        <!-- Progress Bar -->
+        <ProgressBar Grid.Row="0" VerticalOptions="End" Progress="{Binding Progress}"
+                     ProgressColor="White" BackgroundColor="#3DFFFFFF" HeightRequest="6"/>
+
+        <!-- Content -->
+        <ScrollView Grid.Row="1">
+            <StackLayout Padding="20" Spacing="20">
+
+                <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"
+                                   Color="{StaticResource BrandMint}" HorizontalOptions="Center"/>
+
+                <StackLayout IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}" Spacing="24">
+
+                    <!-- Visual Emoji Area -->
+                    <Border Stroke="{StaticResource BorderLight}" StrokeThickness="1"
+                            StrokeShape="RoundRectangle 20" BackgroundColor="{StaticResource SurfaceWhite}"
+                            Padding="20,16" MinimumHeightRequest="80">
+                        <Label Text="{Binding VisualEmojis}" FontSize="28"
+                               HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                               LineBreakMode="WordWrap"/>
+                    </Border>
+
+                    <!-- Question -->
+                    <Border Stroke="{StaticResource BrandMint}" StrokeThickness="2"
+                            StrokeShape="RoundRectangle 16" BackgroundColor="{StaticResource SurfaceWhite}"
+                            Padding="24,16" HorizontalOptions="Center">
+                        <Grid>
+                            <Label Text="{Binding QuestionText}" FontSize="40" FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+
+                            <!-- Feedback overlays -->
+                            <Border IsVisible="{Binding ShowCorrectFeedback}" BackgroundColor="#CC4CAF50"
+                                    StrokeShape="RoundRectangle 16" Stroke="Transparent">
+                                <Label Text="✅" FontSize="48" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Border IsVisible="{Binding ShowWrongFeedback}" BackgroundColor="#CCF44336"
+                                    StrokeShape="RoundRectangle 16" Stroke="Transparent">
+                                <Label Text="❌" FontSize="48" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <!-- Answer Options 2×2 -->
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+                        <Border Grid.Row="0" Grid.Column="0"
+                                Stroke="{StaticResource BrandMint}" StrokeThickness="2"
+                                StrokeShape="RoundRectangle 16" BackgroundColor="{StaticResource SurfaceWhite}"
+                                HeightRequest="80">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectOptionCommand}"
+                                                      CommandParameter="{Binding Option0}"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="{Binding Option0.Value}" FontSize="32" FontAttributes="Bold"
+                                   TextColor="{StaticResource BrandMint}"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+
+                        <Border Grid.Row="0" Grid.Column="1"
+                                Stroke="{StaticResource BrandMint}" StrokeThickness="2"
+                                StrokeShape="RoundRectangle 16" BackgroundColor="{StaticResource SurfaceWhite}"
+                                HeightRequest="80">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectOptionCommand}"
+                                                      CommandParameter="{Binding Option1}"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="{Binding Option1.Value}" FontSize="32" FontAttributes="Bold"
+                                   TextColor="{StaticResource BrandMint}"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+
+                        <Border Grid.Row="1" Grid.Column="0"
+                                Stroke="{StaticResource BrandMint}" StrokeThickness="2"
+                                StrokeShape="RoundRectangle 16" BackgroundColor="{StaticResource SurfaceWhite}"
+                                HeightRequest="80">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectOptionCommand}"
+                                                      CommandParameter="{Binding Option2}"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="{Binding Option2.Value}" FontSize="32" FontAttributes="Bold"
+                                   TextColor="{StaticResource BrandMint}"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+
+                        <Border Grid.Row="1" Grid.Column="1"
+                                Stroke="{StaticResource BrandMint}" StrokeThickness="2"
+                                StrokeShape="RoundRectangle 16" BackgroundColor="{StaticResource SurfaceWhite}"
+                                HeightRequest="80">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectOptionCommand}"
+                                                      CommandParameter="{Binding Option3}"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="{Binding Option3.Value}" FontSize="32" FontAttributes="Bold"
+                                   TextColor="{StaticResource BrandMint}"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                    </Grid>
+
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

@@ -6,6 +6,7 @@ public class LearningItem
     public string NameTr { get; set; } = string.Empty;
     public string NameEn { get; set; } = string.Empty;
     public string ImagePath { get; set; } = string.Empty;
+    public string? SecondaryImagePath { get; set; }
     public string? AudioPath { get; set; }
     public string Category { get; set; } = string.Empty;
     public int DifficultyLevel { get; set; } = 1;
@@ -18,6 +19,8 @@ public class LearningItem
 
     // Sesli Tahmin oyunu için ElevenLabs ile üretilecek ipucu metni.
     public string? SoundClueText { get; set; }
+
+    public bool HasSecondaryImage => !string.IsNullOrWhiteSpace(SecondaryImagePath);
 
     // Sesli anlatımda okunacak metin. JSON'da yoksa otomatik oluşturulur.
     public string SpeakText =>

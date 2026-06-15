@@ -48,7 +48,7 @@
                         TextColor="#CCFFFFFF" />
                 </VerticalStackLayout>
 
-                <!-- Kategori emoji -->
+                <!-- Kategori ikonu -->
                 <Border
                     Grid.Column="2"
                     WidthRequest="50" HeightRequest="50"
@@ -56,9 +56,11 @@
                     Stroke="#33FFFFFF" StrokeThickness="1"
                     StrokeShape="RoundRectangle 16"
                     VerticalOptions="Center">
-                    <Label
-                        Text="{Binding CategoryEmoji}"
-                        FontSize="26"
+                    <Image
+                        Source="{Binding CategoryImage}"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Aspect="AspectFit"
                         HorizontalOptions="Center"
                         VerticalOptions="Center" />
                 </Border>
@@ -92,11 +94,6 @@
                         StrokeShape="RoundRectangle 24"
                         Padding="0"
                         HeightRequest="178">
-
-                        <controls:TappableBorder.Shadow>
-                            <Shadow Brush="#10000000" Offset="0,4" Radius="10" Opacity="0.1" />
-                        </controls:TappableBorder.Shadow>
-
                         <Grid RowDefinitions="122,56">
                             <Border
                                 Grid.Row="0"

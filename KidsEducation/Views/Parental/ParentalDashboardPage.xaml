@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:AnimatedPage
+    x:Class="KidsEducation.Views.Parental.ParentalDashboardPage"
+    x:Name="DashRoot"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:KidsEducation.Views"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    xmlns:vm="clr-namespace:KidsEducation.ViewModels.Parental"
+    xmlns:local="clr-namespace:KidsEducation.Views.Parental"
+    xmlns:converters="clr-namespace:KidsEducation.Converters"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{StaticResource AppBackground}">
+
+    <ContentPage.Resources>
+        <converters:InverseBoolConverter x:Key="InverseBool"/>
+        <converters:IntGreaterThanZeroConverter x:Key="IsPositiveConv"/>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- ══ HEADER ══ -->
+        <Border Grid.Row="0" Stroke="Transparent" StrokeShape="RoundRectangle 0,0,28,28">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#1E1B4B" Offset="0"/>
+                    <GradientStop Color="#3730A3" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid Padding="18,44,18,20" ColumnDefinitions="Auto,*,Auto">
+                <controls:TappableBorder Grid.Column="0"
+                    Command="{Binding GoBackCommand}"
+                    WidthRequest="40" HeightRequest="40"
+                    BackgroundColor="#22FFFFFF" Stroke="Transparent"
+                    StrokeShape="RoundRectangle 12" VerticalOptions="Center">
+                    <Label Text="←" FontSize="20" TextColor="White"
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                </controls:TappableBorder>
+
+                <VerticalStackLayout Grid.Column="1" Spacing="2" Margin="12,0" VerticalOptions="Center">
+                    <Label Text="Ebeveyn Paneli" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+                    <Label Text="{Binding ActiveProfile.Name, StringFormat='{0} için özet'}"
+                           FontSize="12" TextColor="#AAFFFFFF"/>
+                </VerticalStackLayout>
+
+                <Border Grid.Column="2"
+                        WidthRequest="44" HeightRequest="44"
+                        BackgroundColor="#22FFFFFF" Stroke="Transparent"
+                        StrokeShape="RoundRectangle 14" VerticalOptions="Center">
+                    <Label Text="{Binding ActiveProfile.AvatarEmoji}"
+                           FontSize="24" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- ══ CONTENT ══ -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="16,16,16,32" Spacing="16">
+
+                <!-- ── Yükleniyor ── -->
+                <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"
+                                   Color="#5148D4" HeightRequest="48"/>
+
+                <!-- ── Hızlı istatistikler ── -->
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10" IsVisible="{Binding IsLoading, Converter={StaticResource InverseBool}}">
+                    <!-- Seri -->
+                    <Border Grid.Column="0" StrokeShape="RoundRectangle 18" Stroke="Transparent" Padding="12,14">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#FFF7ED" Offset="0"/>
+                                <GradientStop Color="#FED7AA" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <VerticalStackLayout Spacing="3" HorizontalOptions="Center">
+                            <Label Text="🔥" FontSize="26" HorizontalOptions="Center"/>
+                            <Label Text="{Binding ActiveProfile.StreakDays}"
+                                   FontSize="22" FontAttributes="Bold" TextColor="#EA580C" HorizontalOptions="Center"/>
+                            <Label Text="gün seri" FontSize="10" TextColor="#9A3412" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Yıldız -->
+                    <Border Grid.Column="1" StrokeShape="RoundRectangle 18" Stroke="Transparent" Padding="12,14">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#FFFBEB" Offset="0"/>
+                                <GradientStop Color="#FDE68A" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <VerticalStackLayout Spacing="3" HorizontalOptions="Center">
+                            <Label Text="⭐" FontSize="26" HorizontalOptions="Center"/>
+                            <Label Text="{Binding ActiveProfile.TotalStars}"
+                                   FontSize="22" FontAttributes="Bold" TextColor="#D97706" HorizontalOptions="Center"/>
+                            <Label Text="yıldız" FontSize="10" TextColor="#92400E" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Toplam oyun -->
+                    <Border Grid.Column="2" StrokeShape="RoundRectangle 18" Stroke="Transparent" Padding="12,14">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#F0FDF4" Offset="0"/>
+                                <GradientStop Color="#BBF7D0" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <VerticalStackLayout Spacing="3" HorizontalOptions="Center">
+                            <Label Text="🎮" FontSize="26" HorizontalOptions="Center"/>
+                            <Label Text="{Binding TotalPlayText}"
+                                   FontSize="16" FontAttributes="Bold" TextColor="#16A34A" HorizontalOptions="Center"/>
+                            <Label Text="toplam" FontSize="10" TextColor="#14532D" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+                <!-- ── Haftalık Aktivite Çubuğu ── -->
+                <Border StrokeShape="RoundRectangle 20" Stroke="Transparent"
+                        BackgroundColor="White" Padding="16,16,16,12"
+                        IsVisible="{Binding IsLoading, Converter={StaticResource InverseBool}}">
+                    <Border.Shadow>
+                        <Shadow Brush="#10000000" Offset="0,4" Radius="12" Opacity="0.12"/>
+                    </Border.Shadow>
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Bu Hafta" FontSize="14" FontAttributes="Bold" TextColor="#1E1B4B"/>
+                        <CollectionView ItemsSource="{Binding WeekBars}" ItemsLayout="HorizontalList"
+                                        HeightRequest="110" SelectionMode="None">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <VerticalStackLayout WidthRequest="42" Spacing="4" HorizontalOptions="Center"
+                                                         VerticalOptions="End">
+                                        <Label Text="{Binding ActivityCount}" FontSize="10" FontAttributes="Bold"
+                                               TextColor="{Binding LabelColor}" HorizontalOptions="Center"
+                                               IsVisible="{Binding ActivityCount, Converter={StaticResource IsPositiveConv}}"/>
+                                        <BoxView HeightRequest="{Binding BarHeight}" WidthRequest="20"
+                                                 Color="{Binding BarColor}" CornerRadius="6"
+                                                 HorizontalOptions="Center" VerticalOptions="End"/>
+                                        <Label Text="{Binding DayLabel}" FontSize="9"
+                                               TextColor="{Binding LabelColor}"
+                                               HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- ── Bugünkü Hedef ── -->
+                <Border StrokeShape="RoundRectangle 20" Stroke="Transparent"
+                        Padding="16,14" IsVisible="{Binding IsLoading, Converter={StaticResource InverseBool}}">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#EDE9FE" Offset="0"/>
+                            <GradientStop Color="#DDD6FE" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <VerticalStackLayout Grid.Column="0" Spacing="6">
+                            <Label Text="🎯 Bugünün Hedefi" FontSize="13" FontAttributes="Bold" TextColor="#4C1D95"/>
+                            <Label Text="{Binding DailyGoal.HeadlineText}" FontSize="16" FontAttributes="Bold" TextColor="#5148D4"/>
+                            <ProgressBar Progress="{Binding DailyGoal.ProgressRatio}"
+                                         ProgressColor="#5148D4" BackgroundColor="#C4B5FD"
+                                         HeightRequest="8"/>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="1" Text="{Binding DailyGoal.CompletionText}"
+                               FontSize="22" FontAttributes="Bold" TextColor="#5148D4"
+                               VerticalOptions="Center" Margin="12,0,0,0"/>
+                    </Grid>
+                </Border>
+
+                <!-- ── Kategori İstatistikleri ── -->
+                <VerticalStackLayout Spacing="8" IsVisible="{Binding IsLoading, Converter={StaticResource InverseBool}}">
+                    <Label Text="Kategori Durumu" FontSize="15" FontAttributes="Bold"
+                           TextColor="#1E1B4B" Margin="4,0"/>
+                    <CollectionView ItemsSource="{Binding TopCategories}" SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border StrokeShape="RoundRectangle 14" Stroke="Transparent"
+                                        BackgroundColor="White" Padding="14,12" Margin="0,0,0,6">
+                                    <Border.Shadow>
+                                        <Shadow Brush="#08000000" Offset="0,2" Radius="8" Opacity="0.1"/>
+                                    </Border.Shadow>
+                                    <Grid ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="10">
+                                        <Label Grid.Column="0" Text="{Binding Emoji}"
+                                               FontSize="26" VerticalOptions="Center"/>
+                                        <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                            <Label Text="{Binding Name}" FontSize="13" FontAttributes="Bold"
+                                                   TextColor="#1E1B4B"/>
+                                            <Label Text="{Binding StarsText}" FontSize="11"/>
+                                        </VerticalStackLayout>
+                                        <Label Grid.Column="2" Text="{Binding PlayCountText}"
+                                               FontSize="12" TextColor="#6B7280" VerticalOptions="Center"/>
+                                        <BoxView Grid.Column="3" WidthRequest="10" HeightRequest="10"
+                                                 Color="{Binding ProgressColor}" CornerRadius="5"
+                                                 VerticalOptions="Center"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+                <!-- ── Güçlü / Geliştirilmesi Gereken ── -->
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="10"
+                      IsVisible="{Binding IsLoading, Converter={StaticResource InverseBool}}">
+                    <Border Grid.Column="0" StrokeShape="RoundRectangle 18" Stroke="Transparent" Padding="14,12">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#F0FDF4" Offset="0"/>
+                                <GradientStop Color="#DCFCE7" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="💪 En Güçlü" FontSize="11" FontAttributes="Bold" TextColor="#16A34A"/>
+                            <Label Text="{Binding StrongestCategory}" FontSize="14" FontAttributes="Bold"
+                                   TextColor="#14532D" LineBreakMode="TailTruncation"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="1" StrokeShape="RoundRectangle 18" Stroke="Transparent" Padding="14,12">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#FFF7ED" Offset="0"/>
+                                <GradientStop Color="#FFEDD5" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="📈 Çalışılmalı" FontSize="11" FontAttributes="Bold" TextColor="#EA580C"/>
+                            <Label Text="{Binding NeedsPracticeCategory}" FontSize="14" FontAttributes="Bold"
+                                   TextColor="#9A3412" LineBreakMode="TailTruncation"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+                <!-- ── Son görülme ── -->
+                <Border StrokeShape="RoundRectangle 16" Stroke="Transparent" Padding="14,10"
+                        BackgroundColor="White" IsVisible="{Binding IsLoading, Converter={StaticResource InverseBool}}">
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="🕐" FontSize="20" VerticalOptions="Center"/>
+                        <VerticalStackLayout Spacing="1" VerticalOptions="Center">
+                            <Label Text="Son aktif" FontSize="11" TextColor="#9CA3AF"/>
+                            <Label Text="{Binding LastSeenText}" FontSize="14" FontAttributes="Bold" TextColor="#374151"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</views:AnimatedPage>

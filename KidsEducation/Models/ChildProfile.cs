@@ -31,6 +31,22 @@ public class ChildProfile
         ? $"{TotalXp / 1000.0:0.#}K"
         : TotalXp.ToString();
 
+    public int Level => Math.Max(1, (TotalXp / 250) + 1);
+    public int CurrentLevelXp => TotalXp % 250;
+    public int NextLevelXp => 250;
+    public double LevelProgress => Math.Min(1, CurrentLevelXp / (double)NextLevelXp);
+    public int XpToNextLevel => Math.Max(0, NextLevelXp - CurrentLevelXp);
+    public string LevelTitle => Level switch
+    {
+        <= 2 => "Yeni Kaşif",
+        <= 4 => "Meraklı Öğrenci",
+        <= 7 => "Bilgi Avcısı",
+        <= 10 => "Süper Kaşif",
+        _ => "Bilgi Ustası"
+    };
+    public string LevelText => $"Seviye {Level}";
+    public string LevelProgressText => $"{CurrentLevelXp}/{NextLevelXp} XP";
+
     public string AgeGroupName => AgeGroup switch
     {
         AgeGroup.Toddler => "Minikler",

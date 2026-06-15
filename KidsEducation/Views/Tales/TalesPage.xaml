@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Tales.TalesPage"
+    x:Name="PageRoot"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:KidsEducation.Models"
+    xmlns:converters="clr-namespace:KidsEducation.Converters"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#FFF8F0">
+
+    <ContentPage.Resources>
+        <converters:InverseBoolConverter x:Key="InvBool"/>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Header -->
+        <Border Grid.Row="0" StrokeShape="RoundRectangle 0,0,28,28" Stroke="Transparent" Padding="20,52,20,20">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF8C42" Offset="0"/>
+                    <GradientStop Color="#FF6B6B" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid ColumnDefinitions="Auto,*">
+                <Border Grid.Column="0" WidthRequest="40" HeightRequest="40"
+                        BackgroundColor="#28FFFFFF" Stroke="Transparent"
+                        StrokeShape="RoundRectangle 14" Margin="0,0,12,0">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                    </Border.GestureRecognizers>
+                    <Label Text="←" FontSize="20" TextColor="White"
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Border>
+                <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                    <Label Text="📖 Masallar" FontSize="22" FontAttributes="Bold" TextColor="White"/>
+                    <Label Text="Sevimli çocuk masalları" FontSize="12" TextColor="#DDFFFFFF"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+
+        <!-- Liste -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="16,20,16,32" Spacing="0">
+
+                <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"
+                                   Color="#FF8C42" HorizontalOptions="Center"/>
+
+                <CollectionView ItemsSource="{Binding Tales}"
+                                IsVisible="{Binding IsLoading, Converter={StaticResource InvBool}}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Tale">
+                            <Border Margin="0,0,0,14"
+                                    BackgroundColor="White"
+                                    Stroke="#FFE5D0" StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 20"
+                                    Padding="0">
+                                <Border.Shadow>
+                                    <Shadow Brush="#15FF8C42" Offset="0,4" Radius="12" Opacity="0.2"/>
+                                </Border.Shadow>
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={x:Reference PageRoot}, Path=BindingContext.OpenTaleCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                </Border.GestureRecognizers>
+                                <Grid ColumnDefinitions="Auto,*,Auto" Padding="16" ColumnSpacing="14">
+                                    <Border Grid.Column="0"
+                                            WidthRequest="64" HeightRequest="64"
+                                            BackgroundColor="#FFF3E8"
+                                            Stroke="#FFE5D0" StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 18">
+                                        <Label Text="{Binding Emoji}" FontSize="32"
+                                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                    <VerticalStackLayout Grid.Column="1" Spacing="5" VerticalOptions="Center">
+                                        <Label Text="{Binding Title}" FontSize="16" FontAttributes="Bold"
+                                               TextColor="#2D1B00"/>
+                                        <HorizontalStackLayout Spacing="8">
+                                            <Border BackgroundColor="#FFF3E8" Stroke="#FFD8B0"
+                                                    StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="6,3">
+                                                <Label Text="{Binding AgeRangeText}" FontSize="10"
+                                                       TextColor="#CC5500" FontAttributes="Bold"/>
+                                            </Border>
+                                            <Border BackgroundColor="#F0FFF4" Stroke="#B2F0D8"
+                                                    StrokeThickness="1" StrokeShape="RoundRectangle 8" Padding="6,3">
+                                                <Label Text="{Binding DurationText}" FontSize="10"
+                                                       TextColor="#047857" FontAttributes="Bold"/>
+                                            </Border>
+                                        </HorizontalStackLayout>
+                                        <Label Text="{Binding PageCount, StringFormat='{0} sayfa'}"
+                                               FontSize="11" TextColor="#A0805A"/>
+                                    </VerticalStackLayout>
+                                    <Label Grid.Column="2" Text="›" FontSize="26"
+                                           TextColor="#FFB07A" VerticalOptions="Center"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

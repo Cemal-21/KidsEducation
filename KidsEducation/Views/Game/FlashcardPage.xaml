@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Game.FlashcardPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:KidsEducation.ViewModels.Game"
+    xmlns:conv="clr-namespace:KidsEducation.Converters"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#F0F2FA">
+
+    <ContentPage.Resources>
+        <conv:InverseBoolConverter x:Key="InverseBool" />
+        <Color x:Key="TextPrimary">#172033</Color>
+        <Color x:Key="TextMuted">#6B7280</Color>
+        <Color x:Key="SurfaceWhite">#FFFFFF</Color>
+        <Color x:Key="BorderLight">#E8E8F0</Color>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- HEADER -->
+        <Border Grid.Row="0" BackgroundColor="#FFFFFF" Stroke="{StaticResource BorderLight}"
+                StrokeThickness="0.5" StrokeShape="RoundRectangle 0,0,24,24" Padding="16,44,16,14">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <Border Grid.Column="0" WidthRequest="40" HeightRequest="40"
+                        BackgroundColor="#F1EEFF" Stroke="#DDD6FF" StrokeThickness="1"
+                        StrokeShape="RoundRectangle 14">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackCommand}" />
+                    </Border.GestureRecognizers>
+                    <Label Text="←" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"
+                           TextColor="#6C62F5" />
+                </Border>
+
+                <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="4">
+                    <Label Text="Flashcard" FontSize="18" FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                    <Label Text="{Binding ProgressText}" FontSize="13" TextColor="{StaticResource TextMuted}"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+
+                <Border Grid.Column="2" WidthRequest="40" HeightRequest="40"
+                        BackgroundColor="#F1EEFF" Stroke="#DDD6FF" StrokeThickness="1"
+                        StrokeShape="RoundRectangle 14">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShuffleCommand}" />
+                    </Border.GestureRecognizers>
+                    <Label Text="🔀" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- KART ALANI -->
+        <Grid Grid.Row="1" Padding="24,16,24,16" RowDefinitions="Auto,*">
+
+            <ProgressBar Grid.Row="0" Progress="{Binding ProgressPercent}" ProgressColor="#6C62F5"
+                         BackgroundColor="#EDE8FF" HeightRequest="6" Margin="0,0,0,12" />
+
+            <!-- ANA KART -->
+            <Border Grid.Row="1"
+                    BackgroundColor="#FFFFFF"
+                    Stroke="#DDD6FF" StrokeThickness="1.5"
+                    StrokeShape="RoundRectangle 28">
+                <Border.Shadow>
+                    <Shadow Brush="#226C62F5" Offset="0,8" Radius="24" Opacity="0.22" />
+                </Border.Shadow>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding FlipCardCommand}" />
+                    <SwipeGestureRecognizer Direction="Left" Command="{Binding NextCommand}" />
+                    <SwipeGestureRecognizer Direction="Right" Command="{Binding PreviousCommand}" />
+                </Border.GestureRecognizers>
+
+                <Grid>
+                    <!-- ÖN YÜZ -->
+                    <VerticalStackLayout IsVisible="{Binding IsFlipped, Converter={StaticResource InverseBool}}"
+                                         Spacing="16" VerticalOptions="Center" Padding="24">
+                        <Image Source="{Binding CurrentItem.ImagePath}"
+                               Aspect="AspectFit" HeightRequest="220"
+                               HorizontalOptions="Center" />
+                        <Label Text="Dokunarak çevir 👆" FontSize="13"
+                               TextColor="{StaticResource TextMuted}"
+                               HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+
+                    <!-- ARKA YÜZ -->
+                    <VerticalStackLayout IsVisible="{Binding IsFlipped}"
+                                         Spacing="18" VerticalOptions="Center" Padding="28"
+                                         HorizontalOptions="Center">
+                        <Label Text="{Binding CurrentItem.NameTr}"
+                               FontSize="40" FontAttributes="Bold"
+                               TextColor="#5148D4"
+                               HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                        <Label Text="{Binding CurrentItem.NameEn}"
+                               FontSize="18" TextColor="{StaticResource TextMuted}"
+                               HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                        <Label Text="{Binding CurrentItem.DescriptionTr}"
+                               FontSize="13" TextColor="{StaticResource TextPrimary}"
+                               HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                               LineBreakMode="WordWrap" Margin="0,4,0,0" />
+
+                        <Border BackgroundColor="#F1EEFF" Stroke="#DDD6FF" StrokeThickness="1"
+                                StrokeShape="RoundRectangle 20" Padding="20,10"
+                                HorizontalOptions="Center" Margin="0,8,0,0">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding PlaySoundCommand}" />
+                            </Border.GestureRecognizers>
+                            <Label Text="🔊 Dinle" FontSize="15" FontAttributes="Bold"
+                                   TextColor="#6C62F5" HorizontalOptions="Center" />
+                        </Border>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- ALT NAVİGASYON -->
+        <Border Grid.Row="2" BackgroundColor="#FFFFFF" Stroke="{StaticResource BorderLight}"
+                StrokeThickness="0.5" StrokeShape="RoundRectangle 24,24,0,0" Padding="24,14,24,32">
+            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="16">
+
+                <Border Grid.Column="0" WidthRequest="56" HeightRequest="56"
+                        BackgroundColor="#F1EEFF" Stroke="#DDD6FF" StrokeThickness="1.5"
+                        StrokeShape="RoundRectangle 18">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PreviousCommand}" />
+                    </Border.GestureRecognizers>
+                    <Label Text="◀" FontSize="22" TextColor="#6C62F5"
+                           HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border>
+
+                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                    <Label Text="Kartı çevirmek için dokun" FontSize="11"
+                           TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                    <Label Text="Geçmek için kaydır →" FontSize="11"
+                           TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+
+                <Border Grid.Column="2" WidthRequest="56" HeightRequest="56"
+                        BackgroundColor="#6C62F5" Stroke="Transparent"
+                        StrokeShape="RoundRectangle 18">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NextCommand}" />
+                    </Border.GestureRecognizers>
+                    <Label Text="▶" FontSize="22" TextColor="White"
+                           HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border>
+
+            </Grid>
+        </Border>
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,115 @@
+{
+  "categoryId": "cities",
+  "items": [
+    {
+      "id": "city_istanbul",
+      "nameTr": "İstanbul",
+      "nameEn": "Istanbul",
+      "imagePath": "city_istanbul",
+      "category": "cities",
+      "difficultyLevel": 2,
+      "funFact": "İstanbul, boğazı ve köprüleriyle bilinir.",
+      "descriptionTr": "İstanbul, Türkiye'nin en kalabalık illerinden biridir. Boğazı, köprüleri ve tarihi yerleriyle tanınır.",
+      "soundClueText": "Boğazı, köprüleri ve tarihi yerleriyle tanınan kalabalık il hangisidir?"
+    },
+    {
+      "id": "city_ankara",
+      "nameTr": "Ankara",
+      "nameEn": "Ankara",
+      "imagePath": "city_ankara",
+      "category": "cities",
+      "difficultyLevel": 2,
+      "funFact": "Ankara, Türkiye'nin başkentidir.",
+      "descriptionTr": "Ankara, Türkiye'nin başkentidir. Ülkenin yönetim merkezi burada bulunur.",
+      "soundClueText": "Türkiye'nin başkenti olan il hangisidir?"
+    },
+    {
+      "id": "city_izmir",
+      "nameTr": "İzmir",
+      "nameEn": "Izmir",
+      "imagePath": "city_izmir",
+      "category": "cities",
+      "difficultyLevel": 2,
+      "funFact": "İzmir, Ege Denizi kıyısında yer alır.",
+      "descriptionTr": "İzmir, Ege Bölgesi'nde deniz kıyısında bulunan bir ildir. Saat kulesiyle tanınır.",
+      "soundClueText": "Ege Denizi kıyısında yer alan ve saat kulesiyle bilinen il hangisidir?"
+    },
+    {
+      "id": "city_bursa",
+      "nameTr": "Bursa",
+      "nameEn": "Bursa",
+      "imagePath": "city_bursa",
+      "category": "cities",
+      "difficultyLevel": 2,
+      "funFact": "Bursa, yeşil doğasıyla bilinir.",
+      "descriptionTr": "Bursa, yeşil alanları, tarihi yapıları ve Uludağ ile tanınan bir ildir.",
+      "soundClueText": "Uludağ ve yeşil doğasıyla bilinen il hangisidir?"
+    },
+    {
+      "id": "city_antalya",
+      "nameTr": "Antalya",
+      "nameEn": "Antalya",
+      "imagePath": "city_antalya",
+      "category": "cities",
+      "difficultyLevel": 2,
+      "funFact": "Antalya, denizi ve sıcak havasıyla ünlüdür.",
+      "descriptionTr": "Antalya, Akdeniz kıyısında bulunan turistik bir ildir. Denizleri ve güneşli havasıyla tanınır.",
+      "soundClueText": "Akdeniz kıyısında, denizi ve güneşli havasıyla bilinen il hangisidir?"
+    },
+    {
+      "id": "city_konya",
+      "nameTr": "Konya",
+      "nameEn": "Konya",
+      "imagePath": "city_konya",
+      "category": "cities",
+      "difficultyLevel": 3,
+      "funFact": "Konya, geniş ovalarıyla bilinir.",
+      "descriptionTr": "Konya, İç Anadolu Bölgesi'nde yer alan geniş ve tarihi bir ildir.",
+      "soundClueText": "İç Anadolu'da yer alan, geniş ovalarıyla bilinen il hangisidir?"
+    },
+    {
+      "id": "city_trabzon",
+      "nameTr": "Trabzon",
+      "nameEn": "Trabzon",
+      "imagePath": "city_trabzon",
+      "category": "cities",
+      "difficultyLevel": 3,
+      "funFact": "Trabzon, Karadeniz kıyısında yer alır.",
+      "descriptionTr": "Trabzon, Karadeniz Bölgesi'nde deniz ve yeşil dağlarla tanınan bir ildir.",
+      "soundClueText": "Karadeniz kıyısında, yeşil dağlarıyla bilinen il hangisidir?"
+    },
+    {
+      "id": "city_diyarbakir",
+      "nameTr": "Diyarbakır",
+      "nameEn": "Diyarbakir",
+      "imagePath": "city_diyarbakir",
+      "category": "cities",
+      "difficultyLevel": 3,
+      "funFact": "Diyarbakır, tarihi surlarıyla bilinir.",
+      "descriptionTr": "Diyarbakır, tarihi surları ve köklü kültürüyle tanınan bir ildir.",
+      "soundClueText": "Tarihi surlarıyla bilinen il hangisidir?"
+    },
+    {
+      "id": "city_erzurum",
+      "nameTr": "Erzurum",
+      "nameEn": "Erzurum",
+      "imagePath": "city_erzurum",
+      "category": "cities",
+      "difficultyLevel": 3,
+      "funFact": "Erzurum, soğuk havası ve kış sporlarıyla bilinir.",
+      "descriptionTr": "Erzurum, Doğu Anadolu'da yer alan ve kışın soğuk havasıyla tanınan bir ildir.",
+      "soundClueText": "Doğu Anadolu'da yer alan, soğuk havası ve karıyla bilinen il hangisidir?"
+    },
+    {
+      "id": "city_gaziantep",
+      "nameTr": "Gaziantep",
+      "nameEn": "Gaziantep",
+      "imagePath": "city_gaziantep",
+      "category": "cities",
+      "difficultyLevel": 3,
+      "funFact": "Gaziantep, yemekleriyle ünlüdür.",
+      "descriptionTr": "Gaziantep, lezzetli yemekleri ve tarihi dokusuyla tanınan bir ildir.",
+      "soundClueText": "Lezzetli yemekleri ve tarihi dokusuyla bilinen il hangisidir?"
+    }
+  ]
+}

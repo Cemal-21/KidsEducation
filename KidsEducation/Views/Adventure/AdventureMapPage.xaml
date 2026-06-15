@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:AnimatedPage
+    x:Class="KidsEducation.Views.Adventure.AdventureMapPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:KidsEducation.Views"
+    xmlns:vm="clr-namespace:KidsEducation.ViewModels.Adventure"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{StaticResource AppBackground}">
+
+    <Grid RowDefinitions="Auto,*">
+        <Border Grid.Row="0" Stroke="Transparent" StrokeShape="RoundRectangle 0,0,28,28">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#2563EB" Offset="0"/>
+                    <GradientStop Color="#10B981" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid Padding="16,46,16,18" ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                <controls:TappableBorder
+                    Grid.Column="0"
+                    Command="{Binding GoBackCommand}"
+                    WidthRequest="38" HeightRequest="38"
+                    BackgroundColor="#28FFFFFF"
+                    Stroke="#40FFFFFF"
+                    StrokeShape="RoundRectangle 12">
+                    <Label Text="←" FontSize="20" TextColor="White"
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                </controls:TappableBorder>
+
+                <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                    <Label Text="🗺️ Macera Haritası"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                    <Label Text="{Binding SummaryText}"
+                           FontSize="12"
+                           TextColor="#DDFFFFFF"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <ActivityIndicator IsRunning="{Binding IsLoading}"
+                               IsVisible="{Binding IsLoading}"
+                               Color="{StaticResource BrandPurple}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+
+            <CollectionView ItemsSource="{Binding Nodes}"
+                            IsVisible="{Binding IsLoading, Converter={StaticResource InverseBool}}"
+                            SelectionMode="None"
+                            Margin="16,16,16,18">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="12"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:AdventureNodeCard">
+                        <controls:TappableBorder
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SelectNodeCommand}"
+                            CommandParameter="{Binding .}"
+                            BackgroundColor="{Binding BackgroundColor}"
+                            Stroke="{Binding BorderColor}"
+                            StrokeThickness="1.4"
+                            StrokeShape="RoundRectangle 22"
+                            Padding="12">
+                            <Grid ColumnDefinitions="Auto,78,*,Auto" ColumnSpacing="12">
+                                <Border Grid.Column="0"
+                                        WidthRequest="38"
+                                        HeightRequest="38"
+                                        BackgroundColor="#EEF0FF"
+                                        Stroke="#DCD6FF"
+                                        StrokeShape="RoundRectangle 13"
+                                        VerticalOptions="Center">
+                                    <Label Text="{Binding StepText}"
+                                           FontSize="12"
+                                           FontAttributes="Bold"
+                                           TextColor="{StaticResource BrandPurple}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                </Border>
+
+                                <Border Grid.Column="1"
+                                        WidthRequest="78"
+                                        HeightRequest="78"
+                                        BackgroundColor="{StaticResource SurfaceSoft}"
+                                        Stroke="Transparent"
+                                        StrokeShape="RoundRectangle 18">
+                                    <Grid>
+                                        <Image Source="{Binding ImagePath}"
+                                               Aspect="AspectFill"
+                                               Opacity="{Binding ImageOpacity}"
+                                               IsAnimationPlaying="False"/>
+                                        <Label Text="{Binding Emoji}"
+                                               FontSize="24"
+                                               HorizontalOptions="End"
+                                               VerticalOptions="Start"
+                                               Margin="0,5,6,0"/>
+                                    </Grid>
+                                </Border>
+
+                                <VerticalStackLayout Grid.Column="2" Spacing="5" VerticalOptions="Center">
+                                    <Label Text="{Binding Title}"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="{StaticResource TextPrimary}"
+                                           LineBreakMode="TailTruncation"/>
+                                    <Label Text="{Binding ModuleName}"
+                                           FontSize="10"
+                                           FontAttributes="Bold"
+                                           TextColor="{StaticResource TextMuted}"
+                                           LineBreakMode="TailTruncation"/>
+                                    <Label Text="{Binding StarsText}"
+                                           FontSize="14"
+                                           TextColor="#F59E0B"/>
+                                    <Label Text="{Binding StatusText}"
+                                           FontSize="11"
+                                           FontAttributes="Bold"
+                                           TextColor="{Binding StatusColor}"/>
+                                </VerticalStackLayout>
+
+                                <Border Grid.Column="3"
+                                        WidthRequest="36"
+                                        HeightRequest="36"
+                                        BackgroundColor="#F1EEFF"
+                                        Stroke="#DCD6FF"
+                                        StrokeShape="RoundRectangle 13"
+                                        VerticalOptions="Center">
+                                    <Label Text="›"
+                                           FontSize="22"
+                                           TextColor="{StaticResource BrandPurple}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                </Border>
+                            </Grid>
+                        </controls:TappableBorder>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </Grid>
+</views:AnimatedPage>

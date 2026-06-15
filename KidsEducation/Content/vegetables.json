@@ -8,7 +8,7 @@
       "imagePath": "vegetable_broccoli",
       "category": "vegetables",
       "difficultyLevel": 1,
-      "funFact": "Brokoli küçük ağaçlara benzer.",
+      "funFact": "Brokoli küçük ağaçlara benzediği için 'mini orman' denir.",
       "descriptionTr": "Brokoli yeşil renkli sağlıklı bir sebzedir. Görünüşü küçük ağaçlara benzer. Yemeklerde ve çorbalarda kullanılabilir. Brokoli vücudumuz için yararlı besinler içerir.",
       "soundClueText": "Yeşil renklidir, görünüşü küçük ağaçlara benzer ve sağlıklı yemeklerde kullanılabilir. Acaba bu hangi sebzedir?"
     },
@@ -19,7 +19,7 @@
       "imagePath": "vegetable_carrot",
       "category": "vegetables",
       "difficultyLevel": 1,
-      "funFact": "Havuç turuncu rengiyle tanınır.",
+      "funFact": "Tavşanların en sevdiği sebze havuçtur.",
       "descriptionTr": "Havuç turuncu renkli bir sebzedir. Toprağın altında yetişir. Çiğ olarak yenebilir veya yemeklerde kullanılabilir. Havuç göz sağlığı için yararlı besinler içerir.",
       "soundClueText": "Turuncu renkli, toprağın altında yetişen ve göz sağlığı için yararlı besinler içeren sebzedir. Acaba bu nedir?"
     },
@@ -30,7 +30,7 @@
       "imagePath": "vegetable_tomato",
       "category": "vegetables",
       "difficultyLevel": 1,
-      "funFact": "Domates kırmızı ve suludur.",
+      "funFact": "Domates aslında botanik olarak bir meyvedir.",
       "descriptionTr": "Domates kırmızı renkli ve sulu bir yiyecektir. Salatalarda, yemeklerde ve çorbalarda kullanılır. Tatlımsı ve hafif ekşi bir tadı vardır. Domates sofralarda çok sık yer alır.",
       "soundClueText": "Kırmızı renkli, sulu, salatalarda ve yemeklerde sık kullanılan yiyecektir. Acaba bu nedir?"
     },
@@ -41,7 +41,7 @@
       "imagePath": "vegetable_cucumber",
       "category": "vegetables",
       "difficultyLevel": 1,
-      "funFact": "Salatalık ferahlatıcıdır.",
+      "funFact": "Salatalığın %96'sı sudur, bu yüzden çok ferahlatıcıdır.",
       "descriptionTr": "Salatalık yeşil renkli ve ferah bir sebzedir. İçinde bol su bulunur. Genellikle salatalarda kullanılır. Çıtır çıtır yapısıyla çocukların sevebileceği bir sebzedir.",
       "soundClueText": "Yeşil renkli, ferahlatıcı, içinde bol su bulunan ve salatalarda kullanılan sebzedir. Acaba bu nedir?"
     },
@@ -52,7 +52,7 @@
       "imagePath": "vegetable_potato",
       "category": "vegetables",
       "difficultyLevel": 1,
-      "funFact": "Patates toprağın altında yetişir.",
+      "funFact": "Patates dünyada en çok tüketilen sebzelerden biridir.",
       "descriptionTr": "Patates toprağın altında yetişen bir sebzedir. Haşlanabilir, fırınlanabilir veya yemeklerde kullanılabilir. Yumuşak bir tadı vardır. Patates birçok farklı yemekte kullanılır.",
       "soundClueText": "Toprağın altında yetişir; haşlanabilir, fırınlanabilir ve birçok yemekte kullanılabilir. Acaba bu nedir?"
     },
@@ -63,9 +63,163 @@
       "imagePath": "vegetable_pepper",
       "category": "vegetables",
       "difficultyLevel": 2,
-      "funFact": "Biber farklı renklerde olabilir.",
+      "funFact": "Biber C vitamini bakımından portakaldan daha zengindir.",
       "descriptionTr": "Biber yeşil, kırmızı veya sarı renkte olabilir. Yemeklere lezzet verir. Bazı biberler tatlı, bazıları acı olabilir. Çocuklar için tatlı biberleri tanımak daha uygundur.",
       "soundClueText": "Yeşil, kırmızı ya da sarı olabilir; bazıları tatlı, bazıları acı olabilir ve yemeklere lezzet verir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_sogan",
+      "nameTr": "Soğan",
+      "nameEn": "Onion",
+      "imagePath": "vegetable_onion",
+      "category": "vegetables",
+      "difficultyLevel": 1,
+      "funFact": "Soğan keserken gözyaşı akmasına neden olur.",
+      "descriptionTr": "Soğan keskin kokulu ve katmanlı yapıda bir sebzedir. Yemeklere çok güzel aroma verir. Beyaz, sarı veya kırmızı renkte olabilir. Pek çok yemeğin vazgeçilmezi.",
+      "soundClueText": "Keskin kokulu, katmanlı yapıda ve yemeklere güzel aroma veren, beyaz veya kırmızı olabilen sebzedir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_sarimsak",
+      "nameTr": "Sarımsak",
+      "nameEn": "Garlic",
+      "imagePath": "vegetable_garlic",
+      "category": "vegetables",
+      "difficultyLevel": 2,
+      "funFact": "Sarımsak binlerce yıldır hem yiyecek hem ilaç olarak kullanılmıştır.",
+      "descriptionTr": "Sarımsak güçlü kokusuyla tanınan küçük beyaz diş yapılı bir sebzedir. Yemeklere lezzet ve aroma katmak için kullanılır. Sağlık için çok faydalıdır.",
+      "soundClueText": "Küçük beyaz dişlerden oluşan, güçlü kokusuyla yemeklere lezzet katan ve sağlığa çok yararlı sebzedir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_ispanak",
+      "nameTr": "Ispanak",
+      "nameEn": "Spinach",
+      "imagePath": "vegetable_spinach",
+      "category": "vegetables",
+      "difficultyLevel": 2,
+      "funFact": "Ispanak yiyen Popeye karakteri çok güçlüdür!",
+      "descriptionTr": "Ispanak koyu yeşil yapraklı, sağlıklı bir sebzedir. Demir ve vitamin bakımından çok zengindir. Yemeklerde, börek ve çorbalarda kullanılır. Çocukları güçlü yapar.",
+      "soundClueText": "Koyu yeşil yapraklı, demir ve vitamin açısından zengin ve güç veren sağlıklı bir sebzedir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_misir",
+      "nameTr": "Mısır",
+      "nameEn": "Corn",
+      "imagePath": "vegetable_corn",
+      "category": "vegetables",
+      "difficultyLevel": 1,
+      "funFact": "Ortalama bir mısır koçanında 800 tane mısır tanesi bulunur.",
+      "descriptionTr": "Mısır sarı renkli, tatlı ve koçan üzerinde büyüyen bir sebzedir. Haşlanarak veya ızgara yapılarak yenebilir. Popcorn yapımında da kullanılır. Çocukların çok sevdiği bir yiyecektir.",
+      "soundClueText": "Sarı renkli taneleri olan, koçan üzerinde büyüyen, haşlanabilen ve popcorn yapılan sebzedir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_bezelye",
+      "nameTr": "Bezelye",
+      "nameEn": "Pea",
+      "imagePath": "vegetable_pea",
+      "category": "vegetables",
+      "difficultyLevel": 2,
+      "funFact": "Bezelye baklagiller ailesine aittir.",
+      "descriptionTr": "Bezelye küçük, yuvarlak ve yeşil renkli bir sebzedir. Yeşil bir kapsül içinde büyür. Yemeklerde ve çorbalarda kullanılır. Protein bakımından zengindir.",
+      "soundClueText": "Küçük, yuvarlak ve yeşil renkli, yeşil kapsül içinde büyüyen ve protein bakımından zengin sebzedir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_kabak",
+      "nameTr": "Kabak",
+      "nameEn": "Zucchini",
+      "imagePath": "vegetable_zucchini",
+      "category": "vegetables",
+      "difficultyLevel": 2,
+      "funFact": "Kabak büyük bir ailedir; balkabağı, sakız kabağı hepsi bu aileden.",
+      "descriptionTr": "Kabak yeşil renkli, uzun ve silindir biçiminde bir sebzedir. Hem meyve hem sebze gibi kullanılır. Yemeklerde, börek ve mücver yapımında kullanılır.",
+      "soundClueText": "Yeşil renkli, uzun ve silindir biçiminde, yemeklerde ve mücverde kullanılan sebzedir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_balkabagi",
+      "nameTr": "Balkabağı",
+      "nameEn": "Pumpkin",
+      "imagePath": "vegetable_pumpkin",
+      "category": "vegetables",
+      "difficultyLevel": 2,
+      "funFact": "Balkabağı Cadılar Bayramı'nın simgesidir.",
+      "descriptionTr": "Balkabağı büyük, yuvarlak ve turuncu renkli bir sebzedir. Sonbaharda hasat edilir. Çorbası, tatlısı ve reçeli yapılabilir. Oyuklandığında fener yapılır.",
+      "soundClueText": "Büyük, yuvarlak ve turuncu renkli, sonbaharda toplanan ve çorbası yapılan sebzedir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_patlican",
+      "nameTr": "Patlıcan",
+      "nameEn": "Eggplant",
+      "imagePath": "vegetable_eggplant",
+      "category": "vegetables",
+      "difficultyLevel": 2,
+      "funFact": "Patlıcan aslında meyvedir ama sebze gibi kullanılır.",
+      "descriptionTr": "Patlıcan mor-siyah renkli, parlak ve oval bir sebzedir. Türk mutfağında çok kullanılır. Fırında, ızgarada veya kızartılarak yenebilir. Moussaka ve imam bayıldı bu sebzeyle yapılır.",
+      "soundClueText": "Mor-siyah renkli, parlak ve oval şekilli, Türk mutfağında çok kullanılan bir sebzedir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_kereviz",
+      "nameTr": "Kereviz",
+      "nameEn": "Celery",
+      "imagePath": "vegetable_celery",
+      "category": "vegetables",
+      "difficultyLevel": 3,
+      "funFact": "Kereviz yemek çok az kalori içerir.",
+      "descriptionTr": "Kereviz uzun, yeşil sapları olan kıtır bir sebzedir. Hem sapları hem kökü yenebilir. Salata ve çorbalarda kullanılır. Çıtır çıtır yapısıyla özeldir.",
+      "soundClueText": "Uzun yeşil sapları olan, kıtır ve çıtır yapıda, hem sapı hem kökü yenilen sebzedir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_turp",
+      "nameTr": "Turp",
+      "nameEn": "Radish",
+      "imagePath": "vegetable_radish",
+      "category": "vegetables",
+      "difficultyLevel": 3,
+      "funFact": "Turp çok hızlı büyüyen sebzelerden biridir.",
+      "descriptionTr": "Turp kırmızı veya beyaz renkli, küçük ve kıtır bir sebzedir. Toprağın altında yetişir. Hafif acımsı bir tadı vardır. Salatalarda kullanılır.",
+      "soundClueText": "Kırmızı veya beyaz renkli, küçük, kıtır ve hafif acımsı tadı olan bir sebzedir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_fasulye",
+      "nameTr": "Fasulye",
+      "nameEn": "Bean",
+      "imagePath": "vegetable_bean",
+      "category": "vegetables",
+      "difficultyLevel": 2,
+      "funFact": "Fasulye protein bakımından çok zengindir.",
+      "descriptionTr": "Fasulye yeşil, kırmızı veya beyaz renkte olabilen bir baklagil sebzedir. Harika bir protein kaynağıdır. Zeytinyağlı fasulye Türk mutfağının vazgeçilmez yemeğidir.",
+      "soundClueText": "Yeşil, kırmızı veya beyaz renkte olan, protein bakımından zengin ve zeytinyağlısı çok sevilen sebzedir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_lahana",
+      "nameTr": "Lahana",
+      "nameEn": "Cabbage",
+      "imagePath": "vegetable_cabbage",
+      "category": "vegetables",
+      "difficultyLevel": 2,
+      "funFact": "Lahana dünyanın en eski kültür bitkilerinden biridir.",
+      "descriptionTr": "Lahana yeşil veya mor renkli, yapraklı ve yuvarlak bir sebzedir. Sarma ve turşu yapımında kullanılır. C vitamini bakımından zengindir.",
+      "soundClueText": "Yeşil ya da mor renkli, yapraklı ve yuvarlak olan, sarma ve turşuda kullanılan sebzedir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_mantar",
+      "nameTr": "Mantar",
+      "nameEn": "Mushroom",
+      "imagePath": "vegetable_mushroom",
+      "category": "vegetables",
+      "difficultyLevel": 2,
+      "funFact": "Mantarlar ne bitki ne de hayvandır, kendi krallıklarına aittir.",
+      "descriptionTr": "Mantar şapkası ve sapıyla tanınan ve genellikle nemli ortamlarda yetişen bir yiyecektir. Yemeklere lezzet katmak için kullanılır. Beyaz, kahverengi gibi farklı renkleri vardır.",
+      "soundClueText": "Şapkası ve sapıyla tanınan, nemli ortamlarda yetişen ve yemeklere lezzet katan bir yiyecektir. Acaba bu nedir?"
+    },
+    {
+      "id": "vegetable_enginar",
+      "nameTr": "Enginar",
+      "nameEn": "Artichoke",
+      "imagePath": "vegetable_artichoke",
+      "category": "vegetables",
+      "difficultyLevel": 3,
+      "funFact": "Enginar karaciğer sağlığı için çok faydalıdır.",
+      "descriptionTr": "Enginar yeşil yapraklı, büyük ve etli bir sebzedir. Zeytinyağlı veya dolma olarak pişirilebilir. Sağlığa çok faydası olan özel bir sebzedir.",
+      "soundClueText": "Yeşil yapraklı, büyük ve etli olan, zeytinyağlı veya dolma olarak pişirilebilen özel bir sebzedir. Acaba bu nedir?"
     }
   ]
 }

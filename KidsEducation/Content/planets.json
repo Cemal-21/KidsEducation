@@ -1,0 +1,93 @@
+{
+  "categoryId": "planets",
+  "items": [
+    {
+      "id": "planet_mercury",
+      "nameTr": "Merkür",
+      "nameEn": "Mercury",
+      "imagePath": "planet_mercury",
+      "category": "planets",
+      "difficultyLevel": 2,
+      "funFact": "Merkür, Güneş'e en yakın gezegendir.",
+      "descriptionTr": "Merkür, Güneş'e en yakın gezegendir. Çok hızlı döner ve Güneş'in etrafındaki turunu kısa sürede tamamlar.",
+      "soundClueText": "Güneş'e en yakın olan ve çok hızlı dönen küçük gezegen hangisidir?"
+    },
+    {
+      "id": "planet_venus",
+      "nameTr": "Venüs",
+      "nameEn": "Venus",
+      "imagePath": "planet_venus",
+      "category": "planets",
+      "difficultyLevel": 2,
+      "funFact": "Venüs, gökyüzünde çok parlak görünebilir.",
+      "descriptionTr": "Venüs, Güneş'e yakın ve çok sıcak bir gezegendir. Gökyüzünde parlak göründüğü için kolay fark edilir.",
+      "soundClueText": "Gökyüzünde çok parlak görünebilen ve çok sıcak olan gezegen hangisidir?"
+    },
+    {
+      "id": "planet_earth",
+      "nameTr": "Dünya",
+      "nameEn": "Earth",
+      "imagePath": "planet_earth",
+      "category": "planets",
+      "difficultyLevel": 1,
+      "funFact": "Dünya, üzerinde yaşadığımız gezegendir.",
+      "descriptionTr": "Dünya, üzerinde yaşadığımız gezegendir. Denizleri, karaları, havası ve canlıları vardır.",
+      "soundClueText": "Üzerinde yaşadığımız, denizleri ve karaları olan gezegen hangisidir?"
+    },
+    {
+      "id": "planet_mars",
+      "nameTr": "Mars",
+      "nameEn": "Mars",
+      "imagePath": "planet_mars",
+      "category": "planets",
+      "difficultyLevel": 1,
+      "funFact": "Mars, kızıl gezegen olarak bilinir.",
+      "descriptionTr": "Mars, kırmızımsı rengiyle tanınır. Bu yüzden ona kızıl gezegen de denir.",
+      "soundClueText": "Kırmızımsı rengi nedeniyle kızıl gezegen olarak bilinen gezegen hangisidir?"
+    },
+    {
+      "id": "planet_jupiter",
+      "nameTr": "Jüpiter",
+      "nameEn": "Jupiter",
+      "imagePath": "planet_jupiter",
+      "category": "planets",
+      "difficultyLevel": 2,
+      "funFact": "Jüpiter, Güneş sisteminin en büyük gezegenidir.",
+      "descriptionTr": "Jüpiter, Güneş sistemindeki en büyük gezegendir. Üzerinde renkli çizgiler ve büyük fırtınalar bulunur.",
+      "soundClueText": "Güneş sisteminin en büyük gezegeni hangisidir?"
+    },
+    {
+      "id": "planet_saturn",
+      "nameTr": "Satürn",
+      "nameEn": "Saturn",
+      "imagePath": "planet_saturn",
+      "category": "planets",
+      "difficultyLevel": 2,
+      "funFact": "Satürn, halkalarıyla ünlüdür.",
+      "descriptionTr": "Satürn, etrafındaki büyük halkalarıyla tanınır. Bu halkalar onu diğer gezegenlerden kolayca ayırır.",
+      "soundClueText": "Etrafındaki büyük halkalarıyla ünlü gezegen hangisidir?"
+    },
+    {
+      "id": "planet_uranus",
+      "nameTr": "Uranüs",
+      "nameEn": "Uranus",
+      "imagePath": "planet_uranus",
+      "category": "planets",
+      "difficultyLevel": 3,
+      "funFact": "Uranüs, mavi-yeşil rengiyle bilinir.",
+      "descriptionTr": "Uranüs, soğuk ve uzak bir gezegendir. Mavi-yeşil rengiyle dikkat çeker.",
+      "soundClueText": "Mavi-yeşil rengiyle bilinen soğuk ve uzak gezegen hangisidir?"
+    },
+    {
+      "id": "planet_neptune",
+      "nameTr": "Neptün",
+      "nameEn": "Neptune",
+      "imagePath": "planet_neptune",
+      "category": "planets",
+      "difficultyLevel": 3,
+      "funFact": "Neptün, Güneş'e çok uzak bir gezegendir.",
+      "descriptionTr": "Neptün, Güneş sistemindeki en uzak gezegenlerden biridir. Güçlü rüzgarları ve mavi rengiyle bilinir.",
+      "soundClueText": "Mavi rengi ve güçlü rüzgarlarıyla bilinen, Güneş'e çok uzak gezegen hangisidir?"
+    }
+  ]
+}

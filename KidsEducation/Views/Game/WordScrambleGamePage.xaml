@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:KidsEducation.ViewModels.Game"
+             xmlns:models="clr-namespace:KidsEducation.ViewModels.Game"
+             x:Class="KidsEducation.Views.Game.WordScrambleGamePage"
+             x:DataType="vm:WordScrambleGameViewModel"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource AppBackground}">
+
+    <Grid RowDefinitions="Auto,*" Padding="0">
+
+        <!-- Header -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Padding="16,48,16,12"
+              BackgroundColor="#FF8C42">
+            <Button Grid.Column="0" Text="←" FontSize="20" TextColor="White"
+                    BackgroundColor="Transparent" Command="{Binding GoBackCommand}" WidthRequest="44"/>
+            <StackLayout Grid.Column="1" VerticalOptions="Center" Spacing="4">
+                <Label Text="Kelime Bul" FontSize="16" FontAttributes="Bold"
+                       TextColor="White" HorizontalOptions="Center"/>
+                <Label FontSize="13" TextColor="#CCFFFFFF" HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding DisplayNumber}"/>
+                            <Span Text=" / "/>
+                            <Span Text="{Binding TotalRounds}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+            <Button Grid.Column="2" Text="🔊" FontSize="20" TextColor="White"
+                    BackgroundColor="Transparent" Command="{Binding SpeakClueCommand}"/>
+        </Grid>
+
+        <!-- Progress Bar -->
+        <ProgressBar Grid.Row="0" VerticalOptions="End" Progress="{Binding Progress}"
+                     ProgressColor="White" BackgroundColor="#3DFFFFFF" HeightRequest="6"/>
+
+        <!-- Content -->
+        <ScrollView Grid.Row="1">
+            <StackLayout Padding="20" Spacing="16">
+
+                <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"
+                                   Color="#FF8C42" HorizontalOptions="Center"/>
+
+                <StackLayout IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}" Spacing="16">
+
+                    <!-- Image -->
+                    <Border Stroke="{StaticResource BorderLight}" StrokeThickness="1"
+                            StrokeShape="RoundRectangle 20" BackgroundColor="{StaticResource SurfaceWhite}"
+                            HorizontalOptions="Center" WidthRequest="180" HeightRequest="180">
+                        <Grid>
+                            <Image Source="{Binding CurrentItem.ImagePath}" Aspect="AspectFit" Margin="12"/>
+                            <Border IsVisible="{Binding ShowCorrectFeedback}" BackgroundColor="#CC4CAF50"
+                                    StrokeShape="RoundRectangle 20" Stroke="Transparent">
+                                <Label Text="✅" FontSize="56" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Border IsVisible="{Binding ShowWrongFeedback}" BackgroundColor="#CCF44336"
+                                    StrokeShape="RoundRectangle 20" Stroke="Transparent">
+                                <Label Text="❌" FontSize="56" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <Label Text="Harfleri doğru sıraya diz!" FontSize="14"
+                           TextColor="{StaticResource TextSecondary}" HorizontalOptions="Center"/>
+
+                    <!-- Answer Slots (Placed Letters) -->
+                    <Border Stroke="#FF8C42" StrokeThickness="2" StrokeShape="RoundRectangle 12"
+                            BackgroundColor="{StaticResource SurfaceWhite}" Padding="8,10" MinimumHeightRequest="56">
+                        <FlexLayout BindableLayout.ItemsSource="{Binding PlacedLetters}"
+                                    Wrap="Wrap" JustifyContent="Center" AlignItems="Center">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="models:ScrambleLetter">
+                                    <Border Stroke="#FF8C42" StrokeThickness="1.5"
+                                            StrokeShape="RoundRectangle 8"
+                                            BackgroundColor="#FFEFE8" Margin="3" Padding="10,6">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.RemoveLetterCommand}"
+                                                CommandParameter="{Binding .}"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="{Binding Letter}" FontSize="22" FontAttributes="Bold"
+                                               TextColor="#FF8C42" HorizontalOptions="Center"/>
+                                    </Border>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </FlexLayout>
+                    </Border>
+
+                    <!-- Available Letter Chips -->
+                    <FlexLayout BindableLayout.ItemsSource="{Binding AvailableLetters}"
+                                Wrap="Wrap" JustifyContent="Center" AlignItems="Center">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="models:ScrambleLetter">
+                                <Border Stroke="{StaticResource BrandPurple}" StrokeThickness="2"
+                                        StrokeShape="RoundRectangle 10"
+                                        BackgroundColor="{StaticResource SurfaceWhite}" Margin="4" Padding="14,10">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.PlaceLetterCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                    </Border.GestureRecognizers>
+                                    <Label Text="{Binding Letter}" FontSize="24" FontAttributes="Bold"
+                                           TextColor="{StaticResource BrandPurple}" HorizontalOptions="Center"/>
+                                </Border>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+
+                    <!-- Action Buttons -->
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0,8,0,0">
+                        <Button Grid.Column="0" Text="Temizle" Command="{Binding ClearAnswerCommand}"
+                                BackgroundColor="{StaticResource BorderLight}" TextColor="{StaticResource TextPrimary}"
+                                CornerRadius="14" FontSize="15"/>
+                        <Button Grid.Column="1" Text="Kontrol Et ✓" Command="{Binding CheckAnswerCommand}"
+                                IsEnabled="{Binding CanCheck}"
+                                BackgroundColor="#FF8C42" TextColor="White"
+                                CornerRadius="14" FontSize="15" FontAttributes="Bold"/>
+                    </Grid>
+
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

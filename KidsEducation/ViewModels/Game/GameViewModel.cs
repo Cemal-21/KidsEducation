@@ -8,6 +8,7 @@ namespace KidsEducation.ViewModels.Game;
 
 [QueryProperty(nameof(CategoryId), "categoryId")]
 [QueryProperty(nameof(GameTypeName), "gameType")]
+[QueryProperty(nameof(TimedModeParam), "timed")]
 public partial class GameViewModel : ObservableObject
 {
     private readonly ContentService _contentService;
@@ -18,9 +19,12 @@ public partial class GameViewModel : ObservableObject
     private readonly AdaptiveDifficultyEngine _adaptiveDifficultyEngine;
 
     private ChildProfile? _profile;
+    private CancellationTokenSource? _timerCts;
+    private const int TimerSeconds = 15;
 
     [ObservableProperty] private string _categoryId = string.Empty;
     [ObservableProperty] private string _gameTypeName = string.Empty;
+    [ObservableProperty] private string _timedModeParam = string.Empty;
     [ObservableProperty] private GameSession? _currentSession;
     [ObservableProperty] private GameRound? _currentRound;
     [ObservableProperty] private int _currentRoundIndex;
@@ -29,6 +33,13 @@ public partial class GameViewModel : ObservableObject
     [ObservableProperty] private bool _lastAnswerCorrect;
     [ObservableProperty] private bool _canAnswer = true;
     [ObservableProperty] private string? _selectedOptionId;
+
+    // ── Zaman yarışı modu ─────────────────────────────────────
+    [ObservableProperty] private bool _timerEnabled;
+    [ObservableProperty] private int _timeLeft = TimerSeconds;
+    [ObservableProperty] private double _timerProgress = 1.0;
+    [ObservableProperty] private string _timerColor = "#28B87A";
+    [ObservableProperty] private int _speedBonus;
 
     public int TotalRounds => CurrentSession?.TotalRounds ?? 0;
     public double Progress => TotalRounds == 0 ? 0 : (double)CurrentRoundIndex / TotalRounds;
@@ -84,6 +95,8 @@ public partial class GameViewModel : ObservableObject
                 _profile.OptionCount,
                 difficultyLevel: nextDifficulty);
 
+            TimerEnabled = TimedModeParam == "true" || _profile.TimerEnabled;
+            SpeedBonus = 0;
             CurrentRoundIndex = 0;
             LoadCurrentRound();
         }
@@ -98,6 +111,7 @@ public partial class GameViewModel : ObservableObject
     {
         if (!CanAnswer || CurrentSession is null || _profile is null) return;
 
+        StopTimer();
         CanAnswer = false;
         SelectedOptionId = itemId;
 
@@ -107,11 +121,20 @@ public partial class GameViewModel : ObservableObject
         LastAnswerCorrect = isCorrect;
         ShowFeedback = true;
 
+        if (isCorrect && TimerEnabled)
+            SpeedBonus += Math.Max(0, TimeLeft * 10);
+
         // ── Ses efekti ───────────────────────────────────────
         if (isCorrect)
+        {
+            HapticService.Success();
             await _audioService.PlayCorrectAsync();
+        }
         else
+        {
+            HapticService.Error();
             await _audioService.PlayWrongAsync();
+        }
         // ────────────────────────────────────────────────────
 
         await Task.Delay(1200);
@@ -153,8 +176,53 @@ public partial class GameViewModel : ObservableObject
     {
         if (CurrentSession is null) return;
         CurrentRound = CurrentSession.Rounds[CurrentRoundIndex];
+        if (TimerEnabled)
+            StartTimer();
+    }
+
+    // ── Timer mantığı ─────────────────────────────────────────
+
+    private void StartTimer()
+    {
+        StopTimer();
+        TimeLeft = TimerSeconds;
+        TimerProgress = 1.0;
+        TimerColor = "#28B87A";
+        _timerCts = new CancellationTokenSource();
+        _ = RunTimerAsync(_timerCts.Token);
+    }
+
+    private void StopTimer()
+    {
+        _timerCts?.Cancel();
+        _timerCts = null;
+    }
+
+    private async Task RunTimerAsync(CancellationToken ct)
+    {
+        while (TimeLeft > 0 && !ct.IsCancellationRequested)
+        {
+            await Task.Delay(1000, ct).ContinueWith(_ => { });
+            if (ct.IsCancellationRequested) return;
+
+            TimeLeft--;
+            TimerProgress = (double)TimeLeft / TimerSeconds;
+            TimerColor = TimeLeft switch
+            {
+                <= 5  => "#FF5C5C",
+                <= 10 => "#FFC857",
+                _     => "#28B87A"
+            };
+        }
+
+        if (!ct.IsCancellationRequested && CanAnswer)
+            await SelectOptionAsync("__timeout__");
     }
 
     [RelayCommand]
-    public Task GoBackAsync() => _navigationService.GoBackAsync();
+    public Task GoBackAsync()
+    {
+        StopTimer();
+        return _navigationService.GoBackAsync();
+    }
 }

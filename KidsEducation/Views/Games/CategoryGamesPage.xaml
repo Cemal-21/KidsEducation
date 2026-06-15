@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Games.CategoryGamesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    xmlns:vm="clr-namespace:KidsEducation.ViewModels.Games"
+    x:DataType="vm:CategoryGamesViewModel"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{StaticResource AppBackground}">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Header -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*" Padding="18,44,18,18"
+              BackgroundColor="{StaticResource BrandPurple}">
+            <controls:TappableBorder
+                Grid.Column="0"
+                Command="{Binding GoBackCommand}"
+                WidthRequest="40" HeightRequest="40"
+                BackgroundColor="#22FFFFFF" Stroke="#30FFFFFF"
+                StrokeThickness="1" StrokeShape="RoundRectangle 13"
+                VerticalOptions="Center">
+                <Label Text="‹" FontSize="26" TextColor="White"
+                       HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-3,0,0" />
+            </controls:TappableBorder>
+
+            <VerticalStackLayout Grid.Column="1" Spacing="1" VerticalOptions="Center" Margin="12,0,0,0">
+                <Label FontSize="20" FontAttributes="Bold" TextColor="White">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding CategoryEmoji}" />
+                            <Span Text=" " />
+                            <Span Text="{Binding CategoryName}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="Bu konuyla oynayabileceğin oyunlar" FontSize="12" TextColor="#BAFFFFFF" />
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- Oyun kartları grid -->
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding GameCards}"
+                        Margin="18,18,18,24">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2"
+                                 HorizontalItemSpacing="12"
+                                 VerticalItemSpacing="12" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="vm:GameLauncherCard">
+                    <controls:TappableBorder
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenGameCommand}"
+                        CommandParameter="{Binding .}"
+                        Style="{StaticResource ElevatedSurfaceCard}"
+                        Padding="14">
+                        <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="4">
+
+                            <!-- Emoji ikon -->
+                            <Border Grid.Row="0"
+                                    WidthRequest="44" HeightRequest="44"
+                                    BackgroundColor="{Binding BackgroundColor}"
+                                    Stroke="Transparent"
+                                    StrokeShape="RoundRectangle 14"
+                                    HorizontalOptions="Start">
+                                <Label Text="{Binding Emoji}" FontSize="22"
+                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+
+                            <!-- Başlık + açıklama -->
+                            <VerticalStackLayout Grid.Row="1" Spacing="3" Margin="0,8,0,0">
+                                <Label Text="{Binding Title}" FontSize="13" FontAttributes="Bold"
+                                       TextColor="{StaticResource TextPrimary}" LineBreakMode="WordWrap"/>
+                                <Label Text="{Binding Description}" FontSize="10"
+                                       TextColor="{StaticResource TextMuted}" LineBreakMode="WordWrap"/>
+                            </VerticalStackLayout>
+
+                            <!-- Oyna butonu -->
+                            <Border Grid.Row="2"
+                                    BackgroundColor="{Binding AccentColor}"
+                                    Stroke="Transparent"
+                                    StrokeShape="RoundRectangle 10"
+                                    Padding="10,5"
+                                    HorizontalOptions="Start"
+                                    Margin="0,4,0,0">
+                                <Label Text="▶ Oyna" FontSize="11" FontAttributes="Bold" TextColor="White"/>
+                            </Border>
+
+                        </Grid>
+                    </controls:TappableBorder>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

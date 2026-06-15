@@ -18,8 +18,16 @@ public partial class ResultPage : AnimatedPage
         base.OnAppearing();
 
         // Kısa gecikme — sayfa tam yüklendikten sonra göster
-        await Task.Delay(400);
-        await ShowCelebrationAsync();
+        try
+        {
+            await _vm.LoadSessionAsync();
+            await Task.Delay(400);
+            await ShowCelebrationAsync();
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[ResultPage] Sonuç ekranı yüklenemedi: {ex}");
+        }
     }
 
     private async Task ShowCelebrationAsync()

@@ -8,7 +8,7 @@
       "imagePath": "fruit_apple",
       "category": "fruits",
       "difficultyLevel": 1,
-      "funFact": "Elma sağlıklı bir meyvedir.",
+      "funFact": "Dünyada 7.500'den fazla elma çeşidi vardır.",
       "descriptionTr": "Elma kırmızı, yeşil veya sarı renkte olabilir. Tatlı ve sulu bir meyvedir. Ağaçta yetişir. Elma yemek vücudumuza enerji verir.",
       "soundClueText": "Kırmızı, yeşil ya da sarı olabilen, ağaçta yetişen, tatlı ve sulu bir meyvedir. Acaba bu nedir?"
     },
@@ -19,7 +19,7 @@
       "imagePath": "fruit_banana",
       "category": "fruits",
       "difficultyLevel": 1,
-      "funFact": "Muz potasyum içerir.",
+      "funFact": "Muzlar bükerek değil, aşağıdan yukarıya doğru soyulmalıdır.",
       "descriptionTr": "Muz sarı renkli, yumuşak ve tatlı bir meyvedir. Kabuğu soyularak yenir. Çocukların sevdiği meyvelerden biridir. Muz vücudumuza enerji verir.",
       "soundClueText": "Sarı renkli, yumuşak ve tatlıdır. Kabuğu soyularak yenir ve enerji verir. Acaba bu hangi meyvedir?"
     },
@@ -30,9 +30,9 @@
       "imagePath": "fruit_strawberry",
       "category": "fruits",
       "difficultyLevel": 1,
-      "funFact": "Çileğin üzerinde küçük tohumlar vardır.",
-      "descriptionTr": "Çilek kırmızı renkli ve güzel kokulu bir meyvedir. Üzerinde küçük tohumlar bulunur. Tatlı ve hafif ekşi bir tadı olabilir. Çilek genellikle yaz aylarında sevilerek yenir.",
-      "soundClueText": "Kırmızı renkli, güzel kokulu, üzerinde küçük tohumları olan tatlı bir meyvedir. Acaba bu nedir?"
+      "funFact": "Çilek aslında botanik olarak meyve değil, tohumlu bir sebzedir.",
+      "descriptionTr": "Çilek küçük, kırmızı ve tatlı bir meyvedir. Üzerinde sarı küçük tohumlar vardır. Taze yenebilir, reçel ve meyve suyu yapılabilir. Çocukların çok sevdiği bir meyvedir.",
+      "soundClueText": "Kırmızı, küçük, tatlı ve üzerinde sarı tohumlar bulunan sevimli bir meyvedir. Acaba bu nedir?"
     },
     {
       "id": "fruit_portakal",
@@ -41,9 +41,9 @@
       "imagePath": "fruit_orange",
       "category": "fruits",
       "difficultyLevel": 1,
-      "funFact": "Portakal C vitamini içerir.",
-      "descriptionTr": "Portakal turuncu renkli ve sulu bir meyvedir. Kabuğu soyularak yenir. İçinden tatlı ve ferah bir su çıkar. Portakal özellikle kış aylarında çok sevilir.",
-      "soundClueText": "Turuncu renkli, kabuğu soyulan ve içinden ferah bir su çıkan sulu bir meyvedir. Acaba bu nedir?"
+      "funFact": "Portakal hem rengin hem de meyvenin adıdır.",
+      "descriptionTr": "Portakal turuncu renkli, sulu ve tatlımsı bir meyvedir. Kabuğu soyularak yenir. C vitamini bakımından çok zengindir. Suyunu sıkarak portakal suyu yapılabilir.",
+      "soundClueText": "Turuncu renkli, sulu ve C vitamini bakımından zengin olan, kabuğu soyularak yenen meyvedir. Acaba bu nedir?"
     },
     {
       "id": "fruit_uzum",
@@ -51,10 +51,10 @@
       "nameEn": "Grape",
       "imagePath": "fruit_grape",
       "category": "fruits",
-      "difficultyLevel": 2,
-      "funFact": "Üzüm salkım halinde yetişir.",
-      "descriptionTr": "Üzüm küçük tanelerden oluşan bir meyvedir. Salkım halinde yetişir. Mor, yeşil veya siyah renkte olabilir. Üzüm tatlı tadıyla çocukların sevdiği meyvelerdendir.",
-      "soundClueText": "Küçük tanelerden oluşur, salkım halinde yetişir ve mor, yeşil ya da siyah renkte olabilir. Acaba bu nedir?"
+      "difficultyLevel": 1,
+      "funFact": "Üzümden pekmez, şıra ve kuru üzüm yapılır.",
+      "descriptionTr": "Üzüm salkım halinde yetişen küçük meyvelerdir. Mor, yeşil veya kırmızı olabilir. Tatlı ve sulu bir tada sahiptir. Bağ bozumunda toplanır.",
+      "soundClueText": "Salkım halinde yetişen, mor veya yeşil olabilen, tatlı ve sulu küçük meyvelerdir. Acaba bu nedir?"
     },
     {
       "id": "fruit_karpuz",
@@ -62,10 +62,164 @@
       "nameEn": "Watermelon",
       "imagePath": "fruit_watermelon",
       "category": "fruits",
+      "difficultyLevel": 1,
+      "funFact": "Karpuzun %92'si sudur.",
+      "descriptionTr": "Karpuz yazın yetişen büyük ve sulu bir meyvedir. Dışı yeşil, içi kırmızıdır. Çok ferahlatıcıdır. Yazın sıcak günlerde çok sevilir.",
+      "soundClueText": "Dışı yeşil içi kırmızı, büyük, sulu ve yazın çok sevilip yenen ferahlatıcı meyvedir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_armut",
+      "nameTr": "Armut",
+      "nameEn": "Pear",
+      "imagePath": "fruit_pear",
+      "category": "fruits",
+      "difficultyLevel": 1,
+      "funFact": "Armutun şekline benzer vücut şekline 'armut biçimi' denir.",
+      "descriptionTr": "Armut yeşil veya sarı renkli, tatlı ve sulu bir meyvedir. Kendine özgü şekliyle kolayca tanınır. Ağaçta yetişir. Taze yenebilir veya komposto yapılabilir.",
+      "soundClueText": "Kendine özgü şekliyle tanınan, yeşil veya sarı renkli, tatlı ve sulu bir meyvedir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_kiraz",
+      "nameTr": "Kiraz",
+      "nameEn": "Cherry",
+      "imagePath": "fruit_cherry",
+      "category": "fruits",
       "difficultyLevel": 2,
-      "funFact": "Karpuzun büyük kısmı sudur.",
-      "descriptionTr": "Karpuz büyük ve sulu bir meyvedir. Dışı yeşil, içi genellikle kırmızıdır. Yaz aylarında serinlemek için çok sevilir. Tatlı ve ferah bir tadı vardır.",
-      "soundClueText": "Dışı yeşil, içi genellikle kırmızı olan, yazın serinlemek için sevilen büyük ve sulu bir meyvedir. Acaba bu nedir?"
+      "funFact": "Kirazlar çiftler halinde büyüdüğü için ikizlerin sembolüdür.",
+      "descriptionTr": "Kiraz küçük, yuvarlak ve parlak kırmızı renkli bir meyvedir. Baharın sonunda olgunlaşır. Tatlı ve biraz ekşi bir tadı vardır. İki kiraz genellikle bir sap üzerinde birlikte bulunur.",
+      "soundClueText": "Küçük, yuvarlak, parlak kırmızı renkli ve bahar mevsiminde olgunlaşan tatlımsı meyvedir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_seftali",
+      "nameTr": "Şeftali",
+      "nameEn": "Peach",
+      "imagePath": "fruit_peach",
+      "category": "fruits",
+      "difficultyLevel": 2,
+      "funFact": "Şeftali Çin'de binlerce yıldır yetiştirilmektedir.",
+      "descriptionTr": "Şeftali sarımsı-pembe renkli, tüylü kabuklu ve sulu bir meyvedir. Yaz mevsiminde yetişir. Tatlı ve hafif ekşi bir aroması vardır. İçinde büyük bir çekirdeği bulunur.",
+      "soundClueText": "Tüylü kabuğu olan, sarı-pembe renkli, sulu ve yazın yetişen büyük çekirdekli bir meyvedir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_ananas",
+      "nameTr": "Ananas",
+      "nameEn": "Pineapple",
+      "imagePath": "fruit_pineapple",
+      "category": "fruits",
+      "difficultyLevel": 2,
+      "funFact": "Bir ananas büyümesi 2 yıl sürebilir.",
+      "descriptionTr": "Ananas tropikal bir meyvedir. Üstünde yeşil yaprakları vardır. Kabuğu sert ve pütürlüdür. İçi sarı, sulu ve tatlımsı-ekşi bir tada sahiptir.",
+      "soundClueText": "Üstünde yeşil yaprakları olan, sert pütürlü kabuğu bulunan, içi sarı sulu tropikal bir meyvedir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_kavun",
+      "nameTr": "Kavun",
+      "nameEn": "Melon",
+      "imagePath": "fruit_melon",
+      "category": "fruits",
+      "difficultyLevel": 2,
+      "funFact": "Kavun karpuzun akrabasıdır.",
+      "descriptionTr": "Kavun sarımsı-turuncu renkli, büyük ve çok tatlı bir meyvedir. Yazın yetişir. İçi sarı ve çok sulu olur. Güzel bir kokusu vardır.",
+      "soundClueText": "Sarı-turuncu renkli, büyük, çok tatlı ve güzel kokulu bir yaz meyvesidir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_kivi",
+      "nameTr": "Kivi",
+      "nameEn": "Kiwi",
+      "imagePath": "fruit_kiwi",
+      "category": "fruits",
+      "difficultyLevel": 2,
+      "funFact": "Kivi C vitamini bakımından portakaldan daha zengindir.",
+      "descriptionTr": "Kivi küçük, oval şekilli egzotik bir meyvedir. Dışı kahverengi ve tüylüdür. İçi yeşil, sulu ve ekşimsi-tatlı bir tada sahiptir. C vitamini bakımından çok zengindir.",
+      "soundClueText": "Dışı kahverengi tüylü, içi yeşil ve sulu, ekşimsi-tatlı egzotik bir meyvedir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_limon",
+      "nameTr": "Limon",
+      "nameEn": "Lemon",
+      "imagePath": "fruit_lemon",
+      "category": "fruits",
+      "difficultyLevel": 2,
+      "funFact": "Limon suyu bakteri ve mikropları temizlemede kullanılabilir.",
+      "descriptionTr": "Limon sarı renkli, ekşi ve kokulu bir meyvedir. Yemeklere, çaylara ve içeceklere tat katmak için kullanılır. C vitamini bakımından çok zengindir.",
+      "soundClueText": "Sarı renkli, ekşi ve kokulu olan, çay ve yemeklere lezzet katan meyvedir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_nar",
+      "nameTr": "Nar",
+      "nameEn": "Pomegranate",
+      "imagePath": "fruit_pomegranate",
+      "category": "fruits",
+      "difficultyLevel": 3,
+      "funFact": "Bir narın içinde ortalama 600 tane tohum bulunur.",
+      "descriptionTr": "Nar kırmızı-pembe renkli, içinde çok sayıda parlak kırmızı tane barındıran bir meyvedir. Ekşi ve tatlı aroması vardır. Nar suyu ve nar ekşisi yapılır.",
+      "soundClueText": "Kırmızı-pembe kabuğunun içinde yüzlerce parlak kırmızı tane barındıran, ekşi-tatlı aromalı bir meyvedir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_incir",
+      "nameTr": "İncir",
+      "nameEn": "Fig",
+      "imagePath": "fruit_fig",
+      "category": "fruits",
+      "difficultyLevel": 3,
+      "funFact": "İncir dünyanın en eski kültür bitkilerinden biridir.",
+      "descriptionTr": "İncir mor veya yeşil renkli, yumuşak ve çok tatlı bir meyvedir. İçi pembe ve çok sayıda küçük tohum içerir. Hem taze hem de kuru olarak yenebilir.",
+      "soundClueText": "Mor ya da yeşil renkli, içi pembe ve çok küçük tohumlu, tatlı ve yumuşak bir meyvedir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_erik",
+      "nameTr": "Erik",
+      "nameEn": "Plum",
+      "imagePath": "fruit_plum",
+      "category": "fruits",
+      "difficultyLevel": 3,
+      "funFact": "Kuru erik sindirim sistemine çok iyi gelir.",
+      "descriptionTr": "Erik mor, kırmızı veya sarı renkli küçük bir meyvedir. Tatlı ve hafif ekşi bir tadı vardır. İçinde küçük bir çekirdeği bulunur. Yazın yetişir.",
+      "soundClueText": "Mor, kırmızı veya sarı olabilen, tatlı-ekşi ve içinde çekirdek bulunan küçük bir yaz meyvesidir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_kayisi",
+      "nameTr": "Kayısı",
+      "nameEn": "Apricot",
+      "imagePath": "fruit_apricot",
+      "category": "fruits",
+      "difficultyLevel": 3,
+      "funFact": "Türkiye dünya kayısı üretiminin büyük bölümünü karşılar.",
+      "descriptionTr": "Kayısı turuncu-sarı renkli, yumuşak ve tatlı bir meyvedir. İçinde oval bir çekirdeği bulunur. Kuru kayısı olarak da çok sevilir. Yazın yetişir.",
+      "soundClueText": "Turuncu-sarı renkli, yumuşak ve tatlı, içinde oval çekirdeği olan bir yaz meyvesidir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_mandalina",
+      "nameTr": "Mandalina",
+      "nameEn": "Tangerine",
+      "imagePath": "fruit_tangerine",
+      "category": "fruits",
+      "difficultyLevel": 2,
+      "funFact": "Mandalina portakalın küçük kardeşi sayılır.",
+      "descriptionTr": "Mandalina küçük portakala benzeyen, kolay soyulan turuncu renkli bir meyvedir. Tatlı ve sulu bir tada sahiptir. Kışın mevsim meyvesidir.",
+      "soundClueText": "Portakala benzeyen ama daha küçük ve kolay soyulan, tatlı ve sulu kış meyvesidir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_ahududu",
+      "nameTr": "Ahududu",
+      "nameEn": "Raspberry",
+      "imagePath": "fruit_raspberry",
+      "category": "fruits",
+      "difficultyLevel": 3,
+      "funFact": "Ahududu aslında yüzlerce küçük meyvecikten oluşur.",
+      "descriptionTr": "Ahududu küçük, kırmızı ve yumrusu olan bir meyvedir. Ekşi-tatlı aroması çok güzeldir. Reçel ve tatlılarda sıkça kullanılır.",
+      "soundClueText": "Küçük kırmızı yumrulardan oluşan, ekşi-tatlı aromalı ve reçellerde kullanılan bir meyvedir. Acaba bu nedir?"
+    },
+    {
+      "id": "fruit_avokado",
+      "nameTr": "Avokado",
+      "nameEn": "Avocado",
+      "imagePath": "fruit_avocado",
+      "category": "fruits",
+      "difficultyLevel": 3,
+      "funFact": "Avokado tek çekirdekli büyük meyveler arasındadır.",
+      "descriptionTr": "Avokado koyu yeşil ya da siyahımsı kabuklu, içi sarı-yeşil ve kremamsı olan tropikal bir meyvedir. Sağlıklı yağlar içerir. Ekmek üzerine sürülebilir.",
+      "soundClueText": "Koyu kabuklu, içi sarı-yeşil ve kremamsı olan, sağlıklı yağlar içeren tropikal bir meyvedir. Acaba bu nedir?"
     }
   ]
 }

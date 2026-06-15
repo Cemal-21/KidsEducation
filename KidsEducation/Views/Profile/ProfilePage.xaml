@@ -127,7 +127,7 @@
 
                             <CollectionView ItemsSource="{Binding CalendarWeeks}">
                                 <CollectionView.ItemTemplate>
-                                    <DataTemplate x:DataType="x:String">
+                                    <DataTemplate x:DataType="vm:CalendarWeek">
                                         <Grid ColumnDefinitions="*,*,*,*,*,*,*" ColumnSpacing="4" Margin="0,2">
                                             <Border Grid.Column="0" WidthRequest="32" HeightRequest="32" BackgroundColor="{Binding Day0Color}" Stroke="Transparent" StrokeShape="RoundRectangle 8" HorizontalOptions="Center" />
                                             <Border Grid.Column="1" WidthRequest="32" HeightRequest="32" BackgroundColor="{Binding Day1Color}" Stroke="Transparent" StrokeShape="RoundRectangle 8" HorizontalOptions="Center" />

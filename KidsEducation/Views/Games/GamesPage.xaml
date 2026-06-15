@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Games.GamesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    xmlns:vm="clr-namespace:KidsEducation.ViewModels.Games"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{StaticResource AppBackground}">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*" Padding="18,44,18,18"
+              BackgroundColor="{StaticResource BrandPurple}">
+            <controls:TappableBorder
+                Grid.Column="0"
+                Command="{Binding GoBackCommand}"
+                WidthRequest="40" HeightRequest="40"
+                BackgroundColor="#22FFFFFF" Stroke="#30FFFFFF"
+                StrokeThickness="1" StrokeShape="RoundRectangle 13"
+                VerticalOptions="Center">
+                <Label Text="‹" FontSize="26" TextColor="White"
+                       HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-3,0,0" />
+            </controls:TappableBorder>
+
+            <VerticalStackLayout Grid.Column="1" Spacing="1" VerticalOptions="Center" Margin="12,0,0,0">
+                <Label Text="Oyunlar" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                <Label Text="Önce konu seç, sonra o konuya ait oyunları aç" FontSize="12" TextColor="#BAFFFFFF" />
+            </VerticalStackLayout>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="18,18,18,24" Spacing="18">
+
+                <controls:TappableBorder Command="{Binding GoToMixedReviewCommand}"
+                    StrokeShape="RoundRectangle 22" Stroke="Transparent" Padding="16,14">
+                    <controls:TappableBorder.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#2563EB" Offset="0"/>
+                            <GradientStop Color="#10B981" Offset="1"/>
+                        </LinearGradientBrush>
+                    </controls:TappableBorder.Background>
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
+                        <Border Grid.Column="0" WidthRequest="56" HeightRequest="56"
+                                BackgroundColor="#26FFFFFF"
+                                Stroke="#44FFFFFF"
+                                StrokeShape="RoundRectangle 18">
+                            <Label Text="🎯" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" Spacing="3" VerticalOptions="Center">
+                            <Label Text="Karışık Tekrar"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="White"/>
+                            <Label Text="Farklı konulardan kısa bir tekrar oyunu"
+                                   FontSize="11"
+                                   TextColor="#E9FFFFFF"
+                                   LineBreakMode="WordWrap"/>
+                        </VerticalStackLayout>
+                        <Border Grid.Column="2"
+                                BackgroundColor="#24FFFFFF"
+                                Stroke="#44FFFFFF"
+                                StrokeShape="RoundRectangle 13"
+                                Padding="13,8"
+                                VerticalOptions="Center">
+                            <Label Text="Başla" FontSize="12" FontAttributes="Bold" TextColor="White"/>
+                        </Border>
+                    </Grid>
+                </controls:TappableBorder>
+
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Karışık Oyunlar" Style="{StaticResource SectionLabel}" />
+                    <CollectionView ItemsSource="{Binding MixedGameCards}" SelectionMode="None">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="2"
+                                             HorizontalItemSpacing="12"
+                                             VerticalItemSpacing="12" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="vm:GameLauncherCard">
+                                <controls:TappableBorder
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenMixedGameCommand}"
+                                    CommandParameter="{Binding .}"
+                                    Style="{StaticResource ElevatedSurfaceCard}"
+                                    Padding="14">
+                                    <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="4">
+                                        <Border Grid.Row="0"
+                                                WidthRequest="44" HeightRequest="44"
+                                                BackgroundColor="{Binding BackgroundColor}"
+                                                Stroke="Transparent"
+                                                StrokeShape="RoundRectangle 14"
+                                                HorizontalOptions="Start">
+                                            <Label Text="{Binding Emoji}" FontSize="22"
+                                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        </Border>
+                                        <VerticalStackLayout Grid.Row="1" Spacing="3" Margin="0,8,0,0">
+                                            <Label Text="{Binding Title}" FontSize="13" FontAttributes="Bold"
+                                                   TextColor="{StaticResource TextPrimary}" LineBreakMode="WordWrap"/>
+                                            <Label Text="{Binding Description}" FontSize="10"
+                                                   TextColor="{StaticResource TextMuted}" LineBreakMode="WordWrap"/>
+                                        </VerticalStackLayout>
+                                        <Border Grid.Row="2"
+                                                BackgroundColor="{Binding AccentColor}"
+                                                Stroke="Transparent" StrokeShape="RoundRectangle 10"
+                                                Padding="10,5" HorizontalOptions="Start" Margin="0,4,0,0">
+                                            <Label Text="▶ Oyna" FontSize="11" FontAttributes="Bold" TextColor="White"/>
+                                        </Border>
+                                    </Grid>
+                                </controls:TappableBorder>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <controls:BottomTabBar Grid.Row="2" />
+
+        <controls:AssistantBubble Grid.Row="0" Grid.RowSpan="2" PageKey="games"
+                                   HorizontalOptions="Fill" VerticalOptions="Fill"
+                                   ZIndex="10" />
+    </Grid>
+</ContentPage>

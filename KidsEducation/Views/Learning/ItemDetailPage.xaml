@@ -48,7 +48,7 @@
                     Stroke="#55FFFFFF" StrokeThickness="1"
                     StrokeShape="RoundRectangle 16"
                     VerticalOptions="Center">
-                    <Label Text="{Binding CategoryEmoji}" FontSize="26" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Image Source="{Binding CategoryImage}" WidthRequest="40" HeightRequest="40" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
                 </Border>
                 </Grid>
             </Grid>
@@ -92,7 +92,7 @@
                                 Stroke="Transparent"
                                 StrokeShape="RoundRectangle 16"
                                 VerticalOptions="Center">
-                                <Label Text="🔊" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Image Source="ui_mic_3d.png" WidthRequest="32" HeightRequest="32" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
                             </controls:TappableBorder>
                         </Grid>
                     </VerticalStackLayout>
@@ -106,7 +106,7 @@
                     StrokeShape="RoundRectangle 20"
                     Padding="16,14">
                     <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
-                        <Label Grid.Column="0" Text="💡" FontSize="24" VerticalOptions="Center" />
+                        <Image Grid.Column="0" Source="ui_star_3d.png" WidthRequest="32" HeightRequest="32" Aspect="AspectFit" VerticalOptions="Center" />
                         <Label
                             Grid.Column="1"
                             Text="{Binding Item.FunFact}"
@@ -123,7 +123,7 @@
                             Stroke="Transparent"
                             StrokeShape="RoundRectangle 12"
                             VerticalOptions="Center">
-                            <Label Text="🔊" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Image Source="ui_mic_3d.png" WidthRequest="24" HeightRequest="24" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
                         </controls:TappableBorder>-->
                     </Grid>
                 </Border>
@@ -140,7 +140,10 @@
                     </Border.Shadow>
                     <Grid RowDefinitions="Auto,Auto" RowSpacing="10">
                         <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
-                            <Label Grid.Column="0" Text="📖 AÇIKLAMA" FontSize="13" FontAttributes="Bold" TextColor="#6B7280" TextTransform="Uppercase" CharacterSpacing="1" />
+                            <HorizontalStackLayout Grid.Column="0" Spacing="6">
+                                <Image Source="ui_tales_3d.png" WidthRequest="22" HeightRequest="22" Aspect="AspectFit" />
+                                <Label Text="AÇIKLAMA" FontSize="13" FontAttributes="Bold" TextColor="#6B7280" TextTransform="Uppercase" CharacterSpacing="1" VerticalOptions="Center" />
+                            </HorizontalStackLayout>
                             <!-- Açıklama ses butonu -->
                             <controls:TappableBorder
                                 Grid.Column="1"
@@ -149,7 +152,7 @@
                                 BackgroundColor="#EDE9FF"
                                 Stroke="Transparent"
                                 StrokeShape="RoundRectangle 10">
-                                <Label Text="🔊" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Image Source="ui_mic_3d.png" WidthRequest="22" HeightRequest="22" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
                             </controls:TappableBorder>
                         </Grid>
                         <Label

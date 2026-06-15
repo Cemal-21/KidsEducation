@@ -8,9 +8,9 @@
       "imagePath": "letter_a",
       "category": "letters",
       "difficultyLevel": 1,
-      "funFact": "A alfabedeki ilk harflerden biridir.",
-      "descriptionTr": "A harfi birçok kelimede kullanılır. Araba, armut ve ay kelimeleri A harfiyle başlar. Harfleri öğrenmek okumaya başlamanın ilk adımlarından biridir.",
-      "soundClueText": "Araba, armut ve ay gibi kelimelerin başında duyulan harftir. Acaba bu hangi harftir?"
+      "funFact": "A alfabenin ilk harfidir.",
+      "descriptionTr": "A harfi birçok kelimede kullanılır. Araba, armut ve ay kelimeleri A harfiyle başlar.",
+      "soundClueText": "Araba, armut ve ay gibi kelimelerin başında duyulan harftir."
     },
     {
       "id": "letter_b",
@@ -20,8 +20,8 @@
       "category": "letters",
       "difficultyLevel": 1,
       "funFact": "B harfi balık kelimesinde vardır.",
-      "descriptionTr": "B harfi bazı kelimelerin başında yer alır. Balık, bebek ve bulut kelimeleri B harfiyle başlar. Harfleri tanıdıkça kelimeleri okumak kolaylaşır.",
-      "soundClueText": "Balık, bebek ve bulut gibi kelimelerin başında duyulan harftir. Acaba bu hangi harftir?"
+      "descriptionTr": "Balık, bebek ve bulut kelimeleri B harfiyle başlar.",
+      "soundClueText": "Balık, bebek ve bulut gibi kelimelerin başında duyulan harftir."
     },
     {
       "id": "letter_c",
@@ -31,8 +31,8 @@
       "category": "letters",
       "difficultyLevel": 1,
       "funFact": "C harfi cam kelimesinde bulunur.",
-      "descriptionTr": "C harfi Türkçede kullanılan harflerden biridir. Cam, ceviz ve civciv kelimelerinde C harfi vardır. Harfleri sesleriyle birlikte öğrenmek önemlidir.",
-      "soundClueText": "Cam, ceviz ve civciv gibi kelimelerde duyulan harftir. Acaba bu hangi harftir?"
+      "descriptionTr": "Cam, ceviz ve civciv kelimelerinde C harfi vardır.",
+      "soundClueText": "Cam, ceviz ve civciv gibi kelimelerde duyulan harftir."
     },
     {
       "id": "letter_c_tr",
@@ -42,8 +42,8 @@
       "category": "letters",
       "difficultyLevel": 2,
       "funFact": "Ç harfi Türkçeye özel harflerdendir.",
-      "descriptionTr": "Ç harfi Türkçede sık kullanılan özel harflerden biridir. Çilek, çocuk ve çanta kelimeleri Ç harfiyle başlar. Bu harfin sesi C harfinden farklıdır.",
-      "soundClueText": "Çilek, çocuk ve çanta gibi kelimelerin başında duyulan Türkçeye özel harftir. Acaba bu hangi harftir?"
+      "descriptionTr": "Çilek, çocuk ve çanta kelimeleri Ç harfiyle başlar.",
+      "soundClueText": "Çilek, çocuk ve çanta gibi kelimelerin başında duyulan Türkçeye özel harftir."
     },
     {
       "id": "letter_d",
@@ -53,8 +53,272 @@
       "category": "letters",
       "difficultyLevel": 1,
       "funFact": "D harfi dondurma kelimesinde vardır.",
-      "descriptionTr": "D harfi birçok kelimede bulunur. Deniz, dondurma ve defter kelimeleri D harfiyle başlar. Harfleri öğrenirken örnek kelimeler söylemek faydalıdır.",
-      "soundClueText": "Deniz, dondurma ve defter gibi kelimelerin başında duyulan harftir. Acaba bu hangi harftir?"
+      "descriptionTr": "Deniz, dondurma ve defter kelimeleri D harfiyle başlar.",
+      "soundClueText": "Deniz, dondurma ve defter gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_e",
+      "nameTr": "E Harfi",
+      "nameEn": "Letter E",
+      "imagePath": "letter_e",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "E harfi ekmek kelimesinde vardır.",
+      "descriptionTr": "Ekmek, elma ve ev kelimeleri E harfiyle başlar.",
+      "soundClueText": "Ekmek, elma ve ev gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_f",
+      "nameTr": "F Harfi",
+      "nameEn": "Letter F",
+      "imagePath": "letter_f",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "F harfi fıstık kelimesinde vardır.",
+      "descriptionTr": "Fare, fıstık ve fener kelimeleri F harfiyle başlar.",
+      "soundClueText": "Fare, fıstık ve fener gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_g",
+      "nameTr": "G Harfi",
+      "nameEn": "Letter G",
+      "imagePath": "letter_g",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "G harfi güneş kelimesinde vardır.",
+      "descriptionTr": "Gül, güneş ve gemi kelimeleri G harfiyle başlar.",
+      "soundClueText": "Gül, güneş ve gemi gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_g_soft",
+      "nameTr": "Ğ Harfi",
+      "nameEn": "Letter Ğ",
+      "imagePath": "letter_g_soft",
+      "category": "letters",
+      "difficultyLevel": 3,
+      "funFact": "Ğ harfi Türkçeye özeldir ve tek başına söylenmez.",
+      "descriptionTr": "Ğ harfi dağ, yağmur ve bağ gibi kelimelerde bulunur. Bu harf sessizce okunur.",
+      "soundClueText": "Dağ, yağmur ve bağ gibi kelimelerin ortasında bulunan Türkçeye özel harftir."
+    },
+    {
+      "id": "letter_h",
+      "nameTr": "H Harfi",
+      "nameEn": "Letter H",
+      "imagePath": "letter_h",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "H harfi havalı nefes sesidir.",
+      "descriptionTr": "Hava, hayvan ve havlu kelimeleri H harfiyle başlar.",
+      "soundClueText": "Hava, hayvan ve havlu gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_i",
+      "nameTr": "I Harfi",
+      "nameEn": "Letter I",
+      "imagePath": "letter_i",
+      "category": "letters",
+      "difficultyLevel": 2,
+      "funFact": "I harfi ışık kelimesinde vardır.",
+      "descriptionTr": "Isı, ışık ve ıspanak kelimeleri I harfiyle başlar.",
+      "soundClueText": "Isı, ışık ve ıspanak gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_i_dot",
+      "nameTr": "İ Harfi",
+      "nameEn": "Letter İ",
+      "imagePath": "letter_i_dot",
+      "category": "letters",
+      "difficultyLevel": 2,
+      "funFact": "İ harfi Türkçede noktalı İ harfidir.",
+      "descriptionTr": "İnek, ipek ve iğne kelimeleri İ harfiyle başlar.",
+      "soundClueText": "İnek, ipek ve iğne gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_j",
+      "nameTr": "J Harfi",
+      "nameEn": "Letter J",
+      "imagePath": "letter_j",
+      "category": "letters",
+      "difficultyLevel": 3,
+      "funFact": "J harfi jilet kelimesinde vardır.",
+      "descriptionTr": "Jeton, jilet ve jöle kelimeleri J harfiyle başlar.",
+      "soundClueText": "Jeton, jilet ve jöle gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_k",
+      "nameTr": "K Harfi",
+      "nameEn": "Letter K",
+      "imagePath": "letter_k",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "K harfi kedi kelimesinde vardır.",
+      "descriptionTr": "Kedi, kalem ve kelebek kelimeleri K harfiyle başlar.",
+      "soundClueText": "Kedi, kalem ve kelebek gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_l",
+      "nameTr": "L Harfi",
+      "nameEn": "Letter L",
+      "imagePath": "letter_l",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "L harfi lamba kelimesinde vardır.",
+      "descriptionTr": "Lamba, limon ve lale kelimeleri L harfiyle başlar.",
+      "soundClueText": "Lamba, limon ve lale gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_m",
+      "nameTr": "M Harfi",
+      "nameEn": "Letter M",
+      "imagePath": "letter_m",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "M harfi muz kelimesinde vardır.",
+      "descriptionTr": "Masa, muz ve mavi kelimeleri M harfiyle başlar.",
+      "soundClueText": "Masa, muz ve mavi gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_n",
+      "nameTr": "N Harfi",
+      "nameEn": "Letter N",
+      "imagePath": "letter_n",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "N harfi nar kelimesinde vardır.",
+      "descriptionTr": "Nar, nehir ve nokta kelimeleri N harfiyle başlar.",
+      "soundClueText": "Nar, nehir ve nokta gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_o",
+      "nameTr": "O Harfi",
+      "nameEn": "Letter O",
+      "imagePath": "letter_o",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "O harfi okul kelimesinde vardır.",
+      "descriptionTr": "Okul, orman ve oyun kelimeleri O harfiyle başlar.",
+      "soundClueText": "Okul, orman ve oyun gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_o_umlaut",
+      "nameTr": "Ö Harfi",
+      "nameEn": "Letter Ö",
+      "imagePath": "letter_o_umlaut",
+      "category": "letters",
+      "difficultyLevel": 2,
+      "funFact": "Ö harfi Türkçeye özel harflerdendir.",
+      "descriptionTr": "Öğretmen, ödev ve ördek kelimeleri Ö harfiyle başlar.",
+      "soundClueText": "Öğretmen, ödev ve ördek gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_p",
+      "nameTr": "P Harfi",
+      "nameEn": "Letter P",
+      "imagePath": "letter_p",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "P harfi patlıcan kelimesinde vardır.",
+      "descriptionTr": "Pasta, patlıcan ve pencere kelimeleri P harfiyle başlar.",
+      "soundClueText": "Pasta, patlıcan ve pencere gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_r",
+      "nameTr": "R Harfi",
+      "nameEn": "Letter R",
+      "imagePath": "letter_r",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "R harfi renkli kelimesinde vardır.",
+      "descriptionTr": "Renk, resim ve rüzgar kelimeleri R harfiyle başlar.",
+      "soundClueText": "Renk, resim ve rüzgar gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_s",
+      "nameTr": "S Harfi",
+      "nameEn": "Letter S",
+      "imagePath": "letter_s",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "S harfi su kelimesinde vardır.",
+      "descriptionTr": "Su, saat ve sarı kelimeleri S harfiyle başlar.",
+      "soundClueText": "Su, saat ve sarı gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_s_tr",
+      "nameTr": "Ş Harfi",
+      "nameEn": "Letter Ş",
+      "imagePath": "letter_s_tr",
+      "category": "letters",
+      "difficultyLevel": 2,
+      "funFact": "Ş harfi Türkçeye özel harflerdendir.",
+      "descriptionTr": "Şapka, şeker ve şimşek kelimeleri Ş harfiyle başlar.",
+      "soundClueText": "Şapka, şeker ve şimşek gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_t",
+      "nameTr": "T Harfi",
+      "nameEn": "Letter T",
+      "imagePath": "letter_t",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "T harfi top kelimesinde vardır.",
+      "descriptionTr": "Top, tren ve tur kelimeleri T harfiyle başlar.",
+      "soundClueText": "Top, tren ve tur gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_u",
+      "nameTr": "U Harfi",
+      "nameEn": "Letter U",
+      "imagePath": "letter_u",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "U harfi uçak kelimesinde vardır.",
+      "descriptionTr": "Uçak, uyku ve uzay kelimeleri U harfiyle başlar.",
+      "soundClueText": "Uçak, uyku ve uzay gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_u_umlaut",
+      "nameTr": "Ü Harfi",
+      "nameEn": "Letter Ü",
+      "imagePath": "letter_u_umlaut",
+      "category": "letters",
+      "difficultyLevel": 2,
+      "funFact": "Ü harfi Türkçeye özel harflerdendir.",
+      "descriptionTr": "Üzüm, ütü ve üç kelimeleri Ü harfiyle başlar.",
+      "soundClueText": "Üzüm, ütü ve üç gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_v",
+      "nameTr": "V Harfi",
+      "nameEn": "Letter V",
+      "imagePath": "letter_v",
+      "category": "letters",
+      "difficultyLevel": 2,
+      "funFact": "V harfi vazo kelimesinde vardır.",
+      "descriptionTr": "Vazo, vatan ve vizör kelimeleri V harfiyle başlar.",
+      "soundClueText": "Vazo, vatan ve vizör gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_y",
+      "nameTr": "Y Harfi",
+      "nameEn": "Letter Y",
+      "imagePath": "letter_y",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "Y harfi yıldız kelimesinde vardır.",
+      "descriptionTr": "Yıldız, yumurta ve yol kelimeleri Y harfiyle başlar.",
+      "soundClueText": "Yıldız, yumurta ve yol gibi kelimelerin başında duyulan harftir."
+    },
+    {
+      "id": "letter_z",
+      "nameTr": "Z Harfi",
+      "nameEn": "Letter Z",
+      "imagePath": "letter_z",
+      "category": "letters",
+      "difficultyLevel": 1,
+      "funFact": "Z harfi zürafa kelimesinde vardır.",
+      "descriptionTr": "Zürafa, zeytin ve zil kelimeleri Z harfiyle başlar.",
+      "soundClueText": "Zürafa, zeytin ve zil gibi kelimelerin başında duyulan harftir."
     }
   ]
 }

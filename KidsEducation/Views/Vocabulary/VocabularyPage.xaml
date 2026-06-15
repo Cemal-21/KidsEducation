@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:AnimatedPage
+    x:Class="KidsEducation.Views.Vocabulary.VocabularyPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:KidsEducation.ViewModels.Vocabulary"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    xmlns:views="clr-namespace:KidsEducation.Views"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{StaticResource AppBackground}">
+
+    <Grid RowDefinitions="Auto,Auto,*">
+
+        <!-- ── Başlık ── -->
+        <Border Grid.Row="0" Stroke="Transparent" StrokeShape="RoundRectangle 0,0,28,28">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#5148D4" Offset="0"/>
+                    <GradientStop Color="#7C3AED" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid Padding="16,46,16,18" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                <Border Grid.Column="0" WidthRequest="38" HeightRequest="38"
+                        BackgroundColor="#28FFFFFF" Stroke="#40FFFFFF"
+                        StrokeShape="RoundRectangle 12">
+                    <Label Text="←" FontSize="20" TextColor="White"
+                           HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Border>
+                <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                    <Label Text="📖 Kelime Hazinem" FontSize="19" FontAttributes="Bold" TextColor="White"/>
+                    <Label Text="{Binding TotalCountText}" FontSize="12" TextColor="#DDFFFFFF"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+
+        <!-- ── Filtre chip'leri ── -->
+        <Border Grid.Row="1" BackgroundColor="{StaticResource SurfaceWhite}"
+                Stroke="{StaticResource BorderLight}" StrokeThickness="0.5">
+            <CollectionView ItemsSource="{Binding FilterChips}"
+                            HeightRequest="52" SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.Header>
+                    <BoxView WidthRequest="12" Color="Transparent"/>
+                </CollectionView.Header>
+                <CollectionView.Footer>
+                    <BoxView WidthRequest="12" Color="Transparent"/>
+                </CollectionView.Footer>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:VocabFilterChip">
+                        <Border BackgroundColor="{Binding BackgroundColor}"
+                                Stroke="{Binding BorderColor}" StrokeThickness="1.5"
+                                StrokeShape="RoundRectangle 20" Padding="12,6"
+                                VerticalOptions="Center">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SelectFilterCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            </Border.GestureRecognizers>
+                            <Label FontSize="13" FontAttributes="Bold"
+                                   TextColor="{Binding TextColor}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Emoji}"/>
+                                        <Span Text=" "/>
+                                        <Span Text="{Binding Label}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Border>
+
+        <!-- ── Kelime kartları grid ── -->
+        <Grid Grid.Row="2">
+
+            <!-- Yüklenme -->
+            <VerticalStackLayout IsVisible="{Binding IsLoading}"
+                                 HorizontalOptions="Center" VerticalOptions="Center" Spacing="12">
+                <ActivityIndicator IsRunning="{Binding IsLoading}" Color="{StaticResource BrandPurple}"
+                                   WidthRequest="40" HeightRequest="40"/>
+                <Label Text="Hazineyi yüklüyor..." FontSize="14"
+                       TextColor="{StaticResource TextMuted}" HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+
+            <!-- Boş durum -->
+            <VerticalStackLayout IsVisible="{Binding IsLoading, Converter={StaticResource InverseBool}}"
+                                 HorizontalOptions="Center" VerticalOptions="Center" Spacing="16">
+                <VerticalStackLayout.Triggers>
+                    <DataTrigger TargetType="VerticalStackLayout"
+                                 Binding="{Binding DisplayedWords.Count}" Value="0">
+                        <Setter Property="IsVisible" Value="True"/>
+                    </DataTrigger>
+                </VerticalStackLayout.Triggers>
+            </VerticalStackLayout>
+
+            <CollectionView ItemsSource="{Binding DisplayedWords}"
+                            IsVisible="{Binding IsLoading, Converter={StaticResource InverseBool}}"
+                            SelectionMode="None" Margin="12,8,12,16">
+                <CollectionView.Header>
+                    <VerticalStackLayout Spacing="8" Padding="0,0,0,14">
+                        <Grid ColumnDefinitions="*,Auto" Padding="2,0">
+                            <Label Grid.Column="0" Text="ödül sandığım"
+                                   Style="{StaticResource SectionLabel}" />
+                            <Label Grid.Column="1" Text="{Binding TreasureSummaryText}"
+                                   FontSize="11" FontAttributes="Bold"
+                                   TextColor="{StaticResource TextMuted}"
+                                   VerticalOptions="Center" />
+                        </Grid>
+
+                        <CollectionView ItemsSource="{Binding TreasureRewards}"
+                                        HeightRequest="122"
+                                        SelectionMode="None">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="vm:TreasureRewardCard">
+                                    <Border WidthRequest="142"
+                                            BackgroundColor="{Binding BackgroundColor}"
+                                            Stroke="{Binding BorderColor}"
+                                            StrokeThickness="1.5"
+                                            StrokeShape="RoundRectangle 18"
+                                            Padding="12,10">
+                                        <Grid RowDefinitions="Auto,*,Auto" RowSpacing="6">
+                                            <Grid Grid.Row="0" ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                                                <Label Grid.Column="0" Text="{Binding Emoji}" FontSize="24"/>
+                                                <Label Grid.Column="1" Text="{Binding ProgressText}"
+                                                       FontSize="10" FontAttributes="Bold"
+                                                       TextColor="{Binding TextColor}"
+                                                       HorizontalOptions="End"
+                                                       VerticalOptions="Center"/>
+                                            </Grid>
+                                            <VerticalStackLayout Grid.Row="1" Spacing="2">
+                                                <Label Text="{Binding Title}"
+                                                       FontSize="13" FontAttributes="Bold"
+                                                       TextColor="{StaticResource TextPrimary}"
+                                                       LineBreakMode="TailTruncation"/>
+                                                <Label Text="{Binding Description}"
+                                                       FontSize="10"
+                                                       TextColor="{StaticResource TextMuted}"
+                                                       MaxLines="2"
+                                                       LineBreakMode="WordWrap"/>
+                                            </VerticalStackLayout>
+                                            <ProgressBar Grid.Row="2"
+                                                         Progress="{Binding ProgressRatio}"
+                                                         ProgressColor="#FBBF24"
+                                                         BackgroundColor="#E2E8F0"
+                                                         HeightRequest="5"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                        <Label Text="kelime koleksiyonum"
+                               Style="{StaticResource SectionLabel}"
+                               Margin="2,2,0,0"/>
+                    </VerticalStackLayout>
+                </CollectionView.Header>
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center"
+                                        Spacing="12" Padding="0,60">
+                        <Label Text="📚" FontSize="56" HorizontalOptions="Center"/>
+                        <Label Text="Henüz kelime öğrenmedin!" FontSize="16" FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+                        <Label Text="Oyun oyna ve kelimeler burada biriksin."
+                               FontSize="13" TextColor="{StaticResource TextMuted}"
+                               HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="3"
+                                     HorizontalItemSpacing="10" VerticalItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:VocabWordCard">
+                        <Border StrokeShape="RoundRectangle 18"
+                                BackgroundColor="{StaticResource SurfaceWhite}"
+                                Stroke="{StaticResource BorderLight}" StrokeThickness="1">
+                            <Border.Shadow>
+                                <Shadow Brush="#0A000000" Offset="0,3" Radius="8" Opacity="0.08"/>
+                            </Border.Shadow>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.PlayWordCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            </Border.GestureRecognizers>
+                            <VerticalStackLayout Padding="8,10" Spacing="6" HorizontalOptions="Center">
+                                <!-- Görsel -->
+                                <Image Source="{Binding ImagePath}"
+                                       WidthRequest="56" HeightRequest="56"
+                                       Aspect="AspectFit" HorizontalOptions="Center"/>
+                                <!-- İsim -->
+                                <Label Text="{Binding NameTr}" FontSize="12" FontAttributes="Bold"
+                                       TextColor="{StaticResource TextPrimary}"
+                                       HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                                       MaxLines="1" LineBreakMode="TailTruncation"/>
+                                <!-- İngilizce -->
+                                <Label Text="{Binding NameEn}" FontSize="10"
+                                       TextColor="{StaticResource TextMuted}"
+                                       HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                                       MaxLines="1" LineBreakMode="TailTruncation"/>
+                                <!-- Kategori etiket -->
+                                <Border BackgroundColor="{Binding CategoryColor}"
+                                        Stroke="Transparent" StrokeShape="RoundRectangle 10"
+                                        Padding="6,2" HorizontalOptions="Center">
+                                    <Label FontSize="9" TextColor="White" FontAttributes="Bold">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding CategoryEmoji}"/>
+                                                <Span Text=" "/>
+                                                <Span Text="{Binding CategoryNameTr}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Border>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+    </Grid>
+</views:AnimatedPage>

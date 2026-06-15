@@ -51,8 +51,23 @@ public class ProfileService
         Preferences.Set(ProfilesKey, JsonSerializer.Serialize(profiles, JsonOptions));
     }
 
-    public void SetActiveProfile(string profileId) =>
+    public void SetActiveProfile(string profileId)
+    {
         Preferences.Set(ActiveProfileKey, profileId);
+        // Profil seçildiğinde streak'i kontrol et — oyun oynamadan gün geçtiyse sıfırla
+        var profiles = GetAllProfiles();
+        var profile = profiles.FirstOrDefault(p => p.Id == profileId);
+        if (profile is null) return;
+
+        var today = DateTime.Today;
+        var lastPlayed = profile.LastPlayedAt.Date;
+
+        if (lastPlayed < today.AddDays(-1) && profile.StreakDays > 0)
+        {
+            profile.StreakDays = 0;
+            SaveProfile(profile);
+        }
+    }
 
     public void DeleteProfile(string profileId)
     {
@@ -343,4 +358,36 @@ public class WeeklyReport
         : "Sınırsız";
 
     public bool IsLimitReached => DailyLimit > 0 && TodayMinutes >= DailyLimit;
+
+    // Bar grafik için — Pazartesi'den bugüne
+    public List<DailyBarStat> DailyStats
+    {
+        get
+        {
+            var days = new[] { "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz" };
+            var today = (int)DateTime.Today.DayOfWeek;
+            // DayOfWeek: Sunday=0, Monday=1 ... ama array'imiz Pzt=0 başlıyor
+            var todayIdx = today == 0 ? 6 : today - 1;
+            var max = DailyMinutes.Max() is 0 ? 1 : DailyMinutes.Max();
+
+            return DailyMinutes.Select((m, i) => new DailyBarStat
+            {
+                DayLabel = days[i],
+                Minutes = m,
+                HeightRatio = (double)m / max,
+                IsToday = i == todayIdx
+            }).ToList();
+        }
+    }
+}
+
+public class DailyBarStat
+{
+    public string DayLabel { get; set; } = string.Empty;
+    public int Minutes { get; set; }
+    public double HeightRatio { get; set; }
+    public bool IsToday { get; set; }
+    public string MinutesText => Minutes > 0 ? $"{Minutes}dk" : "";
+    public Color BarColor => IsToday ? Color.FromArgb("#5148D4") : Color.FromArgb("#D0CCFF");
+    public double BarHeight => Math.Max(4, HeightRatio * 60);
 }

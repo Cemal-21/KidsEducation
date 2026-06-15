@@ -5,6 +5,13 @@ namespace KidsEducation.Services;
 
 public class NavigationService
 {
+    private readonly AppPreferencesService _prefs;
+
+    public NavigationService(AppPreferencesService prefs)
+    {
+        _prefs = prefs;
+    }
+
     public Task GoToHomeAsync() =>
         Shell.Current.GoToAsync("//home");
 
@@ -28,11 +35,17 @@ public class NavigationService
         return Shell.Current.GoToAsync("result");
     }
 
+    public Task GoToGamesAsync() =>
+        Shell.Current.GoToAsync("games");
+
     public Task GoToSongsAsync() =>
         Shell.Current.GoToAsync("songs");
 
     public Task GoToCurriculumActivitiesAsync() =>
         Shell.Current.GoToAsync("curriculumactivities");
+
+    public Task GoToAdventureMapAsync() =>
+        Shell.Current.GoToAsync("adventuremap");
 
     public Task GoToSmartSuggestionAsync(SmartLearningSuggestion suggestion)
     {
@@ -65,10 +78,28 @@ public class NavigationService
         Shell.Current.GoToAsync("preferences");
 
     public Task GoToParentalAsync() =>
-        Shell.Current.GoToAsync("//parental");
+        _prefs.HasPin
+            ? Shell.Current.GoToAsync("pinentry")
+            : Shell.Current.GoToAsync("//parental");
 
     public Task GoBackAsync() =>
-        Shell.Current.GoToAsync("//home");
+        Shell.Current.GoToAsync("..");
+
+    public Task GoToTracingGameAsync(string? categoryId = null)
+    {
+        var route = string.IsNullOrWhiteSpace(categoryId)
+            ? "tracinggame"
+            : $"tracinggame?categoryId={Uri.EscapeDataString(categoryId)}";
+        return Shell.Current.GoToAsync(route);
+    }
+
+    public Task GoToPuzzleGameAsync(string? categoryId = null)
+    {
+        var route = string.IsNullOrWhiteSpace(categoryId)
+            ? "puzzlegame"
+            : $"puzzlegame?categoryId={Uri.EscapeDataString(categoryId)}";
+        return Shell.Current.GoToAsync(route);
+    }
 
     public Task GoBackOneAsync() =>
         Shell.Current.GoToAsync("..");

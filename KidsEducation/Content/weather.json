@@ -1,0 +1,71 @@
+{
+  "categoryId": "weather",
+  "items": [
+    {
+      "id": "weather_sunny",
+      "nameTr": "Güneşli",
+      "nameEn": "Sunny",
+      "imagePath": "weather_sunny",
+      "category": "weather",
+      "difficultyLevel": 1,
+      "funFact": "Güneşli havada gökyüzü aydınlıktır.",
+      "descriptionTr": "Güneşli hava, güneşin parlak göründüğü aydınlık hava durumudur.",
+      "soundClueText": "Güneşin parlak göründüğü hava durumuna ne denir?"
+    },
+    {
+      "id": "weather_rainy",
+      "nameTr": "Yağmurlu",
+      "nameEn": "Rainy",
+      "imagePath": "weather_rainy",
+      "category": "weather",
+      "difficultyLevel": 1,
+      "funFact": "Yağmurlu havada gökyüzünden su damlaları düşer.",
+      "descriptionTr": "Yağmurlu hava, bulutlardan su damlalarının düştüğü hava durumudur.",
+      "soundClueText": "Bulutlardan su damlalarının düştüğü hava durumuna ne denir?"
+    },
+    {
+      "id": "weather_snowy",
+      "nameTr": "Karlı",
+      "nameEn": "Snowy",
+      "imagePath": "weather_snowy",
+      "category": "weather",
+      "difficultyLevel": 1,
+      "funFact": "Karlı havada beyaz kar taneleri yağar.",
+      "descriptionTr": "Karlı hava, gökyüzünden kar tanelerinin düştüğü hava durumudur.",
+      "soundClueText": "Beyaz kar tanelerinin yağdığı hava durumuna ne denir?"
+    },
+    {
+      "id": "weather_windy",
+      "nameTr": "Rüzgarlı",
+      "nameEn": "Windy",
+      "imagePath": "weather_windy",
+      "category": "weather",
+      "difficultyLevel": 2,
+      "funFact": "Rüzgarlı havada hava hareket eder.",
+      "descriptionTr": "Rüzgarlı hava, havanın hareketli olduğu ve esinti hissedilen hava durumudur.",
+      "soundClueText": "Havanın hareket edip esinti oluşturduğu hava durumuna ne denir?"
+    },
+    {
+      "id": "weather_cloudy",
+      "nameTr": "Bulutlu",
+      "nameEn": "Cloudy",
+      "imagePath": "weather_cloudy",
+      "category": "weather",
+      "difficultyLevel": 1,
+      "funFact": "Bulutlu havada gökyüzünde çok bulut vardır.",
+      "descriptionTr": "Bulutlu hava, gökyüzünde bulutların çok göründüğü hava durumudur.",
+      "soundClueText": "Gökyüzünde çok bulut olduğu hava durumuna ne denir?"
+    },
+    {
+      "id": "weather_stormy",
+      "nameTr": "Fırtınalı",
+      "nameEn": "Stormy",
+      "imagePath": "weather_stormy",
+      "category": "weather",
+      "difficultyLevel": 3,
+      "funFact": "Fırtınalı havada kuvvetli rüzgar olabilir.",
+      "descriptionTr": "Fırtınalı hava, kuvvetli rüzgar, yağmur veya şimşekle görülebilen hava durumudur.",
+      "soundClueText": "Kuvvetli rüzgar ve şimşekle görülebilen hava durumuna ne denir?"
+    }
+  ]
+}

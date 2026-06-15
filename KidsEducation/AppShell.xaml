@@ -8,9 +8,11 @@
     xmlns:progress="clr-namespace:KidsEducation.Views.Progress"
     xmlns:profile="clr-namespace:KidsEducation.Views.Profile"
     xmlns:parental="clr-namespace:KidsEducation.Views.Parental"
+    xmlns:onboarding="clr-namespace:KidsEducation.Views.Onboarding"
     Shell.NavBarIsVisible="False"
     Shell.TabBarIsVisible="False">
 
+    <ShellContent Route="onboarding"       ContentTemplate="{DataTemplate onboarding:OnboardingPage}" />
     <ShellContent Route="profileselection" ContentTemplate="{DataTemplate home:ProfileSelectionPage}" />
     <ShellContent Route="home"             ContentTemplate="{DataTemplate home:HomePage}" />
     <ShellContent Route="achievements"     ContentTemplate="{DataTemplate achievements:AchievementsPage}" />

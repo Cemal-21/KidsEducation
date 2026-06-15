@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:KidsEducation.ViewModels.Progress"
+    x:DataType="vm:ProgressViewModel"
     xmlns:models="clr-namespace:KidsEducation.Models"
     xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
     xmlns:converters="clr-namespace:KidsEducation.Converters"
@@ -80,6 +81,27 @@
         <!-- İÇERİK -->
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="18,22,18,16" Spacing="20">
+
+                <!-- Seviye Kartı -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="seviye sistemi" Style="{StaticResource SectionLabel}" />
+                    <Border BackgroundColor="{StaticResource SurfaceWhite}" Stroke="{StaticResource BorderLight}" StrokeThickness="0.5" StrokeShape="RoundRectangle 20" Padding="16,16">
+                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
+                            <Border Grid.Column="0" WidthRequest="58" HeightRequest="58" BackgroundColor="#FFF4D8" Stroke="#FFE1A3" StrokeShape="RoundRectangle 18">
+                                <Label Text="🏅" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1" Spacing="6" VerticalOptions="Center">
+                                <Label Text="{Binding ActiveProfile.LevelText}" FontSize="18" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                <Label Text="{Binding ActiveProfile.LevelTitle}" FontSize="12" TextColor="{StaticResource TextMuted}" />
+                                <ProgressBar Progress="{Binding ActiveProfile.LevelProgress}" ProgressColor="#F59E0B" BackgroundColor="#FEF3C7" HeightRequest="6" />
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="2" Spacing="2" VerticalOptions="Center" HorizontalOptions="End">
+                                <Label Text="{Binding ActiveProfile.LevelProgressText}" FontSize="12" FontAttributes="Bold" TextColor="#92400E" HorizontalOptions="End" />
+                                <Label Text="sonraki seviye" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="End" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </VerticalStackLayout>
 
                 <!-- Haftalık Aktivite — düzeltilmiş bar grafik -->
                 <VerticalStackLayout Spacing="10">
@@ -210,6 +232,36 @@
                     </Border>
                 </VerticalStackLayout>
 
+                <!-- Modül Sertifikaları -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="modül sertifikaları" Style="{StaticResource SectionLabel}" />
+                    <CollectionView ItemsSource="{Binding ModuleProgress}" SelectionMode="None">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:ModuleProgressInfo">
+                                <Border BackgroundColor="{StaticResource SurfaceWhite}" Stroke="{StaticResource BorderLight}" StrokeThickness="0.5" StrokeShape="RoundRectangle 18" Padding="14,12">
+                                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                                        <Border Grid.Column="0" WidthRequest="48" HeightRequest="48" BackgroundColor="#EEF0FF" Stroke="#DCD6FF" StrokeShape="RoundRectangle 15">
+                                            <Label Text="{Binding Emoji}" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        </Border>
+                                        <VerticalStackLayout Grid.Column="1" Spacing="5" VerticalOptions="Center">
+                                            <Label Text="{Binding Name}" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                            <Label Text="{Binding CertificateText}" FontSize="11" TextColor="{StaticResource TextMuted}" />
+                                            <ProgressBar Progress="{Binding ProgressRatio}" ProgressColor="#21C7A8" BackgroundColor="#DFF8F3" HeightRequest="5" />
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Column="2" Spacing="2" VerticalOptions="Center" HorizontalOptions="End">
+                                            <Label Text="{Binding ProgressText}" FontSize="13" FontAttributes="Bold" TextColor="#5148D4" HorizontalOptions="End" />
+                                            <Label Text="{Binding StatusText}" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="End" />
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
                 <!-- Kategori Bazlı İlerleme -->
                 <VerticalStackLayout Spacing="10">
                     <Label Text="konu bazlı ilerleme" Style="{StaticResource SectionLabel}" />
@@ -268,6 +320,32 @@
                             </VerticalStackLayout>
                         </Border>
                     </Grid>
+                </VerticalStackLayout>
+
+                <!-- Oyun Geçmişi -->
+                <VerticalStackLayout Spacing="10" IsVisible="{Binding HasGameHistory}">
+                    <Label Text="oyun geçmişi" Style="{StaticResource SectionLabel}" />
+                    <CollectionView ItemsSource="{Binding GameHistory}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="vm:GameHistoryItem">
+                                <Border BackgroundColor="{StaticResource SurfaceWhite}" Stroke="{StaticResource BorderLight}" StrokeThickness="0.5" StrokeShape="RoundRectangle 16" Padding="14,12" Margin="0,0,0,8">
+                                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                                        <Border Grid.Column="0" WidthRequest="44" HeightRequest="44" BackgroundColor="#F1EEFF" Stroke="Transparent" StrokeShape="RoundRectangle 14">
+                                            <Label Text="{Binding Emoji}" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        </Border>
+                                        <VerticalStackLayout Grid.Column="1" Spacing="3" VerticalOptions="Center">
+                                            <Label Text="{Binding CategoryName}" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                            <Label Text="{Binding PlayCountText}" FontSize="12" TextColor="{StaticResource TextMuted}" />
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Column="2" Spacing="2" VerticalOptions="Center" HorizontalOptions="End">
+                                            <Label Text="{Binding StarsText}" FontSize="14" HorizontalOptions="End" />
+                                            <Label Text="{Binding DateText}" FontSize="11" TextColor="{StaticResource TextMuted}" HorizontalOptions="End" />
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </VerticalStackLayout>
 
             </VerticalStackLayout>

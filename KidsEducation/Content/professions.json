@@ -1,0 +1,93 @@
+{
+  "categoryId": "professions",
+  "items": [
+    {
+      "id": "profession_doktor",
+      "nameTr": "Doktor",
+      "nameEn": "Doctor",
+      "imagePath": "profession_doctor",
+      "category": "professions",
+      "difficultyLevel": 1,
+      "funFact": "Doktorlar tıp okumak için yaklaşık 6 yıl eğitim alır!",
+      "descriptionTr": "Doktorlar hasta insanlara yardım eder. Hastalıkları teşhis eder ve ilaç yazar. Hastanelerde ve kliniklerde çalışırlar. Bize yardım etmek için çok uzun süre eğitim alırlar.",
+      "soundClueText": "Hastaları muayene eden, ilaç yazan ve insanları iyileştirmeye çalışan kişidir. Bu meslek nedir?"
+    },
+    {
+      "id": "profession_ogretmen",
+      "nameTr": "Öğretmen",
+      "nameEn": "Teacher",
+      "imagePath": "profession_teacher",
+      "category": "professions",
+      "difficultyLevel": 1,
+      "funFact": "Bir öğretmen kariyeri boyunca binlerce öğrenciye bilgi aktarabilir!",
+      "descriptionTr": "Öğretmenler çocuklara ve yetişkinlere bilgi öğretir. Okullarda ders verirler. Okumayı, yazmayı ve matematiği öğretirler. Öğrencilerin gelişimine yardımcı olurlar.",
+      "soundClueText": "Okullarda çalışan, tahtada ders anlatan ve öğrencilere bilgi öğreten kişidir. Bu meslek nedir?"
+    },
+    {
+      "id": "profession_itfaiyeci",
+      "nameTr": "İtfaiyeci",
+      "nameEn": "Firefighter",
+      "imagePath": "profession_firefighter",
+      "category": "professions",
+      "difficultyLevel": 1,
+      "funFact": "İtfaiyeciler giydikleri özel giysiler sayesinde 300 dereceye kadar ısıya dayanabilir!",
+      "descriptionTr": "İtfaiyeciler yangınları söndürür ve insanları tehlikeden kurtarır. Kırmızı itfaiye araçlarıyla çalışırlar. Çok cesur insanlardır. Hem insanları hem de hayvanları kurtarabilirler.",
+      "soundClueText": "Kırmızı bir araçla gelen, su hortumu kullanan ve yangınları söndüren cesur bir kişidir. Bu meslek nedir?"
+    },
+    {
+      "id": "profession_asci",
+      "nameTr": "Aşçı",
+      "nameEn": "Chef",
+      "imagePath": "profession_chef",
+      "category": "professions",
+      "difficultyLevel": 1,
+      "funFact": "Dünyaca ünlü aşçılar yılda milyonlarca kişiye ilham verir!",
+      "descriptionTr": "Aşçılar restoranlar ve otellerde lezzetli yemekler hazırlar. Özel şapkalar takarlar. Birçok farklı tarif bilirler. Hem tatlı hem de tuzlu yemekler yapabilirler.",
+      "soundClueText": "Mutfakta çalışan, şapka giyen ve lezzetli yemekler pişiren kişidir. Bu meslek nedir?"
+    },
+    {
+      "id": "profession_muhendis",
+      "nameTr": "Mühendis",
+      "nameEn": "Engineer",
+      "imagePath": "profession_engineer",
+      "category": "professions",
+      "difficultyLevel": 2,
+      "funFact": "Mühendisler köprülerden telefonlara kadar pek çok şeyi tasarlar!",
+      "descriptionTr": "Mühendisler binalar, köprüler, makineler ve bilgisayarlar tasarlar. Matematik ve fen bilgilerini kullanarak çözümler üretirler. Dünyayı daha iyi bir yer yapmak için çalışırlar.",
+      "soundClueText": "Hesaplar yapan, planlar çizen ve köprüler gibi büyük yapılar tasarlayan kişidir. Bu meslek nedir?"
+    },
+    {
+      "id": "profession_pilot",
+      "nameTr": "Pilot",
+      "nameEn": "Pilot",
+      "imagePath": "profession_pilot",
+      "category": "professions",
+      "difficultyLevel": 2,
+      "funFact": "Pilotlar saatte yaklaşık 900 km hızla uçabilirler!",
+      "descriptionTr": "Pilotlar uçakları kullanır ve insanları farklı şehirler arasında taşır. Özel bir üniform giyerler. Çok dikkatli ve sorumluluk sahibi olmaları gerekir. Yıllarca eğitim alırlar.",
+      "soundClueText": "Gökyüzünde uçakları kullanan, yolcuları taşıyan ve çok geniş bir kokpit ekranına bakan kişidir. Bu meslek nedir?"
+    },
+    {
+      "id": "profession_calisan",
+      "nameTr": "Çiftçi",
+      "nameEn": "Farmer",
+      "imagePath": "profession_farmer",
+      "category": "professions",
+      "difficultyLevel": 1,
+      "funFact": "Bir çiftçi ortalama 100 kişilik gıda ihtiyacını karşılayabilir!",
+      "descriptionTr": "Çiftçiler tarlaları ekerler ve hasat ederler. Hem bitkiler yetiştirirler hem de hayvanlarla ilgilenirler. Yediğimiz sebze ve meyvelerin büyük kısmı çiftçiler tarafından üretilir.",
+      "soundClueText": "Tarlada çalışan, ekin eken ve hasat toplayan kişidir. Yediklerimizi büyütür. Bu meslek nedir?"
+    },
+    {
+      "id": "profession_muzisyen",
+      "nameTr": "Müzisyen",
+      "nameEn": "Musician",
+      "imagePath": "profession_musician",
+      "category": "professions",
+      "difficultyLevel": 2,
+      "funFact": "Müzik çalmak beynin hem sol hem de sağ yarısını aynı anda çalıştırır!",
+      "descriptionTr": "Müzisyenler müzik aletleri çalar ve şarkı söyler. Konserler ve festivallerde sahne alırlar. Piyano, gitar, keman gibi birçok farklı alet çalabilirler. Müzik yaratmak onları mutlu eder.",
+      "soundClueText": "Nota bilen, enstrüman çalan ve müzik yapan kişidir. Sahne alır ve izleyicileri büyüler. Bu meslek nedir?"
+    }
+  ]
+}

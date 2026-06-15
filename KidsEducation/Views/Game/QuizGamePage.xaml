@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Game.QuizGamePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    xmlns:vm="clr-namespace:KidsEducation.ViewModels.Game"
+    x:DataType="vm:QuizGameViewModel"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{StaticResource AppBackground}">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Header -->
+        <Border Grid.Row="0" Stroke="Transparent" StrokeShape="RoundRectangle 0,0,28,28">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF6B9D" Offset="0.0"/>
+                    <GradientStop Color="#C0263E" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid RowDefinitions="Auto,Auto" Padding="18,44,18,18" RowSpacing="14">
+                <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto">
+                    <controls:TappableBorder Grid.Column="0"
+                        Command="{Binding GoBackCommand}"
+                        WidthRequest="40" HeightRequest="40"
+                        BackgroundColor="#2AFFFFFF" Stroke="#40FFFFFF"
+                        StrokeThickness="1" StrokeShape="RoundRectangle 14"
+                        VerticalOptions="Center">
+                        <Label Text="‹" FontSize="26" TextColor="White"
+                               HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-3,0,0"/>
+                    </controls:TappableBorder>
+
+                    <VerticalStackLayout Grid.Column="1" Spacing="2"
+                                         VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label Text="🔤 Doğruyu Seç" FontSize="16" FontAttributes="Bold"
+                               TextColor="White" HorizontalOptions="Center"/>
+                        <Label FontSize="12" TextColor="#DDFFFFFF" HorizontalOptions="Center">
+                            <Label.Text>
+                                <MultiBinding StringFormat="{}{0} / {1}">
+                                    <Binding Path="DisplayNumber"/>
+                                    <Binding Path="TotalRounds"/>
+                                </MultiBinding>
+                            </Label.Text>
+                        </Label>
+                    </VerticalStackLayout>
+
+                    <BoxView Grid.Column="2" WidthRequest="40"/>
+                </Grid>
+
+                <!-- Progress bar -->
+                <Border Grid.Row="1" BackgroundColor="#40FFFFFF"
+                        StrokeShape="RoundRectangle 4" Stroke="Transparent" HeightRequest="8">
+                    <ProgressBar Progress="{Binding Progress}"
+                                 ProgressColor="White"
+                                 BackgroundColor="Transparent"
+                                 HeightRequest="8"
+                                 VerticalOptions="Center"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Main content -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,24,20,32" Spacing="24">
+
+                <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"
+                                   Color="{StaticResource BrandPurple}" HorizontalOptions="Center"
+                                   HeightRequest="60"/>
+
+                <VerticalStackLayout Spacing="24"
+                    IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}">
+
+                    <!-- Image card -->
+                    <Border StrokeShape="RoundRectangle 28"
+                            BackgroundColor="{StaticResource SurfaceWhite}"
+                            Stroke="{StaticResource BorderLight}"
+                            StrokeThickness="1.5"
+                            HeightRequest="230"
+                            HorizontalOptions="FillAndExpand">
+                        <Border.Shadow>
+                            <Shadow Brush="#20000000" Offset="0,8" Radius="20" Opacity="0.3"/>
+                        </Border.Shadow>
+                        <Grid>
+                            <Image Source="{Binding CurrentItem.ImagePath}"
+                                   Aspect="AspectFit" Margin="24"/>
+
+                            <!-- 🔊 TTS butonu -->
+                            <controls:TappableBorder
+                                Command="{Binding SpeakClueCommand}"
+                                HorizontalOptions="End" VerticalOptions="Start"
+                                Margin="12"
+                                WidthRequest="40" HeightRequest="40"
+                                BackgroundColor="#EEF0FF"
+                                Stroke="#C0C8FF" StrokeThickness="1.5"
+                                StrokeShape="RoundRectangle 14">
+                                <Label Text="🔊" FontSize="18"
+                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </controls:TappableBorder>
+
+                            <!-- Correct feedback overlay -->
+                            <Border StrokeShape="RoundRectangle 28" Stroke="Transparent"
+                                    BackgroundColor="#CC4CAF50"
+                                    IsVisible="{Binding ShowCorrectFeedback}">
+                                <Label Text="✅" FontSize="80"
+                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+
+                            <!-- Wrong feedback overlay -->
+                            <Border StrokeShape="RoundRectangle 28" Stroke="Transparent"
+                                    BackgroundColor="#CCF44336"
+                                    IsVisible="{Binding ShowWrongFeedback}">
+                                <Label Text="❌" FontSize="80"
+                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <!-- Question -->
+                    <Label Text="Bu ne?" FontSize="22" FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimary}"
+                           HorizontalOptions="Center"/>
+
+                    <!-- Options 2x2 -->
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto"
+                          ColumnSpacing="12" RowSpacing="12">
+
+                        <controls:TappableBorder Grid.Row="0" Grid.Column="0"
+                            x:Name="Opt0"
+                            Command="{Binding SelectOptionCommand}"
+                            CommandParameter="{Binding Option0}"
+                            StrokeShape="RoundRectangle 20" StrokeThickness="2"
+                            BackgroundColor="{StaticResource SurfaceWhite}"
+                            Stroke="{StaticResource BorderLight}"
+                            Padding="12,16" MinimumHeightRequest="70">
+                            <controls:TappableBorder.Shadow>
+                                <Shadow Brush="#15000000" Offset="0,3" Radius="8" Opacity="0.2"/>
+                            </controls:TappableBorder.Shadow>
+                            <Label Text="{Binding Option0.Item.NameTr}" FontSize="15" FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimary}"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </controls:TappableBorder>
+
+                        <controls:TappableBorder Grid.Row="0" Grid.Column="1"
+                            x:Name="Opt1"
+                            Command="{Binding SelectOptionCommand}"
+                            CommandParameter="{Binding Option1}"
+                            StrokeShape="RoundRectangle 20" StrokeThickness="2"
+                            BackgroundColor="{StaticResource SurfaceWhite}"
+                            Stroke="{StaticResource BorderLight}"
+                            Padding="12,16" MinimumHeightRequest="70">
+                            <controls:TappableBorder.Shadow>
+                                <Shadow Brush="#15000000" Offset="0,3" Radius="8" Opacity="0.2"/>
+                            </controls:TappableBorder.Shadow>
+                            <Label Text="{Binding Option1.Item.NameTr}" FontSize="15" FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimary}"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </controls:TappableBorder>
+
+                        <controls:TappableBorder Grid.Row="1" Grid.Column="0"
+                            x:Name="Opt2"
+                            Command="{Binding SelectOptionCommand}"
+                            CommandParameter="{Binding Option2}"
+                            StrokeShape="RoundRectangle 20" StrokeThickness="2"
+                            BackgroundColor="{StaticResource SurfaceWhite}"
+                            Stroke="{StaticResource BorderLight}"
+                            Padding="12,16" MinimumHeightRequest="70">
+                            <controls:TappableBorder.Shadow>
+                                <Shadow Brush="#15000000" Offset="0,3" Radius="8" Opacity="0.2"/>
+                            </controls:TappableBorder.Shadow>
+                            <Label Text="{Binding Option2.Item.NameTr}" FontSize="15" FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimary}"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </controls:TappableBorder>
+
+                        <controls:TappableBorder Grid.Row="1" Grid.Column="1"
+                            x:Name="Opt3"
+                            Command="{Binding SelectOptionCommand}"
+                            CommandParameter="{Binding Option3}"
+                            StrokeShape="RoundRectangle 20" StrokeThickness="2"
+                            BackgroundColor="{StaticResource SurfaceWhite}"
+                            Stroke="{StaticResource BorderLight}"
+                            Padding="12,16" MinimumHeightRequest="70">
+                            <controls:TappableBorder.Shadow>
+                                <Shadow Brush="#15000000" Offset="0,3" Radius="8" Opacity="0.2"/>
+                            </controls:TappableBorder.Shadow>
+                            <Label Text="{Binding Option3.Item.NameTr}" FontSize="15" FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimary}"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </controls:TappableBorder>
+
+                    </Grid>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

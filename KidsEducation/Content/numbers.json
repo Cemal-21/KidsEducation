@@ -9,8 +9,8 @@
       "category": "numbers",
       "difficultyLevel": 1,
       "funFact": "Bir tek bir şeyi anlatır.",
-      "descriptionTr": "Bir sayısı tek bir nesneyi anlatır. Bir elma, bir top veya bir kalem diyebiliriz. Saymaya başlarken ilk öğrendiğimiz sayılardan biridir.",
-      "soundClueText": "Tek bir nesneyi anlatan, saymaya başlarken öğrendiğimiz ilk sayılardan biridir. Acaba bu hangi sayıdır?"
+      "descriptionTr": "Bir sayısı tek bir nesneyi anlatır. Bir elma, bir top veya bir kalem diyebiliriz.",
+      "soundClueText": "Tek bir nesneyi anlatan, saymaya başlarken öğrendiğimiz ilk sayıdır."
     },
     {
       "id": "number_2",
@@ -20,8 +20,8 @@
       "category": "numbers",
       "difficultyLevel": 1,
       "funFact": "İki bir çift olabilir.",
-      "descriptionTr": "İki sayısı iki tane nesneyi anlatır. İki gözümüz, iki kulağımız ve iki elimiz vardır. İki sayısı saymayı öğrenirken çok önemlidir.",
-      "soundClueText": "İki gözümüz ve iki kulağımız gibi çift olan şeyleri anlatan sayıdır. Acaba bu hangi sayıdır?"
+      "descriptionTr": "İki sayısı iki tane nesneyi anlatır. İki gözümüz, iki kulağımız ve iki elimiz vardır.",
+      "soundClueText": "İki gözümüz ve iki kulağımız gibi çift olan şeyleri anlatan sayıdır."
     },
     {
       "id": "number_3",
@@ -31,8 +31,8 @@
       "category": "numbers",
       "difficultyLevel": 1,
       "funFact": "Üçgenin üç köşesi vardır.",
-      "descriptionTr": "Üç sayısı üç tane nesneyi anlatır. Üç kalem veya üç oyuncak diyebiliriz. Üçgen şeklinin de üç köşesi vardır.",
-      "soundClueText": "Üçgenin köşe sayısını anlatan ve üç tane nesneyi sayarken kullandığımız sayıdır. Acaba bu hangi sayıdır?"
+      "descriptionTr": "Üç sayısı üç tane nesneyi anlatır. Üçgen şeklinin de üç köşesi vardır.",
+      "soundClueText": "Üçgenin köşe sayısını anlatan sayıdır."
     },
     {
       "id": "number_4",
@@ -42,8 +42,8 @@
       "category": "numbers",
       "difficultyLevel": 1,
       "funFact": "Karenin dört kenarı vardır.",
-      "descriptionTr": "Dört sayısı dört tane nesneyi anlatır. Bir masanın dört ayağı olabilir. Kare şeklinin dört kenarı ve dört köşesi vardır.",
-      "soundClueText": "Karenin kenar sayısını ve bir masanın ayak sayısını anlatabilen sayıdır. Acaba bu hangi sayıdır?"
+      "descriptionTr": "Dört sayısı dört tane nesneyi anlatır. Bir masanın dört ayağı olabilir.",
+      "soundClueText": "Karenin kenar sayısını ve masanın ayak sayısını anlatan sayıdır."
     },
     {
       "id": "number_5",
@@ -53,8 +53,173 @@
       "category": "numbers",
       "difficultyLevel": 1,
       "funFact": "Bir elde beş parmak vardır.",
-      "descriptionTr": "Beş sayısı beş tane nesneyi anlatır. Bir elimizde beş parmak bulunur. Beşe kadar saymak günlük hayatta sık kullanılır.",
-      "soundClueText": "Bir eldeki parmakların sayısını anlatan sayıdır. Acaba bu hangi sayıdır?"
+      "descriptionTr": "Beş sayısı beş tane nesneyi anlatır. Bir elimizde beş parmak bulunur.",
+      "soundClueText": "Bir eldeki parmakların sayısını anlatan sayıdır."
+    },
+    {
+      "id": "number_6",
+      "nameTr": "Altı",
+      "nameEn": "Six",
+      "imagePath": "number_six",
+      "category": "numbers",
+      "difficultyLevel": 1,
+      "funFact": "Arının altı bacağı vardır.",
+      "descriptionTr": "Altı sayısı altı tane nesneyi anlatır. Arının altı bacağı vardır.",
+      "soundClueText": "Arının bacak sayısını anlatan sayıdır."
+    },
+    {
+      "id": "number_7",
+      "nameTr": "Yedi",
+      "nameEn": "Seven",
+      "imagePath": "number_seven",
+      "category": "numbers",
+      "difficultyLevel": 1,
+      "funFact": "Gökkuşağının yedi rengi vardır.",
+      "descriptionTr": "Yedi sayısı yedi tane nesneyi anlatır. Gökkuşağının yedi rengi vardır.",
+      "soundClueText": "Gökkuşağının renk sayısını anlatan sayıdır."
+    },
+    {
+      "id": "number_8",
+      "nameTr": "Sekiz",
+      "nameEn": "Eight",
+      "imagePath": "number_eight",
+      "category": "numbers",
+      "difficultyLevel": 2,
+      "funFact": "Ahtapotun sekiz kolu vardır.",
+      "descriptionTr": "Sekiz sayısı sekiz tane nesneyi anlatır. Ahtapotun sekiz kolu vardır.",
+      "soundClueText": "Ahtapotun kol sayısını anlatan sayıdır."
+    },
+    {
+      "id": "number_9",
+      "nameTr": "Dokuz",
+      "nameEn": "Nine",
+      "imagePath": "number_nine",
+      "category": "numbers",
+      "difficultyLevel": 2,
+      "funFact": "Dokuz tek haneli en büyük sayıdır.",
+      "descriptionTr": "Dokuz sayısı dokuz tane nesneyi anlatır. Dokuz, tek haneli en büyük sayıdır.",
+      "soundClueText": "Tek haneli sayıların en büyüğüdür."
+    },
+    {
+      "id": "number_10",
+      "nameTr": "On",
+      "nameEn": "Ten",
+      "imagePath": "number_ten",
+      "category": "numbers",
+      "difficultyLevel": 2,
+      "funFact": "İki elimizdeki parmak sayısı ondu.",
+      "descriptionTr": "On sayısı on tane nesneyi anlatır. İki elimizdeki toplam parmak sayısı ondu.",
+      "soundClueText": "İki eldeki tüm parmakların sayısını anlatan sayıdır."
+    },
+    {
+      "id": "number_11",
+      "nameTr": "On Bir",
+      "nameEn": "Eleven",
+      "imagePath": "number_eleven",
+      "category": "numbers",
+      "difficultyLevel": 2,
+      "funFact": "Futbol takımı on bir oyuncudan oluşur.",
+      "descriptionTr": "On bir sayısı iki haneli ilk tek sayıdır. Futbol takımında on bir oyuncu bulunur.",
+      "soundClueText": "Futbol takımındaki oyuncu sayısını anlatan sayıdır."
+    },
+    {
+      "id": "number_12",
+      "nameTr": "On İki",
+      "nameEn": "Twelve",
+      "imagePath": "number_twelve",
+      "category": "numbers",
+      "difficultyLevel": 2,
+      "funFact": "Bir yılda on iki ay vardır.",
+      "descriptionTr": "On iki sayısı on iki tane nesneyi anlatır. Bir yılda on iki ay bulunur.",
+      "soundClueText": "Bir yıldaki ay sayısını anlatan sayıdır."
+    },
+    {
+      "id": "number_13",
+      "nameTr": "On Üç",
+      "nameEn": "Thirteen",
+      "imagePath": "number_thirteen",
+      "category": "numbers",
+      "difficultyLevel": 2,
+      "funFact": "On üç tek sayıdır.",
+      "descriptionTr": "On üç sayısı on üç tane nesneyi anlatır.",
+      "soundClueText": "On ile üçün toplamını anlatan sayıdır."
+    },
+    {
+      "id": "number_14",
+      "nameTr": "On Dört",
+      "nameEn": "Fourteen",
+      "imagePath": "number_fourteen",
+      "category": "numbers",
+      "difficultyLevel": 2,
+      "funFact": "On dört çift sayıdır.",
+      "descriptionTr": "On dört sayısı on dört tane nesneyi anlatır.",
+      "soundClueText": "On ile dörttün toplamını anlatan sayıdır."
+    },
+    {
+      "id": "number_15",
+      "nameTr": "On Beş",
+      "nameEn": "Fifteen",
+      "imagePath": "number_fifteen",
+      "category": "numbers",
+      "difficultyLevel": 2,
+      "funFact": "On beş, on ile beşin toplamıdır.",
+      "descriptionTr": "On beş sayısı on beş tane nesneyi anlatır. Üçe bölünebilen bir sayıdır.",
+      "soundClueText": "On ile beşin toplamını anlatan sayıdır."
+    },
+    {
+      "id": "number_16",
+      "nameTr": "On Altı",
+      "nameEn": "Sixteen",
+      "imagePath": "number_sixteen",
+      "category": "numbers",
+      "difficultyLevel": 3,
+      "funFact": "On altı çift sayıdır.",
+      "descriptionTr": "On altı sayısı on altı tane nesneyi anlatır.",
+      "soundClueText": "On ile altının toplamını anlatan sayıdır."
+    },
+    {
+      "id": "number_17",
+      "nameTr": "On Yedi",
+      "nameEn": "Seventeen",
+      "imagePath": "number_seventeen",
+      "category": "numbers",
+      "difficultyLevel": 3,
+      "funFact": "On yedi asal bir sayıdır.",
+      "descriptionTr": "On yedi sayısı on yedi tane nesneyi anlatır. Asal sayıdır.",
+      "soundClueText": "On ile yedinin toplamını anlatan sayıdır."
+    },
+    {
+      "id": "number_18",
+      "nameTr": "On Sekiz",
+      "nameEn": "Eighteen",
+      "imagePath": "number_eighteen",
+      "category": "numbers",
+      "difficultyLevel": 3,
+      "funFact": "On sekiz çift sayıdır.",
+      "descriptionTr": "On sekiz sayısı on sekiz tane nesneyi anlatır.",
+      "soundClueText": "On ile sekizin toplamını anlatan sayıdır."
+    },
+    {
+      "id": "number_19",
+      "nameTr": "On Dokuz",
+      "nameEn": "Nineteen",
+      "imagePath": "number_nineteen",
+      "category": "numbers",
+      "difficultyLevel": 3,
+      "funFact": "On dokuz asal bir sayıdır.",
+      "descriptionTr": "On dokuz sayısı on dokuz tane nesneyi anlatır.",
+      "soundClueText": "On ile dokuzun toplamını anlatan sayıdır."
+    },
+    {
+      "id": "number_20",
+      "nameTr": "Yirmi",
+      "nameEn": "Twenty",
+      "imagePath": "number_twenty",
+      "category": "numbers",
+      "difficultyLevel": 3,
+      "funFact": "Yirmi, iki onluk demektir.",
+      "descriptionTr": "Yirmi sayısı yirmi tane nesneyi anlatır. İki kez on sayısına eşittir.",
+      "soundClueText": "İki onluğu anlatan, yirmi ile biten sayıdır."
     }
   ]
 }

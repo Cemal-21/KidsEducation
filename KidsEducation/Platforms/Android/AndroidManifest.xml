@@ -1,6 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-	<application android:allowBackup="true" android:icon="@mipmap/appicon" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true"></application>
+	<application android:allowBackup="true" android:icon="@mipmap/appicon" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true" android:hardwareAccelerated="true">
+		<receiver
+			android:name="kidseducation.platforms.android.DailyWordWidget"
+			android:exported="true"
+			android:label="Günün Kelimesi">
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+			</intent-filter>
+			<meta-data
+				android:name="android.appwidget.provider"
+				android:resource="@xml/daily_word_widget_info" />
+		</receiver>
+		<receiver
+			android:name="kidseducation.platforms.android.StreakWidget"
+			android:exported="true"
+			android:label="Günlük Seri">
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+			</intent-filter>
+			<meta-data
+				android:name="android.appwidget.provider"
+				android:resource="@xml/streak_widget_info" />
+		</receiver>
+		<receiver
+			android:name="kidseducation.platforms.android.DailyGoalWidget"
+			android:exported="true"
+			android:label="Günlük Hedef">
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+			</intent-filter>
+			<meta-data
+				android:name="android.appwidget.provider"
+				android:resource="@xml/daily_goal_widget_info" />
+		</receiver>
+		<receiver
+			android:name="kidseducation.platforms.android.QuickLaunchWidget"
+			android:exported="true"
+			android:label="Hızlı Başlat">
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+			</intent-filter>
+			<meta-data
+				android:name="android.appwidget.provider"
+				android:resource="@xml/quick_launch_widget_info" />
+		</receiver>
+	</application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />
 </manifest>

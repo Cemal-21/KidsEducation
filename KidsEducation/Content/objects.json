@@ -1,0 +1,93 @@
+{
+  "categoryId": "objects",
+  "items": [
+    {
+      "id": "object_book",
+      "nameTr": "Kitap",
+      "nameEn": "Book",
+      "imagePath": "object_book.png",
+      "category": "objects",
+      "difficultyLevel": 1,
+      "funFact": "Kitaplar bilgi ve hikaye taşır.",
+      "descriptionTr": "Kitap, okumak ve öğrenmek için kullandığımız sayfalı bir eşyadır.",
+      "soundClueText": "Sayfaları olan ve okumamızı sağlayan eşya nedir?"
+    },
+    {
+      "id": "object_pencil",
+      "nameTr": "Kalem",
+      "nameEn": "Pencil",
+      "imagePath": "object_pencil.png",
+      "category": "objects",
+      "difficultyLevel": 1,
+      "funFact": "Kalemle yazı yazabilir ve resim çizebiliriz.",
+      "descriptionTr": "Kalem, kağıda yazmak veya çizmek için kullanılan bir araçtır.",
+      "soundClueText": "Deftere yazı yazdığımız eşya nedir?"
+    },
+    {
+      "id": "object_bag",
+      "nameTr": "Çanta",
+      "nameEn": "Bag",
+      "imagePath": "object_bag.png",
+      "category": "objects",
+      "difficultyLevel": 1,
+      "funFact": "Çanta eşyalarımızı düzenli taşımamıza yardım eder.",
+      "descriptionTr": "Çanta, kitap ve oyuncak gibi eşyaları taşımak için kullanılır.",
+      "soundClueText": "Okula giderken eşyaları koyduğumuz şey nedir?"
+    },
+    {
+      "id": "object_clock",
+      "nameTr": "Saat",
+      "nameEn": "Clock",
+      "imagePath": "object_clock.png",
+      "category": "objects",
+      "difficultyLevel": 2,
+      "funFact": "Saat zamanı takip etmemizi sağlar.",
+      "descriptionTr": "Saat, gün içinde zamanı öğrenmek için kullandığımız eşyadır.",
+      "soundClueText": "Zamanı gösteren eşya nedir?"
+    },
+    {
+      "id": "object_lamp",
+      "nameTr": "Lamba",
+      "nameEn": "Lamp",
+      "imagePath": "object_lamp.png",
+      "category": "objects",
+      "difficultyLevel": 1,
+      "funFact": "Lamba karanlık odaları aydınlatır.",
+      "descriptionTr": "Lamba, ışık vererek çevremizi görmemizi sağlar.",
+      "soundClueText": "Karanlıkta ışık veren eşya nedir?"
+    },
+    {
+      "id": "object_chair",
+      "nameTr": "Sandalye",
+      "nameEn": "Chair",
+      "imagePath": "object_chair.png",
+      "category": "objects",
+      "difficultyLevel": 1,
+      "funFact": "Sandalye oturmak için tasarlanmıştır.",
+      "descriptionTr": "Sandalye, üzerine oturduğumuz günlük bir eşyadır.",
+      "soundClueText": "Üzerine oturduğumuz eşya nedir?"
+    },
+    {
+      "id": "object_table",
+      "nameTr": "Masa",
+      "nameEn": "Table",
+      "imagePath": "object_table.png",
+      "category": "objects",
+      "difficultyLevel": 2,
+      "funFact": "Masanın üzerinde yemek yiyebilir veya çalışabiliriz.",
+      "descriptionTr": "Masa, üstüne eşya koyduğumuz ve çalıştığımız mobilyadır.",
+      "soundClueText": "Üstünde yemek yediğimiz veya çalıştığımız eşya nedir?"
+    },
+    {
+      "id": "object_key",
+      "nameTr": "Anahtar",
+      "nameEn": "Key",
+      "imagePath": "object_key.png",
+      "category": "objects",
+      "difficultyLevel": 2,
+      "funFact": "Anahtar kilitleri açmak için kullanılır.",
+      "descriptionTr": "Anahtar, kapı veya kutu kilidini açan küçük bir araçtır.",
+      "soundClueText": "Kapı kilidini açan eşya nedir?"
+    }
+  ]
+}

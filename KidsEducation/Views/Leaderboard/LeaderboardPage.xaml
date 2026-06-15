@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:KidsEducation.ViewModels.Leaderboard"
+             x:Class="KidsEducation.Views.Leaderboard.LeaderboardPage"
+             x:DataType="vm:LeaderboardViewModel"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource SurfaceSoft}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="SortChip" TargetType="Border">
+                <Setter Property="StrokeShape" Value="RoundRectangle 20"/>
+                <Setter Property="Padding" Value="16,8"/>
+                <Setter Property="Margin" Value="0,0,8,0"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- ── Başlık ── -->
+        <Border Grid.Row="0" StrokeThickness="0" Padding="20,52,20,20">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#5148D4" Offset="0"/>
+                    <GradientStop Color="#7C3AED" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="12">
+
+                <!-- Geri + başlık -->
+                <Grid Grid.Row="0" ColumnDefinitions="44,*,44">
+                    <Border Grid.Column="0" WidthRequest="36" HeightRequest="36"
+                            BackgroundColor="#24FFFFFF" Stroke="Transparent"
+                            StrokeShape="RoundRectangle 12">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="←" FontSize="18" TextColor="White"
+                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1" Spacing="2" HorizontalOptions="Center">
+                        <Label Text="🏆 Aile Liderlik Tablosu"
+                               FontSize="18" FontAttributes="Bold" TextColor="White"
+                               HorizontalOptions="Center"/>
+                        <Label Text="{Binding TotalProfilesText}"
+                               FontSize="12" TextColor="#CCFFFFFF"
+                               HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Grid>
+
+                <!-- Sıralama seçici -->
+                <ScrollView Grid.Row="1" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                    <HorizontalStackLayout Spacing="0">
+
+                        <Border Style="{StaticResource SortChip}"
+                                Stroke="#40FFFFFF" StrokeThickness="1.5">
+                            <Border.Background>
+                                <SolidColorBrush>
+                                    <SolidColorBrush.Color>
+                                        <Color x:FactoryMethod="FromArgb">
+                                            <x:Arguments>
+                                                <x:String>#40FFFFFF</x:String>
+                                            </x:Arguments>
+                                        </Color>
+                                    </SolidColorBrush.Color>
+                                </SolidColorBrush>
+                            </Border.Background>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SetSortModeCommand}" CommandParameter="0"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="⭐ Yıldız" FontSize="12" FontAttributes="Bold" TextColor="White"/>
+                        </Border>
+
+                        <Border Style="{StaticResource SortChip}"
+                                Stroke="#30FFFFFF" StrokeThickness="1">
+                            <Border.Background>
+                                <SolidColorBrush Color="#20FFFFFF"/>
+                            </Border.Background>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SetSortModeCommand}" CommandParameter="1"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="💎 XP" FontSize="12" TextColor="#DDFFFFFF"/>
+                        </Border>
+
+                        <Border Style="{StaticResource SortChip}"
+                                Stroke="#30FFFFFF" StrokeThickness="1">
+                            <Border.Background>
+                                <SolidColorBrush Color="#20FFFFFF"/>
+                            </Border.Background>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SetSortModeCommand}" CommandParameter="2"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="🔥 Seri" FontSize="12" TextColor="#DDFFFFFF"/>
+                        </Border>
+
+                    </HorizontalStackLayout>
+                </ScrollView>
+
+                <!-- Aktif sıralama göstergesi -->
+                <Label Grid.Row="2"
+                       Text="{Binding SortModeText, StringFormat='Sıralama: {0}'}"
+                       FontSize="11" TextColor="#AAFFFFFF"
+                       HorizontalOptions="Center"/>
+            </Grid>
+        </Border>
+
+        <!-- ── Liste ── -->
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Entries}"
+                        Margin="16,12,16,16">
+
+            <!-- Boş durum -->
+            <CollectionView.EmptyView>
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="12" Margin="0,60,0,0">
+                    <Label Text="👨‍👩‍👧‍👦" FontSize="56" HorizontalOptions="Center"/>
+                    <Label Text="Henüz oyuncu yok" FontSize="16" FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+                    <Label Text="Profil oluşturunca liderlik tablosu burada görünür"
+                           FontSize="13" TextColor="{StaticResource TextMuted}"
+                           HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="vm:LeaderboardEntry">
+                    <Border Margin="0,0,0,10"
+                            BackgroundColor="{Binding CardBgColor}"
+                            Stroke="{Binding CardBorderColor}"
+                            StrokeThickness="2"
+                            StrokeShape="RoundRectangle 20"
+                            Padding="16,14">
+                        <Grid ColumnDefinitions="44,64,*,Auto" ColumnSpacing="10">
+
+                            <!-- Sıra -->
+                            <Label Grid.Column="0"
+                                   Text="{Binding RankEmoji}"
+                                   FontSize="26"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"/>
+
+                            <!-- Avatar -->
+                            <Border Grid.Column="1" WidthRequest="56" HeightRequest="56"
+                                    BackgroundColor="{StaticResource SurfaceSoft}"
+                                    Stroke="{Binding CardBorderColor}"
+                                    StrokeThickness="2"
+                                    StrokeShape="RoundRectangle 18">
+                                <Label Text="{Binding AvatarEmoji}" FontSize="30"
+                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+
+                            <!-- Bilgiler -->
+                            <VerticalStackLayout Grid.Column="2" Spacing="3" VerticalOptions="Center">
+                                <HorizontalStackLayout Spacing="6">
+                                    <Label Text="{Binding Name}"
+                                           FontSize="15" FontAttributes="Bold"
+                                           TextColor="{StaticResource TextPrimary}"/>
+                                    <!-- Aktif profil rozeti -->
+                                    <Border BackgroundColor="{Binding ActiveBadgeColor}"
+                                            Stroke="Transparent"
+                                            StrokeShape="RoundRectangle 8"
+                                            Padding="6,2"
+                                            IsVisible="{Binding IsActiveProfile}">
+                                        <Label Text="sen" FontSize="9" FontAttributes="Bold" TextColor="White"/>
+                                    </Border>
+                                </HorizontalStackLayout>
+                                <Label Text="{Binding AgeGroupName}"
+                                       FontSize="11" TextColor="{StaticResource TextMuted}"/>
+                                <HorizontalStackLayout Spacing="12">
+                                    <Label Text="{Binding StarsText}" FontSize="12" TextColor="#F59E0B"/>
+                                    <Label Text="{Binding XpFormatted}" FontSize="12" TextColor="#7C3AED"/>
+                                    <Label Text="{Binding StreakText}" FontSize="12" TextColor="#EA580C"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+
+                            <!-- Derece rozeti (top 3) -->
+                            <Border Grid.Column="3"
+                                    IsVisible="{Binding IsTopThree}"
+                                    BackgroundColor="{Binding CardBorderColor}"
+                                    Stroke="Transparent"
+                                    StrokeShape="RoundRectangle 12"
+                                    Padding="10,6"
+                                    VerticalOptions="Center">
+                                <Label Text="{Binding TotalStars, StringFormat='{0} ⭐'}"
+                                       FontSize="12" FontAttributes="Bold" TextColor="White"/>
+                            </Border>
+
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

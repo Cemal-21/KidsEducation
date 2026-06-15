@@ -1,0 +1,93 @@
+{
+  "categoryId": "countries",
+  "items": [
+    {
+      "id": "country_turkiye",
+      "nameTr": "Türkiye",
+      "nameEn": "Turkey",
+      "imagePath": "country_turkey",
+      "category": "countries",
+      "difficultyLevel": 1,
+      "funFact": "Türkiye hem Asya'ya hem de Avrupa'ya yayılan tek ülkedir!",
+      "descriptionTr": "Türkiye güzel tarihi şehirlere ve doğal güzelliklere sahip bir ülkedir. Başkenti Ankara'dır. İstanbul ise en büyük şehridir. Kırmızı-beyaz bayrağında hilal ve yıldız vardır.",
+      "soundClueText": "Hem Asya'da hem Avrupa'da toprağı olan, kırmızı bayraklı ve çay içmesiyle ünlü bir ülkedir. Bu ülke nedir?"
+    },
+    {
+      "id": "country_fransa",
+      "nameTr": "Fransa",
+      "nameEn": "France",
+      "imagePath": "country_france",
+      "category": "countries",
+      "difficultyLevel": 1,
+      "funFact": "Eyfel Kulesi her yıl 7 milyondan fazla ziyaretçi çeker!",
+      "descriptionTr": "Fransa Avrupa'da yer alan güzel bir ülkedir. Başkenti Paris'tir. Paris'te Eyfel Kulesi adında çok ünlü bir kule vardır. Fransa moda ve mutfak kültürüyle de dünyaca tanınır.",
+      "soundClueText": "Eyfel Kulesi'ne ev sahipliği yapan, Paris başkentli ve lezzetli peyniri ile ünlü bir Avrupa ülkesidir. Bu ülke nedir?"
+    },
+    {
+      "id": "country_japonya",
+      "nameTr": "Japonya",
+      "nameEn": "Japan",
+      "imagePath": "country_japan",
+      "category": "countries",
+      "difficultyLevel": 1,
+      "funFact": "Japonya'da 6.800'den fazla ada var!",
+      "descriptionTr": "Japonya, Asya kıtasında denizlerle çevrili bir ada ülkesidir. Başkenti Tokyo'dur. Kiraz çiçekleri (sakura) Japonya'nın sembollerinden biridir. Teknoloji ve anime ile de ünlüdür.",
+      "soundClueText": "Kiraz çiçekleriyle ünlü, adalardan oluşan ve robotlarıyla dikkat çeken bir Asya ülkesidir. Bu ülke nedir?"
+    },
+    {
+      "id": "country_brezilya",
+      "nameTr": "Brezilya",
+      "nameEn": "Brazil",
+      "imagePath": "country_brazil",
+      "category": "countries",
+      "difficultyLevel": 2,
+      "funFact": "Amazon Ormanı'nın büyük bir bölümü Brezilya'dadır!",
+      "descriptionTr": "Brezilya Güney Amerika'nın en büyük ülkesidir. Başkenti Brasilia'dır. Amazon Ormanı'na ev sahipliği yapar. Futbol ve karnaval kültürüyle de ünlüdür. Portekizce konuşulur.",
+      "soundClueText": "Futbolun ülkesi olarak bilinir, Amazon ormanlarına ve renkli karnavallarına sahip bir Güney Amerika ülkesidir. Bu ülke nedir?"
+    },
+    {
+      "id": "country_misir",
+      "nameTr": "Mısır",
+      "nameEn": "Egypt",
+      "imagePath": "country_egypt",
+      "category": "countries",
+      "difficultyLevel": 1,
+      "funFact": "Mısır Piramitleri 4.500 yıldan daha eski!",
+      "descriptionTr": "Mısır Afrika'da yer alan tarihi bir ülkedir. Başkenti Kahire'dir. Dev piramitleri ve firavunlarıyla tanınır. Nil Nehri tarih boyunca Mısır'ı sulamıştır. Çöllerle kaplıdır.",
+      "soundClueText": "Dev piramitleri, firavunları ve Nil Nehri ile ünlü Afrika'nın kuzeyindeki tarihi bir ülkedir. Bu ülke nedir?"
+    },
+    {
+      "id": "country_italya",
+      "nameTr": "İtalya",
+      "nameEn": "Italy",
+      "imagePath": "country_italy",
+      "category": "countries",
+      "difficultyLevel": 1,
+      "funFact": "Pizza ve makarna dünyaya İtalya'dan yayılmıştır!",
+      "descriptionTr": "İtalya Avrupa'da çizme şeklinde bir yarımadadadır. Başkenti Roma'dır. Pasta, pizza ve dondurma gibi lezzetli yemekleriyle ünlüdür. Roma Kolezyumu ve Pisa Kulesi gibi tarihi yapılara ev sahipliği yapar.",
+      "soundClueText": "Çizme şeklinde görünen, pizza ve makarnayı dünyaya tanıtan ve Kolezyum'a sahip bir Avrupa ülkesidir. Bu ülke nedir?"
+    },
+    {
+      "id": "country_cin",
+      "nameTr": "Çin",
+      "nameEn": "China",
+      "imagePath": "country_china",
+      "category": "countries",
+      "difficultyLevel": 2,
+      "funFact": "Çin Seddi uzaydan görülebilecek kadar büyük bir yapıdır!",
+      "descriptionTr": "Çin dünyanın en kalabalık ülkesidir. Başkenti Pekin'dir. Çin Seddi ülkenin en ünlü yapısıdır. Büyük Panda ayıları Çin'e özgüdür. Kağıt, pusula ve matbaayı da Çinliler icat etmiştir.",
+      "soundClueText": "Dev bir sedde sahip, pandalarıyla ünlü ve dünyanın en kalabalık ülkesi olan Asya ülkesidir. Bu ülke nedir?"
+    },
+    {
+      "id": "country_avustralya",
+      "nameTr": "Avustralya",
+      "nameEn": "Australia",
+      "imagePath": "country_australia",
+      "category": "countries",
+      "difficultyLevel": 2,
+      "funFact": "Kangurular sadece Avustralya'ya özgüdür!",
+      "descriptionTr": "Avustralya hem bir kıta hem de bir ülkedir. Başkenti Canberra'dır. Kanguru, koala ve dünyanın en zehirli hayvanlarından bazıları burada yaşar. Okyanusya kıtasındadır.",
+      "soundClueText": "Kangurular ve koalalarla ünlü, hem kıta hem ülke olan ve Okyanusya'da bulunan bir ülkedir. Bu ülke nedir?"
+    }
+  ]
+}

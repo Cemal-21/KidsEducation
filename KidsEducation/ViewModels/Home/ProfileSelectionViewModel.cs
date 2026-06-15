@@ -10,10 +10,16 @@ public partial class ProfileSelectionViewModel : ObservableObject
 {
     private readonly ProfileService _profileService;
     private readonly NavigationService _navigationService;
+    private readonly AudioService _audioService;
 
     [ObservableProperty] private List<ChildProfile> _profiles = new();
+    public bool HasProfiles => Profiles.Count > 0;
+
+    partial void OnProfilesChanged(List<ChildProfile> value) =>
+        OnPropertyChanged(nameof(HasProfiles));
     [ObservableProperty] private string _newProfileName = string.Empty;
     [ObservableProperty] private AgeGroup _selectedAgeGroup = AgeGroup.Toddler;
+    public string SelectedAvatarEmoji { get; set; } = "🐰";
 
     public List<AgeGroupOption> AgeGroupOptions { get; } = new()
     {
@@ -24,10 +30,12 @@ public partial class ProfileSelectionViewModel : ObservableObject
 
     public ProfileSelectionViewModel(
         ProfileService profileService,
-        NavigationService navigationService)
+        NavigationService navigationService,
+        AudioService audioService)
     {
         _profileService = profileService;
         _navigationService = navigationService;
+        _audioService = audioService;
     }
 
     [RelayCommand]
@@ -40,6 +48,7 @@ public partial class ProfileSelectionViewModel : ObservableObject
     public async Task SelectProfileAsync(ChildProfile profile)
     {
         _profileService.SetActiveProfile(profile.Id);
+        await StartBackgroundMusicSafelyAsync();
         await _navigationService.GoToHomeAsync();
     }
 
@@ -61,11 +70,12 @@ public partial class ProfileSelectionViewModel : ObservableObject
         {
             Name = NewProfileName.Trim(),
             AgeGroup = SelectedAgeGroup,
-            AvatarEmoji = option.Emoji
+            AvatarEmoji = SelectedAvatarEmoji
         };
 
         _profileService.SaveProfile(profile);
         _profileService.SetActiveProfile(profile.Id);
+        await StartBackgroundMusicSafelyAsync();
 
         NewProfileName = string.Empty;
         await _navigationService.GoToHomeAsync();
@@ -76,6 +86,18 @@ public partial class ProfileSelectionViewModel : ObservableObject
     {
         _profileService.DeleteProfile(profile.Id);
         LoadProfiles();
+    }
+
+    private async Task StartBackgroundMusicSafelyAsync()
+    {
+        try
+        {
+            await _audioService.StartBackgroundMusicAsync();
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[ProfileSelection] Müzik başlatılamadı: {ex.Message}");
+        }
     }
 }
 

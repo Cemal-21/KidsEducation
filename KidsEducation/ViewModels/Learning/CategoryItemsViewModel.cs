@@ -19,6 +19,7 @@ public partial class CategoryItemsViewModel : ObservableObject
     [ObservableProperty] private string _categoryColorHex = "#6C62F5";
     [ObservableProperty] private string _categoryColorHex2 = "#4C44C6";
     [ObservableProperty] private string _categoryEmoji = "📚";
+    [ObservableProperty] private string _categoryImage = "ui_learning_3d.png";
     [ObservableProperty] private string _title = string.Empty;
     // ────────────────────────────────────────────────────────
 
@@ -42,6 +43,9 @@ public partial class CategoryItemsViewModel : ObservableObject
                 CategoryColorHex = category.ColorHex;
                 CategoryColorHex2 = category.ColorHex2;
                 CategoryEmoji = category.Emoji;
+                CategoryImage = string.IsNullOrWhiteSpace(category.Image)
+                    ? "ui_learning_3d.png"
+                    : category.Image;
             }
             else
             {

@@ -16,7 +16,16 @@ public enum GameType
     SoundGuess,    // Sesi dinle, doğru görseli seç
     BalloonPop,    // Hedef görseli hızlıca patlat
     SequenceOrder, // Sıralı düşünme ve örüntü
-    StoryQuiz      // Kısa hikayeden doğru görseli seç
+    StoryQuiz,     // Kısa hikayeden doğru görseli seç
+    Tracing,       // Harf/sayı izleme (parmakla çizim)
+    PuzzleSwap,    // Görsel puzzle (parça takası)
+    LetterDrop,    // Harf yerleştirme
+    MathQuiz,      // Matematik
+    WordScramble,  // Kelime bul / anagram
+    Matching,      // Görsel-isim eşleştirme
+    FindAndMark,   // Hangisi bu? (6 görsel)
+    Coloring,      // Boyama oyunu
+    Sorting        // Sıralama oyunu
 }
 
 public enum GameResult

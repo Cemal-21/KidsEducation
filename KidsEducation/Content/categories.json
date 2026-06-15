@@ -8,7 +8,11 @@
       "image": "category_animals.png",
       "colorHex": "#FF6B9D",
       "colorHex2": "#FF4757",
-      "availableForAgeGroups": [ 1, 2, 3 ]
+      "availableForAgeGroups": [
+        1,
+        2,
+        3
+      ]
     },
     {
       "id": "fruits",
@@ -18,7 +22,11 @@
       "image": "category_fruits.png",
       "colorHex": "#FF9500",
       "colorHex2": "#FF6B35",
-      "availableForAgeGroups": [ 1, 2, 3 ]
+      "availableForAgeGroups": [
+        1,
+        2,
+        3
+      ]
     },
     {
       "id": "vegetables",
@@ -28,7 +36,11 @@
       "image": "category_vegetables.png",
       "colorHex": "#34C759",
       "colorHex2": "#00B894",
-      "availableForAgeGroups": [ 1, 2, 3 ]
+      "availableForAgeGroups": [
+        1,
+        2,
+        3
+      ]
     },
     {
       "id": "colors",
@@ -38,7 +50,11 @@
       "image": "category_colors.png",
       "colorHex": "#AF52DE",
       "colorHex2": "#FF6B9D",
-      "availableForAgeGroups": [ 1, 2, 3 ]
+      "availableForAgeGroups": [
+        1,
+        2,
+        3
+      ]
     },
     {
       "id": "shapes",
@@ -48,7 +64,11 @@
       "image": "category_shapes.png",
       "colorHex": "#5856D6",
       "colorHex2": "#4C44C6",
-      "availableForAgeGroups": [ 1, 2, 3 ]
+      "availableForAgeGroups": [
+        1,
+        2,
+        3
+      ]
     },
     {
       "id": "vehicles",
@@ -58,7 +78,10 @@
       "image": "category_vehicles.png",
       "colorHex": "#007AFF",
       "colorHex2": "#0056CC",
-      "availableForAgeGroups": [ 2, 3 ]
+      "availableForAgeGroups": [
+        2,
+        3
+      ]
     },
     {
       "id": "numbers",
@@ -68,7 +91,10 @@
       "image": "category_numbers.png",
       "colorHex": "#FF3B30",
       "colorHex2": "#C0392B",
-      "availableForAgeGroups": [ 2, 3 ]
+      "availableForAgeGroups": [
+        2,
+        3
+      ]
     },
     {
       "id": "body",
@@ -78,7 +104,10 @@
       "image": "category_body.png",
       "colorHex": "#FF6B9D",
       "colorHex2": "#E84393",
-      "availableForAgeGroups": [ 2, 3 ]
+      "availableForAgeGroups": [
+        2,
+        3
+      ]
     },
     {
       "id": "letters",
@@ -88,7 +117,9 @@
       "image": "category_letters.png",
       "colorHex": "#FF9500",
       "colorHex2": "#E67E00",
-      "availableForAgeGroups": [ 3 ]
+      "availableForAgeGroups": [
+        3
+      ]
     },
     {
       "id": "english",
@@ -98,7 +129,9 @@
       "image": "category_english.png",
       "colorHex": "#34C759",
       "colorHex2": "#27AE60",
-      "availableForAgeGroups": [ 3 ]
+      "availableForAgeGroups": [
+        3
+      ]
     },
     {
       "id": "seasons",
@@ -108,7 +141,141 @@
       "image": "category_seasons.png",
       "colorHex": "#FF9500",
       "colorHex2": "#FF6B35",
-      "availableForAgeGroups": [ 3 ]
+      "availableForAgeGroups": [
+        3
+      ]
+    },
+    {
+      "id": "emotions",
+      "nameTr": "Duygular",
+      "nameEn": "Emotions",
+      "emoji": "😊",
+      "image": "category_emotions.png",
+      "colorHex": "#FF6B9D",
+      "colorHex2": "#FF4785",
+      "availableForAgeGroups": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "professions",
+      "nameTr": "Meslekler",
+      "nameEn": "Professions",
+      "emoji": "👷",
+      "image": "category_professions.png",
+      "colorHex": "#FF9500",
+      "colorHex2": "#E67E00",
+      "availableForAgeGroups": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "countries",
+      "nameTr": "Ülkeler",
+      "nameEn": "Countries",
+      "emoji": "🌍",
+      "image": "category_countries.png",
+      "colorHex": "#007AFF",
+      "colorHex2": "#0056CC",
+      "availableForAgeGroups": [
+        3
+      ]
+    },
+    {
+      "id": "planets",
+      "nameTr": "Gezegenler",
+      "nameEn": "Planets",
+      "emoji": "🪐",
+      "image": "category_planets.png",
+      "colorHex": "#5B7CFF",
+      "colorHex2": "#6E44FF",
+      "availableForAgeGroups": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "cities",
+      "nameTr": "İller",
+      "nameEn": "Cities",
+      "emoji": "🏙️",
+      "image": "category_cities.png",
+      "colorHex": "#007AFF",
+      "colorHex2": "#34C759",
+      "availableForAgeGroups": [
+        3
+      ]
+    },
+    {
+      "id": "nature",
+      "nameTr": "Doğa",
+      "nameEn": "Nature",
+      "emoji": "🌿",
+      "image": "category_nature.png",
+      "colorHex": "#34C759",
+      "colorHex2": "#00B894",
+      "availableForAgeGroups": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "weather",
+      "nameTr": "Hava Durumu",
+      "nameEn": "Weather",
+      "emoji": "☀️",
+      "image": "category_weather.png",
+      "colorHex": "#5AC8FA",
+      "colorHex2": "#007AFF",
+      "availableForAgeGroups": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "opposites",
+      "nameTr": "Zıt Kavramlar",
+      "nameEn": "Opposites",
+      "emoji": "↔️",
+      "image": "category_opposites.png",
+      "colorHex": "#F97316",
+      "colorHex2": "#22C55E",
+      "availableForAgeGroups": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "objects",
+      "nameTr": "Günlük Eşyalar",
+      "nameEn": "Daily Objects",
+      "emoji": "🎒",
+      "image": "category_objects.png",
+      "colorHex": "#6366F1",
+      "colorHex2": "#06B6D4",
+      "availableForAgeGroups": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "traffic",
+      "nameTr": "Trafik İşaretleri",
+      "nameEn": "Traffic Signs",
+      "emoji": "🚦",
+      "image": "category_traffic.png",
+      "colorHex": "#EF4444",
+      "colorHex2": "#F59E0B",
+      "availableForAgeGroups": [
+        2,
+        3
+      ]
     }
   ]
 }

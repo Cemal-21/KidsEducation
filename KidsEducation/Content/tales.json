@@ -1,0 +1,116 @@
+﻿[
+  {
+    "id": "uc_keci",
+    "title": "Üç Keçi Kardeş",
+    "emoji": "🐐",
+    "category": "klasik",
+    "ageMin": 3,
+    "ageMax": 7,
+    "durationSeconds": 120,
+    "pages": [
+      { "pageNumber": 1, "emoji": "🌄", "text": "Bir zamanlar dağın eteğinde üç keçi kardeş yaşıyordu. Küçük Keçi, Orta Keçi ve Büyük Keçi.", "audioFile": "tale_uc_keci_1.mp3" },
+      { "pageNumber": 2, "emoji": "🌿", "text": "Her gün dağın öte tarafındaki yeşil çayıra gitmek istiyorlardı. Ama yolda tehlikeli bir köprü vardı.", "audioFile": "tale_uc_keci_2.mp3" },
+      { "pageNumber": 3, "emoji": "👹", "text": "Köprünün altında kocaman, çirkin bir dev yaşıyordu. Kimseyi geçirmek istemiyordu!", "audioFile": "tale_uc_keci_3.mp3" },
+      { "pageNumber": 4, "emoji": "🐐", "text": "Küçük Keçi köprüye yaklaştı. Tık tık tık! Dev bağırdı: Kim bu köprüde?", "audioFile": "tale_uc_keci_4.mp3" },
+      { "pageNumber": 5, "emoji": "🗣", "text": "Küçük Keçi: Ben küçücük Keçi! Lütfen beni geçir. Arkamdan daha büyüğü gelecek! dedi.", "audioFile": "tale_uc_keci_5.mp3" },
+      { "pageNumber": 6, "emoji": "🐐", "text": "Dev bıraktı. Orta Keçi geldi. O da aynı şeyi söyledi. Dev onu da bekledi.", "audioFile": "tale_uc_keci_6.mp3" },
+      { "pageNumber": 7, "emoji": "💪", "text": "Büyük Keçi geldi. Boynuzlarını öne tuttu ve dev'i köprüden attı! Artık herkes geçebilirdi.", "audioFile": "tale_uc_keci_7.mp3" },
+      { "pageNumber": 8, "emoji": "🌈", "text": "Üç keçi kardeş yeşil çayıra kavuştu. Birlikte oynadılar ve mutlu yaşadılar. Sonunda!", "audioFile": "tale_uc_keci_8.mp3" }
+    ]
+  },
+  {
+    "id": "kirmizi_baslikli_kiz",
+    "title": "Kırmızı Başlıklı Kız",
+    "emoji": "🧣",
+    "category": "klasik",
+    "ageMin": 4,
+    "ageMax": 8,
+    "durationSeconds": 150,
+    "pages": [
+      { "pageNumber": 1, "emoji": "👧", "text": "Bir köyde Kırmızı Başlıklı Kız yaşıyordu. Annesinin ördüğü kırmızı başlığını çok seviyordu.", "audioFile": "tale_krmz_1.mp3" },
+      { "pageNumber": 2, "emoji": "🧺", "text": "Bir gün annesi: Büyükanneye bu sepeti götür, ama ormanda dur oynama! dedi.", "audioFile": "tale_krmz_2.mp3" },
+      { "pageNumber": 3, "emoji": "🌲", "text": "Kız ormana girdi. Yolda büyük bir kurtla karşılaştı. Kurt çok sinsi görünüyordu.", "audioFile": "tale_krmz_3.mp3" },
+      { "pageNumber": 4, "emoji": "🐺", "text": "Nereye gidiyorsun? diye sordu kurt. Kız büyükannesinin evini tarif etti.", "audioFile": "tale_krmz_4.mp3" },
+      { "pageNumber": 5, "emoji": "🏃", "text": "Kurt hızla büyükannenin evine koştu. Kapıyı çaldı ve içeri girdi!", "audioFile": "tale_krmz_5.mp3" },
+      { "pageNumber": 6, "emoji": "🛏", "text": "Kız eve geldi. Büyükannemin gözleri ne büyük! dedi. Kurt maskesi düştü!", "audioFile": "tale_krmz_6.mp3" },
+      { "pageNumber": 7, "emoji": "😱", "text": "Tam o sırada orman bekçisi içeri girdi ve kurdu kovaladı. Büyükanne kurtuldu!", "audioFile": "tale_krmz_7.mp3" },
+      { "pageNumber": 8, "emoji": "❤", "text": "Kırmızı Başlıklı Kız bir daha yabancılarla konuşmadı. Annesinin sözünü tutmayı öğrendi.", "audioFile": "tale_krmz_8.mp3" }
+    ]
+  },
+  {
+    "id": "cirkin_ordek",
+    "title": "Çirkin Ördek Yavrusu",
+    "emoji": "🦆",
+    "category": "klasik",
+    "ageMin": 4,
+    "ageMax": 9,
+    "durationSeconds": 160,
+    "pages": [
+      { "pageNumber": 1, "emoji": "🥚", "text": "Bir göl kenarında anne ördek yumurtalarını bekliyordu. Sonunda yumurtalar çatladı!", "audioFile": "tale_ordek_1.mp3" },
+      { "pageNumber": 2, "emoji": "🐣", "text": "Bütün yavrular sarı ve tüylüydü. Ama bir tanesi gri ve büyüktü. Hiç ördek gibi görünmüyordu.", "audioFile": "tale_ordek_2.mp3" },
+      { "pageNumber": 3, "emoji": "😢", "text": "Diğer ördekler onunla alay etti. Çirkin ördek yavrusu! diye bağırdılar.", "audioFile": "tale_ordek_3.mp3" },
+      { "pageNumber": 4, "emoji": "🌨", "text": "Yavru oradan kaçtı. Uzaklarda soğuk kışı yalnız geçirdi. Çok üzgündü.", "audioFile": "tale_ordek_4.mp3" },
+      { "pageNumber": 5, "emoji": "🌸", "text": "Bahar geldi. Yavru göle yaklaştı. Suda kendi yansımasını gördü.", "audioFile": "tale_ordek_5.mp3" },
+      { "pageNumber": 6, "emoji": "🦢", "text": "Artık çirkin ördek değildi. Uzun boyunlu, bembeyaz, güzel bir kuğuydu!", "audioFile": "tale_ordek_6.mp3" },
+      { "pageNumber": 7, "emoji": "🌟", "text": "Diğer kuğular onu karşıladı. Gel bizimle! dediler. Artık yalnız değildi.", "audioFile": "tale_ordek_7.mp3" },
+      { "pageNumber": 8, "emoji": "💛", "text": "Farklı olmak önemli değil. Herkesin kendine has güzelliği vardır. Seni sen yapan şey seni özel kılar!", "audioFile": "tale_ordek_8.mp3" }
+    ]
+  },
+  {
+    "id": "pamuk_prenses",
+    "title": "Pamuk Prenses",
+    "emoji": "🍎",
+    "category": "klasik",
+    "ageMin": 4,
+    "ageMax": 9,
+    "durationSeconds": 170,
+    "pages": [
+      { "pageNumber": 1, "emoji": "👸", "text": "Bir zamanlar Pamuk Prenses adında çok güzel bir kız yaşıyordu. Saçları simsiyah, yanakları kıpkırmızıydı.", "audioFile": "tale_pamuk_1.mp3" },
+      { "pageNumber": 2, "emoji": "🪞", "text": "Üvey annesi her gün aynasına sorardı: Ayna ayna söyle bana, bu ülkede en güzel kim?", "audioFile": "tale_pamuk_2.mp3" },
+      { "pageNumber": 3, "emoji": "😠", "text": "Ayna bir gün dedi ki: En güzel Pamuk Prenses! Üvey anne kıskançlıktan çıldırdı.", "audioFile": "tale_pamuk_3.mp3" },
+      { "pageNumber": 4, "emoji": "🌲", "text": "Pamuk Prenses ormana kaçtı. Küçük bir kulübe buldu. İçeride yedi minik yatak vardı.", "audioFile": "tale_pamuk_4.mp3" },
+      { "pageNumber": 5, "emoji": "⛏", "text": "Yedi cüce iş dönüşü eve geldi. Pamuk Prenses'i buldu ve onu korudu.", "audioFile": "tale_pamuk_5.mp3" },
+      { "pageNumber": 6, "emoji": "🍎", "text": "Üvey anne yaşlı bir kadın kılığına girip zehirli elma getirdi. Pamuk Prenses ısırdı ve uyudu.", "audioFile": "tale_pamuk_6.mp3" },
+      { "pageNumber": 7, "emoji": "🤴", "text": "Uzaktan bir prens geldi. Pamuk Prenses'i gördü ve ona sevgiyle dokundu. Prenses uyandı!", "audioFile": "tale_pamuk_7.mp3" },
+      { "pageNumber": 8, "emoji": "🎉", "text": "Pamuk Prenses ve prens mutlulukla yaşadı. Cüceler de onları her zaman ziyarete geldi.", "audioFile": "tale_pamuk_8.mp3" }
+    ]
+  },
+  {
+    "id": "pinokyo",
+    "title": "Pinokyo",
+    "emoji": "🪵",
+    "category": "klasik",
+    "ageMin": 5,
+    "ageMax": 9,
+    "durationSeconds": 140,
+    "pages": [
+      { "pageNumber": 1, "emoji": "🔨", "text": "Geppetto adında yaşlı bir marangoz vardı. Bir gün tahtadan çok güzel bir kukla yaptı.", "audioFile": "tale_pinokyo_1.mp3" },
+      { "pageNumber": 2, "emoji": "✨", "text": "Gece mavi saçlı peri geldi ve kuklanın canlanmasını diledi. Kukla hayata geçti!", "audioFile": "tale_pinokyo_2.mp3" },
+      { "pageNumber": 3, "emoji": "🎒", "text": "Geppetto kuklaya Pinokyo adını verdi ve okula gönderdi. Ama Pinokyo yolda eğlenceye saplandı.", "audioFile": "tale_pinokyo_3.mp3" },
+      { "pageNumber": 4, "emoji": "🤥", "text": "Pinokyo yalan söyledikçe burnu uzuyordu! Okula gittim dedi, burnu uzadı.", "audioFile": "tale_pinokyo_4.mp3" },
+      { "pageNumber": 5, "emoji": "🐳", "text": "Bir gün hem Pinokyo hem de Geppetto büyük bir balina tarafından yutuldu!", "audioFile": "tale_pinokyo_5.mp3" },
+      { "pageNumber": 6, "emoji": "🔥", "text": "Pinokyo ateş yaktı, balina aksırdı ve ikisini dışarı fırlattı. Babası kurtuldu!", "audioFile": "tale_pinokyo_6.mp3" },
+      { "pageNumber": 7, "emoji": "💙", "text": "Mavi peri geri döndü. Cesur ve dürüst oldun dedi. Pinokyo gerçek bir çocuk oldu!", "audioFile": "tale_pinokyo_7.mp3" },
+      { "pageNumber": 8, "emoji": "❤", "text": "Dürüstlük en büyük erdemdir. Pinokyo bunu öğrendi ve Geppetto ile mutlu yaşadı.", "audioFile": "tale_pinokyo_8.mp3" }
+    ]
+  },
+  {
+    "id": "kucuk_prens",
+    "title": "Küçük Prens",
+    "emoji": "🌹",
+    "category": "klasik",
+    "ageMin": 6,
+    "ageMax": 10,
+    "durationSeconds": 180,
+    "pages": [
+      { "pageNumber": 1, "emoji": "⭐", "text": "Uzak bir gezegende küçük bir prens yaşıyordu. Gezegeni küçüktü ve üstünde sadece bir gül vardı.", "audioFile": "tale_prens_1.mp3" },
+      { "pageNumber": 2, "emoji": "🌹", "text": "Gülünü çok seviyordu ama gül bazen huysuzluk yapıyordu. Prens üzüldü ve gezegenini terk etti.", "audioFile": "tale_prens_2.mp3" },
+      { "pageNumber": 3, "emoji": "🪐", "text": "Birçok gezegen dolaştı. Her birinde farklı biri yaşıyordu: bir kral, kibirli adam, bir sarhoş...", "audioFile": "tale_prens_3.mp3" },
+      { "pageNumber": 4, "emoji": "🌍", "text": "Sonunda Dünya'ya geldi. Çölde bir pilotla karşılaştı. İkisi dost oldu.", "audioFile": "tale_prens_4.mp3" },
+      { "pageNumber": 5, "emoji": "🦊", "text": "Bir tilki ile tanıştı. Tilki dedi ki: Önemli şeyler gözle görünmez, kalpte hissedilir.", "audioFile": "tale_prens_5.mp3" },
+      { "pageNumber": 6, "emoji": "💭", "text": "Prens anladı ki gülü özel yapan, onunla geçirdiği zamandı. Sevgi, zaman harcamaktır.", "audioFile": "tale_prens_6.mp3" },
+      { "pageNumber": 7, "emoji": "🌙", "text": "Küçük Prens gezegenine dönmek istedi. Pilota veda etti: Gökyüzüne bak, beni orada ara.", "audioFile": "tale_prens_7.mp3" },
+      { "pageNumber": 8, "emoji": "⭐", "text": "Artık gökyüzüne bakınca gülümsemek geliyor. Çünkü bir yerde küçük bir prens güle bakıyor.", "audioFile": "tale_prens_8.mp3" }
+    ]
+  }
+]

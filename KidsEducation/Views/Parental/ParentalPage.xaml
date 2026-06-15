@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <views:AnimatedPage
     x:Class="KidsEducation.Views.Parental.ParentalPage"
+    x:Name="PageRoot"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:KidsEducation.ViewModels.Parental"
     xmlns:models="clr-namespace:KidsEducation.Models"
     xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
     xmlns:views="clr-namespace:KidsEducation.Views"
+    xmlns:converters="clr-namespace:KidsEducation.Converters"
     Shell.NavBarIsVisible="False"
     BackgroundColor="#F0F2FA">
 
     <ContentPage.Resources>
+        <converters:StringNotEmptyConverter x:Key="StringNotEmptyConverter"/>
         <Color x:Key="TextPrimary">#172033</Color>
         <Color x:Key="TextMuted">#6B7280</Color>
         <Color x:Key="BrandPurpleLight">#6C62F5</Color>
@@ -69,6 +72,25 @@
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="18,22,18,34" Spacing="20">
 
+                <!-- ── Ebeveyn Dashboard ── -->
+                <controls:TappableBorder
+                    Command="{Binding GoToDashboardCommand}"
+                    StrokeShape="RoundRectangle 20" Stroke="Transparent" Padding="18,16">
+                    <controls:TappableBorder.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#5148D4" Offset="0"/>
+                            <GradientStop Color="#3730A3" Offset="1"/>
+                        </LinearGradientBrush>
+                    </controls:TappableBorder.Background>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="📊 Çocuk Dashboard" FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                            <Label Text="İlerleme, aktivite ve kategori özeti" FontSize="12" TextColor="#CCFFFFFF"/>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="1" Text="→" FontSize="22" TextColor="White" VerticalOptions="Center"/>
+                    </Grid>
+                </controls:TappableBorder>
+
                 <!-- Haftalık Rapor -->
                 <VerticalStackLayout Spacing="10">
                     <Label Text="haftalık rapor" Style="{StaticResource SectionLabel}" />
@@ -105,8 +127,70 @@
                                     </VerticalStackLayout>
                                 </Border>
                             </Grid>
+
+                            <!-- Günlük bar grafik -->
+                            <VerticalStackLayout Spacing="6">
+                                <Label Text="günlük süre (dakika)" FontSize="11" TextColor="{StaticResource TextMuted}" />
+                                <Grid ColumnDefinitions="*,*,*,*,*,*,*" ColumnSpacing="6" HeightRequest="80">
+                                    <VerticalStackLayout Grid.Column="0" VerticalOptions="End" Spacing="3">
+                                        <Label Text="{Binding Report.DailyStats[0].MinutesText}" FontSize="9" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                        <BoxView BackgroundColor="{Binding Report.DailyStats[0].BarColor}" CornerRadius="4" WidthRequest="28" HeightRequest="{Binding Report.DailyStats[0].BarHeight}" HorizontalOptions="Center" VerticalOptions="End" />
+                                        <Label Text="{Binding Report.DailyStats[0].DayLabel}" FontSize="9" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout Grid.Column="1" VerticalOptions="End" Spacing="3">
+                                        <Label Text="{Binding Report.DailyStats[1].MinutesText}" FontSize="9" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                        <BoxView BackgroundColor="{Binding Report.DailyStats[1].BarColor}" CornerRadius="4" WidthRequest="28" HeightRequest="{Binding Report.DailyStats[1].BarHeight}" HorizontalOptions="Center" VerticalOptions="End" />
+                                        <Label Text="{Binding Report.DailyStats[1].DayLabel}" FontSize="9" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout Grid.Column="2" VerticalOptions="End" Spacing="3">
+                                        <Label Text="{Binding Report.DailyStats[2].MinutesText}" FontSize="9" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                        <BoxView BackgroundColor="{Binding Report.DailyStats[2].BarColor}" CornerRadius="4" WidthRequest="28" HeightRequest="{Binding Report.DailyStats[2].BarHeight}" HorizontalOptions="Center" VerticalOptions="End" />
+                                        <Label Text="{Binding Report.DailyStats[2].DayLabel}" FontSize="9" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout Grid.Column="3" VerticalOptions="End" Spacing="3">
+                                        <Label Text="{Binding Report.DailyStats[3].MinutesText}" FontSize="9" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                        <BoxView BackgroundColor="{Binding Report.DailyStats[3].BarColor}" CornerRadius="4" WidthRequest="28" HeightRequest="{Binding Report.DailyStats[3].BarHeight}" HorizontalOptions="Center" VerticalOptions="End" />
+                                        <Label Text="{Binding Report.DailyStats[3].DayLabel}" FontSize="9" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout Grid.Column="4" VerticalOptions="End" Spacing="3">
+                                        <Label Text="{Binding Report.DailyStats[4].MinutesText}" FontSize="9" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                        <BoxView BackgroundColor="{Binding Report.DailyStats[4].BarColor}" CornerRadius="4" WidthRequest="28" HeightRequest="{Binding Report.DailyStats[4].BarHeight}" HorizontalOptions="Center" VerticalOptions="End" />
+                                        <Label Text="{Binding Report.DailyStats[4].DayLabel}" FontSize="9" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout Grid.Column="5" VerticalOptions="End" Spacing="3">
+                                        <Label Text="{Binding Report.DailyStats[5].MinutesText}" FontSize="9" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                        <BoxView BackgroundColor="{Binding Report.DailyStats[5].BarColor}" CornerRadius="4" WidthRequest="28" HeightRequest="{Binding Report.DailyStats[5].BarHeight}" HorizontalOptions="Center" VerticalOptions="End" />
+                                        <Label Text="{Binding Report.DailyStats[5].DayLabel}" FontSize="9" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                    <VerticalStackLayout Grid.Column="6" VerticalOptions="End" Spacing="3">
+                                        <Label Text="{Binding Report.DailyStats[6].MinutesText}" FontSize="9" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                        <BoxView BackgroundColor="{Binding Report.DailyStats[6].BarColor}" CornerRadius="4" WidthRequest="28" HeightRequest="{Binding Report.DailyStats[6].BarHeight}" HorizontalOptions="Center" VerticalOptions="End" />
+                                        <Label Text="{Binding Report.DailyStats[6].DayLabel}" FontSize="9" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </VerticalStackLayout>
                         </VerticalStackLayout>
                     </Border>
+
+                    <!-- Detaylı Rapor & Paylaş butonu -->
+                    <controls:TappableBorder
+                            Command="{Binding GoToProgressReportCommand}"
+                            BackgroundColor="{StaticResource BrandPurple}"
+                            Stroke="Transparent" StrokeShape="RoundRectangle 16"
+                            Padding="0,14">
+                        <controls:TappableBorder.Shadow>
+                            <Shadow Brush="#205148D4" Offset="0,3" Radius="8" Opacity="0.2"/>
+                        </controls:TappableBorder.Shadow>
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="8"
+                                               InputTransparent="True">
+                            <Label Text="📤" FontSize="17" VerticalOptions="Center"
+                                   InputTransparent="True"/>
+                            <Label Text="Detaylı Raporu Gör &amp; Paylaş"
+                                   FontSize="14" FontAttributes="Bold"
+                                   TextColor="White" VerticalOptions="Center"
+                                   InputTransparent="True"/>
+                        </HorizontalStackLayout>
+                    </controls:TappableBorder>
                 </VerticalStackLayout>
 
                 <!-- Premium Haftalık Yorum -->
@@ -279,6 +363,101 @@
                     </Border>
                     <Border Style="{StaticResource SettingCard}">
                         <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                            <Label Grid.Column="0" Text="🌙" FontSize="22" VerticalOptions="Center" />
+                            <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                <Label Text="Karanlık Mod" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                <Label Text="Koyu tema — gece kullanımı için" FontSize="12" TextColor="{StaticResource TextMuted}" />
+                            </VerticalStackLayout>
+                            <Switch Grid.Column="2" IsToggled="{Binding DarkModeEnabled}" ThumbColor="#6C62F5" OnColor="#EDE8FF" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+
+                    <!-- ── Renk Teması ── -->
+                    <Border Style="{StaticResource SettingCard}">
+                        <VerticalStackLayout Spacing="14">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                <Label Grid.Column="0" Text="🎨" FontSize="22" VerticalOptions="Center" />
+                                <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                    <Label Text="Renk Teması" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                    <Label Text="Bir sonraki açılışta uygulanır" FontSize="11" TextColor="{StaticResource TextMuted}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                            <FlexLayout BindableLayout.ItemsSource="{Binding ColorThemes}"
+                                        Wrap="Wrap" JustifyContent="Start" AlignItems="Center"
+                                        Direction="Row">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:ColorThemeItem">
+                                        <Border WidthRequest="72" HeightRequest="72"
+                                                StrokeShape="RoundRectangle 18"
+                                                BackgroundColor="{Binding PrimaryColor}"
+                                                Stroke="White"
+                                                StrokeThickness="{Binding BorderWidth}">
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding Source={x:Reference PageRoot}, Path=BindingContext.SelectColorThemeCommand}"
+                                                    CommandParameter="{Binding .}" />
+                                            </Border.GestureRecognizers>
+                                            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="2"
+                                                                 InputTransparent="True">
+                                                <Label Text="{Binding Emoji}" FontSize="22" HorizontalOptions="Center" InputTransparent="True"/>
+                                                <Label Text="{Binding Label}" FontSize="10" FontAttributes="Bold"
+                                                       TextColor="White" HorizontalOptions="Center" InputTransparent="True"/>
+                                                <Label Text="✓" FontSize="14" FontAttributes="Bold" TextColor="White"
+                                                       HorizontalOptions="Center" Opacity="{Binding SelectedOpacity}" InputTransparent="True"/>
+                                            </VerticalStackLayout>
+                                        </Border>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Style="{StaticResource SettingCard}">
+                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                            <Label Grid.Column="0" Text="🎵" FontSize="22" VerticalOptions="Center" />
+                            <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                <Label Text="Arka Plan Müziği" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                <Label Text="Oyun sırasında hafif müzik" FontSize="12" TextColor="{StaticResource TextMuted}" />
+                            </VerticalStackLayout>
+                            <Switch Grid.Column="2" IsToggled="{Binding MusicEnabled}" ThumbColor="#6C62F5" OnColor="#EDE8FF" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                    <!-- Müzik ses seviyesi -->
+                    <Border Style="{StaticResource SettingCard}">
+                        <VerticalStackLayout Spacing="6">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Grid.Column="0" Text="🎵 Müzik Seviyesi" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
+                                <Label Grid.Column="1" Text="{Binding MusicVolumeLevel, StringFormat='{0:P0}'}" FontSize="12" TextColor="{StaticResource TextMuted}" VerticalOptions="Center" />
+                            </Grid>
+                            <Slider Minimum="0" Maximum="1" Value="{Binding MusicVolumeLevel}" ThumbColor="#6C62F5" MinimumTrackColor="#6C62F5" MaximumTrackColor="#EDE8FF" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <!-- Efekt ses seviyesi -->
+                    <Border Style="{StaticResource SettingCard}">
+                        <VerticalStackLayout Spacing="6">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Grid.Column="0" Text="🔊 Efekt Seviyesi" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
+                                <Label Grid.Column="1" Text="{Binding EffectsVolumeLevel, StringFormat='{0:P0}'}" FontSize="12" TextColor="{StaticResource TextMuted}" VerticalOptions="Center" />
+                            </Grid>
+                            <Slider Minimum="0" Maximum="1" Value="{Binding EffectsVolumeLevel}" ThumbColor="#6C62F5" MinimumTrackColor="#6C62F5" MaximumTrackColor="#EDE8FF" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <!-- Ses hızı -->
+                    <Border Style="{StaticResource SettingCard}">
+                        <VerticalStackLayout Spacing="6">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Grid.Column="0" Text="⏩ Ses Hızı" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
+                                <Label Grid.Column="1" Text="{Binding SpeechRateText}" FontSize="12" TextColor="{StaticResource TextMuted}" VerticalOptions="Center" />
+                            </Grid>
+                            <Slider Minimum="0.5" Maximum="1.5" Value="{Binding SpeechRateLevel}" ThumbColor="#6C62F5" MinimumTrackColor="#6C62F5" MaximumTrackColor="#EDE8FF" />
+                            <Grid ColumnDefinitions="*,*,*">
+                                <Label Grid.Column="0" Text="Yavaş" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Start"/>
+                                <Label Grid.Column="1" Text="Normal" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center"/>
+                                <Label Grid.Column="2" Text="Hızlı" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="End"/>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Style="{StaticResource SettingCard}">
+                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
                             <Label Grid.Column="0" Text="📊" FontSize="22" VerticalOptions="Center" />
                             <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
                                 <Label Text="Haftalık Rapor" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
@@ -289,6 +468,30 @@
                     </Border>
                 </VerticalStackLayout>
 
+                <!-- Günlük Hatırlatma -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="günlük hatırlatma" Style="{StaticResource SectionLabel}" />
+                    <Border Style="{StaticResource SettingCard}">
+                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                            <Label Grid.Column="0" Text="🔔" FontSize="22" VerticalOptions="Center" />
+                            <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                <Label Text="Günlük Hatırlatıcı" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                <Label Text="Oynamayı unutursan bildirim gönderir" FontSize="12" TextColor="{StaticResource TextMuted}" />
+                            </VerticalStackLayout>
+                            <Switch Grid.Column="2" IsToggled="{Binding NotificationEnabled}" ThumbColor="#6C62F5" OnColor="#EDE8FF" VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                    <Border Style="{StaticResource SettingCard}" IsVisible="{Binding NotificationEnabled}">
+                        <VerticalStackLayout Spacing="8">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Grid.Column="0" Text="Hatırlatma Saati" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
+                                <Label Grid.Column="1" Text="{Binding NotificationTimeText}" FontSize="14" FontAttributes="Bold" TextColor="#6C62F5" VerticalOptions="Center" />
+                            </Grid>
+                            <TimePicker Time="{Binding NotificationTime}" Format="HH:mm" TextColor="{StaticResource TextPrimary}" FontSize="13" />
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
                 <!-- Kategori Görünürlüğü -->
                 <VerticalStackLayout Spacing="10">
                     <Label Text="kategori görünürlüğü" Style="{StaticResource SectionLabel}" />
@@ -296,7 +499,7 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="vm:CategoryToggle">
                                 <controls:TappableBorder
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ParentalViewModel}}, Path=ToggleCategoryCommand}"
+                                    Command="{Binding Source={x:Reference PageRoot}, Path=BindingContext.ToggleCategoryCommand}"
                                     CommandParameter="{Binding .}"
                                     BackgroundColor="{StaticResource SurfaceWhite}"
                                     Stroke="{StaticResource BorderLight}"
@@ -313,6 +516,145 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
+                </VerticalStackLayout>
+
+                <!-- AI Koç API Key -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="🤖 ai koç" Style="{StaticResource SectionLabel}" />
+                    <Border BackgroundColor="{StaticResource SurfaceWhite}"
+                            Stroke="#D1FAE5" StrokeThickness="1"
+                            StrokeShape="RoundRectangle 20" Padding="16,14">
+                        <VerticalStackLayout Spacing="12">
+                            <HorizontalStackLayout Spacing="10">
+                                <Label Text="🤖" FontSize="22" VerticalOptions="Center"/>
+                                <VerticalStackLayout Spacing="2" VerticalOptions="Center">
+                                    <Label Text="Anthropic API Key" FontSize="14" FontAttributes="Bold"
+                                           TextColor="{StaticResource TextPrimary}"/>
+                                    <Label Text="Claude AI ile kişisel öğrenme önerileri"
+                                           FontSize="11" TextColor="{StaticResource TextMuted}"/>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+
+                            <Border BackgroundColor="{StaticResource SurfaceSoft}"
+                                    Stroke="#E7EBF5" StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 12" Padding="12,10">
+                                <Entry Placeholder="sk-ant-api03-..."
+                                       Text="{Binding AnthropicApiKey}"
+                                       IsPassword="True"
+                                       FontSize="13"
+                                       TextColor="{StaticResource TextPrimary}"
+                                       PlaceholderColor="{StaticResource TextMuted}"
+                                       BackgroundColor="Transparent"/>
+                            </Border>
+
+                            <Label Text="{Binding ApiKeySaveStatus}"
+                                   FontSize="12" TextColor="#16A34A"
+                                   HorizontalOptions="Center"/>
+
+                            <controls:TappableBorder
+                                    Command="{Binding SaveApiKeyCommand}"
+                                    BackgroundColor="#16A34A" Stroke="Transparent"
+                                    StrokeShape="RoundRectangle 12" Padding="0,12">
+                                <Label Text="💾  API Key Kaydet" FontSize="13" FontAttributes="Bold"
+                                       TextColor="White" HorizontalOptions="Center"
+                                       InputTransparent="True"/>
+                            </controls:TappableBorder>
+
+                            <Label FontSize="11" TextColor="{StaticResource TextMuted}"
+                                   HorizontalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="API key olmadan da uygulama çalışır — "/>
+                                        <Span Text="offline öneri modu" FontAttributes="Bold"/>
+                                        <Span Text=" aktif olur."/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- PIN Koruması -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="ebeveyn pin koruması" Style="{StaticResource SectionLabel}" />
+                    <Border Style="{StaticResource SettingCard}">
+                        <VerticalStackLayout Spacing="14">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                <Label Grid.Column="0" Text="🔐" FontSize="22" VerticalOptions="Center" />
+                                <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                    <Label Text="PIN Koruması" FontSize="14" FontAttributes="Bold"
+                                           TextColor="{StaticResource TextPrimary}" />
+                                    <Label Text="{Binding PinStatusText}" FontSize="11"
+                                           TextColor="{StaticResource TextMuted}" LineBreakMode="WordWrap"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                            <controls:TappableBorder
+                                Command="{Binding SetupPinCommand}"
+                                BackgroundColor="#6C62F5" Stroke="Transparent"
+                                StrokeShape="RoundRectangle 12" Padding="0,12">
+                                <Label FontSize="13" FontAttributes="Bold" TextColor="White"
+                                       HorizontalOptions="Center" InputTransparent="True">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding HasPin}" Value="True">
+                                            <Setter Property="Text" Value="🔑  PIN Değiştir"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Label" Binding="{Binding HasPin}" Value="False">
+                                            <Setter Property="Text" Value="🔒  PIN Belirle"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                            </controls:TappableBorder>
+                            <controls:TappableBorder
+                                Command="{Binding RemovePinCommand}"
+                                IsVisible="{Binding HasPin}"
+                                BackgroundColor="#FFF0F0" Stroke="#FFD9D9"
+                                StrokeShape="RoundRectangle 12" Padding="0,12">
+                                <Label Text="🗑  PIN'i Kaldır" FontSize="13" FontAttributes="Bold"
+                                       TextColor="#EF4444" HorizontalOptions="Center" InputTransparent="True"/>
+                            </controls:TappableBorder>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- ── veri yedekleme ── -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="💾 veri yedekleme" Style="{StaticResource SectionLabel}" />
+                    <Border BackgroundColor="{StaticResource SurfaceWhite}"
+                            Stroke="{StaticResource BorderLight}" StrokeThickness="1"
+                            StrokeShape="RoundRectangle 20" Padding="16,14">
+                        <VerticalStackLayout Spacing="12">
+                            <Label Text="Profil verilerini dışa aktar veya yedekten geri yükle."
+                                   FontSize="12" TextColor="{StaticResource TextMuted}"/>
+                            <controls:TappableBorder
+                                Command="{Binding ExportBackupCommand}"
+                                BackgroundColor="#F4F3FF"
+                                Stroke="#C7CEFF" StrokeThickness="1"
+                                StrokeShape="RoundRectangle 14"
+                                Padding="0,14">
+                                <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
+                                    <Label Text="📤" FontSize="16" VerticalOptions="Center"/>
+                                    <Label Text="Yedeği Dışa Aktar" FontSize="14" FontAttributes="Bold"
+                                           TextColor="#5148D4" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                            </controls:TappableBorder>
+                            <controls:TappableBorder
+                                Command="{Binding ImportBackupCommand}"
+                                BackgroundColor="#F4FFF8"
+                                Stroke="#B2F0D8" StrokeThickness="1"
+                                StrokeShape="RoundRectangle 14"
+                                Padding="0,14">
+                                <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
+                                    <Label Text="📥" FontSize="16" VerticalOptions="Center"/>
+                                    <Label Text="Yedekten Geri Yükle" FontSize="14" FontAttributes="Bold"
+                                           TextColor="#047857" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                            </controls:TappableBorder>
+                            <Label Text="{Binding BackupStatus}"
+                                   FontSize="12" TextColor="{StaticResource TextMuted}"
+                                   HorizontalTextAlignment="Center"
+                                   IsVisible="{Binding BackupStatus, Converter={StaticResource StringNotEmptyConverter}}"/>
+                        </VerticalStackLayout>
+                    </Border>
                 </VerticalStackLayout>
 
                 <!-- Kaydet Butonu — TappableBorder -->

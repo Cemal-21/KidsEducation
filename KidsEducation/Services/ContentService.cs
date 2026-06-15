@@ -10,6 +10,9 @@ public class ContentService
         PropertyNameCaseInsensitive = true
     };
 
+    private List<Category>? _categoriesCache;
+    private readonly Dictionary<string, List<LearningItem>> _itemsCache = new();
+
     // ── Kategoriler ───────────────────────────────────────────
 
     public async Task<List<Category>> GetCategoriesAsync(ChildProfile profile)
@@ -80,6 +83,9 @@ public class ContentService
         if (string.IsNullOrWhiteSpace(categoryId))
             return new List<LearningItem>();
 
+        if (_itemsCache.TryGetValue(categoryId, out var cached))
+            return cached;
+
         try
         {
             using var stream = await FileSystem.OpenAppPackageFileAsync($"{categoryId}.json");
@@ -98,6 +104,7 @@ public class ContentService
                     item.Category = categoryId;
             }
 
+            _itemsCache[categoryId] = items;
             return items;
         }
         catch (Exception ex)
@@ -105,6 +112,12 @@ public class ContentService
             System.Diagnostics.Debug.WriteLine($"[ContentService] {categoryId}.json yüklenemedi: {ex.Message}");
             return new List<LearningItem>();
         }
+    }
+
+    public void ClearCache()
+    {
+        _categoriesCache = null;
+        _itemsCache.Clear();
     }
 
     public async Task<LearningItem?> GetItemAsync(string categoryId, string itemId)
@@ -165,6 +178,9 @@ public class ContentService
 
     private async Task<List<Category>> LoadAllCategoriesAsync()
     {
+        if (_categoriesCache is not null)
+            return _categoriesCache;
+
         try
         {
             using var stream = await FileSystem.OpenAppPackageFileAsync("categories.json");
@@ -173,9 +189,10 @@ public class ContentService
 
             using var doc = JsonDocument.Parse(json);
 
-            return doc.RootElement
+            _categoriesCache = doc.RootElement
                 .GetProperty("categories")
                 .Deserialize<List<Category>>(JsonOptions) ?? new();
+            return _categoriesCache;
         }
         catch (Exception ex)
         {

@@ -6,9 +6,10 @@
       "nameTr": "Kedi",
       "nameEn": "Cat",
       "imagePath": "animal_cat",
+      "secondaryImagePath": "animal_cat_2",
       "category": "animals",
       "difficultyLevel": 1,
-      "funFact": "Kediler çok iyi duyar.",
+      "funFact": "Kediler günde 12-16 saat uyuyabilir.",
       "descriptionTr": "Kedi evcil bir hayvandır. Evlerde insanlarla birlikte yaşayabilir. Miyav sesi çıkarır ve oyun oynamayı sever. Yumuşak tüyleri vardır. Kediler karanlıkta insanlardan daha iyi görebilir.",
       "soundClueText": "Evlerde yaşayabilen, yumuşak tüylü, miyavlayan ve oyun oynamayı seven sevimli bir hayvandır. Acaba bu nedir?"
     },
@@ -17,9 +18,10 @@
       "nameTr": "Köpek",
       "nameEn": "Dog",
       "imagePath": "animal_dog",
+      "secondaryImagePath": "animal_dog_2",
       "category": "animals",
       "difficultyLevel": 1,
-      "funFact": "Köpekler kokuları çok iyi ayırt eder.",
+      "funFact": "Köpekler kokuları insanlardan 100.000 kat daha iyi alır.",
       "descriptionTr": "Köpek sadık ve sevecen bir hayvandır. Havlayarak ses çıkarır. İnsanlarla oyun oynamayı ve gezmeyi sever. Köpekler çok güçlü koku alma duyusuna sahiptir.",
       "soundClueText": "Havlayarak ses çıkaran, insanlarla gezmeyi seven ve kokuları çok iyi ayırt edebilen sadık bir hayvandır. Acaba bu nedir?"
     },
@@ -30,7 +32,7 @@
       "imagePath": "animal_elephant",
       "category": "animals",
       "difficultyLevel": 1,
-      "funFact": "Filler hortumlarıyla su içebilir.",
+      "funFact": "Filler hortumlarıyla 8 litre su içebilir.",
       "descriptionTr": "Fil büyük ve güçlü bir hayvandır. Uzun hortumunu su içmek, yiyecek almak ve koklamak için kullanır. Büyük kulakları vardır. Filler sürü halinde yaşamayı sever.",
       "soundClueText": "Çok büyük bir gövdesi, uzun bir hortumu ve kocaman kulakları olan güçlü bir hayvandır. Acaba bu nedir?"
     },
@@ -41,7 +43,7 @@
       "imagePath": "animal_lion",
       "category": "animals",
       "difficultyLevel": 1,
-      "funFact": "Aslan güçlü sesiyle tanınır.",
+      "funFact": "Aslanın kükremesi 8 km uzaktan duyulabilir.",
       "descriptionTr": "Aslan güçlü bir vahşi hayvandır. Genellikle sıcak bölgelerde yaşar. Erkek aslanların başında yele bulunur. Aslanlar aile grupları halinde yaşayabilir.",
       "soundClueText": "Güçlü sesiyle tanınan, sıcak bölgelerde yaşayan ve başında yelesi olabilen vahşi bir hayvandır. Acaba bu nedir?"
     },
@@ -52,7 +54,7 @@
       "imagePath": "animal_giraffe",
       "category": "animals",
       "difficultyLevel": 1,
-      "funFact": "Zürafa çok uzun boyludur.",
+      "funFact": "Zürafa dünyanın en uzun boylu kara hayvanıdır.",
       "descriptionTr": "Zürafa uzun boynu ile tanınır. Ağaçların yüksek dallarındaki yaprakları yiyebilir. Benekli bir derisi vardır. Zürafalar sakin ve zarif hayvanlardır.",
       "soundClueText": "Çok uzun boynu sayesinde ağaçların yüksek dallarındaki yapraklara ulaşabilen benekli bir hayvandır. Acaba bu nedir?"
     },
@@ -63,9 +65,163 @@
       "imagePath": "animal_penguin",
       "category": "animals",
       "difficultyLevel": 2,
-      "funFact": "Penguenler çok iyi yüzer.",
+      "funFact": "Penguenler uçamaz ama saatte 25 km yüzebilir.",
       "descriptionTr": "Penguen uçamayan bir kuştur. Ama suda çok iyi yüzer. Genellikle soğuk bölgelerde yaşar. Siyah beyaz tüyleriyle kolayca tanınır.",
       "soundClueText": "Uçamayan ama suda çok iyi yüzen, siyah beyaz görünüşlü ve soğuk yerleri seven bir kuştur. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_at",
+      "nameTr": "At",
+      "nameEn": "Horse",
+      "imagePath": "animal_horse",
+      "category": "animals",
+      "difficultyLevel": 1,
+      "funFact": "Atlar ayakta bile uyuyabilir.",
+      "descriptionTr": "At hızlı ve güçlü bir hayvandır. İnsanlara binmek ve yük taşımak için yardım eder. Kişnemesi güzel bir sestir. Atlar çayırlarda özgürce koşmayı sever.",
+      "soundClueText": "Hızlı ve güçlü, insanlara binmek için kullanılan ve kişneyerek ses çıkaran hayvandır. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_tavsan",
+      "nameTr": "Tavşan",
+      "nameEn": "Rabbit",
+      "imagePath": "animal_rabbit",
+      "category": "animals",
+      "difficultyLevel": 1,
+      "funFact": "Tavşanlar saatte 70 km koşabilir.",
+      "descriptionTr": "Tavşan uzun kulakları ve yumuşak tüyleriyle sevimli bir hayvandır. Havuç ve yeşil yaprakları sever. Hızlı zıplar. Hem vahşi hem de evcil türleri vardır.",
+      "soundClueText": "Uzun kulakları ve yumuşak tüyleriyle tanınan, havuç yemeyi seven ve hızla zıplayabilen sevimli hayvandır. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_ayi",
+      "nameTr": "Ayı",
+      "nameEn": "Bear",
+      "imagePath": "animal_bear",
+      "category": "animals",
+      "difficultyLevel": 1,
+      "funFact": "Ayılar kışın aylarca uyuyabilir.",
+      "descriptionTr": "Ayı büyük ve güçlü bir hayvandır. Kalın tüyleri soğuktan onu korur. Balık, meyve ve bal yemeyi sever. Kışın uzun bir uyku (kış uykusu) uyur.",
+      "soundClueText": "Kalın tüylü, balık ve bal yemeyi seven, kışın uzun süre uyuyan büyük bir hayvandır. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_yunus",
+      "nameTr": "Yunus",
+      "nameEn": "Dolphin",
+      "imagePath": "animal_dolphin",
+      "category": "animals",
+      "difficultyLevel": 2,
+      "funFact": "Yunuslar birbirleriyle ses çıkararak iletişim kurar.",
+      "descriptionTr": "Yunus denizde yaşayan zeki bir hayvandır. Çok hızlı yüzer ve zıplar. İnsanlara karşı dostane davranışlarıyla bilinir. Ses çıkararak iletişim kurar.",
+      "soundClueText": "Denizde yaşayan, çok zeki olan, hızla yüzen ve ses çıkararak iletişim kuran dostane hayvandır. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_kelebek",
+      "nameTr": "Kelebek",
+      "nameEn": "Butterfly",
+      "imagePath": "animal_butterfly",
+      "category": "animals",
+      "difficultyLevel": 2,
+      "funFact": "Kelebekler renk görebilir ama koku alamaz.",
+      "descriptionTr": "Kelebek renkli ve güzel kanatlara sahip bir böcektir. Çiçeklerden nektar emer. Tırtıl olarak başlar, sonra kelebek olur. Bahçelerde sık görülür.",
+      "soundClueText": "Renkli güzel kanatları olan, çiçeklerden nektar emen ve önce tırtıl olarak dünyaya gelen böcektir. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_balik",
+      "nameTr": "Balık",
+      "nameEn": "Fish",
+      "imagePath": "animal_fish",
+      "category": "animals",
+      "difficultyLevel": 1,
+      "funFact": "Balıklar solungaçlarıyla su içindeki oksijeni alır.",
+      "descriptionTr": "Balık suda yaşayan bir hayvandır. Yüzgeçleriyle hareket eder. Solungaçlarıyla nefes alır. Tatlı su ve tuzlu su balıkları olmak üzere pek çok türü vardır.",
+      "soundClueText": "Suda yaşayan, yüzgeçleriyle hareket eden ve solungaçlarıyla nefes alan hayvandır. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_kurbaga",
+      "nameTr": "Kurbağa",
+      "nameEn": "Frog",
+      "imagePath": "animal_frog",
+      "category": "animals",
+      "difficultyLevel": 2,
+      "funFact": "Kurbağalar hem karada hem suda yaşayabilir.",
+      "descriptionTr": "Kurbağa hem karada hem suda yaşayan bir hayvandır. Vak vak sesi çıkarır. Güçlü arka bacaklarıyla çok yüksek zıplar. Çoğunlukla yeşil veya kahverengi renkte olur.",
+      "soundClueText": "Hem karada hem suda yaşayan, vak vak sesi çıkaran ve güçlü arka bacaklarıyla çok yüksek zıplayan hayvandır. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_maymun",
+      "nameTr": "Maymun",
+      "nameEn": "Monkey",
+      "imagePath": "animal_monkey",
+      "category": "animals",
+      "difficultyLevel": 2,
+      "funFact": "Maymunlar insanlara en çok benzeyen hayvanlardandır.",
+      "descriptionTr": "Maymun çok zeki ve hareketli bir hayvandır. Ağaçlar arasında kolayca atlar. Meyve yemeyi çok sever. Elleriyle eşyaları tutabilir ve oyun oynayabilir.",
+      "soundClueText": "Çok zeki, ağaçlar arasında atlayan, meyve yemeyi seven ve elleriyle eşya tutabilen hayvandır. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_zebra",
+      "nameTr": "Zebra",
+      "nameEn": "Zebra",
+      "imagePath": "animal_zebra",
+      "category": "animals",
+      "difficultyLevel": 2,
+      "funFact": "Her zebrانın çizgi deseni parmak izi gibi birbirinden farklıdır.",
+      "descriptionTr": "Zebra siyah beyaz çizgileriyle tanınan bir hayvandır. Afrika'nın geniş ovalarında yaşar. Sürüler halinde dolaşır. Ata benzer ama evcil değildir.",
+      "soundClueText": "Siyah ve beyaz çizgileriyle kolayca tanınan, Afrika'nın geniş ovalarında sürüler halinde yaşayan hayvandır. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_baykus",
+      "nameTr": "Baykuş",
+      "nameEn": "Owl",
+      "imagePath": "animal_owl",
+      "category": "animals",
+      "difficultyLevel": 2,
+      "funFact": "Baykuşlar başlarını neredeyse 270 derece döndürebilir.",
+      "descriptionTr": "Baykuş gece aktif olan bir kuştur. Büyük gözleri karanlıkta çok iyi görmesini sağlar. Hu hu sesi çıkarır. Ağaçların kovuklarında yuva yapar.",
+      "soundClueText": "Büyük gözleri olan, geceleri uçan, hu hu diye sesi olan ve ağaç kovuklarında yaşayan kuştur. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_tilki",
+      "nameTr": "Tilki",
+      "nameEn": "Fox",
+      "imagePath": "animal_fox",
+      "category": "animals",
+      "difficultyLevel": 2,
+      "funFact": "Tilkiler çok zeki ve kurnaz hayvanlardır.",
+      "descriptionTr": "Tilki turuncu-kahverengi tüylü ve uzun kuyruklu bir hayvandır. Çok zekidir. Hem ormanlarda hem de bazı şehir kenarlarında yaşayabilir. Gece daha aktiftir.",
+      "soundClueText": "Turuncu-kahverengi tüylü, uzun kuyruklu, çok zeki ve geceleri daha aktif olan hayvandır. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_koyun",
+      "nameTr": "Koyun",
+      "nameEn": "Sheep",
+      "imagePath": "animal_sheep",
+      "category": "animals",
+      "difficultyLevel": 1,
+      "funFact": "Koyunların yünü kırpılınca yeniden uzar.",
+      "descriptionTr": "Koyun çiftliklerde yaşayan evcil bir hayvandır. Yumuşak yünü giysi yapmak için kullanılır. Meeee diye ses çıkarır. Sürüler halinde otlarda gezinir.",
+      "soundClueText": "Yumuşak yünü olan, çiftlikte yaşayan, meeee diye ses çıkaran ve sürüler halinde otlayan evcil hayvandır. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_inek",
+      "nameTr": "İnek",
+      "nameEn": "Cow",
+      "imagePath": "animal_cow",
+      "category": "animals",
+      "difficultyLevel": 1,
+      "funFact": "İnekler günde ortalama 27 litre süt verebilir.",
+      "descriptionTr": "İnek büyük ve sakin bir çiftlik hayvanıdır. Bize süt verir. Mö diye ses çıkarır. Çimenlik alanlarda otlar. Sütten peynir, yoğurt ve tereyağı yapılır.",
+      "soundClueText": "Bize süt veren, mö diye ses çıkaran ve çimenlikte otlayan büyük çiftlik hayvanıdır. Acaba bu nedir?"
+    },
+    {
+      "id": "animal_karga",
+      "nameTr": "Kartal",
+      "nameEn": "Eagle",
+      "imagePath": "animal_eagle",
+      "category": "animals",
+      "difficultyLevel": 3,
+      "funFact": "Kartallar 3 km uzaktaki bir tavşanı görebilir.",
+      "descriptionTr": "Kartal güçlü ve büyük bir yırtıcı kuştur. Çok yüksek uçar. Keskin gözleriyle avını uzaktan görür. Geniş kanatları güçlü bir uçuş sağlar.",
+      "soundClueText": "Çok yüksek uçan, geniş kanatlı, keskin gözleriyle avını uzaktan gören güçlü yırtıcı kuştur. Acaba bu nedir?"
     }
   ]
 }

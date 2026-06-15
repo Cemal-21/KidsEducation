@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="KidsEducation.Views.Controls.AssistantBubble"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    HorizontalOptions="Fill"
+    VerticalOptions="Fill"
+    InputTransparent="True"
+    CascadeInputTransparent="False">
+
+    <Grid>
+        <!-- Karartma overlay -->
+        <BoxView x:Name="Overlay"
+                 Color="#80000000"
+                 IsVisible="False"
+                 InputTransparent="False">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnOverlayTapped"/>
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <!-- Modal Panel -->
+        <Border x:Name="ModalPanel"
+                IsVisible="False"
+                BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E2E}"
+                StrokeShape="RoundRectangle 24,24,0,0"
+                Stroke="#E8E5FF" StrokeThickness="1"
+                VerticalOptions="End"
+                HorizontalOptions="Fill"
+                InputTransparent="False">
+            <Border.Shadow>
+                <Shadow Brush="#505148D4" Offset="0,-4" Radius="24" Opacity="0.3"/>
+            </Border.Shadow>
+
+            <VerticalStackLayout Padding="20,16,20,32" Spacing="0">
+                <!-- Tutamaç -->
+                <BoxView WidthRequest="40" HeightRequest="4"
+                         Color="#D1D5DB" CornerRadius="2"
+                         HorizontalOptions="Center"
+                         Margin="0,0,0,16"/>
+
+                <!-- Başlık -->
+                <HorizontalStackLayout Spacing="8" HorizontalOptions="Center" Margin="0,0,0,4">
+                    <Image Source="animal_owl.png" WidthRequest="30" HeightRequest="30" Aspect="AspectFit"/>
+                    <Label Text="Ne yapmak istiyorsun?"
+                           FontSize="17" FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#1F1F2E, Dark=White}"
+                           VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+
+                <Label x:Name="TipLabel"
+                       Text="Sana yardım etmek için buradayım!"
+                       FontSize="13"
+                       TextColor="#7C7CA0"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       Margin="0,0,0,20"/>
+
+                <!-- Yazı girişi + gönder -->
+                <Border BackgroundColor="{AppThemeBinding Light=#F4F3FF, Dark=#2A2A3E}"
+                        Stroke="#C7CEFF" StrokeThickness="1.5"
+                        StrokeShape="RoundRectangle 16"
+                        Padding="4,4,4,4"
+                        Margin="0,0,0,16">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Entry x:Name="TextInput"
+                               Grid.Column="0"
+                               Placeholder="Yaz... (örn: hayvanlar, oyun)"
+                               PlaceholderColor="#A0A0C0"
+                               TextColor="{AppThemeBinding Light=#1F1F2E, Dark=White}"
+                               BackgroundColor="Transparent"
+                               FontSize="14"
+                               ReturnType="Go"
+                               ReturnCommand="{x:Null}"
+                               Completed="OnTextSubmit"
+                               Margin="8,0,0,0"/>
+                        <Border Grid.Column="1"
+                                BackgroundColor="#5148D4"
+                                StrokeShape="RoundRectangle 12"
+                                WidthRequest="40" HeightRequest="40"
+                                Stroke="Transparent">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnSendTapped"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="→" FontSize="18" TextColor="White"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <!-- Mikrofon butonu -->
+                <Border x:Name="MicButton"
+                        BackgroundColor="#EEF0FF"
+                        Stroke="#C7CEFF" StrokeThickness="1.5"
+                        StrokeShape="RoundRectangle 16"
+                        Padding="0,14"
+                        Margin="0,0,0,20">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnMicTapped"/>
+                    </Border.GestureRecognizers>
+                    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                        <Image Source="ui_mic_3d.png" WidthRequest="28" HeightRequest="28" Aspect="AspectFit" VerticalOptions="Center"/>
+                        <Label x:Name="MicLabel"
+                               Text="Sesli komut ver"
+                               FontSize="14" FontAttributes="Bold"
+                               TextColor="#5148D4" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </Border>
+
+                <!-- Hızlı kısayollar -->
+                <Label Text="Hızlı git"
+                       FontSize="12" FontAttributes="Bold"
+                       TextColor="#9CA3AF"
+                       Margin="0,0,0,10"/>
+
+                <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="8" Margin="0,0,0,8">
+                    <Border Grid.Column="0" x:Name="BtnAnimals"
+                            StrokeShape="RoundRectangle 12" Stroke="#E8E5FF"
+                            BackgroundColor="#F4F3FF" Padding="0,10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnShortcutTapped" CommandParameter="animals"/>
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                            <Image Source="category_animals.png" WidthRequest="28" HeightRequest="28" Aspect="AspectFit" HorizontalOptions="Center"/>
+                            <Label Text="Hayvanlar" FontSize="9" TextColor="#5148D4" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="1"
+                            StrokeShape="RoundRectangle 12" Stroke="#E8E5FF"
+                            BackgroundColor="#F4F3FF" Padding="0,10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnShortcutTapped" CommandParameter="fruits"/>
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                            <Image Source="category_fruits.png" WidthRequest="28" HeightRequest="28" Aspect="AspectFit" HorizontalOptions="Center"/>
+                            <Label Text="Meyveler" FontSize="9" TextColor="#5148D4" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="2"
+                            StrokeShape="RoundRectangle 12" Stroke="#E8E5FF"
+                            BackgroundColor="#F4F3FF" Padding="0,10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnShortcutTapped" CommandParameter="__games"/>
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                            <Image Source="ui_games_3d.png" WidthRequest="28" HeightRequest="28" Aspect="AspectFit" HorizontalOptions="Center"/>
+                            <Label Text="Oyunlar" FontSize="9" TextColor="#5148D4" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="3"
+                            StrokeShape="RoundRectangle 12" Stroke="#E8E5FF"
+                            BackgroundColor="#F4F3FF" Padding="0,10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnShortcutTapped" CommandParameter="__topics"/>
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                            <Image Source="ui_learning_3d.png" WidthRequest="28" HeightRequest="28" Aspect="AspectFit" HorizontalOptions="Center"/>
+                            <Label Text="Konular" FontSize="9" TextColor="#5148D4" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+                <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="8">
+                    <Border Grid.Column="0"
+                            StrokeShape="RoundRectangle 12" Stroke="#E8E5FF"
+                            BackgroundColor="#F4F3FF" Padding="0,10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnShortcutTapped" CommandParameter="colors"/>
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                            <Image Source="category_colors.png" WidthRequest="28" HeightRequest="28" Aspect="AspectFit" HorizontalOptions="Center"/>
+                            <Label Text="Renkler" FontSize="9" TextColor="#5148D4" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="1"
+                            StrokeShape="RoundRectangle 12" Stroke="#E8E5FF"
+                            BackgroundColor="#F4F3FF" Padding="0,10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnShortcutTapped" CommandParameter="numbers"/>
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                            <Image Source="category_numbers.png" WidthRequest="28" HeightRequest="28" Aspect="AspectFit" HorizontalOptions="Center"/>
+                            <Label Text="Sayılar" FontSize="9" TextColor="#5148D4" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="2"
+                            StrokeShape="RoundRectangle 12" Stroke="#E8E5FF"
+                            BackgroundColor="#F4F3FF" Padding="0,10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnShortcutTapped" CommandParameter="__home"/>
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                            <Image Source="tab_home.png" WidthRequest="28" HeightRequest="28" Aspect="AspectFit" HorizontalOptions="Center"/>
+                            <Label Text="Ana Sayfa" FontSize="9" TextColor="#5148D4" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="3"
+                            StrokeShape="RoundRectangle 12" Stroke="#E8E5FF"
+                            BackgroundColor="#F4F3FF" Padding="0,10">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnShortcutTapped" CommandParameter="__parental"/>
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                            <Image Source="ui_parental_3d.png" WidthRequest="28" HeightRequest="28" Aspect="AspectFit" HorizontalOptions="Center"/>
+                            <Label Text="Ayarlar" FontSize="9" TextColor="#5148D4" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+            </VerticalStackLayout>
+        </Border>
+
+        <!-- Yüzen baykuş butonu -->
+        <Border x:Name="AssistantButton"
+                WidthRequest="60" HeightRequest="60"
+                StrokeShape="RoundRectangle 20"
+                Stroke="#C7CEFF" StrokeThickness="2"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Margin="0,0,16,24"
+                InputTransparent="False">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#EEF0FF" Offset="0"/>
+                    <GradientStop Color="#DDD8FF" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.Shadow>
+                <Shadow Brush="#305148D4" Offset="0,3" Radius="10" Opacity="0.3"/>
+            </Border.Shadow>
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnAssistantTapped"/>
+            </Border.GestureRecognizers>
+            <Image x:Name="AssistantIcon"
+                   Source="animal_owl.png"
+                   WidthRequest="42"
+                   HeightRequest="42"
+                   Aspect="AspectFit"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </Border>
+    </Grid>
+</ContentView>

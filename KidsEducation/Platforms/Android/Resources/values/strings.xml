@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_description">Her gün yeni bir kelime öğren</string>
+    <string name="streak_widget_description">Günlük serinizi takip edin</string>
+    <string name="goal_widget_description">Günlük hedef ilerlemenizi görün</string>
+    <string name="launch_widget_description">Aktivitelere hızlıca erişin</string>
+</resources>

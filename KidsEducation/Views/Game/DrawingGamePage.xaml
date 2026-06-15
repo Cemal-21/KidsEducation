@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Game.DrawingGamePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:KidsEducation.Converters"
+    xmlns:vm="clr-namespace:KidsEducation.ViewModels.Game"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#F0EEFF">
+
+    <ContentPage.Resources>
+        <converters:InverseBoolConverter x:Key="InverseBool" />
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+
+        <!-- ══ HEADER ══ -->
+        <Border Grid.Row="0" Stroke="Transparent" StrokeShape="RoundRectangle 0,0,24,24">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#5148D4" Offset="0"/>
+                    <GradientStop Color="#7B6FE8" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid ColumnDefinitions="Auto,*,Auto" Padding="16,44,16,14" ColumnSpacing="12">
+                <Border Grid.Column="0"
+                        WidthRequest="40" HeightRequest="40"
+                        BackgroundColor="#2AFFFFFF" Stroke="#40FFFFFF"
+                        StrokeThickness="1" StrokeShape="RoundRectangle 14">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackCommand}" />
+                    </Border.GestureRecognizers>
+                    <Label Text="‹" FontSize="22" FontAttributes="Bold"
+                           TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Border>
+                <VerticalStackLayout Grid.Column="1" Spacing="1" VerticalOptions="Center">
+                    <Label Text="Çizim Tanıma" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+                    <Label Text="{Binding ScoreText}" FontSize="11" TextColor="#CCFFFFFF"/>
+                </VerticalStackLayout>
+                <!-- Temizle butonu -->
+                <Border Grid.Column="2"
+                        WidthRequest="40" HeightRequest="40"
+                        BackgroundColor="#2AFFFFFF" Stroke="#40FFFFFF"
+                        StrokeThickness="1" StrokeShape="RoundRectangle 14">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ClearCanvasCommand}" />
+                    </Border.GestureRecognizers>
+                    <Label Text="🗑" FontSize="20"
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- ══ GÖREV KARTI ══ -->
+        <Border Grid.Row="1"
+                Margin="16,12,16,0"
+                BackgroundColor="White"
+                Stroke="#E8E5FF" StrokeThickness="1.5"
+                StrokeShape="RoundRectangle 20"
+                Padding="16,14">
+            <Border.Shadow>
+                <Shadow Brush="#205148D4" Offset="0,4" Radius="12" Opacity="0.15"/>
+            </Border.Shadow>
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
+                <Border Grid.Column="0"
+                        WidthRequest="56" HeightRequest="56"
+                        BackgroundColor="#EEF0FF" Stroke="Transparent"
+                        StrokeShape="RoundRectangle 18">
+                    <Label Text="{Binding CurrentChallenge.Emoji}"
+                           FontSize="30" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Border>
+                <VerticalStackLayout Grid.Column="1" Spacing="3" VerticalOptions="Center">
+                    <Label Text="Şunu çiz:" FontSize="11" TextColor="#9CA3AF"/>
+                    <Label Text="{Binding CurrentChallenge.NameTr}"
+                           FontSize="22" FontAttributes="Bold" TextColor="#1F1F2E"/>
+                    <Label Text="{Binding CurrentChallenge.Hint}"
+                           FontSize="12" TextColor="#6B7280"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+
+        <!-- ══ ÇİZİM ALANI ══ -->
+        <Grid Grid.Row="2" Margin="16,12,16,12">
+            <Border BackgroundColor="White"
+                    Stroke="#D1D5DB" StrokeThickness="1.5"
+                    StrokeShape="RoundRectangle 20">
+                <Border.Shadow>
+                    <Shadow Brush="#10000000" Offset="0,4" Radius="12" Opacity="0.1"/>
+                </Border.Shadow>
+                <GraphicsView x:Name="DrawCanvas"
+                              StartInteraction="DrawCanvas_StartInteraction"
+                              DragInteraction="DrawCanvas_DragInteraction"
+                              EndInteraction="DrawCanvas_EndInteraction"
+                              CancelInteraction="DrawCanvas_CancelInteraction"
+                              HorizontalOptions="Fill"
+                              VerticalOptions="Fill"/>
+            </Border>
+
+        </Grid>
+
+        <!-- ══ ALT BAR ══ -->
+        <Border Grid.Row="3"
+                BackgroundColor="White"
+                Stroke="#E8E5FF" StrokeThickness="1"
+                StrokeShape="RoundRectangle 24,24,0,0"
+                Padding="20,14,20,24">
+            <Border.Shadow>
+                <Shadow Brush="#205148D4" Offset="0,-4" Radius="16" Opacity="0.12"/>
+            </Border.Shadow>
+
+            <!-- Çizim aşaması -->
+            <Grid x:Name="DrawingBar" ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                <Label Grid.Column="0"
+                       Text="✏️ Parmağınla çiz, sonra onayla"
+                       FontSize="13" TextColor="#6B7280"
+                       VerticalOptions="Center"/>
+                <Border Grid.Column="1"
+                        BackgroundColor="#5148D4" Stroke="Transparent"
+                        StrokeShape="RoundRectangle 16" Padding="20,12">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnRecognizeTapped" />
+                    </Border.GestureRecognizers>
+                    <Label Text="Tahmin Et ✓"
+                           FontSize="14" FontAttributes="Bold" TextColor="White"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Sonuç sheet (çizim üstünde kayan panel) -->
+        <Border x:Name="ResultSheet"
+                Grid.Row="2" Grid.RowSpan="2"
+                IsVisible="False"
+                StrokeShape="RoundRectangle 24,24,0,0"
+                Stroke="#E8E5FF" StrokeThickness="1"
+                VerticalOptions="End"
+                Padding="24,20,24,36">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#FFFFFF" Offset="0"/>
+                    <GradientStop Color="#F5F3FF" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.Shadow>
+                <Shadow Brush="#305148D4" Offset="0,-6" Radius="20" Opacity="0.2"/>
+            </Border.Shadow>
+
+            <VerticalStackLayout Spacing="14">
+                <!-- Büyük emoji sonuç -->
+                <Label x:Name="ResultEmoji" Text="🎉"
+                       FontSize="48" HorizontalOptions="Center"/>
+                <Label x:Name="ResultLabel"
+                       Text="{Binding ResultText}"
+                       FontSize="22" FontAttributes="Bold"
+                       TextColor="#1F1F2E"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"/>
+                <Label x:Name="ResultSubLabel"
+                       Text="{Binding ResultSubText}"
+                       FontSize="13" TextColor="#6B7280"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       MaxLines="2"/>
+
+                <!-- Butonlar -->
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0,6,0,0">
+                    <!-- Tekrar dene -->
+                    <Border Grid.Column="0"
+                            BackgroundColor="#F1EEFF" Stroke="#C7CEFF"
+                            StrokeThickness="1" StrokeShape="RoundRectangle 16"
+                            Padding="0,14">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TryAgainCommand}" />
+                        </Border.GestureRecognizers>
+                        <Label Text="↩ Tekrar" FontSize="14" FontAttributes="Bold"
+                               TextColor="#5148D4" HorizontalOptions="Center"/>
+                    </Border>
+                    <!-- Sonraki -->
+                    <Border Grid.Column="1"
+                            BackgroundColor="#5148D4" Stroke="Transparent"
+                            StrokeShape="RoundRectangle 16" Padding="0,14">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NextChallengeCommand}" />
+                        </Border.GestureRecognizers>
+                        <Label Text="Sonraki →" FontSize="14" FontAttributes="Bold"
+                               TextColor="White" HorizontalOptions="Center"/>
+                    </Border>
+                </Grid>
+            </VerticalStackLayout>
+        </Border>
+
+    </Grid>
+</ContentPage>

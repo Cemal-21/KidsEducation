@@ -62,6 +62,31 @@
             </Border>
         </Grid>
 
+        <!-- ── Zaman Yarışı Sayacı (sadece timed modda görünür) ── -->
+        <Border Grid.Row="0" IsVisible="{Binding TimerEnabled}"
+                BackgroundColor="Transparent" Stroke="Transparent"
+                HorizontalOptions="Center" VerticalOptions="End"
+                Margin="0,0,0,4">
+            <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                <Border BackgroundColor="{Binding TimerColor}" Stroke="Transparent"
+                        StrokeShape="RoundRectangle 16" Padding="14,6" WidthRequest="120">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                        <Label Grid.Column="0" Text="⏱" FontSize="14" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" Text="{Binding TimeLeft, StringFormat='{0}sn'}"
+                               FontSize="16" FontAttributes="Bold" TextColor="White"
+                               VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+                <Border BackgroundColor="{StaticResource SurfaceWhite}"
+                        Stroke="{StaticResource BorderLight}"
+                        StrokeShape="RoundRectangle 16" Padding="10,6">
+                    <Label Text="{Binding SpeedBonus, StringFormat='⚡ +{0}'}"
+                           FontSize="13" FontAttributes="Bold"
+                           TextColor="{StaticResource BrandPurple}"/>
+                </Border>
+            </HorizontalStackLayout>
+        </Border>
+
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="20,0,20,18" Spacing="16">
 

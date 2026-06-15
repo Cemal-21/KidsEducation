@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:AnimatedPage
+    x:Class="KidsEducation.Views.Story.StoryReaderPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:KidsEducation.ViewModels.Story"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    xmlns:conv="clr-namespace:KidsEducation.Converters"
+    xmlns:views="clr-namespace:KidsEducation.Views"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{StaticResource AppBackground}">
+
+    <ContentPage.Resources>
+        <conv:BoolToFontAttrConverter x:Key="BoolToFontAttr"/>
+        <conv:BoolToPlayPauseTextConverter x:Key="BoolToPlayPauseText"/>
+        <conv:InverseBoolConverter x:Key="InverseBool"/>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- ── Başlık ── -->
+        <Border Grid.Row="0" Stroke="Transparent" StrokeShape="RoundRectangle 0,0,28,28">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#7C3AED" Offset="0"/>
+                    <GradientStop Color="#A855F7" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid Padding="16,46,16,18" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                <Border Grid.Column="0" WidthRequest="38" HeightRequest="38"
+                        BackgroundColor="#28FFFFFF" Stroke="#40FFFFFF"
+                        StrokeShape="RoundRectangle 12">
+                    <Label Text="←" FontSize="20" TextColor="White"
+                           HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Border>
+                <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                    <Label Text="📚 Sesli Hikayeler" FontSize="19" FontAttributes="Bold" TextColor="White"/>
+                    <Label Text="Kelimeler aydınlanarak okunur" FontSize="11" TextColor="#DDFFFFFF"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+
+        <!-- ── İçerik ── -->
+        <Grid Grid.Row="1" RowDefinitions="Auto,*,Auto">
+
+            <!-- Hikaye seçici -->
+            <CollectionView Grid.Row="0" ItemsSource="{Binding StoryList}"
+                            HeightRequest="60" SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.Header>
+                    <BoxView WidthRequest="14" Color="Transparent"/>
+                </CollectionView.Header>
+                <CollectionView.Footer>
+                    <BoxView WidthRequest="14" Color="Transparent"/>
+                </CollectionView.Footer>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:StoryListItem">
+                        <Border BackgroundColor="{Binding BackgroundColor}"
+                                Stroke="{Binding BorderColor}" StrokeThickness="1.5"
+                                StrokeShape="RoundRectangle 18" Padding="12,8"
+                                VerticalOptions="Center">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SelectStoryCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            </Border.GestureRecognizers>
+                            <Label FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Emoji}"/>
+                                        <Span Text=" "/>
+                                        <Span Text="{Binding TitleTr}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Karaoke alanı -->
+            <Border Grid.Row="1" BackgroundColor="{StaticResource SurfaceWhite}"
+                    Stroke="{StaticResource BorderLight}" StrokeThickness="1"
+                    StrokeShape="RoundRectangle 24" Margin="14,10" Padding="20,24">
+                <Border.Shadow>
+                    <Shadow Brush="#10000000" Offset="0,4" Radius="16" Opacity="0.1"/>
+                </Border.Shadow>
+                <VerticalStackLayout Spacing="20">
+
+                    <!-- Hikaye başlığı + kapak emojisi -->
+                    <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                        <Label Text="{Binding StoryEmoji}" FontSize="56" HorizontalOptions="Center"/>
+                        <Label Text="{Binding StoryTitle}" FontSize="20" FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+
+                    <!-- Kelimeler — FlexLayout ile satır satır akış -->
+                    <FlexLayout BindableLayout.ItemsSource="{Binding Words}"
+                                Wrap="Wrap" JustifyContent="Center" AlignItems="Center"
+                                Direction="Row">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="vm:StoryWordItem">
+                                <Label Text="{Binding WordTr}"
+                                       FontSize="{Binding FontSize}"
+                                       FontAttributes="{Binding IsBold, Converter={StaticResource BoolToFontAttr}}"
+                                       TextColor="{Binding TextColor}"
+                                       Margin="2,4"/>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+
+                    <!-- Tamamlandı mesajı -->
+                    <Border IsVisible="{Binding IsFinished}"
+                            BackgroundColor="#EEF2FF" Stroke="#D0CCFF"
+                            StrokeShape="RoundRectangle 16" Padding="16,12"
+                            HorizontalOptions="Center">
+                        <Label Text="🎉 Harika! Hikayeyi okudun!" FontSize="15" FontAttributes="Bold"
+                               TextColor="{StaticResource BrandPurple}" HorizontalOptions="Center"/>
+                    </Border>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Kontroller -->
+            <Grid Grid.Row="2" ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="10"
+                  Padding="14,0,14,20">
+                <!-- Önceki -->
+                <controls:TappableBorder Grid.Column="0" Command="{Binding PreviousStoryCommand}"
+                    WidthRequest="48" HeightRequest="48"
+                    BackgroundColor="{StaticResource SurfaceWhite}"
+                    Stroke="{StaticResource BorderLight}" StrokeShape="RoundRectangle 16">
+                    <Label Text="◀" FontSize="18" TextColor="{StaticResource TextPrimary}"
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                </controls:TappableBorder>
+
+                <!-- Oynat / Durdur -->
+                <controls:TappableBorder Grid.Column="1" Command="{Binding PlayPauseCommand}"
+                    HeightRequest="52" StrokeShape="RoundRectangle 18" Stroke="Transparent">
+                    <controls:TappableBorder.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#7C3AED" Offset="0"/>
+                            <GradientStop Color="#A855F7" Offset="1"/>
+                        </LinearGradientBrush>
+                    </controls:TappableBorder.Background>
+                    <Label FontSize="16" FontAttributes="Bold" TextColor="White"
+                           HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding IsPlaying, Converter={StaticResource BoolToPlayPauseText}}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </controls:TappableBorder>
+
+                <!-- Yeniden başlat -->
+                <controls:TappableBorder Grid.Column="2" Command="{Binding ResetStoryCommand}"
+                    WidthRequest="48" HeightRequest="48"
+                    BackgroundColor="{StaticResource SurfaceWhite}"
+                    Stroke="{StaticResource BorderLight}" StrokeShape="RoundRectangle 16">
+                    <Label Text="🔄" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </controls:TappableBorder>
+
+                <!-- Sonraki -->
+                <controls:TappableBorder Grid.Column="3" Command="{Binding NextStoryCommand}"
+                    WidthRequest="48" HeightRequest="48"
+                    BackgroundColor="{StaticResource SurfaceWhite}"
+                    Stroke="{StaticResource BorderLight}" StrokeShape="RoundRectangle 16">
+                    <Label Text="▶" FontSize="18" TextColor="{StaticResource TextPrimary}"
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                </controls:TappableBorder>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</views:AnimatedPage>

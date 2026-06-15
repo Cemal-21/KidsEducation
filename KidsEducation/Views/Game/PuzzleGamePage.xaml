@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Game.PuzzleGamePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    xmlns:models="clr-namespace:KidsEducation.Models"
+    xmlns:converters="clr-namespace:KidsEducation.Converters"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{StaticResource PlaygroundBackground}">
+
+    <ContentPage.Resources>
+        <converters:BoolToFullOpacityConverter x:Key="BoolToFullOpacityConverter" />
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- Header -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Padding="16,36,16,10" ColumnSpacing="10">
+            <controls:TappableBorder
+                Grid.Column="0"
+                Command="{Binding GoBackCommand}"
+                WidthRequest="42" HeightRequest="42"
+                BackgroundColor="{StaticResource SurfaceWhite}"
+                Stroke="#FFE2C1" StrokeThickness="1"
+                StrokeShape="RoundRectangle 16">
+                <Label Text="‹" FontSize="30" TextColor="{StaticResource TextPrimary}"
+                       HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-4,0,0" />
+            </controls:TappableBorder>
+
+            <VerticalStackLayout Grid.Column="1" Spacing="5" VerticalOptions="Center">
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Grid.Column="0" Text="🧩 Puzzle Oyunu"
+                           FontSize="12" TextColor="{StaticResource TextMuted}" FontAttributes="Bold" />
+                    <Label Grid.Column="1"
+                           Text="{Binding Progress, StringFormat='{0:P0}'}"
+                           FontSize="12" TextColor="{StaticResource BrandPurple}" FontAttributes="Bold" />
+                </Grid>
+                <ProgressBar Progress="{Binding Progress}"
+                             ProgressColor="{StaticResource BrandMint}"
+                             BackgroundColor="#FFE9CC" HeightRequest="8" />
+            </VerticalStackLayout>
+
+            <Border Grid.Column="2"
+                    BackgroundColor="{StaticResource SurfaceWhite}"
+                    Stroke="#FFE2C1" StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14" Padding="9,6" VerticalOptions="Center">
+                <Label Text="{Binding DisplayNumber}"
+                       FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+            </Border>
+        </Grid>
+
+        <!-- Main Content -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,8,20,16" Spacing="16">
+
+                <!-- Prompt -->
+                <Border BackgroundColor="{StaticResource SurfaceWhite}"
+                        Stroke="#E0D8FF" StrokeThickness="1"
+                        StrokeShape="RoundRectangle 18" Padding="14,12">
+                    <Label Text="{Binding PromptText}"
+                           FontSize="15" FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimary}"
+                           HorizontalTextAlignment="Center" />
+                </Border>
+
+                <!-- Reference image (complete) -->
+                <Border BackgroundColor="{StaticResource SurfaceWhite}"
+                        Stroke="#C4B5FD" StrokeThickness="2"
+                        StrokeShape="RoundRectangle 20" Padding="12">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Tam Resim" FontSize="11"
+                               TextColor="{StaticResource TextMuted}"
+                               HorizontalOptions="Center" />
+                        <Image Source="{Binding CurrentItem.ImagePath}"
+                               WidthRequest="120" HeightRequest="120"
+                               Aspect="AspectFit"
+                               HorizontalOptions="Center" />
+                        <Label Text="{Binding CurrentItem.NameTr}"
+                               FontSize="14" FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Puzzle grid (2x2) -->
+                <Border BackgroundColor="{StaticResource SurfaceWhite}"
+                        Stroke="#E0D8FF" StrokeThickness="1"
+                        StrokeShape="RoundRectangle 24" Padding="14">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Parçaları doğru sıraya getir! İki parçaya dokun, yer değiştirsinler."
+                               FontSize="11" TextColor="{StaticResource TextMuted}"
+                               HorizontalTextAlignment="Center" />
+
+                        <CollectionView
+                            x:Name="PuzzleGrid"
+                            ItemsSource="{Binding Pieces}"
+                            HeightRequest="280">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" Span="2"
+                                                 HorizontalItemSpacing="8"
+                                                 VerticalItemSpacing="8" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:PuzzlePiece">
+                                    <controls:TappableBorder
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SelectPieceCommand}"
+                                        CommandParameter="{Binding .}"
+                                        WidthRequest="130" HeightRequest="130"
+                                        Stroke="#6C63FF"
+                                        StrokeThickness="3"
+                                        StrokeShape="RoundRectangle 16"
+                                        BackgroundColor="White"
+                                        Opacity="{Binding IsSelected, Converter={StaticResource BoolToFullOpacityConverter}}"
+                                        Padding="0">
+                                        <!-- Piece: show correct quadrant of image -->
+                                        <Border WidthRequest="130" HeightRequest="130"
+                                                StrokeShape="RoundRectangle 14"
+                                                Stroke="Transparent"
+                                                BackgroundColor="Transparent"
+                                                Padding="0">
+                                            <Grid>
+                                                <Image
+                                                    Source="{Binding ImageSource}"
+                                                    WidthRequest="260" HeightRequest="260"
+                                                    Aspect="Fill"
+                                                    TranslationX="{Binding OffsetX}"
+                                                    TranslationY="{Binding OffsetY}"
+                                                    HorizontalOptions="Start"
+                                                    VerticalOptions="Start" />
+                                                <!-- Selection highlight -->
+                                                <Border
+                                                    BackgroundColor="#446C63FF"
+                                                    Stroke="Transparent"
+                                                    StrokeShape="RoundRectangle 14"
+                                                    IsVisible="{Binding IsSelected}" />
+                                            </Grid>
+                                        </Border>
+                                    </controls:TappableBorder>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Swap counter -->
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
+                    <Label Text="🔄" FontSize="16" VerticalOptions="Center" />
+                    <Label Text="{Binding SwapCount, StringFormat='Hamle: {0}'}"
+                           FontSize="14" FontAttributes="Bold"
+                           TextColor="{StaticResource TextMuted}"
+                           VerticalOptions="Center" />
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Bottom hint -->
+        <Border Grid.Row="2"
+                BackgroundColor="#EEF2FF"
+                Stroke="#C7D2FE" StrokeThickness="1"
+                Padding="14,10">
+            <Label Text="İpucu: İki parçaya sırayla dokun, yerleri değişsin! ✨"
+                   FontSize="12" FontAttributes="Bold"
+                   TextColor="{StaticResource BrandPurple}"
+                   HorizontalOptions="Center" />
+        </Border>
+
+    </Grid>
+</ContentPage>

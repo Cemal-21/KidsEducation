@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Game.MultiplayerPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:KidsEducation.ViewModels.Game"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#F0EEFF">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- ══ HEADER ══ -->
+        <Border Grid.Row="0" Stroke="Transparent" StrokeShape="RoundRectangle 0,0,24,24">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#DB2777" Offset="0"/>
+                    <GradientStop Color="#9333EA" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid ColumnDefinitions="Auto,*" Padding="16,44,16,16" ColumnSpacing="12">
+                <Border Grid.Column="0"
+                        WidthRequest="40" HeightRequest="40"
+                        BackgroundColor="#2AFFFFFF" Stroke="#40FFFFFF"
+                        StrokeThickness="1" StrokeShape="RoundRectangle 14">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackCommand}" />
+                    </Border.GestureRecognizers>
+                    <Label Text="‹" FontSize="22" FontAttributes="Bold"
+                           TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Border>
+                <VerticalStackLayout Grid.Column="1" Spacing="1" VerticalOptions="Center">
+                    <Label Text="Aile Yarışması 👨‍👧" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+                    <Label Text="Aynı Wi-Fi ile birlikte oyna" FontSize="11" TextColor="#CCFFFFFF"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+
+        <!-- ══ İÇERİK ══ -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,20,20,40" Spacing="20">
+
+                <!-- ── Rol Seçimi ── -->
+                <VerticalStackLayout Spacing="16" x:Name="RolePanel">
+
+                    <Label Text="Kim oynuyor?" FontSize="22" FontAttributes="Bold"
+                           TextColor="#1F1F2E" HorizontalOptions="Center"/>
+                    <Label Text="Ebeveyn soruları hazırlar, çocuk cevaplar.\nAynı Wi-Fi ağında olmanız gerekiyor."
+                           FontSize="13" TextColor="#6B7280"
+                           HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+
+                    <!-- Ebeveyn -->
+                    <controls:TappableBorder
+                        Command="{Binding BeHostCommand}"
+                        StrokeShape="RoundRectangle 24" Stroke="Transparent" Padding="0">
+                        <controls:TappableBorder.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#DB2777" Offset="0"/>
+                                <GradientStop Color="#9333EA" Offset="1"/>
+                            </LinearGradientBrush>
+                        </controls:TappableBorder.Background>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16" Padding="20,18">
+                            <Label Grid.Column="0" Text="👨‍💼" FontSize="40" VerticalOptions="Center"/>
+                            <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                <Label Text="Ben Ebeveyn'im" FontSize="18" FontAttributes="Bold" TextColor="White"/>
+                                <Label Text="Soruları ben hazırlarım, Wi-Fi sunucusu başlatırım"
+                                       FontSize="12" TextColor="#DDFFFFFF"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </controls:TappableBorder>
+
+                    <!-- Çocuk -->
+                    <Border BackgroundColor="White" Stroke="#E8E5FF"
+                            StrokeThickness="1.5" StrokeShape="RoundRectangle 24" Padding="0">
+                        <Border.Shadow>
+                            <Shadow Brush="#20DB2777" Offset="0,4" Radius="12" Opacity="0.2"/>
+                        </Border.Shadow>
+                        <VerticalStackLayout Padding="20,18" Spacing="12">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
+                                <Label Grid.Column="0" Text="👧" FontSize="40" VerticalOptions="Center"/>
+                                <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                    <Label Text="Ben Çocuk'um" FontSize="18" FontAttributes="Bold" TextColor="#1F1F2E"/>
+                                    <Label Text="Ebeveyn'in IP adresini gir ve bağlan"
+                                           FontSize="12" TextColor="#6B7280"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                            <Border BackgroundColor="#F8F7FF" Stroke="#C7CEFF"
+                                    StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="14,10">
+                                <Entry Placeholder="192.168.1.X — IP adresini gir"
+                                       Text="{Binding ConnectIpInput}"
+                                       Keyboard="Numeric"
+                                       FontSize="15" TextColor="#1F1F2E"
+                                       PlaceholderColor="#9CA3AF"/>
+                            </Border>
+                            <controls:TappableBorder
+                                Command="{Binding ConnectAsChildCommand}"
+                                BackgroundColor="#9333EA" Stroke="Transparent"
+                                StrokeShape="RoundRectangle 14" Padding="0,14">
+                                <Label Text="Bağlan →" FontSize="15" FontAttributes="Bold"
+                                       TextColor="White" HorizontalOptions="Center"/>
+                            </controls:TappableBorder>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Label Text="{Binding StatusText}" FontSize="13" TextColor="#DB2777"
+                           HorizontalOptions="Center" IsVisible="{Binding IsBusy}"/>
+                </VerticalStackLayout>
+
+                <!-- ── Ebeveyn Bekliyor ── -->
+                <VerticalStackLayout Spacing="20" x:Name="HostWaitingPanel">
+                    <Border BackgroundColor="White" Stroke="#FCE7F3"
+                            StrokeThickness="1.5" StrokeShape="RoundRectangle 24" Padding="24,20">
+                        <VerticalStackLayout Spacing="12" HorizontalOptions="Center">
+                            <Label Text="📡" FontSize="48" HorizontalOptions="Center"/>
+                            <Label Text="Çocuğun telefonu bağlanana kadar bekle"
+                                   FontSize="16" FontAttributes="Bold" TextColor="#1F1F2E"
+                                   HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                            <Label Text="Çocuğun telefonuna şu IP'yi gir:" FontSize="13" TextColor="#6B7280"
+                                   HorizontalOptions="Center"/>
+                            <Border BackgroundColor="#FDF4FF" Stroke="#E879F9"
+                                    StrokeThickness="2" StrokeShape="RoundRectangle 16" Padding="20,12">
+                                <Label Text="{Binding HostIp}" FontSize="28" FontAttributes="Bold"
+                                       TextColor="#9333EA" HorizontalOptions="Center"
+                                       HorizontalTextAlignment="Center"/>
+                            </Border>
+                            <Label Text="{Binding StatusText}" FontSize="13" TextColor="#6B7280"
+                                   HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Soru Gönder (bağlantı sonrası) -->
+                    <Border BackgroundColor="White" Stroke="#E8E5FF"
+                            StrokeThickness="1.5" StrokeShape="RoundRectangle 24" Padding="20">
+                        <VerticalStackLayout Spacing="14">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Grid.Column="0" Text="Tur durumu"
+                                       FontSize="14" FontAttributes="Bold" TextColor="#1F1F2E" VerticalOptions="Center"/>
+                                <Label Grid.Column="1"
+                                       Text="{Binding Round, StringFormat='{0}/{1}'}"
+                                       FontSize="14" TextColor="#9333EA" FontAttributes="Bold" VerticalOptions="Center"/>
+                            </Grid>
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                                <Border Grid.Column="0" BackgroundColor="#FDF4FF" Stroke="#E879F9"
+                                        StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="12,8">
+                                    <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                                        <Label Text="Çocuk" FontSize="11" TextColor="#6B7280" HorizontalOptions="Center"/>
+                                        <Label Text="{Binding ChildScore}" FontSize="24" FontAttributes="Bold"
+                                               TextColor="#9333EA" HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                </Border>
+                                <Border Grid.Column="1" BackgroundColor="#F0FDF4" Stroke="#86EFAC"
+                                        StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="12,8">
+                                    <VerticalStackLayout Spacing="2" HorizontalOptions="Center">
+                                        <Label Text="Toplam" FontSize="11" TextColor="#6B7280" HorizontalOptions="Center"/>
+                                        <Label Text="{Binding TotalRounds}" FontSize="24" FontAttributes="Bold"
+                                               TextColor="#16A34A" HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                </Border>
+                            </Grid>
+
+                            <Label Text="{Binding LastAnswerText}" FontSize="14"
+                                   TextColor="#374151" HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"/>
+
+                            <controls:TappableBorder
+                                Command="{Binding SendNextQuestionCommand}"
+                                StrokeShape="RoundRectangle 18" Stroke="Transparent" Padding="0,14">
+                                <controls:TappableBorder.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Color="#DB2777" Offset="0"/>
+                                        <GradientStop Color="#9333EA" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </controls:TappableBorder.Background>
+                                <Label Text="Sonraki Soruyu Gönder ▶"
+                                       FontSize="16" FontAttributes="Bold"
+                                       TextColor="White" HorizontalOptions="Center"/>
+                            </controls:TappableBorder>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <!-- ── Çocuk Bekleme / Soru ── -->
+                <VerticalStackLayout Spacing="16" x:Name="ChildPanel">
+                    <Label Text="⏳ Soru bekleniyor…" FontSize="16"
+                           TextColor="#6B7280" HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"/>
+
+                    <!-- Soru kartı -->
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="{Binding ActiveQuestion.QuestionText}"
+                               FontSize="18" FontAttributes="Bold" TextColor="#1F1F2E"
+                               HorizontalOptions="Center"/>
+
+                        <Border BackgroundColor="White" Stroke="#E8E5FF"
+                                StrokeThickness="1" StrokeShape="RoundRectangle 20"
+                                HeightRequest="200" Padding="0">
+                            <Image Source="{Binding ActiveQuestion.ImagePath}"
+                                   Aspect="AspectFit" Margin="8"/>
+                        </Border>
+
+                        <!-- Şıklar -->
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto"
+                              ColumnSpacing="10" RowSpacing="10">
+                            <controls:TappableBorder Grid.Row="0" Grid.Column="0"
+                                BackgroundColor="White" Stroke="#C7CEFF"
+                                StrokeThickness="1.5" StrokeShape="RoundRectangle 18"
+                                Padding="12,14">
+                                <controls:TappableBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SubmitAnswerCommand}"
+                                                          CommandParameter="{Binding Option1}" />
+                                </controls:TappableBorder.GestureRecognizers>
+                                <Label Text="{Binding Option1}"
+                                       FontSize="15" FontAttributes="Bold" TextColor="#1F1F2E"
+                                       HorizontalOptions="Center"/>
+                            </controls:TappableBorder>
+
+                            <controls:TappableBorder Grid.Row="0" Grid.Column="1"
+                                BackgroundColor="White" Stroke="#C7CEFF"
+                                StrokeThickness="1.5" StrokeShape="RoundRectangle 18"
+                                Padding="12,14">
+                                <controls:TappableBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SubmitAnswerCommand}"
+                                                          CommandParameter="{Binding Option2}" />
+                                </controls:TappableBorder.GestureRecognizers>
+                                <Label Text="{Binding Option2}"
+                                       FontSize="15" FontAttributes="Bold" TextColor="#1F1F2E"
+                                       HorizontalOptions="Center"/>
+                            </controls:TappableBorder>
+
+                            <controls:TappableBorder Grid.Row="1" Grid.Column="0"
+                                BackgroundColor="White" Stroke="#C7CEFF"
+                                StrokeThickness="1.5" StrokeShape="RoundRectangle 18"
+                                Padding="12,14">
+                                <controls:TappableBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SubmitAnswerCommand}"
+                                                          CommandParameter="{Binding Option3}" />
+                                </controls:TappableBorder.GestureRecognizers>
+                                <Label Text="{Binding Option3}"
+                                       FontSize="15" FontAttributes="Bold" TextColor="#1F1F2E"
+                                       HorizontalOptions="Center"/>
+                            </controls:TappableBorder>
+
+                            <controls:TappableBorder Grid.Row="1" Grid.Column="1"
+                                BackgroundColor="White" Stroke="#C7CEFF"
+                                StrokeThickness="1.5" StrokeShape="RoundRectangle 18"
+                                Padding="12,14">
+                                <controls:TappableBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SubmitAnswerCommand}"
+                                                          CommandParameter="{Binding Option4}" />
+                                </controls:TappableBorder.GestureRecognizers>
+                                <Label Text="{Binding Option4}"
+                                       FontSize="15" FontAttributes="Bold" TextColor="#1F1F2E"
+                                       HorizontalOptions="Center"/>
+                            </controls:TappableBorder>
+                        </Grid>
+
+                        <!-- Cevap sonucu -->
+                        <Border IsVisible="{Binding AnswerSubmitted}"
+                                StrokeShape="RoundRectangle 18" Stroke="Transparent" Padding="16,12">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#16A34A" Offset="0"/>
+                                    <GradientStop Color="#22C55E" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Label Text="✅ Cevabın gönderildi! Ebeveyn sonucunu görecek."
+                                   FontSize="14" FontAttributes="Bold" TextColor="White"
+                                   HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                        </Border>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+
+                <!-- ── Oyun Bitti ── -->
+                <VerticalStackLayout Spacing="16" x:Name="GameOverPanel">
+                    <Border BackgroundColor="White" Stroke="#FCE7F3"
+                            StrokeThickness="1.5" StrokeShape="RoundRectangle 24" Padding="24,28">
+                        <VerticalStackLayout Spacing="16" HorizontalOptions="Center">
+                            <Label Text="🏆" FontSize="60" HorizontalOptions="Center"/>
+                            <Label Text="Oyun Bitti!" FontSize="28" FontAttributes="Bold"
+                                   TextColor="#1F1F2E" HorizontalOptions="Center"/>
+                            <Label Text="{Binding StatusText}" FontSize="15"
+                                   TextColor="#6B7280" HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"/>
+                            <controls:TappableBorder
+                                Command="{Binding ResetToRoleSelectCommand}"
+                                BackgroundColor="#9333EA" Stroke="Transparent"
+                                StrokeShape="RoundRectangle 16" Padding="0,14" Margin="0,8,0,0">
+                                <Label Text="Yeni Oyun" FontSize="16" FontAttributes="Bold"
+                                       TextColor="White" HorizontalOptions="Center"/>
+                            </controls:TappableBorder>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

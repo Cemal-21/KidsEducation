@@ -8,7 +8,7 @@
       "imagePath": "vehicle_car",
       "category": "vehicles",
       "difficultyLevel": 1,
-      "funFact": "Arabalar tekerlekleriyle hareket eder.",
+      "funFact": "Dünyada 1 milyarın üzerinde araba vardır.",
       "descriptionTr": "Araba yolda giden bir araçtır. İnsanları bir yerden başka bir yere taşır. Genellikle dört tekerleği vardır. Arabaya binerken emniyet kemeri takmak önemlidir.",
       "soundClueText": "Yolda giden, genellikle dört tekerleği olan ve insanları bir yerden başka bir yere taşıyan araçtır. Acaba bu nedir?"
     },
@@ -19,7 +19,7 @@
       "imagePath": "vehicle_bus",
       "category": "vehicles",
       "difficultyLevel": 1,
-      "funFact": "Otobüs birçok yolcu taşıyabilir.",
+      "funFact": "Çift katlı otobüsler İngiltere'nin simgesi haline gelmiştir.",
       "descriptionTr": "Otobüs büyük bir kara taşıtıdır. Aynı anda birçok insanı taşıyabilir. Şehir içinde veya şehirler arasında kullanılabilir. Otobüse duraklardan binilir.",
       "soundClueText": "Aynı anda birçok yolcu taşıyabilen, duraklardan binilen büyük kara taşıtıdır. Acaba bu nedir?"
     },
@@ -30,7 +30,7 @@
       "imagePath": "vehicle_plane",
       "category": "vehicles",
       "difficultyLevel": 1,
-      "funFact": "Uçak gökyüzünde yolculuk yapar.",
+      "funFact": "Uçak saatte 900 km hıza ulaşabilir.",
       "descriptionTr": "Uçak havada giden bir taşıttır. Uzak yerlere daha hızlı gitmemizi sağlar. Kanatları ve motorları vardır. Uçaklar havaalanından kalkar ve iner.",
       "soundClueText": "Kanatları ve motorları olan, havada giderek uzak yerlere hızlıca ulaşmamızı sağlayan taşıttır. Acaba bu nedir?"
     },
@@ -41,7 +41,7 @@
       "imagePath": "vehicle_train",
       "category": "vehicles",
       "difficultyLevel": 2,
-      "funFact": "Tren rayların üzerinde gider.",
+      "funFact": "Japonya'nın Shinkansen trenleri saatte 320 km gider.",
       "descriptionTr": "Tren raylar üzerinde hareket eden bir taşıttır. Yolcu veya yük taşıyabilir. Birçok vagonu olabilir. Tren yolculukları uzun mesafelerde kullanışlıdır.",
       "soundClueText": "Rayların üzerinde hareket eden, yolcu veya yük taşıyabilen ve vagonları olabilen taşıttır. Acaba bu nedir?"
     },
@@ -52,7 +52,7 @@
       "imagePath": "vehicle_bicycle",
       "category": "vehicles",
       "difficultyLevel": 2,
-      "funFact": "Bisiklet pedalla hareket eder.",
+      "funFact": "Bisiklet çevre dostu bir ulaşım aracıdır.",
       "descriptionTr": "Bisiklet iki tekerlekli bir taşıttır. Pedal çevirerek hareket eder. Bisiklete binerken kask takmak güvenlidir. Hem eğlenceli hem de hareketli bir ulaşım aracıdır.",
       "soundClueText": "İki tekerleği olan, pedal çevirerek hareket eden ve kaskla kullanılması güvenli olan taşıttır. Acaba bu nedir?"
     },
@@ -63,9 +63,163 @@
       "imagePath": "vehicle_ship",
       "category": "vehicles",
       "difficultyLevel": 2,
-      "funFact": "Gemi suyun üzerinde ilerler.",
+      "funFact": "En büyük gemiler 20 katlı bir bina kadar yüksek olabilir.",
       "descriptionTr": "Gemi denizde giden büyük bir taşıttır. İnsanları veya eşyaları taşıyabilir. Limanlardan hareket eder. Gemi yolculukları su üzerinde yapılır.",
       "soundClueText": "Suyun üzerinde ilerleyen, limanlardan hareket eden ve insan ya da eşya taşıyabilen büyük taşıttır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_helikopter",
+      "nameTr": "Helikopter",
+      "nameEn": "Helicopter",
+      "imagePath": "vehicle_helicopter",
+      "category": "vehicles",
+      "difficultyLevel": 2,
+      "funFact": "Helikopter havada asılı kalabilir ve geri geri gidebilir.",
+      "descriptionTr": "Helikopter üstündeki dönen kanatlarıyla uçan bir araçtır. Dar alanlara inip kalkabilir. Kurtarma ve sağlık operasyonlarında kullanılır. Hem ileri hem geri uçabilir.",
+      "soundClueText": "Üstündeki dönen kanatlarıyla uçan, dar alanlara inip kalkabilen, kurtarma işlerinde kullanılan araçtır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_motosiklet",
+      "nameTr": "Motosiklet",
+      "nameEn": "Motorcycle",
+      "imagePath": "vehicle_motorcycle",
+      "category": "vehicles",
+      "difficultyLevel": 2,
+      "funFact": "Motosikletler arabalara göre çok daha az yakıt harcar.",
+      "descriptionTr": "Motosiklet iki tekerlekli motorlu bir taşıttır. Hızlı ve manevra kabiliyeti yüksektir. Trafik sıkışıklığında daha hızlı hareket edebilir. Kask takmak zorunludur.",
+      "soundClueText": "İki tekerlekli, motorlu, hızlı ve kask takarak kullanılması zorunlu olan taşıttır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_kamyon",
+      "nameTr": "Kamyon",
+      "nameEn": "Truck",
+      "imagePath": "vehicle_truck",
+      "category": "vehicles",
+      "difficultyLevel": 2,
+      "funFact": "Bir tır kamyonu 30 ton yük taşıyabilir.",
+      "descriptionTr": "Kamyon büyük ve güçlü bir kara taşıtıdır. Ağır ve büyük yükleri taşımak için kullanılır. Şehirler arası mal taşımacılığında önemli bir rol oynar.",
+      "soundClueText": "Büyük ve güçlü, ağır yükleri taşımak için kullanılan, şehirler arası mal taşıyan kara taşıtıdır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_traktor",
+      "nameTr": "Traktör",
+      "nameEn": "Tractor",
+      "imagePath": "vehicle_tractor",
+      "category": "vehicles",
+      "difficultyLevel": 2,
+      "funFact": "Traktör tarımın en önemli makinesidir.",
+      "descriptionTr": "Traktör tarla ve çiftliklerde kullanılan güçlü bir araçtır. Toprağı sürmek ve tarımsal işler yapmak için kullanılır. Büyük tekerlekleri ve güçlü motoru vardır.",
+      "soundClueText": "Çiftlik ve tarlalarda toprağı sürmek için kullanılan, büyük tekerlekli ve güçlü motorlu araçtır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_ambulans",
+      "nameTr": "Ambulans",
+      "nameEn": "Ambulance",
+      "imagePath": "vehicle_ambulance",
+      "category": "vehicles",
+      "difficultyLevel": 2,
+      "funFact": "Ambulansta Ambulance sözcüğü ters yazılır ki aynalarda okunabilsin.",
+      "descriptionTr": "Ambulans hasta ve yaralı kişileri hastaneye taşıyan özel araçtır. Üstünde kırmızı haç işareti bulunur. Siren sesi çıkarır. Acil durumlarda yolları açık geçer.",
+      "soundClueText": "Siren sesi çıkaran, üstünde haç işareti olan ve hastaları hastaneye taşıyan özel acil araçtır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_itfaiye",
+      "nameTr": "İtfaiye Arabası",
+      "nameEn": "Fire Truck",
+      "imagePath": "vehicle_firetruck",
+      "category": "vehicles",
+      "difficultyLevel": 2,
+      "funFact": "İtfaiye araçları genellikle kırmızıdır çünkü bu renk hızla dikkat çeker.",
+      "descriptionTr": "İtfaiye arabası yangınları söndürmek için kullanılan özel araçtır. Kırmızı rengiyle ve uzun merdiveniyle tanınır. Hortumlarıyla suyu çok uzağa fırlatabılir.",
+      "soundClueText": "Yangınları söndüren, kırmızı rengiyle ve uzun merdiveniyle tanınan özel araçtır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_denizalti",
+      "nameTr": "Denizaltı",
+      "nameEn": "Submarine",
+      "imagePath": "vehicle_submarine",
+      "category": "vehicles",
+      "difficultyLevel": 3,
+      "funFact": "Denizaltılar binlerce metre derine dalabilir.",
+      "descriptionTr": "Denizaltı suyun altında gidebilen özel bir tekne türüdür. Çok derinlere dalabilir. Askeri amaçlar ve araştırmalar için kullanılır. Su altında nefes alınabilir.",
+      "soundClueText": "Suyun altında gidebilen, çok derinlere dalabilen ve araştırmalarda kullanılan özel bir araçtır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_roket",
+      "nameTr": "Roket",
+      "nameEn": "Rocket",
+      "imagePath": "vehicle_rocket",
+      "category": "vehicles",
+      "difficultyLevel": 3,
+      "funFact": "Roketler saniyede 7 km hızla gidebilir.",
+      "descriptionTr": "Roket uzaya gitmek için kullanılan çok hızlı bir araçtır. Muazzam bir güçle atmosferin dışına çıkabilir. Astronotları uzaya taşır. Uzay araştırmalarında kullanılır.",
+      "soundClueText": "Uzaya gitmek için kullanılan, muazzam hızıyla atmosferin dışına çıkabilen ve astronot taşıyan araçtır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_yelkenli",
+      "nameTr": "Yelkenli",
+      "nameEn": "Sailboat",
+      "imagePath": "vehicle_sailboat",
+      "category": "vehicles",
+      "difficultyLevel": 3,
+      "funFact": "Yelkenliler yakıt kullanmaz, rüzgar gücüyle gider.",
+      "descriptionTr": "Yelkenli rüzgarın gücüyle denizde ilerleyen bir tekne türüdür. Büyük beyaz yelkenleri vardır. Motor kullanmaz, çevre dostudur. Spor ve eğlence amaçlı kullanılır.",
+      "soundClueText": "Büyük beyaz yelkenleri olan, rüzgar gücüyle ilerleyen, motor kullanmayan tekne türüdür. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_taksi",
+      "nameTr": "Taksi",
+      "nameEn": "Taxi",
+      "imagePath": "vehicle_taxi",
+      "category": "vehicles",
+      "difficultyLevel": 1,
+      "funFact": "New York taksilerinin sarı rengi çok uzaktan görülebilir.",
+      "descriptionTr": "Taksi ücret karşılığında yolcu taşıyan özel araçtır. Genellikle sarı renklidir. Şoförü taksimetre ile ücreti hesaplar. Şehir içi ulaşımda çok kullanılır.",
+      "soundClueText": "Sarı rengiyle tanınan, ücret karşılığında yolcu taşıyan ve taksimetresi olan araçtır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_okul_otobusu",
+      "nameTr": "Okul Otobüsü",
+      "nameEn": "School Bus",
+      "imagePath": "vehicle_schoolbus",
+      "category": "vehicles",
+      "difficultyLevel": 1,
+      "funFact": "Okul otobüsleri sarı rengiyle çocuklar için güvenlidir.",
+      "descriptionTr": "Okul otobüsü çocukları okula götürüp getiren sarı renkli büyük bir araçtır. Güvenli sürüş için özel tasarlanmıştır. Sabah ve öğleden sonra çalışır.",
+      "soundClueText": "Çocukları okula götüren, sarı rengiyle kolayca tanınan büyük ve güvenli araçtır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_scooter",
+      "nameTr": "Scooter",
+      "nameEn": "Scooter",
+      "imagePath": "vehicle_scooter",
+      "category": "vehicles",
+      "difficultyLevel": 2,
+      "funFact": "Elektrikli scooterlar şehirlerde giderek daha popüler oluyor.",
+      "descriptionTr": "Scooter küçük, hafif ve pratik motorlu bir araçtır. Şehir içi kısa mesafelerde çok kullanışlıdır. Elektrikli versiyonları çevre dostudur.",
+      "soundClueText": "Küçük, hafif ve pratik olan, şehir içi kısa mesafelerde kullanışlı motorlu araçtır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_vinc",
+      "nameTr": "Vinç",
+      "nameEn": "Crane",
+      "imagePath": "vehicle_crane",
+      "category": "vehicles",
+      "difficultyLevel": 3,
+      "funFact": "Vinçler yüzlerce ton ağırlık kaldırabilir.",
+      "descriptionTr": "Vinç inşaat alanlarında ağır yükleri kaldırmak için kullanılan dev bir araçtır. Çok yüksek kolları vardır. Binaları ve köprüleri inşa etmede kullanılır.",
+      "soundClueText": "İnşaat alanlarında ağır yükleri kaldıran, çok uzun kolu olan dev bir araçtır. Acaba bu nedir?"
+    },
+    {
+      "id": "vehicle_sicak_hava_balonu",
+      "nameTr": "Sıcak Hava Balonu",
+      "nameEn": "Hot Air Balloon",
+      "imagePath": "vehicle_hotairballoon",
+      "category": "vehicles",
+      "difficultyLevel": 3,
+      "funFact": "İlk sıcak hava balonu 1783'te uçmuştur.",
+      "descriptionTr": "Sıcak hava balonu büyük bir balon ve sepetten oluşan hava aracıdır. Sıcak hava ile yükselir. Rüzgarın yönünde sessizce süzülür. Çok renkli ve güzel görünür.",
+      "soundClueText": "Büyük renkli balonu ve altındaki sepetiyle uçan, sıcak hava ile yükselen sessiz hava aracıdır. Acaba bu nedir?"
     }
   ]
 }

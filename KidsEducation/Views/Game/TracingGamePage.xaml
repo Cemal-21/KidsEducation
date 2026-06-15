@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Game.TracingGamePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    xmlns:converters="clr-namespace:KidsEducation.Converters"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{StaticResource PlaygroundBackground}">
+
+    <ContentPage.Resources>
+        <converters:BoolToFullOpacityConverter x:Key="BoolToFullOpacityConverter" />
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- Header -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Padding="16,36,16,10" ColumnSpacing="10">
+            <controls:TappableBorder
+                Grid.Column="0"
+                Command="{Binding GoBackCommand}"
+                WidthRequest="42" HeightRequest="42"
+                BackgroundColor="{StaticResource SurfaceWhite}"
+                Stroke="#FFE2C1" StrokeThickness="1"
+                StrokeShape="RoundRectangle 16">
+                <Label Text="‹" FontSize="30" TextColor="{StaticResource TextPrimary}"
+                       HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-4,0,0" />
+            </controls:TappableBorder>
+
+            <VerticalStackLayout Grid.Column="1" Spacing="5" VerticalOptions="Center">
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Grid.Column="0" Text="{Binding CurrentItem.NameTr, StringFormat='✏️ {0}'}"
+                           FontSize="12" TextColor="{StaticResource TextMuted}" FontAttributes="Bold" />
+                    <Label Grid.Column="1"
+                           Text="{Binding Progress, StringFormat='{0:P0}'}"
+                           FontSize="12" TextColor="{StaticResource BrandPurple}" FontAttributes="Bold" />
+                </Grid>
+                <ProgressBar Progress="{Binding Progress}"
+                             ProgressColor="{StaticResource BrandMint}"
+                             BackgroundColor="#FFE9CC" HeightRequest="8" />
+            </VerticalStackLayout>
+
+            <Border Grid.Column="2"
+                    BackgroundColor="{StaticResource SurfaceWhite}"
+                    Stroke="#FFE2C1" StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14" Padding="9,6" VerticalOptions="Center">
+                <Label Text="{Binding DisplayNumber}" FontSize="13"
+                       FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+            </Border>
+        </Grid>
+
+        <!-- Drawing Area -->
+        <Grid Grid.Row="1" Padding="20,8,20,8">
+            <Grid RowDefinitions="Auto,*,Auto" RowSpacing="12">
+
+                <!-- Instruction -->
+                <Border Grid.Row="0"
+                        BackgroundColor="{StaticResource SurfaceWhite}"
+                        Stroke="#E8E0FF" StrokeThickness="1"
+                        StrokeShape="RoundRectangle 16" Padding="14,10">
+                    <Label Text="Aşağıdaki harfi parmağınla takip et!"
+                           FontSize="14" FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimary}"
+                           HorizontalTextAlignment="Center" />
+                </Border>
+
+                <!-- Canvas area -->
+                <Border Grid.Row="1"
+                        BackgroundColor="White"
+                        Stroke="#E0D8FF" StrokeThickness="2"
+                        StrokeShape="RoundRectangle 28">
+                    <Grid>
+                        <!-- Guide character -->
+                        <Label Text="{Binding CurrentItem.DisplayChar}"
+                               FontSize="200"
+                               TextColor="#F0EDFF"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               InputTransparent="True" />
+
+                        <!-- Drawing surface -->
+                        <GraphicsView
+                            x:Name="TracingCanvas"
+                            Drawable="{Binding TracingDrawable}"
+                            StartInteraction="OnStartInteraction"
+                            DragInteraction="OnDragInteraction"
+                            EndInteraction="OnEndInteraction"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill" />
+
+                        <!-- Success overlay -->
+                        <Border
+                            BackgroundColor="#CC4ADE80"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 28"
+                            IsVisible="{Binding ShowSuccess}">
+                            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="8">
+                                <Label Text="🌟" FontSize="72" HorizontalOptions="Center" />
+                                <Label Text="Harika!" FontSize="32" FontAttributes="Bold"
+                                       TextColor="White" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <!-- Bottom info -->
+                <Grid Grid.Row="2" ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                    <Border Grid.Column="0"
+                            BackgroundColor="#F0EDFF"
+                            Stroke="#C4B5FD" StrokeThickness="1"
+                            StrokeShape="RoundRectangle 14"
+                            Padding="14,10" VerticalOptions="Center">
+                        <Label Text="{Binding CurrentItem.DisplayChar}"
+                               FontSize="38" FontAttributes="Bold"
+                               TextColor="{StaticResource BrandPurple}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
+                    </Border>
+
+                    <VerticalStackLayout Grid.Column="1" Spacing="6" VerticalOptions="Center">
+                        <Label Text="{Binding CurrentItem.NameTr}"
+                               FontSize="18" FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}" />
+                        <Label Text="Çizmeyi bitirince Tamam'a bas"
+                               FontSize="12" TextColor="{StaticResource TextMuted}" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!-- Footer Buttons -->
+        <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="12" Padding="20,10,20,20">
+            <controls:TappableBorder
+                Grid.Column="0"
+                Command="{Binding ClearCommand}"
+                BackgroundColor="#FFF1F8"
+                Stroke="#FFC0D8" StrokeThickness="1"
+                StrokeShape="RoundRectangle 20"
+                Padding="0,16">
+                <Label Text="🗑 Temizle"
+                       FontSize="15" FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimary}"
+                       HorizontalOptions="Center" />
+            </controls:TappableBorder>
+
+            <controls:TappableBorder
+                Grid.Column="1"
+                Command="{Binding CompleteCurrentCommand}"
+                Opacity="{Binding CanComplete, Converter={StaticResource BoolToFullOpacityConverter}}"
+                StrokeShape="RoundRectangle 20"
+                Padding="0,16">
+                <controls:TappableBorder.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#6C63FF" Offset="0.0" />
+                        <GradientStop Color="#9B8FFF" Offset="1.0" />
+                    </LinearGradientBrush>
+                </controls:TappableBorder.Background>
+                <Label Text="✓ Tamam"
+                       FontSize="15" FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center" />
+            </controls:TappableBorder>
+        </Grid>
+
+    </Grid>
+</ContentPage>

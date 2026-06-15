@@ -8,7 +8,7 @@
       "imagePath": "shape_circle",
       "category": "shapes",
       "difficultyLevel": 1,
-      "funFact": "Dairenin köşesi yoktur.",
+      "funFact": "Daire mükemmel bir şekildir, her noktası merkeze eşit uzaklıktadır.",
       "descriptionTr": "Daire yuvarlak bir şekildir. Köşesi ve kenarı yoktur. Top, tabak ve saat daireye benzeyebilir. Daireyi çevremizde sık sık görebiliriz.",
       "soundClueText": "Köşesi ve kenarı olmayan, top, tabak ve saat gibi nesnelerde görebileceğimiz yuvarlak şekildir. Acaba bu hangisidir?"
     },
@@ -19,7 +19,7 @@
       "imagePath": "shape_square",
       "category": "shapes",
       "difficultyLevel": 1,
-      "funFact": "Karenin dört eşit kenarı vardır.",
+      "funFact": "Karenin tüm kenarları ve açıları birbirine eşittir.",
       "descriptionTr": "Kare dört kenarlı bir şekildir. Tüm kenarları birbirine eşittir. Bazı kutular ve pencereler kareye benzeyebilir. Kare düzenli ve kolay tanınan bir şekildir.",
       "soundClueText": "Dört eşit kenarı olan, bazı kutu ve pencerelerde görebileceğimiz düzenli şekildir. Acaba bu hangisidir?"
     },
@@ -30,7 +30,7 @@
       "imagePath": "shape_triangle",
       "category": "shapes",
       "difficultyLevel": 1,
-      "funFact": "Üçgenin üç köşesi vardır.",
+      "funFact": "Mısır piramitleri üçgen şekli nedeniyle çok güçlüdür.",
       "descriptionTr": "Üçgen üç kenarlı ve üç köşeli bir şekildir. Çatıların bazı bölümleri üçgene benzeyebilir. Trafik işaretlerinde üçgen şekli görülebilir. Üçgeni sayarak kolayca tanıyabiliriz.",
       "soundClueText": "Üç kenarı ve üç köşesi olan, bazı çatılarda ve trafik işaretlerinde görebileceğimiz şekildir. Acaba bu hangisidir?"
     },
@@ -41,7 +41,7 @@
       "imagePath": "shape_rectangle",
       "category": "shapes",
       "difficultyLevel": 1,
-      "funFact": "Dikdörtgenin karşılıklı kenarları eşittir.",
+      "funFact": "Dikdörtgenin karşılıklı kenarları birbirine eşittir.",
       "descriptionTr": "Dikdörtgen dört kenarlı bir şekildir. Karşılıklı kenarları birbirine eşittir. Kitap, kapı ve telefon dikdörtgene benzeyebilir. Günlük hayatta çok sık görülür.",
       "soundClueText": "Dört kenarı olan, kitap, kapı ve telefon gibi nesnelerde sık görebileceğimiz şekildir. Acaba bu hangisidir?"
     },
@@ -52,7 +52,7 @@
       "imagePath": "shape_star",
       "category": "shapes",
       "difficultyLevel": 2,
-      "funFact": "Yıldız şekli süslemelerde sık kullanılır.",
+      "funFact": "Yıldız şekli genellikle beş köşelidir.",
       "descriptionTr": "Yıldız sivri uçları olan özel bir şekildir. Gökyüzündeki yıldızları hatırlatır. Ödül ve süslemelerde yıldız şekli kullanılabilir. Çocukların kolayca sevdiği şekillerden biridir.",
       "soundClueText": "Sivri uçları olan, gökyüzünü, ödülleri ve süslemeleri hatırlatan özel şekildir. Acaba bu hangisidir?"
     },
@@ -63,9 +63,75 @@
       "imagePath": "shape_heart",
       "category": "shapes",
       "difficultyLevel": 2,
-      "funFact": "Kalp şekli sevgiyi anlatmak için kullanılır.",
+      "funFact": "Kalp şekli sevgiyi simgelemek için yüzyıllardır kullanılır.",
       "descriptionTr": "Kalp yuvarlak ve sivri bölümleri olan bir şekildir. Genellikle sevgiyi anlatmak için kullanılır. Kartlarda ve çizimlerde kalp şekli görebiliriz. Tanıması kolay ve sevimli bir şekildir.",
       "soundClueText": "Sevgiyi anlatmak için kullanılan, yuvarlak ve sivri bölümleri olan sevimli şekildir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "shape_oval",
+      "nameTr": "Oval",
+      "nameEn": "Oval",
+      "imagePath": "shape_oval",
+      "category": "shapes",
+      "difficultyLevel": 2,
+      "funFact": "Yumurtalar oval şekliyle güçlü bir yapıya sahiptir.",
+      "descriptionTr": "Oval daireye benzeyen ama uzatılmış bir şekildir. Yumurta ve bazı aynalar oval şeklindedir. Köşesi yoktur, yuvarlaklığıyla daireden ayrılır.",
+      "soundClueText": "Daireye benzeyen ama uzatılmış olan, yumurtanın şekline benzeyen şekildir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "shape_elmas",
+      "nameTr": "Elmas",
+      "nameEn": "Diamond",
+      "imagePath": "shape_diamond",
+      "category": "shapes",
+      "difficultyLevel": 2,
+      "funFact": "Elmas şekli iskambil oyun kartlarında görülür.",
+      "descriptionTr": "Elmas dört eşit kenarlı, köşeleri yukarıda ve aşağıda olan özel bir şekildir. Kare gibi görünür ama eğik durur. İskambil kartlarında ve süslemelerde kullanılır.",
+      "soundClueText": "Kare gibi ama eğik duran, iskambil kartlarında görülebilen dört kenarlı şekildir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "shape_besgen",
+      "nameTr": "Beşgen",
+      "nameEn": "Pentagon",
+      "imagePath": "shape_pentagon",
+      "category": "shapes",
+      "difficultyLevel": 3,
+      "funFact": "ABD Savunma Bakanlığı binasının adı Pentagon'dur.",
+      "descriptionTr": "Beşgen beş kenarlı ve beş köşeli bir şekildir. Futbol topunun bazı parçaları beşgen şeklindedir. Beş kenarını sayarak kolayca tanıyabiliriz.",
+      "soundClueText": "Beş kenarı ve beş köşesi olan, futbol topunda görebileceğimiz şekildir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "shape_altigen",
+      "nameTr": "Altıgen",
+      "nameEn": "Hexagon",
+      "imagePath": "shape_hexagon",
+      "category": "shapes",
+      "difficultyLevel": 3,
+      "funFact": "Arıların petekleri mükemmel altıgen şeklindedir.",
+      "descriptionTr": "Altıgen altı kenarlı ve altı köşeli bir şekildir. Bal peteği altıgen şeklinde oluşur. Altı kenarını sayarak tanıyabiliriz. Doğada çok akıllıca bir şekildir.",
+      "soundClueText": "Altı kenarı ve altı köşesi olan, bal peteklerinde görebileceğimiz şekildir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "shape_hilal",
+      "nameTr": "Hilal",
+      "nameEn": "Crescent",
+      "imagePath": "shape_crescent",
+      "category": "shapes",
+      "difficultyLevel": 3,
+      "funFact": "Hilal Türk ve İslam kültüründe önemli bir semboldür.",
+      "descriptionTr": "Hilal ay şekliyle tanınan özel bir şekildir. Türk bayrağında hilal vardır. Yeni ayın görüntüsüne benzer. İnce ve kıvrık yapısıyla kolayca tanınır.",
+      "soundClueText": "Türk bayrağında yer alan, yeni ayı hatırlatan ince ve kıvrık şekildir. Acaba bu hangisidir?"
+    },
+    {
+      "id": "shape_oktagin",
+      "nameTr": "Sekizgen",
+      "nameEn": "Octagon",
+      "imagePath": "shape_octagon",
+      "category": "shapes",
+      "difficultyLevel": 3,
+      "funFact": "Dur levhaları sekizgen şeklindedir.",
+      "descriptionTr": "Sekizgen sekiz kenarlı ve sekiz köşeli bir şekildir. Dur işaretleri sekizgen şeklindedir. Sekiz kenarını sayarak tanıyabiliriz.",
+      "soundClueText": "Sekiz kenarı ve sekiz köşesi olan, dur işaretlerinde görebileceğimiz şekildir. Acaba bu hangisidir?"
     }
   ]
 }

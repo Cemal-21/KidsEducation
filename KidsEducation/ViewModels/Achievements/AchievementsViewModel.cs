@@ -10,6 +10,7 @@ public partial class AchievementsViewModel : ObservableObject
     private readonly BadgeService _badgeService;
     private readonly ProfileService _profileService;
     private readonly NavigationService _navigationService;
+    private readonly ShareService _shareService;
 
     [ObservableProperty] private List<Badge> _badges = new();
     [ObservableProperty] private ChildProfile? _activeProfile;
@@ -23,11 +24,13 @@ public partial class AchievementsViewModel : ObservableObject
     public AchievementsViewModel(
         BadgeService badgeService,
         ProfileService profileService,
-        NavigationService navigationService)
+        NavigationService navigationService,
+        ShareService shareService)
     {
         _badgeService = badgeService;
         _profileService = profileService;
         _navigationService = navigationService;
+        _shareService = shareService;
     }
 
     [RelayCommand]
@@ -51,6 +54,24 @@ public partial class AchievementsViewModel : ObservableObject
     }
 
     [RelayCommand]
-    public async Task GoBackAsync() =>
-        await _navigationService.GoBackAsync();
+    public Task GoBackAsync() =>
+        Shell.Current.GoToAsync("//home");
+
+    [RelayCommand]
+    public async Task ShareBadgeAsync(Badge badge)
+    {
+        if (badge is null || !badge.IsEarned) return;
+        var profileName = ActiveProfile?.Name ?? "Kahraman";
+        await _shareService.ShareAchievementAsync(
+            profileName, badge.NameTr, badge.Emoji, badge.DescriptionTr);
+    }
+
+    [RelayCommand]
+    public async Task ShareProgressAsync()
+    {
+        if (ActiveProfile is null) return;
+        await _shareService.ShareProgressAsync(
+            ActiveProfile.Name, ActiveProfile.TotalStars,
+            ActiveProfile.StreakDays, ActiveProfile.LevelTitle);
+    }
 }

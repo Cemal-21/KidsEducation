@@ -1,0 +1,93 @@
+{
+  "categoryId": "nature",
+  "items": [
+    {
+      "id": "nature_mountain",
+      "nameTr": "Dağ",
+      "nameEn": "Mountain",
+      "imagePath": "nature_mountain",
+      "category": "nature",
+      "difficultyLevel": 1,
+      "funFact": "Dağlar, yeryüzünün yüksek yerleridir.",
+      "descriptionTr": "Dağ, yeryüzünde çevresine göre daha yüksek olan doğal bir yerdir.",
+      "soundClueText": "Yeryüzünün çok yüksek doğal yerlerine ne denir?"
+    },
+    {
+      "id": "nature_sea",
+      "nameTr": "Deniz",
+      "nameEn": "Sea",
+      "imagePath": "nature_sea",
+      "category": "nature",
+      "difficultyLevel": 1,
+      "funFact": "Denizler, tuzlu suyla dolu büyük alanlardır.",
+      "descriptionTr": "Deniz, çok büyük bir su alanıdır. İçinde pek çok canlı yaşar.",
+      "soundClueText": "Tuzlu suyla dolu büyük su alanına ne denir?"
+    },
+    {
+      "id": "nature_lake",
+      "nameTr": "Göl",
+      "nameEn": "Lake",
+      "imagePath": "nature_lake",
+      "category": "nature",
+      "difficultyLevel": 1,
+      "funFact": "Göller, karaların içinde bulunan su alanlarıdır.",
+      "descriptionTr": "Göl, karaların içinde bulunan durgun su alanıdır.",
+      "soundClueText": "Karaların içinde bulunan durgun su alanına ne denir?"
+    },
+    {
+      "id": "nature_river",
+      "nameTr": "Nehir",
+      "nameEn": "River",
+      "imagePath": "nature_river",
+      "category": "nature",
+      "difficultyLevel": 2,
+      "funFact": "Nehirler, akan su yollarıdır.",
+      "descriptionTr": "Nehir, belirli bir yöne doğru akan doğal su yoludur.",
+      "soundClueText": "Bir yöne doğru akan doğal su yoluna ne denir?"
+    },
+    {
+      "id": "nature_forest",
+      "nameTr": "Orman",
+      "nameEn": "Forest",
+      "imagePath": "nature_forest",
+      "category": "nature",
+      "difficultyLevel": 1,
+      "funFact": "Ormanlarda çok sayıda ağaç bulunur.",
+      "descriptionTr": "Orman, pek çok ağacın ve canlının bulunduğu doğal bir alandır.",
+      "soundClueText": "Çok sayıda ağacın bir arada bulunduğu doğal alana ne denir?"
+    },
+    {
+      "id": "nature_island",
+      "nameTr": "Ada",
+      "nameEn": "Island",
+      "imagePath": "nature_island",
+      "category": "nature",
+      "difficultyLevel": 2,
+      "funFact": "Ada, etrafı suyla çevrili kara parçasıdır.",
+      "descriptionTr": "Ada, etrafı tamamen suyla çevrili olan kara parçasıdır.",
+      "soundClueText": "Etrafı tamamen suyla çevrili kara parçasına ne denir?"
+    },
+    {
+      "id": "nature_waterfall",
+      "nameTr": "Şelale",
+      "nameEn": "Waterfall",
+      "imagePath": "nature_waterfall",
+      "category": "nature",
+      "difficultyLevel": 2,
+      "funFact": "Şelalede su yukarıdan aşağıya akar.",
+      "descriptionTr": "Şelale, suyun yüksek bir yerden aşağıya doğru aktığı doğal bir güzelliktir.",
+      "soundClueText": "Suyun yüksek bir yerden aşağıya aktığı doğal yere ne denir?"
+    },
+    {
+      "id": "nature_cave",
+      "nameTr": "Mağara",
+      "nameEn": "Cave",
+      "imagePath": "nature_cave",
+      "category": "nature",
+      "difficultyLevel": 2,
+      "funFact": "Mağara, kayaların içinde oluşan boşluktur.",
+      "descriptionTr": "Mağara, yerin veya kayaların içinde oluşan doğal boşluktur.",
+      "soundClueText": "Kayaların veya yerin içinde oluşan doğal boşluğa ne denir?"
+    }
+  ]
+}

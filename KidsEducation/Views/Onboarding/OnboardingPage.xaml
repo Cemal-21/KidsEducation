@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Onboarding.OnboardingPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{StaticResource AppBackground}">
+
+    <Grid RowDefinitions="*,Auto" BackgroundColor="{StaticResource AppBackground}">
+
+        <!-- Slayt alanı -->
+        <CarouselView x:Name="Carousel" Grid.Row="0"
+                      ItemsSource="{Binding Slides}"
+                      CurrentItemChanged="OnSlideChanged"
+                      Loop="False">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RowDefinitions="*,Auto" Padding="0">
+
+                        <!-- Üst renkli alan — mor, sabit -->
+                        <Grid Grid.Row="0" BackgroundColor="{StaticResource BrandPurple}">
+                            <!-- Dekorasyon daireleri -->
+                            <Ellipse Fill="#0FFFFFFF" WidthRequest="300" HeightRequest="300"
+                                     HorizontalOptions="End" VerticalOptions="Start"
+                                     TranslationX="80" TranslationY="-80"/>
+                            <Ellipse Fill="#08FFFFFF" WidthRequest="200" HeightRequest="200"
+                                     HorizontalOptions="Start" VerticalOptions="End"
+                                     TranslationX="-60" TranslationY="60"/>
+
+                            <!-- İçerik -->
+                            <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center"
+                                                 Spacing="24" Padding="32,0">
+                                <!-- Emoji ikonu -->
+                                <Border WidthRequest="120" HeightRequest="120"
+                                        BackgroundColor="#22FFFFFF" Stroke="#33FFFFFF"
+                                        StrokeThickness="2" StrokeShape="RoundRectangle 36"
+                                        HorizontalOptions="Center">
+                                    <Label Text="{Binding Emoji}" FontSize="64"
+                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Border>
+
+                                <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                    <Label Text="{Binding Title}" FontSize="28" FontAttributes="Bold"
+                                           TextColor="White" HorizontalOptions="Center"
+                                           HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding Subtitle}" FontSize="15"
+                                           TextColor="#DDFFFFFF" HorizontalOptions="Center"
+                                           HorizontalTextAlignment="Center"
+                                           LineBreakMode="WordWrap" MaxLines="3"/>
+                                </VerticalStackLayout>
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <!-- Alt beyaz kart -->
+                        <Border Grid.Row="1"
+                                BackgroundColor="{StaticResource SurfaceWhite}"
+                                Stroke="{StaticResource BorderLight}" StrokeThickness="1"
+                                StrokeShape="RoundRectangle 28,28,0,0"
+                                Padding="28,24">
+                            <VerticalStackLayout Spacing="14">
+                                <!-- 3 özellik satırı -->
+                                <VerticalStackLayout BindableLayout.ItemsSource="{Binding Features}" Spacing="12">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate x:DataType="x:String">
+                                            <HorizontalStackLayout Spacing="12">
+                                                <Border WidthRequest="28" HeightRequest="28"
+                                                        BackgroundColor="#EEF0FF" Stroke="Transparent"
+                                                        StrokeShape="RoundRectangle 8">
+                                                    <Label Text="✓" FontSize="14" FontAttributes="Bold"
+                                                           TextColor="{StaticResource BrandPurple}"
+                                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                </Border>
+                                                <Label Text="{Binding .}" FontSize="14"
+                                                       TextColor="{StaticResource TextPrimary}"
+                                                       VerticalOptions="Center" LineBreakMode="WordWrap"/>
+                                            </HorizontalStackLayout>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </VerticalStackLayout>
+                            </VerticalStackLayout>
+                        </Border>
+
+                    </Grid>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+        <!-- Alt kontroller -->
+        <Grid Grid.Row="1" ColumnDefinitions="Auto,*,Auto"
+              Padding="24,16,24,36" BackgroundColor="{StaticResource SurfaceWhite}"
+              ColumnSpacing="16">
+
+            <!-- Atla butonu -->
+            <Button Grid.Column="0" x:Name="SkipBtn" Text="Atla"
+                    BackgroundColor="Transparent" TextColor="{StaticResource TextMuted}"
+                    FontSize="14" Clicked="OnSkipClicked" Padding="0"/>
+
+            <!-- Nokta göstergesi -->
+            <IndicatorView Grid.Column="1" x:Name="Indicators"
+                           IndicatorColor="{StaticResource BorderLight}"
+                           SelectedIndicatorColor="{StaticResource BrandPurple}"
+                           HorizontalOptions="Center" VerticalOptions="Center"
+                           IndicatorSize="8"/>
+
+            <!-- İleri / Başla butonu -->
+            <Border Grid.Column="2" x:Name="NextBtn"
+                    BackgroundColor="{StaticResource BrandPurple}" Stroke="Transparent"
+                    StrokeShape="RoundRectangle 16" Padding="20,12">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNextTapped"/>
+                </Border.GestureRecognizers>
+                <Label x:Name="NextLabel" Text="İlerle →" FontSize="14" FontAttributes="Bold"
+                       TextColor="White" HorizontalOptions="Center"/>
+            </Border>
+
+        </Grid>
+
+    </Grid>
+</ContentPage>

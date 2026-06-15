@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Parental.PinSetupPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
+    xmlns:conv="clr-namespace:KidsEducation.Converters"
+    xmlns:vm="clr-namespace:KidsEducation.ViewModels.Parental"
+    x:DataType="vm:PinSetupViewModel"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#F0F2FA">
+
+    <ContentPage.Resources>
+        <conv:InverseBoolConverter x:Key="InverseBool"/>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*">
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*" Padding="18,44,18,18"
+              BackgroundColor="#5148D4">
+            <controls:TappableBorder Grid.Column="0" Command="{Binding GoBackCommand}"
+                WidthRequest="40" HeightRequest="40" BackgroundColor="#22FFFFFF"
+                Stroke="#30FFFFFF" StrokeThickness="1" StrokeShape="RoundRectangle 13"
+                VerticalOptions="Center">
+                <Label Text="‹" FontSize="26" TextColor="White"
+                       HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-3,0,0"/>
+            </controls:TappableBorder>
+            <VerticalStackLayout Grid.Column="1" Spacing="1" VerticalOptions="Center" Margin="12,0,0,0">
+                <Label Text="{Binding StepTitle}" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                <Label Text="{Binding StepSubtitle}" FontSize="12" TextColor="#BAFFFFFF"/>
+            </VerticalStackLayout>
+        </Grid>
+
+        <VerticalStackLayout Grid.Row="1" Spacing="0" VerticalOptions="Center" Padding="32,0">
+            <Label Text="🔒" FontSize="52" HorizontalOptions="Center" Margin="0,0,0,24"/>
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="18" Margin="0,0,0,12">
+                <Label Text="{Binding Dot1}" FontSize="30" TextColor="#5148D4"/>
+                <Label Text="{Binding Dot2}" FontSize="30" TextColor="#5148D4"/>
+                <Label Text="{Binding Dot3}" FontSize="30" TextColor="#5148D4"/>
+                <Label Text="{Binding Dot4}" FontSize="30" TextColor="#5148D4"/>
+            </HorizontalStackLayout>
+
+            <Label Text="{Binding ErrorMessage}" FontSize="13" TextColor="#EF4444"
+                   HorizontalOptions="Center" Margin="0,0,0,32" IsVisible="{Binding HasError}"/>
+            <BoxView HeightRequest="32" Opacity="0" IsVisible="{Binding HasError, Converter={StaticResource InverseBool}}" Margin="0,0,0,0"/>
+
+            <Grid ColumnDefinitions="*,*,*" RowDefinitions="80,80,80,80"
+                  ColumnSpacing="12" RowSpacing="12">
+                <controls:TappableBorder Grid.Row="0" Grid.Column="0" Command="{Binding PressDigitCommand}" CommandParameter="1" BackgroundColor="White" Stroke="#E8E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 20"><Label Text="1" FontSize="28" FontAttributes="Bold" TextColor="#172033" HorizontalOptions="Center" VerticalOptions="Center"/></controls:TappableBorder>
+                <controls:TappableBorder Grid.Row="0" Grid.Column="1" Command="{Binding PressDigitCommand}" CommandParameter="2" BackgroundColor="White" Stroke="#E8E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 20"><Label Text="2" FontSize="28" FontAttributes="Bold" TextColor="#172033" HorizontalOptions="Center" VerticalOptions="Center"/></controls:TappableBorder>
+                <controls:TappableBorder Grid.Row="0" Grid.Column="2" Command="{Binding PressDigitCommand}" CommandParameter="3" BackgroundColor="White" Stroke="#E8E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 20"><Label Text="3" FontSize="28" FontAttributes="Bold" TextColor="#172033" HorizontalOptions="Center" VerticalOptions="Center"/></controls:TappableBorder>
+                <controls:TappableBorder Grid.Row="1" Grid.Column="0" Command="{Binding PressDigitCommand}" CommandParameter="4" BackgroundColor="White" Stroke="#E8E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 20"><Label Text="4" FontSize="28" FontAttributes="Bold" TextColor="#172033" HorizontalOptions="Center" VerticalOptions="Center"/></controls:TappableBorder>
+                <controls:TappableBorder Grid.Row="1" Grid.Column="1" Command="{Binding PressDigitCommand}" CommandParameter="5" BackgroundColor="White" Stroke="#E8E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 20"><Label Text="5" FontSize="28" FontAttributes="Bold" TextColor="#172033" HorizontalOptions="Center" VerticalOptions="Center"/></controls:TappableBorder>
+                <controls:TappableBorder Grid.Row="1" Grid.Column="2" Command="{Binding PressDigitCommand}" CommandParameter="6" BackgroundColor="White" Stroke="#E8E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 20"><Label Text="6" FontSize="28" FontAttributes="Bold" TextColor="#172033" HorizontalOptions="Center" VerticalOptions="Center"/></controls:TappableBorder>
+                <controls:TappableBorder Grid.Row="2" Grid.Column="0" Command="{Binding PressDigitCommand}" CommandParameter="7" BackgroundColor="White" Stroke="#E8E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 20"><Label Text="7" FontSize="28" FontAttributes="Bold" TextColor="#172033" HorizontalOptions="Center" VerticalOptions="Center"/></controls:TappableBorder>
+                <controls:TappableBorder Grid.Row="2" Grid.Column="1" Command="{Binding PressDigitCommand}" CommandParameter="8" BackgroundColor="White" Stroke="#E8E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 20"><Label Text="8" FontSize="28" FontAttributes="Bold" TextColor="#172033" HorizontalOptions="Center" VerticalOptions="Center"/></controls:TappableBorder>
+                <controls:TappableBorder Grid.Row="2" Grid.Column="2" Command="{Binding PressDigitCommand}" CommandParameter="9" BackgroundColor="White" Stroke="#E8E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 20"><Label Text="9" FontSize="28" FontAttributes="Bold" TextColor="#172033" HorizontalOptions="Center" VerticalOptions="Center"/></controls:TappableBorder>
+                <BoxView Grid.Row="3" Grid.Column="0" Opacity="0"/>
+                <controls:TappableBorder Grid.Row="3" Grid.Column="1" Command="{Binding PressDigitCommand}" CommandParameter="0" BackgroundColor="White" Stroke="#E8E8F0" StrokeThickness="1" StrokeShape="RoundRectangle 20"><Label Text="0" FontSize="28" FontAttributes="Bold" TextColor="#172033" HorizontalOptions="Center" VerticalOptions="Center"/></controls:TappableBorder>
+                <controls:TappableBorder Grid.Row="3" Grid.Column="2" Command="{Binding DeleteDigitCommand}" BackgroundColor="#FFF0F0" Stroke="#FFD9D9" StrokeThickness="1" StrokeShape="RoundRectangle 20"><Label Text="⌫" FontSize="24" TextColor="#EF4444" HorizontalOptions="Center" VerticalOptions="Center"/></controls:TappableBorder>
+            </Grid>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

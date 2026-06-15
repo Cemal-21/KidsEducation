@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Game.ColoringGamePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:KidsEducation.ViewModels.Game"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#F0F2FA">
+
+    <ContentPage.Resources>
+        <Color x:Key="TextPrimary">#172033</Color>
+        <Color x:Key="TextMuted">#6B7280</Color>
+        <Color x:Key="SurfaceWhite">#FFFFFF</Color>
+        <Color x:Key="BorderLight">#E8E8F0</Color>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- HEADER -->
+        <Border Grid.Row="0" BackgroundColor="#FFFFFF" Stroke="{StaticResource BorderLight}"
+                StrokeThickness="0.5" StrokeShape="RoundRectangle 0,0,24,24" Padding="16,44,16,14">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <Border Grid.Column="0" WidthRequest="40" HeightRequest="40"
+                        BackgroundColor="#F1EEFF" Stroke="#DDD6FF" StrokeThickness="1"
+                        StrokeShape="RoundRectangle 14">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackCommand}" />
+                    </Border.GestureRecognizers>
+                    <Label Text="←" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"
+                           TextColor="#6C62F5" />
+                </Border>
+
+                <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="1">
+                    <Label FontSize="20" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"
+                           HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding SubjectEmoji}" FontSize="22" />
+                                <Span Text=" " />
+                                <Span Text="{Binding SubjectName}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label FontSize="12" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding ColoredCount}" FontAttributes="Bold" TextColor="#6C62F5" />
+                                <Span Text="/" />
+                                <Span Text="{Binding Regions.Count}" />
+                                <Span Text=" bölge boyandı" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </VerticalStackLayout>
+
+                <Border Grid.Column="2" WidthRequest="40" HeightRequest="40"
+                        BackgroundColor="#F1EEFF" Stroke="#DDD6FF" StrokeThickness="1"
+                        StrokeShape="RoundRectangle 14">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ResetCommand}" />
+                    </Border.GestureRecognizers>
+                    <Label Text="🔄" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- BOYAMA ALANI -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="16,16,16,16" Spacing="16">
+
+                <!-- Bölgeler -->
+                <CollectionView ItemsSource="{Binding Regions}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="3"
+                                         HorizontalItemSpacing="10" VerticalItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="vm:ColorRegion">
+                            <Border
+                                BackgroundColor="{Binding DisplayColor}"
+                                Stroke="#CCCCCC"
+                                StrokeThickness="1.5"
+                                StrokeShape="RoundRectangle 16"
+                                HeightRequest="90"
+                                Padding="6">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ColorRegionCommand}"
+                                        CommandParameter="{Binding .}" />
+                                </Border.GestureRecognizers>
+                                <Label Text="{Binding Label}"
+                                       FontSize="12" FontAttributes="Bold"
+                                       TextColor="{Binding TextColor}"
+                                       HorizontalOptions="Center" VerticalOptions="Center"
+                                       HorizontalTextAlignment="Center" />
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Tamamlandı mesajı -->
+                <Border IsVisible="{Binding IsComplete}"
+                        BackgroundColor="#F0FFF4" Stroke="#22C55E" StrokeThickness="1.5"
+                        StrokeShape="RoundRectangle 20" Padding="20,16">
+                    <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
+                        <Label Text="🎨 Harika! Boyama tamamlandı!" FontSize="18" FontAttributes="Bold"
+                               TextColor="#15803D" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                        <Label Text="Yeni bir resim için sıfırla düğmesine dokun." FontSize="13"
+                               TextColor="#166534" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- RENK PALETİ -->
+        <Border Grid.Row="2" BackgroundColor="#FFFFFF" Stroke="{StaticResource BorderLight}"
+                StrokeThickness="0.5" StrokeShape="RoundRectangle 24,24,0,0" Padding="12,12,12,28">
+            <VerticalStackLayout Spacing="8">
+                <Label Text="🎨 Renk Seç" FontSize="11" FontAttributes="Bold"
+                       TextColor="{StaticResource TextMuted}" Margin="4,0,0,0" />
+                <CollectionView ItemsSource="{Binding Palette}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="vm:ColorChoice">
+                            <Border
+                                BackgroundColor="{Binding Color}"
+                                Stroke="{Binding BorderColor}"
+                                StrokeThickness="{Binding BorderWidth}"
+                                StrokeShape="RoundRectangle 14"
+                                WidthRequest="44" HeightRequest="44">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SelectColorCommand}"
+                                        CommandParameter="{Binding .}" />
+                                </Border.GestureRecognizers>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </Border>
+
+    </Grid>
+</ContentPage>

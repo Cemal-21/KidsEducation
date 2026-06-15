@@ -39,6 +39,7 @@ public class DailyGoalInfo
 
     /// <summary>"3/4" formatında gösterim</summary>
     public string CompletionText => $"{CompletedCount}/{TotalCount}";
+    public double ProgressRatio => TotalCount <= 0 ? 0 : Math.Min(1, (double)CompletedCount / TotalCount);
 
     public string HeadlineText => CompletedCount >= TotalCount
         ? "Bugünün görevleri tamam!"

@@ -1,0 +1,93 @@
+{
+  "categoryId": "emotions",
+  "items": [
+    {
+      "id": "emotion_mutlu",
+      "nameTr": "Mutlu",
+      "nameEn": "Happy",
+      "imagePath": "emotion_happy",
+      "category": "emotions",
+      "difficultyLevel": 1,
+      "funFact": "Güldüğünde yüzünde 17 farklı kas çalışır!",
+      "descriptionTr": "Mutluluk, içimizde bir güneş gibi parlayan sıcak bir duygudur. Sevdiğimiz şeyler yaptığımızda veya sevdiğimiz insanlarla birlikteyken mutlu hissederiz. Mutlu olduğumuzda gülümseriz ve enerjimiz artar.",
+      "soundClueText": "Yüzünde gülümseme olan, neşeli ve enerjik bir hissiyattır. İçimizi güneş gibi ısıtır. Bu duygu nedir?"
+    },
+    {
+      "id": "emotion_uzgun",
+      "nameTr": "Üzgün",
+      "nameEn": "Sad",
+      "imagePath": "emotion_sad",
+      "category": "emotions",
+      "difficultyLevel": 1,
+      "funFact": "Ağlamak bazen bizi rahatlatır, çünkü gözyaşlarımız stresi azaltan maddeler içerir.",
+      "descriptionTr": "Üzüntü, bir şeyi kaybettiğimizde veya hayal kırıklığı yaşadığımızda hissettiğimiz bir duygudur. Üzgün olduğumuzda ağlamak isteyebiliriz. Bu duyguyu hissetmek tamamen normaldir.",
+      "soundClueText": "Gözyaşlarıyla ifade edilen, hayal kırıklığında ya da kayıp anında yaşanan bir duygudur. Bu duygu nedir?"
+    },
+    {
+      "id": "emotion_kizgin",
+      "nameTr": "Kızgın",
+      "nameEn": "Angry",
+      "imagePath": "emotion_angry",
+      "category": "emotions",
+      "difficultyLevel": 1,
+      "funFact": "Derin nefes almak kızgınlığın geçmesine yardımcı olabilir.",
+      "descriptionTr": "Kızgınlık, haksızlığa uğradığımızda veya bir şey beklediğimiz gibi olmadığında hissettiğimiz güçlü bir duygudur. Kızgın olduğumuzda sakin kalmaya çalışmak önemlidir.",
+      "soundClueText": "Haksızlık karşısında içimizde kaynayan, yüzümüzü kızartan güçlü bir duygudur. Bu duygu nedir?"
+    },
+    {
+      "id": "emotion_korkmus",
+      "nameTr": "Korkmuş",
+      "nameEn": "Scared",
+      "imagePath": "emotion_scared",
+      "category": "emotions",
+      "difficultyLevel": 1,
+      "funFact": "Korku, tehlikelere karşı bizi koruyan doğal bir his!",
+      "descriptionTr": "Korku, bilmediğimiz ya da tehlikeli gördüğümüz bir şeyle karşılaştığımızda hissettiğimiz bir duygudur. Korktuğumuzda kalbimiz hızlı atar. Sevdiğimiz birine sarılmak korkuyu azaltabilir.",
+      "soundClueText": "Kalp hızlanmasına yol açan, tehlike hissinde ortaya çıkan ve titreme yapabilen bir duygudur. Bu duygu nedir?"
+    },
+    {
+      "id": "emotion_sasirmis",
+      "nameTr": "Şaşırmış",
+      "nameEn": "Surprised",
+      "imagePath": "emotion_surprised",
+      "category": "emotions",
+      "difficultyLevel": 2,
+      "funFact": "Şaşırdığımızda kaşlarımız otomatik olarak yukarı kalkar!",
+      "descriptionTr": "Şaşkınlık, beklemediğimiz bir şey olduğunda hissettiğimiz anlık bir duygudur. Ağzımız açılabilir, gözlerimiz büyür. Sürpriz bir doğum günü hediyesi aldığımızda şaşırabiliriz!",
+      "soundClueText": "Beklenmedik bir anda ortaya çıkan, gözlerimizi büyüten ve ağzımızı açtıran anlık bir duygudur. Bu duygu nedir?"
+    },
+    {
+      "id": "emotion_sikilmis",
+      "nameTr": "Sıkılmış",
+      "nameEn": "Bored",
+      "imagePath": "emotion_bored",
+      "category": "emotions",
+      "difficultyLevel": 2,
+      "funFact": "Sıkılmak aslında yaratıcılığı artırabilir — hayal kurmak için güzel bir andır!",
+      "descriptionTr": "Sıkılmak, yapacak eğlenceli bir şey bulamadığımızda hissettiğimiz bir duygudur. Sıkıldığımızda yeni bir şeyler keşfetmek ya da yaratıcı olmak iyi bir fikir olabilir.",
+      "soundClueText": "Eğlenceli bir şey bulamadığımızda ortaya çıkan, esnemek ve esneklik ile ilişkili bir duygudur. Bu duygu nedir?"
+    },
+    {
+      "id": "emotion_guvenli",
+      "nameTr": "Güvende",
+      "nameEn": "Safe",
+      "imagePath": "emotion_safe",
+      "category": "emotions",
+      "difficultyLevel": 2,
+      "funFact": "Sarılmak vücutta oksitosin salgılar ve güvende hissettiren bir sıcaklık verir.",
+      "descriptionTr": "Güvende hissetmek, sevdiklerimizle ya da tanıdık bir yerde olduğumuzda hissettiğimiz rahat ve korunaklı bir duygudur. Ebeveynlerimizle ya da en iyi arkadaşımızla birlikteyken çok güvende hissederiz.",
+      "soundClueText": "Sevdiklerimizle birlikte, sarılıp korunduğumuzda duyulan sıcak ve rahat bir his. Bu duygu nedir?"
+    },
+    {
+      "id": "emotion_gururlu",
+      "nameTr": "Gururlu",
+      "nameEn": "Proud",
+      "imagePath": "emotion_proud",
+      "category": "emotions",
+      "difficultyLevel": 2,
+      "funFact": "Gurur duygusu bizi daha çok çalışmaya motive eder!",
+      "descriptionTr": "Gurur, bir şeyi başardığımızda ya da iyi bir şey yaptığımızda hissettiğimiz değerli bir duygudur. Bir oyunu bitirdiğimizde ya da birine yardım ettiğimizde gururlanabiliriz.",
+      "soundClueText": "Bir başarı sonrasında içimizi dolduran, omuzlarımızı kaldırtan ve gülümseten değerli bir duygudur. Bu duygu nedir?"
+    }
+  ]
+}

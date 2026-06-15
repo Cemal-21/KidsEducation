@@ -8,7 +8,7 @@
       "imagePath": "body_eye",
       "category": "body",
       "difficultyLevel": 1,
-      "funFact": "Gözler görmemizi sağlar.",
+      "funFact": "İnsan gözü 10 milyon farklı rengi ayırt edebilir.",
       "descriptionTr": "Gözlerimiz çevremizi görmemizi sağlar. Renkleri, şekilleri ve hareketleri gözlerimizle fark ederiz. Gözlerimizi korumak önemlidir. Çok yakından ekrana bakmamak gözlerimiz için daha iyidir.",
       "soundClueText": "Renkleri, şekilleri ve hareketleri fark etmemizi sağlayan duyu organımızdır. Acaba bu hangisi?"
     },
@@ -19,7 +19,7 @@
       "imagePath": "body_ear",
       "category": "body",
       "difficultyLevel": 1,
-      "funFact": "Kulaklar sesleri duyar.",
+      "funFact": "Kulak sadece işitmez, aynı zamanda dengemizi sağlar.",
       "descriptionTr": "Kulaklarımız sesleri duymamızı sağlar. Müzik, konuşma ve doğadaki sesleri kulaklarımızla duyarız. Çok yüksek sesler kulaklarımızı rahatsız edebilir. Bu yüzden kulaklarımızı korumalıyız.",
       "soundClueText": "Müzikleri, konuşmaları ve çevremizdeki sesleri duymamıza yardım eden duyu organımızdır. Acaba bu hangisi?"
     },
@@ -30,7 +30,7 @@
       "imagePath": "body_nose",
       "category": "body",
       "difficultyLevel": 1,
-      "funFact": "Burun kokuları algılar.",
+      "funFact": "İnsan burnu 1 trilyon farklı kokuyu ayırt edebilir.",
       "descriptionTr": "Burnumuz kokuları almamıza yardım eder. Çiçeklerin, yemeklerin ve temiz havanın kokusunu burnumuzla hissederiz. Burun nefes almamıza da yardımcı olur.",
       "soundClueText": "Çiçeklerin, yemeklerin ve temiz havanın kokusunu almamıza, ayrıca nefes almamıza yardım eder. Acaba bu hangisi?"
     },
@@ -41,7 +41,7 @@
       "imagePath": "body_mouth",
       "category": "body",
       "difficultyLevel": 1,
-      "funFact": "Ağız konuşmaya ve yemek yemeye yardım eder.",
+      "funFact": "İnsan ağzında günde 1-1.5 litre tükürük üretilir.",
       "descriptionTr": "Ağzımızla konuşur, yemek yer ve tatları hissederiz. Dişlerimiz yiyecekleri çiğnemeye yardım eder. Ağzımızın sağlığı için dişlerimizi düzenli fırçalamalıyız.",
       "soundClueText": "Konuşmak, yemek yemek ve tatları hissetmek için kullandığımız vücut bölümüdür. Acaba bu hangisi?"
     },
@@ -52,7 +52,7 @@
       "imagePath": "body_hand",
       "category": "body",
       "difficultyLevel": 1,
-      "funFact": "Ellerimizle eşyaları tutarız.",
+      "funFact": "Her insanın parmak izi birbirinden farklıdır.",
       "descriptionTr": "Ellerimiz eşyaları tutmamıza yardım eder. Kalem tutabilir, oyuncaklarla oynayabilir ve resim yapabiliriz. Ellerimizi temiz tutmak sağlığımız için önemlidir.",
       "soundClueText": "Kalem tutmak, oyuncaklarla oynamak ve eşyaları kavramak için kullandığımız vücut bölümüdür. Acaba bu hangisi?"
     },
@@ -63,9 +63,108 @@
       "imagePath": "body_foot",
       "category": "body",
       "difficultyLevel": 1,
-      "funFact": "Ayaklarımız yürümemizi sağlar.",
+      "funFact": "Her ayakta 26 kemik, 33 eklem ve 100'den fazla kas bulunur.",
       "descriptionTr": "Ayaklarımız yürümemize, koşmamıza ve zıplamamıza yardım eder. Ayakkabılar ayaklarımızı korur. Dengede durmak için ayaklarımız çok önemlidir.",
       "soundClueText": "Yürümek, koşmak, zıplamak ve dengede durmak için kullandığımız vücut bölümüdür. Acaba bu hangisi?"
+    },
+    {
+      "id": "body_sac",
+      "nameTr": "Saç",
+      "nameEn": "Hair",
+      "imagePath": "body_hair",
+      "category": "body",
+      "difficultyLevel": 1,
+      "funFact": "İnsan başında ortalama 100.000 saç teli bulunur.",
+      "descriptionTr": "Saç başımızı kaplayan ince teller halindeki yapıdır. Siyah, sarı, kızıl veya kahverengi olabilir. Baş derimizi soğuk ve sıcaktan korur. Her gün birkaç saç teli dökülmesi normaldir.",
+      "soundClueText": "Başımızı kaplayan, farklı renklerde olabilen ve baş derimizi koruyan yapıdır. Acaba bu hangisi?"
+    },
+    {
+      "id": "body_dis",
+      "nameTr": "Diş",
+      "nameEn": "Tooth",
+      "imagePath": "body_tooth",
+      "category": "body",
+      "difficultyLevel": 1,
+      "funFact": "Yetişkinlerin 32 dişi olur.",
+      "descriptionTr": "Dişlerimiz yiyecekleri çiğnememize yardım eder. Beyaz ve sert yapıdadır. Çocuklarda önce süt dişleri çıkar, sonra kalıcı dişler gelir. Dişleri fırçalamak onları korur.",
+      "soundClueText": "Yiyecekleri çiğnememize yarayan, beyaz ve sert yapıda olan, fırçalanması gereken vücut bölümüdür. Acaba bu hangisi?"
+    },
+    {
+      "id": "body_kol",
+      "nameTr": "Kol",
+      "nameEn": "Arm",
+      "imagePath": "body_arm",
+      "category": "body",
+      "difficultyLevel": 1,
+      "funFact": "Kollar vücudun en çok hareket eden uzuvlarındandır.",
+      "descriptionTr": "Kollarımız omuzdan ele kadar uzanan uzuvlarımızdır. Bir şeyleri uzanıp almamıza, taşımamıza ve sarılmamıza yardım eder. Omuz, dirsek ve bilek eklemleri sayesinde hareket eder.",
+      "soundClueText": "Bir şeylere uzanmak, taşımak ve sarılmak için kullandığımız, omuzdan ele uzanan uzuvdur. Acaba bu hangisi?"
+    },
+    {
+      "id": "body_bacak",
+      "nameTr": "Bacak",
+      "nameEn": "Leg",
+      "imagePath": "body_leg",
+      "category": "body",
+      "difficultyLevel": 1,
+      "funFact": "Bacaklardaki kaslar vücudun en büyük kaslarıdır.",
+      "descriptionTr": "Bacaklarımız kalçadan ayağa kadar uzanan uzuvlarımızdır. Yürümemize, koşmamıza, zıplamamıza ve pedallamımıza yardım eder. Diz eklemimiz sayesinde bükülebilir.",
+      "soundClueText": "Yürümek, koşmak ve zıplamak için kullandığımız, kalçadan ayağa uzanan uzuvdur. Acaba bu hangisi?"
+    },
+    {
+      "id": "body_parmak",
+      "nameTr": "Parmak",
+      "nameEn": "Finger",
+      "imagePath": "body_finger",
+      "category": "body",
+      "difficultyLevel": 2,
+      "funFact": "Her elde 5 parmak vardır ve hepsi farklı uzunluktadır.",
+      "descriptionTr": "Parmaklarımız ellerimizdeki ince uzuvlardır. Küçük eşyaları tutmamıza, yazmamıza ve müzik aletleri çalmamıza yardım eder. Her parmağın kendine özgü bir parmak izi vardır.",
+      "soundClueText": "Ellerimizdeki ince uzuvlardır, küçük şeyler tutmak, yazmak ve dokunmak için kullanılır. Acaba bu hangisi?"
+    },
+    {
+      "id": "body_omuz",
+      "nameTr": "Omuz",
+      "nameEn": "Shoulder",
+      "imagePath": "body_shoulder",
+      "category": "body",
+      "difficultyLevel": 2,
+      "funFact": "Omuz eklemi vücudun en hareketli eklemlerinden biridir.",
+      "descriptionTr": "Omuzlarımız kollarımızın gövdeye bağlandığı bölgedir. Kollarımızı her yöne hareket ettirmemizi sağlar. Çantaları omzumuza asabiliriz.",
+      "soundClueText": "Kolun gövdeye bağlandığı, kolları her yöne hareket ettirmeyi sağlayan vücut bölümüdür. Acaba bu hangisi?"
+    },
+    {
+      "id": "body_diz",
+      "nameTr": "Diz",
+      "nameEn": "Knee",
+      "imagePath": "body_knee",
+      "category": "body",
+      "difficultyLevel": 2,
+      "funFact": "Diz vücudun en büyük ve en karmaşık eklemlerinden biridir.",
+      "descriptionTr": "Diz bacağımızın ortasındaki eklemdir. Bacağımızı bükmemizi ve düzleştirmemizi sağlar. Yürümek, koşmak ve zıplamak için çok önemlidir.",
+      "soundClueText": "Bacağımızın ortasında olan, bükülmemizi ve düzleşmemizi sağlayan eklemdir. Acaba bu hangisi?"
+    },
+    {
+      "id": "body_bel",
+      "nameTr": "Bel",
+      "nameEn": "Waist",
+      "imagePath": "body_waist",
+      "category": "body",
+      "difficultyLevel": 2,
+      "funFact": "Bel bölgesi vücudun hareket merkezi sayılır.",
+      "descriptionTr": "Bel gövdemizdeki ince bölgedir. Öne, arkaya ve yana eğilmemizi sağlar. Sağlıklı bir bel için düzgün oturmak ve egzersiz yapmak önemlidir.",
+      "soundClueText": "Gövdemizin ince bölgesi olup öne, arkaya ve yana eğilmemizi sağlayan kısımdır. Acaba bu hangisi?"
+    },
+    {
+      "id": "body_boyun",
+      "nameTr": "Boyun",
+      "nameEn": "Neck",
+      "imagePath": "body_neck",
+      "category": "body",
+      "difficultyLevel": 2,
+      "funFact": "Zürafanın boynu 1,8 metre uzunluğunda olabilir.",
+      "descriptionTr": "Boyun başımızı gövdemize bağlayan kısımdır. Başımızı sağa, sola, öne ve arkaya çevirmemizi sağlar. İçinde boyun omurlarımız ve damarlarımız bulunur.",
+      "soundClueText": "Başı gövdeye bağlayan, başımızı her yöne çevirmemizi sağlayan vücut kısmıdır. Acaba bu hangisi?"
     }
   ]
 }

@@ -8,6 +8,8 @@
     xmlns:controls="clr-namespace:KidsEducation.Views.Controls"
     xmlns:converters="clr-namespace:KidsEducation.Converters"
     xmlns:views="clr-namespace:KidsEducation.Views"
+    xmlns:local="clr-namespace:KidsEducation.Views.Achievements"
+    x:Name="PageRoot"
     Shell.NavBarIsVisible="False"
     BackgroundColor="#F0F2FA">
 
@@ -22,6 +24,7 @@
         <converters:BadgeFooterColorConverter x:Key="BadgeFooterColorConverter" />
         <converters:BadgeProgressConverter x:Key="BadgeProgressConverter" />
         <converters:BoolToFullOpacityConverter x:Key="BoolToFullOpacityConverter" />
+        <converters:BadgeIconConverter x:Key="BadgeIconConverter" />
     </ContentPage.Resources>
 
     <Grid RowDefinitions="Auto,*,Auto">
@@ -59,12 +62,25 @@
                 <Border Grid.Row="1" BackgroundColor="#20FFFFFF" Stroke="#30FFFFFF" StrokeThickness="1" StrokeShape="RoundRectangle 16" Padding="16,12">
                     <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
                         <VerticalStackLayout Grid.Column="0" Spacing="8">
-                            <Label Text="{Binding ProgressText, StringFormat='🏅 {0} rozet kazanıldı'}" FontSize="14" FontAttributes="Bold" TextColor="White" />
+                            <Label Text="{Binding ProgressText, StringFormat='{0} rozet kazanildi'}" FontSize="14" FontAttributes="Bold" TextColor="White" />
                             <Border HeightRequest="6" BackgroundColor="#30FFFFFF" Stroke="Transparent" StrokeShape="RoundRectangle 10">
                                 <Border HorizontalOptions="Start" HeightRequest="6" WidthRequest="{Binding EarnedCount, Converter={StaticResource BadgeProgressConverter}}" BackgroundColor="#FFD66B" Stroke="Transparent" StrokeShape="RoundRectangle 10" />
                             </Border>
                         </VerticalStackLayout>
-                        <Label Grid.Column="1" Text="{Binding EarnedCount}" FontSize="32" FontAttributes="Bold" TextColor="#FFD66B" VerticalOptions="Center" />
+                        <VerticalStackLayout Grid.Column="1" Spacing="6" VerticalOptions="Center">
+                            <Label Text="{Binding EarnedCount}" FontSize="32" FontAttributes="Bold" TextColor="#FFD66B" HorizontalOptions="Center"/>
+                            <!-- İlerleme paylaş butonu -->
+                            <Border BackgroundColor="#28FFFFFF" Stroke="#40FFFFFF" StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 10" Padding="10,6">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ShareProgressCommand}"/>
+                                </Border.GestureRecognizers>
+                                <HorizontalStackLayout Spacing="4" HorizontalOptions="Center">
+                                    <Image Source="ui_share_3d.png" WidthRequest="18" HeightRequest="18" Aspect="AspectFit"/>
+                                    <Label Text="Paylas" FontSize="11" FontAttributes="Bold" TextColor="White" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                            </Border>
+                        </VerticalStackLayout>
                     </Grid>
                 </Border>
             </Grid>
@@ -80,17 +96,16 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Badge">
                             <Border BackgroundColor="{StaticResource SurfaceWhite}" Stroke="{StaticResource BorderLight}" StrokeThickness="0.5" StrokeShape="RoundRectangle 20" Padding="0">
-                                <Border.Shadow>
-                                    <Shadow Brush="#0A000000" Offset="0,4" Radius="10" Opacity="0.1" />
-                                </Border.Shadow>
                                 <Grid RowDefinitions="*,Auto">
 
                                     <!-- Rozet içeriği -->
                                     <VerticalStackLayout Grid.Row="0" Spacing="8" Padding="14,16,14,12" HorizontalOptions="Center">
                                         <Grid HorizontalOptions="Center">
-                                            <Label
-                                                Text="{Binding Emoji}"
-                                                FontSize="44"
+                                            <Image
+                                                Source="{Binding Id, Converter={StaticResource BadgeIconConverter}}"
+                                                WidthRequest="72"
+                                                HeightRequest="72"
+                                                Aspect="AspectFit"
                                                 HorizontalOptions="Center"
                                                 Opacity="{Binding IsEarned, Converter={StaticResource BoolToOpacityConverter}}" />
                                             <Border
@@ -100,7 +115,7 @@
                                                 StrokeShape="RoundRectangle 50"
                                                 WidthRequest="26" HeightRequest="26"
                                                 HorizontalOptions="End" VerticalOptions="End">
-                                                <Label Text="🔒" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                <Image Source="ui_lock_3d.png" WidthRequest="18" HeightRequest="18" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" />
                                             </Border>
                                         </Grid>
                                         <Label
@@ -125,13 +140,13 @@
                                         Stroke="Transparent"
                                         Padding="10,8"
                                         BackgroundColor="{Binding IsEarned, Converter={StaticResource BadgeFooterColorConverter}}">
-                                        <Grid>
+                                        <Grid ColumnDefinitions="*,Auto">
                                             <!-- Kazanıldı: tarih göster -->
-                                            <HorizontalStackLayout
+                                            <HorizontalStackLayout Grid.Column="0"
                                                 Spacing="4"
                                                 HorizontalOptions="Center"
                                                 IsVisible="{Binding IsEarned}">
-                                                <Label Text="✅" FontSize="11" VerticalOptions="Center" />
+                                                <Image Source="ui_check_3d.png" WidthRequest="16" HeightRequest="16" Aspect="AspectFit" VerticalOptions="Center" />
                                                 <Label
                                                     Text="{Binding EarnedDateText}"
                                                     FontSize="10"
@@ -140,12 +155,25 @@
                                                     VerticalOptions="Center" />
                                             </HorizontalStackLayout>
                                             <!-- Kilitli: sabit metin, açıklama tekrar etmez -->
-                                            <Label
+                                            <Label Grid.Column="0"
                                                 Text="Henüz kazanılmadı"
                                                 FontSize="10"
                                                 TextColor="#6B7280"
                                                 HorizontalTextAlignment="Center"
                                                 IsVisible="{Binding IsLocked}" />
+                                            <!-- Paylaş ikonu (sadece kazanılmışsa) -->
+                                            <Border Grid.Column="1"
+                                                    IsVisible="{Binding IsEarned}"
+                                                    BackgroundColor="Transparent"
+                                                    Stroke="Transparent"
+                                                    Padding="4,0">
+                                                <Border.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                                                        Command="{Binding Source={x:Reference PageRoot}, Path=BindingContext.ShareBadgeCommand}"
+                                                        CommandParameter="{Binding .}"/>
+                                                </Border.GestureRecognizers>
+                                                <Image Source="ui_share_3d.png" WidthRequest="18" HeightRequest="18" Aspect="AspectFit" VerticalOptions="Center"/>
+                                            </Border>
                                         </Grid>
                                     </Border>
 

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/widget_background"
+    android:padding="14dp">
+
+    <!-- Başlık satırı: emoji + "Günün Kelimesi" -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="6dp">
+
+        <TextView
+            android:id="@+id/widget_emoji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📖"
+            android:textSize="18sp"
+            android:layout_marginEnd="6dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Günün Kelimesi"
+            android:textSize="11sp"
+            android:textColor="#885148D4"
+            android:fontFamily="sans-serif-medium" />
+
+        <TextView
+            android:id="@+id/widget_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="10sp"
+            android:textColor="#885148D4" />
+    </LinearLayout>
+
+    <!-- Türkçe kelime -->
+    <TextView
+        android:id="@+id/widget_name_tr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="—"
+        android:textSize="26sp"
+        android:textColor="#1F1F2E"
+        android:fontFamily="sans-serif-bold"
+        android:maxLines="1"
+        android:ellipsize="end" />
+
+    <!-- İngilizce kelime -->
+    <TextView
+        android:id="@+id/widget_name_en"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="13sp"
+        android:textColor="#885148D4"
+        android:layout_marginBottom="6dp"
+        android:maxLines="1"
+        android:ellipsize="end" />
+
+    <!-- Örnek cümle -->
+    <TextView
+        android:id="@+id/widget_sentence"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text=""
+        android:textSize="11sp"
+        android:textColor="#66000000"
+        android:maxLines="2"
+        android:ellipsize="end" />
+
+    <!-- Alt: uygulama adı -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="KidsEducation"
+        android:textSize="9sp"
+        android:textColor="#445148D4"
+        android:layout_marginTop="4dp" />
+
+</LinearLayout>

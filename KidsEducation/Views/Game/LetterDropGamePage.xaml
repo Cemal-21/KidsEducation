@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:KidsEducation.ViewModels.Game"
+             x:Class="KidsEducation.Views.Game.LetterDropGamePage"
+             x:DataType="vm:LetterDropGameViewModel"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource AppBackground}">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="0">
+
+        <!-- Header -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Padding="16,48,16,12"
+              BackgroundColor="{StaticResource BrandPurple}">
+            <Button Grid.Column="0" Text="←" FontSize="20" TextColor="White"
+                    BackgroundColor="Transparent" Command="{Binding GoBackCommand}" WidthRequest="44"/>
+            <StackLayout Grid.Column="1" VerticalOptions="Center" Spacing="4">
+                <Label Text="Harf Yerleştirme" FontSize="16" FontAttributes="Bold"
+                       TextColor="White" HorizontalOptions="Center"/>
+                <Label FontSize="13" TextColor="#CCFFFFFF" HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding DisplayNumber}"/>
+                            <Span Text=" / "/>
+                            <Span Text="{Binding TotalRounds}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+            <Button Grid.Column="2" Text="🔊" FontSize="20" TextColor="White"
+                    BackgroundColor="Transparent" Command="{Binding SpeakClueCommand}"/>
+        </Grid>
+
+        <!-- Progress Bar -->
+        <ProgressBar Grid.Row="0" VerticalOptions="End" Progress="{Binding Progress}"
+                     ProgressColor="{StaticResource BrandMint}" BackgroundColor="#3DFFFFFF" HeightRequest="6"/>
+
+        <!-- Content -->
+        <ScrollView Grid.Row="1">
+            <StackLayout Padding="20" Spacing="20">
+
+                <!-- Loading -->
+                <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"
+                                   Color="{StaticResource BrandPurple}" HorizontalOptions="Center"/>
+
+                <!-- Game Content -->
+                <StackLayout IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}" Spacing="20">
+
+                    <!-- Image Card -->
+                    <Border Stroke="{StaticResource BorderLight}" StrokeThickness="1"
+                            StrokeShape="RoundRectangle 20" BackgroundColor="{StaticResource SurfaceWhite}"
+                            HorizontalOptions="Center" WidthRequest="200" HeightRequest="200">
+                        <Grid>
+                            <Image Source="{Binding CurrentItem.ImagePath}" Aspect="AspectFit" Margin="12"/>
+
+                            <!-- Feedback overlays -->
+                            <Border IsVisible="{Binding ShowCorrectFeedback}" BackgroundColor="#CC4CAF50"
+                                    StrokeShape="RoundRectangle 20" Stroke="Transparent">
+                                <Label Text="✅" FontSize="64" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                            <Border IsVisible="{Binding ShowWrongFeedback}" BackgroundColor="#CCF44336"
+                                    StrokeShape="RoundRectangle 20" Stroke="Transparent">
+                                <Label Text="❌" FontSize="64" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <!-- Word Display -->
+                    <Border Stroke="{StaticResource BrandPurple}" StrokeThickness="2"
+                            StrokeShape="RoundRectangle 16" BackgroundColor="{StaticResource SurfaceWhite}"
+                            Padding="20,14" HorizontalOptions="Center">
+                        <Label Text="{Binding DisplayWord}" FontSize="36" FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+                    </Border>
+
+                    <Label Text="Eksik harfi bul ve tıkla!" FontSize="15"
+                           TextColor="{StaticResource TextSecondary}" HorizontalOptions="Center"/>
+
+                    <!-- Letter Options 2×2 -->
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12"
+                          Margin="0,8,0,0">
+                        <Border Grid.Row="0" Grid.Column="0"
+                                Stroke="{StaticResource BrandPurple}" StrokeThickness="2"
+                                StrokeShape="RoundRectangle 16" BackgroundColor="{StaticResource SurfaceWhite}"
+                                Padding="0" HeightRequest="72">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectLetterCommand}"
+                                                      CommandParameter="{Binding LetterOption0}"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="{Binding LetterOption0.Letter}" FontSize="30" FontAttributes="Bold"
+                                   TextColor="{StaticResource BrandPurple}"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+
+                        <Border Grid.Row="0" Grid.Column="1"
+                                Stroke="{StaticResource BrandPurple}" StrokeThickness="2"
+                                StrokeShape="RoundRectangle 16" BackgroundColor="{StaticResource SurfaceWhite}"
+                                Padding="0" HeightRequest="72">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectLetterCommand}"
+                                                      CommandParameter="{Binding LetterOption1}"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="{Binding LetterOption1.Letter}" FontSize="30" FontAttributes="Bold"
+                                   TextColor="{StaticResource BrandPurple}"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+
+                        <Border Grid.Row="1" Grid.Column="0"
+                                Stroke="{StaticResource BrandPurple}" StrokeThickness="2"
+                                StrokeShape="RoundRectangle 16" BackgroundColor="{StaticResource SurfaceWhite}"
+                                Padding="0" HeightRequest="72">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectLetterCommand}"
+                                                      CommandParameter="{Binding LetterOption2}"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="{Binding LetterOption2.Letter}" FontSize="30" FontAttributes="Bold"
+                                   TextColor="{StaticResource BrandPurple}"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+
+                        <Border Grid.Row="1" Grid.Column="1"
+                                Stroke="{StaticResource BrandPurple}" StrokeThickness="2"
+                                StrokeShape="RoundRectangle 16" BackgroundColor="{StaticResource SurfaceWhite}"
+                                Padding="0" HeightRequest="72">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectLetterCommand}"
+                                                      CommandParameter="{Binding LetterOption3}"/>
+                            </Border.GestureRecognizers>
+                            <Label Text="{Binding LetterOption3.Letter}" FontSize="30" FontAttributes="Bold"
+                                   TextColor="{StaticResource BrandPurple}"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                    </Grid>
+
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

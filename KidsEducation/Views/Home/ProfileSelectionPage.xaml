@@ -5,8 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:KidsEducation.ViewModels.Home"
     xmlns:conv="clr-namespace:KidsEducation.Converters"
+    xmlns:models="clr-namespace:KidsEducation.Models"
     Shell.NavBarIsVisible="False"
-    BackgroundColor="#F0F4FF">
+    BackgroundColor="{StaticResource AppBackground}">
 
     <ContentPage.Resources>
         <conv:AgeGroupToColorConverter x:Key="ToddlerColor" TargetGroup="Toddler"/>
@@ -20,215 +21,354 @@
     <ScrollView>
         <VerticalStackLayout Spacing="0">
 
-            <!-- Üst dekoratif alan -->
-            <Grid HeightRequest="220" BackgroundColor="#6C63FF">
-                <Ellipse
-                    Fill="#5B52EE"
-                    WidthRequest="300"
-                    HeightRequest="300"
-                    HorizontalOptions="End"
-                    VerticalOptions="Start"
-                    TranslationX="80"
-                    TranslationY="-80"/>
-                <Ellipse
-                    Fill="#7B72FF"
-                    WidthRequest="200"
-                    HeightRequest="200"
-                    HorizontalOptions="Start"
-                    VerticalOptions="End"
-                    TranslationX="-60"
-                    TranslationY="60"/>
-                <VerticalStackLayout
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    Spacing="6"
-                    Margin="0,30,0,0">
-                    <Label
-                        Text="👋"
-                        FontSize="52"
-                        HorizontalOptions="Center"/>
-                    <Label
-                        Text="Merhaba!"
-                        FontSize="34"
-                        FontAttributes="Bold"
-                        TextColor="White"
-                        HorizontalOptions="Center"/>
-                    <Label
-                        Text="Kim oynuyor?"
-                        FontSize="16"
-                        TextColor="#FFFFFF99"
-                        HorizontalOptions="Center"/>
-                </VerticalStackLayout>
-            </Grid>
+            <!-- ══ Gradient Header ══ -->
+            <Border Stroke="Transparent" StrokeShape="RoundRectangle 0,0,36,36">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#5148D4" Offset="0.0"/>
+                        <GradientStop Color="#7B61FF" Offset="0.45"/>
+                        <GradientStop Color="#B15CFF" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Border.Background>
 
-            <!-- İçerik -->
-            <VerticalStackLayout Padding="20,20,20,40" Spacing="16" BackgroundColor="#F0F4FF">
+                <Grid Padding="0,52,0,36">
+                    <!-- Arka dekorasyon daireleri -->
+                    <Ellipse Fill="#14FFFFFF" WidthRequest="260" HeightRequest="260"
+                             HorizontalOptions="End" VerticalOptions="Start"
+                             TranslationX="60" TranslationY="-70"/>
+                    <Ellipse Fill="#10FFFFFF" WidthRequest="180" HeightRequest="180"
+                             HorizontalOptions="Start" VerticalOptions="End"
+                             TranslationX="-50" TranslationY="50"/>
+                    <Ellipse Fill="#08FFFFFF" WidthRequest="120" HeightRequest="120"
+                             HorizontalOptions="Center" VerticalOptions="Start"
+                             TranslationY="-30"/>
 
-                <!-- Mevcut profiller -->
-                <CollectionView ItemsSource="{Binding Profiles}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Border
-                                BackgroundColor="White"
-                                StrokeShape="RoundRectangle 20"
-                                Stroke="Transparent"
-                                Margin="0,4"
-                                Padding="16">
-                                <Border.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ProfileSelectionViewModel}}, Path=SelectProfileCommand}"
-                                        CommandParameter="{Binding .}" />
-                                </Border.GestureRecognizers>
-                                <Grid ColumnDefinitions="Auto,*,Auto">
-                                    <Border
-                                        Grid.Column="0"
-                                        BackgroundColor="#FFD93D"
-                                        StrokeShape="RoundRectangle 28"
-                                        Stroke="Transparent"
-                                        WidthRequest="56"
-                                        HeightRequest="56"
-                                        Padding="0">
-                                        <Label
-                                            Text="{Binding AvatarEmoji}"
-                                            FontSize="28"
-                                            HorizontalOptions="Center"
-                                            VerticalOptions="Center"/>
-                                    </Border>
-                                    <VerticalStackLayout
-                                        Grid.Column="1"
-                                        Margin="14,0,0,0"
-                                        VerticalOptions="Center">
-                                        <Label
-                                            Text="{Binding Name}"
-                                            FontSize="18"
-                                            FontAttributes="Bold"
-                                            TextColor="#2D2D2D"/>
-                                        <Label
-                                            Text="{Binding AgeGroupName}"
-                                            FontSize="13"
-                                            TextColor="#888888"/>
-                                    </VerticalStackLayout>
-                                    <Label
-                                        Grid.Column="2"
-                                        Text="→"
-                                        FontSize="22"
-                                        TextColor="#6C63FF"
-                                        VerticalOptions="Center"/>
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-
-                <!-- Ayraç -->
-                <Label
-                    Text="— ya da yeni profil oluştur —"
-                    FontSize="13"
-                    TextColor="#AAAAAA"
-                    HorizontalOptions="Center"
-                    Margin="0,4"/>
-
-                <!-- Yeni profil formu -->
-                <Border
-                    BackgroundColor="White"
-                    StrokeShape="RoundRectangle 24"
-                    Stroke="Transparent"
-                    Padding="20">
-                    <VerticalStackLayout Spacing="16">
-
-                        <!-- İsim -->
-                        <Border
-                            BackgroundColor="#F5F5F5"
-                            StrokeShape="RoundRectangle 14"
-                            Stroke="Transparent"
-                            Padding="16,0">
-                            <Entry
-                                Placeholder="Adın ne? 😊"
-                                Text="{Binding NewProfileName}"
-                                FontSize="16"
-                                TextColor="#2D2D2D"
-                                PlaceholderColor="#AAAAAA"
-                                BackgroundColor="Transparent"
-                                HeightRequest="52"/>
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="10">
+                        <!-- Büyük karşılama ikonsu -->
+                        <Border WidthRequest="90" HeightRequest="90"
+                                BackgroundColor="#28FFFFFF" Stroke="#44FFFFFF"
+                                StrokeThickness="2" StrokeShape="RoundRectangle 30"
+                                HorizontalOptions="Center">
+                            <Label Text="👋" FontSize="50"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
                         </Border>
 
-                        <!-- Yaş grubu başlığı -->
-                        <Label
-                            Text="Yaş grubunu seç:"
-                            FontSize="14"
-                            FontAttributes="Bold"
-                            TextColor="#555555"/>
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Label Text="Merhaba!" FontSize="34" FontAttributes="Bold"
+                                   TextColor="White" HorizontalOptions="Center"/>
+                            <Label Text="Kim oynuyor bugün?" FontSize="15"
+                                   TextColor="#DDFFFFFF" HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
 
-                        <!-- Yaş kartları -->
-                        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
-                            <Border
-                                Grid.Column="0"
-                                BackgroundColor="{Binding SelectedAgeGroup, Converter={StaticResource ToddlerColor}}"
-                                StrokeShape="RoundRectangle 16"
-                                Stroke="{Binding SelectedAgeGroup, Converter={StaticResource ToddlerStroke}}"
-                                StrokeThickness="2"
-                                Padding="8,12">
-                                <Border.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                        Command="{Binding SelectAgeGroupCommand}"
-                                        CommandParameter="1"/>
-                                </Border.GestureRecognizers>
-                                <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
-                                    <Label Text="🐰" FontSize="32" HorizontalOptions="Center"/>
-                                    <Label Text="Minikler" FontSize="13" FontAttributes="Bold" TextColor="#2D2D2D" HorizontalOptions="Center"/>
-                                    <Label Text="3-5 yaş" FontSize="11" TextColor="#888888" HorizontalOptions="Center"/>
-                                </VerticalStackLayout>
-                            </Border>
+                        <!-- Dekoratif yıldızlar -->
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="6" Margin="0,4,0,0">
+                            <Label Text="⭐" FontSize="16"/>
+                            <Label Text="🌟" FontSize="22"/>
+                            <Label Text="⭐" FontSize="16"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
 
-                            <Border
-                                Grid.Column="1"
-                                BackgroundColor="{Binding SelectedAgeGroup, Converter={StaticResource ExplorerColor}}"
-                                StrokeShape="RoundRectangle 16"
-                                Stroke="{Binding SelectedAgeGroup, Converter={StaticResource ExplorerStroke}}"
-                                StrokeThickness="2"
-                                Padding="8,12">
-                                <Border.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                        Command="{Binding SelectAgeGroupCommand}"
-                                        CommandParameter="2"/>
-                                </Border.GestureRecognizers>
-                                <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
-                                    <Label Text="🦊" FontSize="32" HorizontalOptions="Center"/>
-                                    <Label Text="Keşifçiler" FontSize="13" FontAttributes="Bold" TextColor="#2D2D2D" HorizontalOptions="Center"/>
-                                    <Label Text="5-7 yaş" FontSize="11" TextColor="#888888" HorizontalOptions="Center"/>
-                                </VerticalStackLayout>
-                            </Border>
+            <!-- ══ İçerik ══ -->
+            <VerticalStackLayout Padding="18,20,18,40" Spacing="20"
+                                 BackgroundColor="{StaticResource AppBackground}">
 
-                            <Border
-                                Grid.Column="2"
-                                BackgroundColor="{Binding SelectedAgeGroup, Converter={StaticResource AdventurerColor}}"
-                                StrokeShape="RoundRectangle 16"
-                                Stroke="{Binding SelectedAgeGroup, Converter={StaticResource AdventurerStroke}}"
-                                StrokeThickness="2"
-                                Padding="8,12">
-                                <Border.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                        Command="{Binding SelectAgeGroupCommand}"
-                                        CommandParameter="3"/>
-                                </Border.GestureRecognizers>
-                                <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
-                                    <Label Text="🦉" FontSize="32" HorizontalOptions="Center"/>
-                                    <Label Text="Kaşifler" FontSize="13" FontAttributes="Bold" TextColor="#2D2D2D" HorizontalOptions="Center"/>
-                                    <Label Text="7-9 yaş" FontSize="11" TextColor="#888888" HorizontalOptions="Center"/>
-                                </VerticalStackLayout>
+                <!-- ── Mevcut Profiller ── -->
+                <VerticalStackLayout Spacing="10" IsVisible="{Binding HasProfiles}">
+                    <Label Text="profiller" Style="{StaticResource SectionLabel}"/>
+
+                    <VerticalStackLayout Spacing="10" BindableLayout.ItemsSource="{Binding Profiles}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Border BackgroundColor="{StaticResource SurfaceWhite}"
+                                        Stroke="{StaticResource BorderLight}" StrokeThickness="1"
+                                        StrokeShape="RoundRectangle 22" Padding="0">
+                                    <Border.Shadow>
+                                        <Shadow Brush="#10000000" Offset="0,4" Radius="12" Opacity="0.12"/>
+                                    </Border.Shadow>
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SelectProfileCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                    </Border.GestureRecognizers>
+
+                                    <Grid ColumnDefinitions="Auto,*,Auto" Padding="14,12" ColumnSpacing="14">
+                                        <!-- Avatar -->
+                                        <Border Grid.Column="0" WidthRequest="60" HeightRequest="60"
+                                                StrokeShape="RoundRectangle 20" Stroke="Transparent"
+                                                Padding="0">
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                    <GradientStop Color="#7B61FF" Offset="0.0"/>
+                                                    <GradientStop Color="#B15CFF" Offset="1.0"/>
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                            <Label Text="{Binding AvatarEmoji}" FontSize="30"
+                                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        </Border>
+
+                                        <!-- Bilgi -->
+                                        <VerticalStackLayout Grid.Column="1" Spacing="3" VerticalOptions="Center">
+                                            <Label Text="{Binding Name}" FontSize="17"
+                                                   FontAttributes="Bold"
+                                                   TextColor="{StaticResource TextPrimary}"/>
+                                            <HorizontalStackLayout Spacing="8">
+                                                <Border BackgroundColor="#F1EEFF" Stroke="#DCD6FF"
+                                                        StrokeThickness="1" StrokeShape="RoundRectangle 8"
+                                                        Padding="6,3">
+                                                    <Label Text="{Binding AgeGroupName}" FontSize="11"
+                                                           TextColor="{StaticResource BrandPurple}"
+                                                           FontAttributes="Bold"/>
+                                                </Border>
+                                                <Border BackgroundColor="#FFF4D8" Stroke="#FFE3A3"
+                                                        StrokeThickness="1" StrokeShape="RoundRectangle 8"
+                                                        Padding="6,3">
+                                                    <Label FontSize="11" TextColor="#C98600" FontAttributes="Bold">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="⭐ "/>
+                                                                <Span Text="{Binding TotalStars}"/>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                </Border>
+                                                <Border BackgroundColor="#FFF0F5" Stroke="#FFD5E2"
+                                                        StrokeThickness="1" StrokeShape="RoundRectangle 8"
+                                                        Padding="6,3">
+                                                    <Label FontSize="11" TextColor="#CC3366" FontAttributes="Bold">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="🔥 "/>
+                                                                <Span Text="{Binding StreakDays}"/>
+                                                                <Span Text=" gün"/>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                </Border>
+                                            </HorizontalStackLayout>
+                                        </VerticalStackLayout>
+
+                                        <!-- Ok -->
+                                        <Border Grid.Column="2" WidthRequest="36" HeightRequest="36"
+                                                BackgroundColor="#F1EEFF" Stroke="#DCD6FF"
+                                                StrokeThickness="1" StrokeShape="RoundRectangle 12"
+                                                VerticalOptions="Center">
+                                            <Label Text="›" FontSize="22" TextColor="{StaticResource BrandPurple}"
+                                                   HorizontalOptions="Center" VerticalOptions="Center"
+                                                   Margin="2,-2,0,0"/>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+
+                <!-- ── Ayraç ── -->
+                <Grid ColumnDefinitions="*,Auto,*" ColumnSpacing="10">
+                    <BoxView Grid.Column="0" HeightRequest="1"
+                             BackgroundColor="{StaticResource BorderLight}" VerticalOptions="Center"/>
+                    <Label Grid.Column="1" Text="yeni profil" Style="{StaticResource SectionLabel}"
+                           VerticalOptions="Center"/>
+                    <BoxView Grid.Column="2" HeightRequest="1"
+                             BackgroundColor="{StaticResource BorderLight}" VerticalOptions="Center"/>
+                </Grid>
+
+                <!-- ── Yeni Profil Formu ── -->
+                <Border BackgroundColor="{StaticResource SurfaceWhite}"
+                        Stroke="{StaticResource BorderLight}" StrokeThickness="1"
+                        StrokeShape="RoundRectangle 26" Padding="18,20">
+                    <Border.Shadow>
+                        <Shadow Brush="#12000000" Offset="0,6" Radius="16" Opacity="0.14"/>
+                    </Border.Shadow>
+                    <VerticalStackLayout Spacing="18">
+
+                        <!-- Avatar seçici başlık -->
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="🦸 Avatarını seç" FontSize="14" FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimary}"/>
+                            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                                <HorizontalStackLayout Spacing="10" x:Name="AvatarRow">
+                                    <!-- Her emoji tıklandığında Entry'e emoji koyuyoruz — code-behind ile -->
+                                    <Border x:Name="Av1" BackgroundColor="#F1EEFF" Stroke="#7B61FF" StrokeThickness="2"
+                                            StrokeShape="RoundRectangle 16" WidthRequest="52" HeightRequest="52">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnAvatarTapped" CommandParameter="🐰"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="🐰" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                    <Border x:Name="Av2" BackgroundColor="#F5F5FF" Stroke="{StaticResource BorderLight}" StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 16" WidthRequest="52" HeightRequest="52">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnAvatarTapped" CommandParameter="🦊"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="🦊" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                    <Border x:Name="Av3" BackgroundColor="#F5F5FF" Stroke="{StaticResource BorderLight}" StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 16" WidthRequest="52" HeightRequest="52">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnAvatarTapped" CommandParameter="🦉"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="🦉" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                    <Border x:Name="Av4" BackgroundColor="#F5F5FF" Stroke="{StaticResource BorderLight}" StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 16" WidthRequest="52" HeightRequest="52">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnAvatarTapped" CommandParameter="🐻"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="🐻" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                    <Border x:Name="Av5" BackgroundColor="#F5F5FF" Stroke="{StaticResource BorderLight}" StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 16" WidthRequest="52" HeightRequest="52">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnAvatarTapped" CommandParameter="🐸"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="🐸" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                    <Border x:Name="Av6" BackgroundColor="#F5F5FF" Stroke="{StaticResource BorderLight}" StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 16" WidthRequest="52" HeightRequest="52">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnAvatarTapped" CommandParameter="🦁"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="🦁" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                    <Border x:Name="Av7" BackgroundColor="#F5F5FF" Stroke="{StaticResource BorderLight}" StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 16" WidthRequest="52" HeightRequest="52">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnAvatarTapped" CommandParameter="🦋"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="🦋" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                    <Border x:Name="Av8" BackgroundColor="#F5F5FF" Stroke="{StaticResource BorderLight}" StrokeThickness="1"
+                                            StrokeShape="RoundRectangle 16" WidthRequest="52" HeightRequest="52">
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnAvatarTapped" CommandParameter="🐳"/>
+                                        </Border.GestureRecognizers>
+                                        <Label Text="🐳" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Border>
+                                </HorizontalStackLayout>
+                            </ScrollView>
+                        </VerticalStackLayout>
+
+                        <!-- İsim girişi -->
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="👤 Adın ne?" FontSize="14" FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimary}"/>
+                            <Border BackgroundColor="{StaticResource SurfaceSoft}"
+                                    Stroke="{StaticResource BorderLight}" StrokeThickness="1"
+                                    StrokeShape="RoundRectangle 16" Padding="16,0">
+                                <Entry Placeholder="Adını buraya yaz 😊"
+                                       Text="{Binding NewProfileName}"
+                                       FontSize="16" TextColor="{StaticResource TextPrimary}"
+                                       PlaceholderColor="{StaticResource TextMuted}"
+                                       BackgroundColor="Transparent" HeightRequest="52"/>
                             </Border>
-                        </Grid>
+                        </VerticalStackLayout>
+
+                        <!-- Yaş grubu -->
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="🎂 Yaş grubunu seç" FontSize="14" FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimary}"/>
+
+                            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                                <!-- Minikler -->
+                                <Border Grid.Column="0"
+                                        BackgroundColor="{Binding SelectedAgeGroup, Converter={StaticResource ToddlerColor}}"
+                                        StrokeShape="RoundRectangle 20"
+                                        Stroke="{Binding SelectedAgeGroup, Converter={StaticResource ToddlerStroke}}"
+                                        StrokeThickness="2.5" Padding="8,14">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectAgeGroupCommand}" CommandParameter="1"/>
+                                    </Border.GestureRecognizers>
+                                    <Border.Shadow>
+                                        <Shadow Brush="#145148D4" Offset="0,4" Radius="10" Opacity="0.2"/>
+                                    </Border.Shadow>
+                                    <VerticalStackLayout HorizontalOptions="Center" Spacing="5">
+                                        <Label Text="🐰" FontSize="34" HorizontalOptions="Center"/>
+                                        <Label Text="Minikler" FontSize="12" FontAttributes="Bold"
+                                               TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+                                        <Border BackgroundColor="#20000000" Stroke="Transparent"
+                                                StrokeShape="RoundRectangle 8" Padding="5,2"
+                                                HorizontalOptions="Center">
+                                            <Label Text="3-5 yaş" FontSize="10"
+                                                   TextColor="{StaticResource TextMuted}" HorizontalOptions="Center"/>
+                                        </Border>
+                                    </VerticalStackLayout>
+                                </Border>
+
+                                <!-- Keşifçiler -->
+                                <Border Grid.Column="1"
+                                        BackgroundColor="{Binding SelectedAgeGroup, Converter={StaticResource ExplorerColor}}"
+                                        StrokeShape="RoundRectangle 20"
+                                        Stroke="{Binding SelectedAgeGroup, Converter={StaticResource ExplorerStroke}}"
+                                        StrokeThickness="2.5" Padding="8,14">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectAgeGroupCommand}" CommandParameter="2"/>
+                                    </Border.GestureRecognizers>
+                                    <Border.Shadow>
+                                        <Shadow Brush="#1421C7A8" Offset="0,4" Radius="10" Opacity="0.2"/>
+                                    </Border.Shadow>
+                                    <VerticalStackLayout HorizontalOptions="Center" Spacing="5">
+                                        <Label Text="🦊" FontSize="34" HorizontalOptions="Center"/>
+                                        <Label Text="Keşifçiler" FontSize="12" FontAttributes="Bold"
+                                               TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+                                        <Border BackgroundColor="#20000000" Stroke="Transparent"
+                                                StrokeShape="RoundRectangle 8" Padding="5,2"
+                                                HorizontalOptions="Center">
+                                            <Label Text="5-7 yaş" FontSize="10"
+                                                   TextColor="{StaticResource TextMuted}" HorizontalOptions="Center"/>
+                                        </Border>
+                                    </VerticalStackLayout>
+                                </Border>
+
+                                <!-- Kaşifler -->
+                                <Border Grid.Column="2"
+                                        BackgroundColor="{Binding SelectedAgeGroup, Converter={StaticResource AdventurerColor}}"
+                                        StrokeShape="RoundRectangle 20"
+                                        Stroke="{Binding SelectedAgeGroup, Converter={StaticResource AdventurerStroke}}"
+                                        StrokeThickness="2.5" Padding="8,14">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectAgeGroupCommand}" CommandParameter="3"/>
+                                    </Border.GestureRecognizers>
+                                    <Border.Shadow>
+                                        <Shadow Brush="#14B15CFF" Offset="0,4" Radius="10" Opacity="0.2"/>
+                                    </Border.Shadow>
+                                    <VerticalStackLayout HorizontalOptions="Center" Spacing="5">
+                                        <Label Text="🦉" FontSize="34" HorizontalOptions="Center"/>
+                                        <Label Text="Kaşifler" FontSize="12" FontAttributes="Bold"
+                                               TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+                                        <Border BackgroundColor="#20000000" Stroke="Transparent"
+                                                StrokeShape="RoundRectangle 8" Padding="5,2"
+                                                HorizontalOptions="Center">
+                                            <Label Text="7-9 yaş" FontSize="10"
+                                                   TextColor="{StaticResource TextMuted}" HorizontalOptions="Center"/>
+                                        </Border>
+                                    </VerticalStackLayout>
+                                </Border>
+                            </Grid>
+                        </VerticalStackLayout>
 
                         <!-- Oluştur butonu -->
-                        <Button
-                            Text="Profil Oluştur 🚀"
-                            Command="{Binding CreateProfileCommand}"
-                            BackgroundColor="#6C63FF"
-                            TextColor="White"
-                            FontSize="17"
-                            FontAttributes="Bold"
-                            CornerRadius="16"
-                            HeightRequest="56"/>
+                        <Border StrokeShape="RoundRectangle 18" Stroke="Transparent" Padding="0,16">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CreateProfileCommand}"/>
+                            </Border.GestureRecognizers>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#5148D4" Offset="0.0"/>
+                                    <GradientStop Color="#B15CFF" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.Shadow>
+                                <Shadow Brush="#445148D4" Offset="0,6" Radius="14" Opacity="0.3"/>
+                            </Border.Shadow>
+                            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                                <Label Text="🚀" FontSize="20" VerticalOptions="Center"/>
+                                <Label Text="Profil Oluştur" FontSize="17" FontAttributes="Bold"
+                                       TextColor="White" VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+                        </Border>
 
                     </VerticalStackLayout>
                 </Border>

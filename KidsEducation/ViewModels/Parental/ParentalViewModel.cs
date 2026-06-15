@@ -15,6 +15,10 @@ public partial class ParentalViewModel : ObservableObject
     private readonly LearningEventService _learningEventService;
     private readonly SkillCatalogService _skillCatalog;
     private readonly CurriculumActivityService _curriculumActivityService;
+    private readonly AudioService _audioService;
+    private readonly AppPreferencesService _appPreferences;
+    private readonly NotificationService _notificationService;
+    private readonly ProgressBackupService _backupService;
 
     [ObservableProperty] private ParentalSettings _settings = new();
     [ObservableProperty] private WeeklyReport _report = new();
@@ -30,6 +34,24 @@ public partial class ParentalViewModel : ObservableObject
     [ObservableProperty] private bool _hasSkillInsights;
     [ObservableProperty] private bool _hasCurriculumActivities;
     [ObservableProperty] private bool _isLoading = true;
+
+    // AI Koç API key
+    [ObservableProperty] private string _anthropicApiKey = string.Empty;
+    [ObservableProperty] private string _apiKeySaveStatus = "";
+
+    partial void OnAnthropicApiKeyChanged(string v)
+    {
+        ApiKeySaveStatus = "";
+    }
+
+    [RelayCommand]
+    public void SaveApiKey()
+    {
+        _appPreferences.AnthropicApiKey = AnthropicApiKey.Trim();
+        ApiKeySaveStatus = string.IsNullOrWhiteSpace(AnthropicApiKey)
+            ? "API key silindi."
+            : "✅ Kaydedildi! AI Koç aktif.";
+    }
 
     // Slider için int binding
     public int DailyLimitMinutes
@@ -49,9 +71,64 @@ public partial class ParentalViewModel : ObservableObject
 
     public bool SoundEnabled
     {
-        get => Settings.SoundEnabled;
-        set { Settings.SoundEnabled = value; OnPropertyChanged(); }
+        get => _audioService.EffectsEnabled;
+        set
+        {
+            _audioService.SetEffectsEnabled(value);
+            Settings.SoundEnabled = value;
+            OnPropertyChanged();
+        }
     }
+
+    public bool MusicEnabled
+    {
+        get => _audioService.MusicEnabled;
+        set
+        {
+            _audioService.SetMusicEnabled(value);
+            OnPropertyChanged();
+        }
+    }
+
+    public double MusicVolumeLevel
+    {
+        get => _audioService.MusicVolume;
+        set
+        {
+            _audioService.SetMusicVolume(value);
+            OnPropertyChanged();
+        }
+    }
+
+    public double EffectsVolumeLevel
+    {
+        get => _audioService.EffectsVolume;
+        set
+        {
+            _audioService.SetEffectsVolume(value);
+            OnPropertyChanged();
+        }
+    }
+
+    public double SpeechRateLevel
+    {
+        get => _appPreferences.SpeechRate;
+        set
+        {
+            _appPreferences.SpeechRate = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(SpeechRateText));
+        }
+    }
+
+    public string SpeechRateText => _appPreferences.SpeechRate switch
+    {
+        <= 0.6  => "Çok Yavaş",
+        <= 0.85 => "Yavaş",
+        <= 1.15 => "Normal",
+        <= 1.35 => "Hızlı",
+        _       => "Çok Hızlı"
+    };
 
     public bool WeeklyReportEnabled
     {
@@ -59,13 +136,88 @@ public partial class ParentalViewModel : ObservableObject
         set { Settings.WeeklyReportEnabled = value; OnPropertyChanged(); }
     }
 
+    public bool DarkModeEnabled
+    {
+        get => _appPreferences.ThemePreference == "dark";
+        set
+        {
+            _appPreferences.ThemePreference = value ? "dark" : "light";
+            OnPropertyChanged();
+        }
+    }
+
+    [ObservableProperty] private List<ColorThemeItem> _colorThemes = new();
+
+    public string SelectedColorThemeId => _appPreferences.ColorTheme;
+
+    private void LoadColorThemes()
+    {
+        ColorThemes = AppPreferencesService.ColorThemes
+            .Select(t => new ColorThemeItem
+            {
+                Id = t.Id,
+                Label = t.Label,
+                Emoji = t.Emoji,
+                PrimaryHex = t.Primary,
+                IsSelected = t.Id == _appPreferences.ColorTheme
+            })
+            .ToList();
+    }
+
+    private const string NotificationEnabledKey = "notif_daily_enabled";
+    private const string NotificationHourKey = "notif_daily_hour";
+    private const string NotificationMinuteKey = "notif_daily_minute";
+
+    public bool NotificationEnabled
+    {
+        get => Preferences.Get(NotificationEnabledKey, false);
+        set
+        {
+            Preferences.Set(NotificationEnabledKey, value);
+            OnPropertyChanged();
+            _ = value
+                ? _notificationService.ScheduleDailyReminderAsync(new TimeSpan(NotificationHour, NotificationMinute, 0))
+                : _notificationService.CancelDailyReminderAsync();
+        }
+    }
+
+    public int NotificationHour
+    {
+        get => Preferences.Get(NotificationHourKey, 18);
+        set { Preferences.Set(NotificationHourKey, value); OnPropertyChanged(); OnPropertyChanged(nameof(NotificationTimeText)); }
+    }
+
+    public int NotificationMinute
+    {
+        get => Preferences.Get(NotificationMinuteKey, 0);
+        set { Preferences.Set(NotificationMinuteKey, value); OnPropertyChanged(); OnPropertyChanged(nameof(NotificationTimeText)); }
+    }
+
+    public TimeSpan NotificationTime
+    {
+        get => new TimeSpan(NotificationHour, NotificationMinute, 0);
+        set
+        {
+            NotificationHour = value.Hours;
+            NotificationMinute = value.Minutes;
+            if (NotificationEnabled)
+                _ = _notificationService.ScheduleDailyReminderAsync(value);
+        }
+    }
+
+    public string NotificationTimeText => $"{NotificationHour:D2}:{NotificationMinute:D2}";
+
     public ParentalViewModel(
         ProfileService profileService,
         ContentService contentService,
         NavigationService navigationService,
         LearningEventService learningEventService,
         SkillCatalogService skillCatalog,
-        CurriculumActivityService curriculumActivityService)
+        CurriculumActivityService curriculumActivityService,
+        AudioService audioService,
+        AppPreferencesService appPreferences,
+        NotificationService notificationService,
+        ProgressBackupService backupService)
     {
         _profileService = profileService;
         _contentService = contentService;
@@ -73,6 +225,10 @@ public partial class ParentalViewModel : ObservableObject
         _learningEventService = learningEventService;
         _skillCatalog = skillCatalog;
         _curriculumActivityService = curriculumActivityService;
+        _audioService = audioService;
+        _appPreferences = appPreferences;
+        _notificationService = notificationService;
+        _backupService = backupService;
     }
 
     [RelayCommand]
@@ -85,7 +241,17 @@ public partial class ParentalViewModel : ObservableObject
             OnPropertyChanged(nameof(DailyLimitMinutes));
             OnPropertyChanged(nameof(DailyLimitText));
             OnPropertyChanged(nameof(SoundEnabled));
+            OnPropertyChanged(nameof(MusicEnabled));
+            OnPropertyChanged(nameof(MusicVolumeLevel));
+            OnPropertyChanged(nameof(EffectsVolumeLevel));
             OnPropertyChanged(nameof(WeeklyReportEnabled));
+            OnPropertyChanged(nameof(DarkModeEnabled));
+            OnPropertyChanged(nameof(SpeechRateLevel));
+            OnPropertyChanged(nameof(SpeechRateText));
+            LoadColorThemes();
+            OnPropertyChanged(nameof(NotificationEnabled));
+            OnPropertyChanged(nameof(NotificationTime));
+            OnPropertyChanged(nameof(NotificationTimeText));
 
             var profile = _profileService.GetActiveProfile();
             if (profile is not null)
@@ -96,6 +262,8 @@ public partial class ParentalViewModel : ObservableObject
             LoadSkillInsights();
             LoadCurriculumActivities();
             LoadWeeklyInsight();
+            AnthropicApiKey = _appPreferences.AnthropicApiKey;
+            RefreshPinStatus();
         }
         finally
         {
@@ -266,6 +434,15 @@ public partial class ParentalViewModel : ObservableObject
     }
 
     [RelayCommand]
+    public void SelectColorTheme(ColorThemeItem item)
+    {
+        _appPreferences.ColorTheme = item.Id;
+        foreach (var t in ColorThemes)
+            t.IsSelected = t.Id == item.Id;
+        OnPropertyChanged(nameof(ColorThemes));
+    }
+
+    [RelayCommand]
     public void ToggleCategory(CategoryToggle toggle)
     {
         toggle.IsVisible = !toggle.IsVisible;
@@ -285,9 +462,57 @@ public partial class ParentalViewModel : ObservableObject
         _profileService.SaveParentalSettings(Settings);
     }
 
+    [ObservableProperty] private bool _hasPin;
+    [ObservableProperty] private string _pinStatusText = "";
+
+    public void RefreshPinStatus()
+    {
+        HasPin = _appPreferences.HasPin;
+        PinStatusText = HasPin
+            ? "PIN aktif — değiştirmek veya kaldırmak için aşağıyı kullanın"
+            : "PIN yok — ebeveyn panelini korumak için PIN belirleyin";
+    }
+
     [RelayCommand]
-    public async Task GoBackAsync() =>
-        await _navigationService.GoBackAsync();
+    public Task SetupPinAsync() => Shell.Current.GoToAsync("pinsetup");
+
+    [RelayCommand]
+    public async Task RemovePinAsync()
+    {
+        bool confirm = await Shell.Current.DisplayAlert(
+            "PIN Kaldır", "Ebeveyn PIN korumasını kaldırmak istiyor musunuz?", "Kaldır", "İptal");
+        if (confirm)
+        {
+            _appPreferences.ClearPin();
+            RefreshPinStatus();
+        }
+    }
+
+    [RelayCommand]
+    public Task GoToProgressReportAsync() => Shell.Current.GoToAsync("progressreport");
+
+    [RelayCommand]
+    public Task GoToDashboardAsync() => Shell.Current.GoToAsync("parentaldashboard");
+
+    [RelayCommand]
+    public Task GoBackAsync() =>
+        Shell.Current.GoToAsync("//home");
+
+    [ObservableProperty] private string _backupStatus = "";
+
+    [RelayCommand]
+    public async Task ExportBackupAsync()
+    {
+        var ok = await _backupService.ExportAsync();
+        BackupStatus = ok ? "✅ Yedek dışa aktarıldı." : "❌ Dışa aktarma başarısız.";
+    }
+
+    [RelayCommand]
+    public async Task ImportBackupAsync()
+    {
+        var result = await _backupService.ImportAsync();
+        BackupStatus = result.SummaryText;
+    }
 }
 
 public class CategoryToggle : ObservableObject
@@ -314,6 +539,25 @@ public class WeakCategoryInfo
     public int AccuracyPercent { get; set; }
 
     public string AccuracyText => $"%{AccuracyPercent} doğru";
+}
+
+public class ColorThemeItem : ObservableObject
+{
+    public string Id { get; set; } = string.Empty;
+    public string Label { get; set; } = string.Empty;
+    public string Emoji { get; set; } = string.Empty;
+    public string PrimaryHex { get; set; } = "#5148D4";
+
+    private bool _isSelected;
+    public bool IsSelected
+    {
+        get => _isSelected;
+        set => SetProperty(ref _isSelected, value);
+    }
+
+    public Color PrimaryColor => Color.FromArgb(PrimaryHex);
+    public double SelectedOpacity => IsSelected ? 1.0 : 0.0;
+    public double BorderWidth => IsSelected ? 3 : 1.5;
 }
 
 public class SkillSummaryInfo

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Tales.TaleReaderPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:KidsEducation.Converters"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#FFF8F0">
+
+    <ContentPage.Resources>
+        <converters:InverseBoolConverter x:Key="InvBool"/>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- Üst bar -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Padding="16,52,16,12">
+            <Border Grid.Column="0" WidthRequest="40" HeightRequest="40"
+                    BackgroundColor="#FFE5D0" Stroke="#FFD0B0" StrokeThickness="1"
+                    StrokeShape="RoundRectangle 14">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                </Border.GestureRecognizers>
+                <Label Text="←" FontSize="18" TextColor="#CC5500"
+                       HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Border>
+            <Label Grid.Column="1" Text="{Binding Tale.Title}" FontSize="17" FontAttributes="Bold"
+                   TextColor="#2D1B00" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label Grid.Column="2" Text="{Binding PageText}" FontSize="13"
+                   TextColor="#A0805A" VerticalOptions="Center"/>
+        </Grid>
+
+        <!-- İçerik -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,0,20,20" Spacing="0">
+                <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"
+                                   Color="#FF8C42" HorizontalOptions="Center" Margin="0,40,0,0"/>
+
+                <VerticalStackLayout IsVisible="{Binding IsLoading, Converter={StaticResource InvBool}}"
+                                     Spacing="20">
+
+                    <!-- Emoji illüstrasyon -->
+                    <Border BackgroundColor="#FFF3E8" Stroke="#FFE5D0" StrokeThickness="1.5"
+                            StrokeShape="RoundRectangle 32"
+                            HorizontalOptions="Center" WidthRequest="180" HeightRequest="180" Margin="0,8,0,0">
+                        <Label Text="{Binding CurrentPage.Emoji}" FontSize="80"
+                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+
+                    <!-- İlerleme çubuğu -->
+                    <ProgressBar Progress="{Binding PageProgress}"
+                                 ProgressColor="#FF8C42" BackgroundColor="#FFE5D0" HeightRequest="6"/>
+
+                    <!-- Hikaye metni -->
+                    <Border BackgroundColor="White" Stroke="#FFE5D0" StrokeThickness="1.5"
+                            StrokeShape="RoundRectangle 24" Padding="24,20">
+                        <Border.Shadow>
+                            <Shadow Brush="#10FF8C42" Offset="0,4" Radius="12" Opacity="0.15"/>
+                        </Border.Shadow>
+                        <Label Text="{Binding CurrentPage.Text}" FontSize="19" LineHeight="1.6"
+                               TextColor="#2D1B00" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"/>
+                    </Border>
+
+                    <!-- Ses butonu -->
+                    <Border x:Name="AudioBtn"
+                            BackgroundColor="#FFF3E8" Stroke="#FFD8B0" StrokeThickness="1.5"
+                            StrokeShape="RoundRectangle 18" HorizontalOptions="Center" Padding="28,14">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding PlayAudioCommand}"/>
+                        </Border.GestureRecognizers>
+                        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                            <Label x:Name="AudioIcon" Text="🎧" FontSize="22" VerticalOptions="Center"/>
+                            <Label x:Name="AudioLabel" Text="Dinle" FontSize="15" FontAttributes="Bold"
+                                   TextColor="#CC5500" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                    </Border>
+
+                    <!-- Bitti ekranı -->
+                    <Border IsVisible="{Binding IsFinished}"
+                            BackgroundColor="#FFFEF0" Stroke="#FFD700" StrokeThickness="2"
+                            StrokeShape="RoundRectangle 24" Padding="24,20">
+                        <VerticalStackLayout Spacing="12" HorizontalOptions="Center">
+                            <Label Text="🎉" FontSize="48" HorizontalOptions="Center"/>
+                            <Label Text="Masal bitti!" FontSize="20" FontAttributes="Bold"
+                                   TextColor="#92400E" HorizontalOptions="Center"/>
+                            <Label Text="Harika bir masal dinledin! 🌟" FontSize="13"
+                                   TextColor="#78350F" HorizontalOptions="Center"/>
+                            <Border BackgroundColor="#FF8C42" Stroke="Transparent"
+                                    StrokeShape="RoundRectangle 14" Padding="24,12">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding RestartCommand}"/>
+                                </Border.GestureRecognizers>
+                                <Label Text="🔄  Tekrar Oku" FontSize="14" FontAttributes="Bold"
+                                       TextColor="White" HorizontalOptions="Center"/>
+                            </Border>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Alt nav -->
+        <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="12"
+              Padding="20,12,20,32"
+              IsVisible="{Binding IsFinished, Converter={StaticResource InvBool}}">
+            <Border Grid.Column="0" BackgroundColor="#FFE5D0"
+                    Stroke="Transparent" StrokeShape="RoundRectangle 18" Padding="0,16">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding PrevPageCommand}"/>
+                </Border.GestureRecognizers>
+                <Label Text="← Önceki" FontSize="15" FontAttributes="Bold"
+                       TextColor="#CC5500" HorizontalOptions="Center"/>
+            </Border>
+            <Border Grid.Column="1" Stroke="Transparent" StrokeShape="RoundRectangle 18" Padding="0,16">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#FF8C42" Offset="0"/>
+                        <GradientStop Color="#FF6B6B" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NextPageCommand}"/>
+                </Border.GestureRecognizers>
+                <Label Text="Sonraki →" FontSize="15" FontAttributes="Bold"
+                       TextColor="White" HorizontalOptions="Center"/>
+            </Border>
+        </Grid>
+
+    </Grid>
+</ContentPage>

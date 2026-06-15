@@ -16,6 +16,14 @@ public partial class HomePage : AnimatedPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await _viewModel.InitializeCommand.ExecuteAsync(null);
+        try
+        {
+            await _viewModel.InitializeCommand.ExecuteAsync(null);
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[HomePage] Açılış sırasında hata: {ex}");
+        }
     }
+
 }

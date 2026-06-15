@@ -8,7 +8,7 @@
       "imagePath": "color_red",
       "category": "colors",
       "difficultyLevel": 1,
-      "funFact": "Kırmızı dikkat çeken bir renktir.",
+      "funFact": "Kırmızı trafik ışığında dur anlamına gelir.",
       "descriptionTr": "Kırmızı canlı ve güçlü bir renktir. Elma, çilek ve domates kırmızı olabilir. Trafik ışıklarında kırmızı dur anlamına gelir. Bu renk kolayca fark edilir.",
       "soundClueText": "Elma, çilek ve domateste görebileceğimiz, trafik ışığında dur anlamına gelen canlı bir renktir. Acaba bu hangi renktir?"
     },
@@ -19,7 +19,7 @@
       "imagePath": "color_blue",
       "category": "colors",
       "difficultyLevel": 1,
-      "funFact": "Gökyüzü çoğu zaman mavi görünür.",
+      "funFact": "Gökyüzü mavi görünür çünkü ışık havada saçılır.",
       "descriptionTr": "Mavi sakin ve güzel bir renktir. Gökyüzü ve deniz mavi görünebilir. Birçok çocuk mavi rengi sever. Mavi renk bize huzurlu bir his verebilir.",
       "soundClueText": "Gökyüzünde ve denizde sık gördüğümüz, sakin ve huzurlu hissettiren bir renktir. Acaba bu hangi renktir?"
     },
@@ -30,7 +30,7 @@
       "imagePath": "color_yellow",
       "category": "colors",
       "difficultyLevel": 1,
-      "funFact": "Güneş sarı renkle anlatılır.",
+      "funFact": "Sarı en çabuk göze çarpan renktir.",
       "descriptionTr": "Sarı parlak ve neşeli bir renktir. Güneş, muz ve bazı çiçekler sarı olabilir. Sarı renk ışığı ve sıcaklığı hatırlatır. Kolay fark edilen renklerden biridir.",
       "soundClueText": "Güneşi, muzu ve bazı çiçekleri hatırlatan, parlak ve neşeli bir renktir. Acaba bu hangi renktir?"
     },
@@ -41,7 +41,7 @@
       "imagePath": "color_green",
       "category": "colors",
       "difficultyLevel": 1,
-      "funFact": "Ağaç yaprakları genellikle yeşildir.",
+      "funFact": "Yeşil renk gözleri en az yoran renktir.",
       "descriptionTr": "Yeşil doğayı hatırlatan bir renktir. Ağaçlar, çimenler ve bazı sebzeler yeşildir. Yeşil renk sakin ve taze bir his verebilir. Doğada sık gördüğümüz renklerden biridir.",
       "soundClueText": "Ağaçlarda, çimenlerde ve bazı sebzelerde gördüğümüz, doğayı hatırlatan taze bir renktir. Acaba bu hangi renktir?"
     },
@@ -52,7 +52,7 @@
       "imagePath": "color_purple",
       "category": "colors",
       "difficultyLevel": 2,
-      "funFact": "Mor üzüm mor renkte olabilir.",
+      "funFact": "Mor tarihte kraliyet rengi olarak kullanılmıştır.",
       "descriptionTr": "Mor güzel ve dikkat çekici bir renktir. Üzüm, patlıcan ve bazı çiçekler mor olabilir. Mor renk bazen hayal gücünü hatırlatır. Farklı tonları açık veya koyu olabilir.",
       "soundClueText": "Üzümde, patlıcanda ve bazı çiçeklerde görebileceğimiz, hayal gücünü hatırlatan bir renktir. Acaba bu hangi renktir?"
     },
@@ -63,9 +63,75 @@
       "imagePath": "color_orange",
       "category": "colors",
       "difficultyLevel": 2,
-      "funFact": "Portakal turuncu renktedir.",
+      "funFact": "Turuncu rengi ilk olarak portakala bakarak adlandırılmıştır.",
       "descriptionTr": "Turuncu sıcak ve enerjik bir renktir. Portakal, havuç ve sonbahar yaprakları turuncu olabilir. Sarı ile kırmızının karışımına benzer. Neşeli bir renktir.",
       "soundClueText": "Portakalda, havuçta ve sonbahar yapraklarında görebileceğimiz sıcak ve enerjik bir renktir. Acaba bu hangi renktir?"
+    },
+    {
+      "id": "color_pembe",
+      "nameTr": "Pembe",
+      "nameEn": "Pink",
+      "imagePath": "color_pink",
+      "category": "colors",
+      "difficultyLevel": 1,
+      "funFact": "Pembe kırmızı ile beyazın karışımından oluşur.",
+      "descriptionTr": "Pembe açık ve nazik bir renktir. Bazı çiçekler, flamingo kuşu ve şeker pembe olabilir. Pembe renk neşeli ve tatlı bir his uyandırır.",
+      "soundClueText": "Bazı çiçeklerde, flamingolarda ve şekerlerde gördüğümüz, nazik ve neşeli bir renktir. Acaba bu hangi renktir?"
+    },
+    {
+      "id": "color_kahverengi",
+      "nameTr": "Kahverengi",
+      "nameEn": "Brown",
+      "imagePath": "color_brown",
+      "category": "colors",
+      "difficultyLevel": 2,
+      "funFact": "Toprak ve odun kahverengi olduğundan doğanın rengidir.",
+      "descriptionTr": "Kahverengi doğayı hatırlatan sıcak bir renktir. Toprak, ağaç gövdesi ve çikolata kahverengi olabilir. Doğada sık rastlanan renklerden biridir.",
+      "soundClueText": "Toprakta, ağaç gövdesinde ve çikolatada gördüğümüz, doğayı hatırlatan sıcak bir renktir. Acaba bu hangi renktir?"
+    },
+    {
+      "id": "color_siyah",
+      "nameTr": "Siyah",
+      "nameEn": "Black",
+      "imagePath": "color_black",
+      "category": "colors",
+      "difficultyLevel": 1,
+      "funFact": "Siyah tüm renklerin karışımından oluşur.",
+      "descriptionTr": "Siyah karanlık ve güçlü bir renktir. Gece gökyüzü ve kömür siyah olabilir. Siyah renk çok sayıda şeyde kullanılır. Diğer renklerle güzel kontrastlar oluşturur.",
+      "soundClueText": "Gece gökyüzünde ve kömürde gördüğümüz, karanlığı hatırlatan güçlü bir renktir. Acaba bu hangi renktir?"
+    },
+    {
+      "id": "color_beyaz",
+      "nameTr": "Beyaz",
+      "nameEn": "White",
+      "imagePath": "color_white",
+      "category": "colors",
+      "difficultyLevel": 1,
+      "funFact": "Beyaz tüm ışık renklerinin bir araya gelmesiyle oluşur.",
+      "descriptionTr": "Beyaz temiz ve saf bir renktir. Kar, bulutlar ve sedef beyaz olabilir. Beyaz renk temizliği ve saflığı simgeler. Işığın tüm renklerini içinde barındırır.",
+      "soundClueText": "Karda, bulutlarda ve sedefte gördüğümüz, temizliği ve saflığı simgeleyen renktir. Acaba bu hangi renktir?"
+    },
+    {
+      "id": "color_gri",
+      "nameTr": "Gri",
+      "nameEn": "Gray",
+      "imagePath": "color_gray",
+      "category": "colors",
+      "difficultyLevel": 2,
+      "funFact": "Gri siyah ile beyazın karışımından oluşur.",
+      "descriptionTr": "Gri siyah ve beyaz arasında bir renktir. Bulutlu hava, taşlar ve fillerin derisi gri olabilir. Sakin ve nötr bir renktir. Çok farklı tonları vardır.",
+      "soundClueText": "Bulutlu havada, taşlarda ve fillerin derisinde gördüğümüz, siyah ile beyaz arası sakin bir renktir. Acaba bu hangi renktir?"
+    },
+    {
+      "id": "color_lacivert",
+      "nameTr": "Lacivert",
+      "nameEn": "Navy Blue",
+      "imagePath": "color_navy",
+      "category": "colors",
+      "difficultyLevel": 3,
+      "funFact": "Lacivert denizcilik üniformalarında çok kullanılır.",
+      "descriptionTr": "Lacivert koyu ve derin bir mavi tonudur. Gece gökyüzü, okul üniformaları ve denizcilik giysilerinde görülür. Ciddi ve güvenilir bir his verir.",
+      "soundClueText": "Mavi tonunun en koyu halidir, gece gökyüzünde ve okul üniformalarında gördüğümüz renktir. Acaba bu hangi renktir?"
     }
   ]
 }
