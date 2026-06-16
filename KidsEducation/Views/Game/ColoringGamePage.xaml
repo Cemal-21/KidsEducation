@@ -48,7 +48,7 @@
                                 <Span Text="{Binding ColoredCount}" FontAttributes="Bold" TextColor="#6C62F5" />
                                 <Span Text="/" />
                                 <Span Text="{Binding Regions.Count}" />
-                                <Span Text=" bölge boyandı" />
+                                <Span Text=" bÃ¶lge boyandÄ±" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
