@@ -29,28 +29,15 @@ public partial class HomeViewModel : ObservableObject
     [ObservableProperty] private string _streakBannerText = "";
     [ObservableProperty] private bool _isOffline;
     [ObservableProperty] private DailyChallengeInfo? _dailyChallenge;
-    public bool HasDailyChallenge => DailyChallenge is not null;
-
     [ObservableProperty] private CoachTip? _coachTip;
     [ObservableProperty] private DailyWordInfo? _dailyWord;
-    public bool HasDailyWord => DailyWord is not null;
-    // OnDailyWordChanged defined below with BuildSliderCards()
-    public bool HasCoachTip => CoachTip is not null;
-    partial void OnCoachTipChanged(CoachTip? v) => OnPropertyChanged(nameof(HasCoachTip));
-    partial void OnDailyChallengeChanged(DailyChallengeInfo? value)
-    {
-        OnPropertyChanged(nameof(HasDailyChallenge));
-        MainThread.BeginInvokeOnMainThread(BuildSliderCards);
-    }
+    [ObservableProperty] private List<HomeSliderCard> _sliderCards = new();
 
+    public bool HasDailyChallenge => DailyChallenge is not null;
+    public bool HasDailyWord => DailyWord is not null;
+    public bool HasCoachTip => CoachTip is not null;
     public bool HasLastLesson => LastLesson is not null;
     public bool HasSmartSuggestion => SmartSuggestion is not null;
-
-    partial void OnLastLessonChanged(LastLessonInfo? value) =>
-        OnPropertyChanged(nameof(HasLastLesson));
-
-    partial void OnSmartSuggestionChanged(SmartLearningSuggestion? value) =>
-        OnPropertyChanged(nameof(HasSmartSuggestion));
 
     public HomeViewModel(
         ContentService contentService,
@@ -72,8 +59,9 @@ public partial class HomeViewModel : ObservableObject
         _aiCoachService = aiCoachService;
         _dailyWordService = dailyWordService;
         _audioService = audioService;
-        IsOffline = !connectivityService.IsOnline;
-        connectivityService.ConnectivityChanged += (_, online) =>
+
+        IsOffline = !_connectivityService.IsOnline;
+        _connectivityService.ConnectivityChanged += (_, online) =>
             MainThread.BeginInvokeOnMainThread(() => IsOffline = !online);
     }
 
@@ -89,12 +77,14 @@ public partial class HomeViewModel : ObservableObject
                 await _navigationService.GoToProfileSelectionAsync();
                 return;
             }
+
             var cats = await _contentService.GetCategoriesAsync(ActiveProfile);
             foreach (var cat in cats)
             {
                 if (ActiveProfile.CategoryProgresses.TryGetValue(cat.Id, out var cp))
                     cat.ProgressPercent = cp.BestStars * 33;
             }
+
             Categories = cats;
             LastLesson = await _contentService.GetLastLessonAsync(ActiveProfile);
             DailyGoal = _profileService.GetDailyGoal(ActiveProfile);
@@ -102,7 +92,6 @@ public partial class HomeViewModel : ObservableObject
             DailyChallenge = _dailyChallengeService.GetTodayChallenge();
             DailyWord = await _dailyWordService.GetTodayWordAsync(ActiveProfile);
 
-            // AI Koç: önbellekten hızlı yükle, arka planda güncelle
             CoachTip = _aiCoachService.GetCachedTip();
             _ = Task.Run(async () =>
             {
@@ -110,16 +99,15 @@ public partial class HomeViewModel : ObservableObject
                 MainThread.BeginInvokeOnMainThread(() => CoachTip = tip);
             });
 
-            // Streak banner
             var streak = ActiveProfile.StreakDays;
             if (streak >= 2)
             {
                 StreakBannerText = streak switch
                 {
-                    >= 30 => $"🔥 {streak} günlük seri! Efsane!",
-                    >= 14 => $"🔥 {streak} gün üst üste! İnanılmaz!",
-                    >= 7  => $"🔥 {streak} gün üst üste! Harika!",
-                    _     => $"🔥 {streak} gün üst üste devam ediyorsun!"
+                    >= 30 => $"{streak} günlük seri! Efsane!",
+                    >= 14 => $"{streak} gün üst üste! İnanılmaz!",
+                    >= 7 => $"{streak} gün üst üste! Harika!",
+                    _ => $"{streak} gün üst üste devam ediyorsun!"
                 };
                 ShowStreakBanner = true;
             }
@@ -127,6 +115,8 @@ public partial class HomeViewModel : ObservableObject
             {
                 ShowStreakBanner = false;
             }
+
+            BuildSliderCards();
         }
         catch (Exception ex)
         {
@@ -138,7 +128,6 @@ public partial class HomeViewModel : ObservableObject
         }
     }
 
-    // ── Ana navigasyon ────────────────────────────────────────
     [RelayCommand]
     public Task GoToVocabularyAsync() => Shell.Current.GoToAsync("vocabulary");
 
@@ -153,6 +142,7 @@ public partial class HomeViewModel : ObservableObject
     {
         if (CoachTip?.ActionRoute is { Length: > 0 } route)
             return Shell.Current.GoToAsync(route);
+
         return Task.CompletedTask;
     }
 
@@ -207,7 +197,6 @@ public partial class HomeViewModel : ObservableObject
             await _audioService.SpeakTextAsync(DailyWord.SpeakText);
     }
 
-    // ── Tab bar navigasyon ────────────────────────────────────
     [RelayCommand]
     public Task GoToProfileSelectionAsync() => _navigationService.GoToProfileSelectionAsync();
 
@@ -230,9 +219,6 @@ public partial class HomeViewModel : ObservableObject
         await Shell.Current.GoToAsync(card.ActionRoute);
     }
 
-    // ── Slider kartları ──────────────────────────────────────
-    [ObservableProperty] private List<HomeSliderCard> _sliderCards = new();
-
     public void BuildSliderCards()
     {
         var cards = new List<HomeSliderCard>();
@@ -241,39 +227,55 @@ public partial class HomeViewModel : ObservableObject
             cards.Add(new HomeSliderCard
             {
                 Type = SliderCardType.DailyWord,
-                Emoji = DailyWord.Emoji,
                 IconSource = string.IsNullOrWhiteSpace(DailyWord.ImagePath)
                     ? "ui_learning_3d.png"
                     : DailyWord.ImagePath,
                 Title = "Günün Kelimesi",
                 Subtitle = DailyWord.NameTr,
                 Detail = DailyWord.NameEn,
-                GradientFrom = "#5148D4", GradientTo = "#3A86FF",
+                GradientFrom = "#5148D4",
+                GradientTo = "#3A86FF",
                 ActionRoute = ""
             });
+
+        cards.Add(new HomeSliderCard
+        {
+            Type = SliderCardType.DailyGoal,
+            IconSource = DailyGoal.CompletedCount >= DailyGoal.TotalCount
+                ? "ui_check_3d.png"
+                : "ui_goal_3d.png",
+            Title = "Günlük Plan",
+            Subtitle = DailyGoal.HeadlineText,
+            Detail = DailyGoal.CompletedCount >= DailyGoal.TotalCount
+                ? "Bugünlük görevler tamam"
+                : $"{DailyGoal.RemainingMinutes} dakika yeterli",
+            GradientFrom = "#5148D4",
+            GradientTo = "#22C55E",
+            ActionRoute = "dailygoal"
+        });
 
         if (DailyChallenge is not null && !DailyChallenge.IsCompleted)
             cards.Add(new HomeSliderCard
             {
                 Type = SliderCardType.Challenge,
                 IconSource = "ui_goal_3d.png",
-                Emoji = "🎯",
                 Title = "Günlük Meydan Okuma",
-                Subtitle = $"{DailyChallenge.CategoryNameTr} – {DailyChallenge.GameTypeNameTr}",
+                Subtitle = $"{DailyChallenge.CategoryNameTr} - {DailyChallenge.GameTypeNameTr}",
                 Detail = "Hemen başla!",
-                GradientFrom = "#FF8C42", GradientTo = "#FF6B6B",
-                ActionRoute = $"game?categoryId={DailyChallenge.CategoryId}"
+                GradientFrom = "#FF8C42",
+                GradientTo = "#FF6B6B",
+                ActionRoute = DailyChallenge.GameRoute
             });
 
         cards.Add(new HomeSliderCard
         {
             Type = SliderCardType.Tales,
             IconSource = "ui_tales_3d.png",
-            Emoji = "📖",
             Title = "Masallar",
             Subtitle = "Klasik çocuk masalları",
-            Detail = "Dinle ve oku →",
-            GradientFrom = "#FF6B6B", GradientTo = "#FF8C42",
+            Detail = "Dinle ve oku",
+            GradientFrom = "#FF6B6B",
+            GradientTo = "#FF8C42",
             ActionRoute = "tales"
         });
 
@@ -282,20 +284,38 @@ public partial class HomeViewModel : ObservableObject
             {
                 Type = SliderCardType.Progress,
                 IconSource = "ui_star_3d.png",
-                Emoji = "⭐",
                 Title = "İlerleme",
                 Subtitle = $"{ActiveProfile.TotalStars} yıldız kazandın",
                 Detail = ActiveProfile.LevelTitle,
-                GradientFrom = "#F59E0B", GradientTo = "#D97706",
+                GradientFrom = "#F59E0B",
+                GradientTo = "#D97706",
                 ActionRoute = "//progress"
             });
 
         SliderCards = cards;
     }
 
-    partial void OnDailyWordChanged(DailyWordInfo? v)
+    partial void OnCoachTipChanged(CoachTip? value) =>
+        OnPropertyChanged(nameof(HasCoachTip));
+
+    partial void OnDailyChallengeChanged(DailyChallengeInfo? value)
+    {
+        OnPropertyChanged(nameof(HasDailyChallenge));
+        MainThread.BeginInvokeOnMainThread(BuildSliderCards);
+    }
+
+    partial void OnDailyWordChanged(DailyWordInfo? value)
     {
         OnPropertyChanged(nameof(HasDailyWord));
         MainThread.BeginInvokeOnMainThread(BuildSliderCards);
     }
+
+    partial void OnDailyGoalChanged(DailyGoalInfo value) =>
+        MainThread.BeginInvokeOnMainThread(BuildSliderCards);
+
+    partial void OnLastLessonChanged(LastLessonInfo? value) =>
+        OnPropertyChanged(nameof(HasLastLesson));
+
+    partial void OnSmartSuggestionChanged(SmartLearningSuggestion? value) =>
+        OnPropertyChanged(nameof(HasSmartSuggestion));
 }

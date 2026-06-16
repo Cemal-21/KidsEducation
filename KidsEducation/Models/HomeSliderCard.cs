@@ -1,6 +1,6 @@
 namespace KidsEducation.Models;
 
-public enum SliderCardType { DailyWord, Challenge, Tales, Progress }
+public enum SliderCardType { DailyWord, DailyGoal, Challenge, Tales, Progress }
 
 public class HomeSliderCard
 {

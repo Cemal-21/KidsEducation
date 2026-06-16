@@ -14,6 +14,8 @@ public partial class PreferencesViewModel : ObservableObject
     [ObservableProperty] private string _themePreference = "system";
     [ObservableProperty] private double _masterVolume = 0.85;
     [ObservableProperty] private bool _effectsEnabled = true;
+    [ObservableProperty] private string _preferencesSummaryText = string.Empty;
+    [ObservableProperty] private string _preferencesStatusText = string.Empty;
 
     public PreferencesViewModel(
         AppPreferencesService preferences,
@@ -38,6 +40,12 @@ public partial class PreferencesViewModel : ObservableObject
     public Color SystemThemeBackground => IsSystemTheme ? Color.FromArgb(IsDarkActive ? "#342F70" : "#EDEBFF") : DefaultCardColor;
     public Color LightThemeBackground => IsLightTheme ? Color.FromArgb(IsDarkActive ? "#54441E" : "#FFF4D6") : DefaultCardColor;
     public Color DarkThemeBackground => IsDarkTheme ? Color.FromArgb(IsDarkActive ? "#313A4D" : "#E8ECF5") : DefaultCardColor;
+    public string CurrentSoundMode => MasterVolume switch
+    {
+        <= 0.35 when !EffectsEnabled => "Sakin",
+        >= 0.9 => "Enerjik",
+        _ => "Dengeli"
+    };
 
     private static bool IsDarkActive => Application.Current?.RequestedTheme == AppTheme.Dark;
     private static Color DefaultCardColor => Color.FromArgb(IsDarkActive ? "#172033" : "#FFFFFF");
@@ -49,18 +57,21 @@ public partial class PreferencesViewModel : ObservableObject
         ThemePreference = _preferences.ThemePreference;
         MasterVolume = _preferences.MasterVolume;
         EffectsEnabled = _preferences.EffectsEnabled;
+        RefreshSummary();
         NotifyComputed();
     }
 
     partial void OnVoiceGenderChanged(string value)
     {
         _preferences.VoiceGender = value;
+        RefreshSummary();
         NotifyComputed();
     }
 
     partial void OnThemePreferenceChanged(string value)
     {
         _preferences.ThemePreference = value;
+        RefreshSummary();
         NotifyComputed();
     }
 
@@ -68,11 +79,13 @@ public partial class PreferencesViewModel : ObservableObject
     {
         _preferences.MasterVolume = value;
         OnPropertyChanged(nameof(VolumeText));
+        RefreshSummary();
     }
 
     partial void OnEffectsEnabledChanged(bool value)
     {
         _preferences.EffectsEnabled = value;
+        RefreshSummary();
     }
 
     [RelayCommand]
@@ -94,6 +107,40 @@ public partial class PreferencesViewModel : ObservableObject
     }
 
     [RelayCommand]
+    public void ApplySoundMode(string mode)
+    {
+        switch (mode)
+        {
+            case "calm":
+                MasterVolume = 0.3;
+                EffectsEnabled = false;
+                break;
+            case "balanced":
+                MasterVolume = 0.65;
+                EffectsEnabled = true;
+                break;
+            case "energetic":
+                MasterVolume = 1.0;
+                EffectsEnabled = true;
+                break;
+        }
+
+        PreferencesStatusText = $"Ses profili guncellendi: {CurrentSoundMode}.";
+        RefreshSummary();
+    }
+
+    [RelayCommand]
+    public void ResetPreferences()
+    {
+        VoiceGender = "female";
+        ThemePreference = "system";
+        MasterVolume = 0.85;
+        EffectsEnabled = true;
+        PreferencesStatusText = "Tercihler varsayilanlara donduruldu.";
+        RefreshSummary();
+    }
+
+    [RelayCommand]
     public async Task GoBackAsync()
     {
         _audioService.StopSpeech();
@@ -112,5 +159,11 @@ public partial class PreferencesViewModel : ObservableObject
         OnPropertyChanged(nameof(SystemThemeBackground));
         OnPropertyChanged(nameof(LightThemeBackground));
         OnPropertyChanged(nameof(DarkThemeBackground));
+        OnPropertyChanged(nameof(CurrentSoundMode));
+    }
+
+    private void RefreshSummary()
+    {
+        PreferencesSummaryText = $"{CurrentSoundMode} ses • {VolumeText} • {(EffectsEnabled ? "Efekt acik" : "Efekt kapali")} • {ThemePreference} tema • {(IsMaleVoice ? "Erkek sesi" : "Kiz sesi")}";
     }
 }

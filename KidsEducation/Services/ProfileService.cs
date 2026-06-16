@@ -168,27 +168,30 @@ public class ProfileService
             new()
             {
                 Id = "play_one_game",
-                Emoji = "🎮",
                 Title = "Bir mini oyun bitir",
                 Description = "Herhangi bir oyunu tamamla",
+                IconSource = "ui_games_3d.png",
+                ActionRoute = "games",
                 Progress = stats.LessonsCompleted,
                 Target = 1
             },
             new()
             {
                 Id = "answer_five",
-                Emoji = "✅",
                 Title = "5 doğru cevap ver",
                 Description = "Tahmin oyunlarında doğru seçenekleri bul",
+                IconSource = "ui_check_3d.png",
+                ActionRoute = "quizgame?categoryId=animals",
                 Progress = stats.CorrectAnswers,
                 Target = 5
             },
             new()
             {
                 Id = "earn_stars",
-                Emoji = "⭐",
                 Title = "2 yıldız topla",
                 Description = "Oyun sonuçlarından yıldız kazan",
+                IconSource = "ui_star_3d.png",
+                ActionRoute = "memorygamev2?categoryId=animals",
                 Progress = stats.StarsEarned,
                 Target = 2
             }
@@ -199,9 +202,10 @@ public class ProfileService
             quests.Add(new DailyQuestInfo
             {
                 Id = "sound_guess",
-                Emoji = "🔊",
                 Title = "Sesli ipucunu çöz",
                 Description = "Sesli Tahmin oyununu bitir",
+                IconSource = "ui_songs_3d.png",
+                ActionRoute = "soundgame?categoryId=animals",
                 Progress = soundGuessCount,
                 Target = 1
             });
@@ -211,9 +215,10 @@ public class ProfileService
             quests.Add(new DailyQuestInfo
             {
                 Id = "try_sound_guess",
-                Emoji = "🔊",
                 Title = "Sesli Tahmin dene",
                 Description = "Bir ipucu dinle ve doğru görseli seç",
+                IconSource = "ui_songs_3d.png",
+                ActionRoute = "soundgame?categoryId=animals",
                 Progress = 0,
                 Target = 1
             });
@@ -228,6 +233,9 @@ public class ProfileService
             Quests = quests
         };
     }
+
+    public DailyActivityStats GetTodayActivityStats(string profileId) =>
+        GetDailyActivity(profileId);
 
     private DailyActivityStats GetDailyActivity(string profileId)
     {

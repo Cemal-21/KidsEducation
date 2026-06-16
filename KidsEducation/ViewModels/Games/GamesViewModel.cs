@@ -37,9 +37,34 @@ public partial class GamesViewModel : ObservableObject
             new() { Emoji = "🎤", Title = "Telaffuz", Description = "Kelimeyi dinle ve söyle", Route = "pronunciationgame?categoryId=mixed", AccentColor = GameCardPalette.Accent(9), BackgroundColor = GameCardPalette.Background(9) },
             new() { Emoji = "🔢", Title = "Nokta Birleştir", Description = "Noktaları sırayla birleştir, şekli keşfet!", Route = "connectdots", AccentColor = GameCardPalette.Accent(10), BackgroundColor = GameCardPalette.Background(10) },
             new() { Emoji = "✏️", Title = "Çizim Tanıma", Description = "Parmağınla çiz, AI tanısın!", Route = "drawinggame", AccentColor = GameCardPalette.Accent(11), BackgroundColor = GameCardPalette.Background(11) },
+            new() { Emoji = "🖼", Title = "Şekil Boyama", Description = "Örneğe bak, şekli renklerle boya!", Route = "shapecoloring", AccentColor = GameCardPalette.Accent(12), BackgroundColor = GameCardPalette.Background(12) },
             new() { Emoji = "👨‍👧", Title = "Aile Yarışması", Description = "Aynı Wi-Fi'de ebeveyn vs çocuk!", Route = "multiplayer", AccentColor = "#DB2777", BackgroundColor = "#FFF0F9" },
         };
+        foreach (var card in MixedGameCards)
+        {
+            card.IconImage = GetMixedGameIcon(card.Route);
+        }
+
         return Task.CompletedTask;
+    }
+
+    private static string GetMixedGameIcon(string route)
+    {
+        if (route.StartsWith("quizgame", StringComparison.OrdinalIgnoreCase)) return "ui_check_3d.png";
+        if (route.StartsWith("memorygame", StringComparison.OrdinalIgnoreCase)) return "ui_games_3d.png";
+        if (route.StartsWith("soundgame", StringComparison.OrdinalIgnoreCase)) return "ui_songs_3d.png";
+        if (route.StartsWith("zoomgame", StringComparison.OrdinalIgnoreCase)) return "category_objects.png";
+        if (route.StartsWith("balloongame", StringComparison.OrdinalIgnoreCase)) return "color_red.png";
+        if (route.StartsWith("matchinggame", StringComparison.OrdinalIgnoreCase)) return "ui_goal_3d.png";
+        if (route.StartsWith("findmarkgame", StringComparison.OrdinalIgnoreCase)) return "ui_check_3d.png";
+        if (route.StartsWith("flashcard", StringComparison.OrdinalIgnoreCase)) return "ui_learning_3d.png";
+        if (route.StartsWith("sortinggame", StringComparison.OrdinalIgnoreCase)) return "ui_progress_3d.png";
+        if (route.StartsWith("pronunciationgame", StringComparison.OrdinalIgnoreCase)) return "ui_mic_3d.png";
+        if (route.StartsWith("connectdots", StringComparison.OrdinalIgnoreCase)) return "number_three.png";
+        if (route.StartsWith("drawinggame", StringComparison.OrdinalIgnoreCase)) return "shape_star.png";
+        if (route.StartsWith("shapecoloring", StringComparison.OrdinalIgnoreCase)) return "category_colors.png";
+        if (route.StartsWith("multiplayer", StringComparison.OrdinalIgnoreCase)) return "ui_parental_3d.png";
+        return "ui_games_3d.png";
     }
 
     [RelayCommand]

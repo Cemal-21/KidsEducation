@@ -15,11 +15,39 @@ public partial class ProfileSelectionViewModel : ObservableObject
     [ObservableProperty] private List<ChildProfile> _profiles = new();
     public bool HasProfiles => Profiles.Count > 0;
 
-    partial void OnProfilesChanged(List<ChildProfile> value) =>
+    partial void OnProfilesChanged(List<ChildProfile> value)
+    {
         OnPropertyChanged(nameof(HasProfiles));
+        OnPropertyChanged(nameof(ProfileCountText));
+        UpdatePreviewState();
+    }
     [ObservableProperty] private string _newProfileName = string.Empty;
     [ObservableProperty] private AgeGroup _selectedAgeGroup = AgeGroup.Toddler;
-    public string SelectedAvatarEmoji { get; set; } = "🐰";
+    [ObservableProperty] private string _selectedAvatarEmoji = "🐰";
+    [ObservableProperty] private string _validationMessage = string.Empty;
+
+    public string ProfileCountText => Profiles.Count == 0
+        ? "Ilk profili olustur"
+        : $"{Profiles.Count} hazir profil var";
+
+    public string ProfilePreviewName => string.IsNullOrWhiteSpace(NewProfileName)
+        ? "Yeni Arkadas"
+        : NewProfileName.Trim();
+
+    public string SelectedAgeGroupName => AgeGroupOptions.First(o => o.AgeGroup == SelectedAgeGroup).Name;
+    public string SelectedAgeGroupRange => AgeGroupOptions.First(o => o.AgeGroup == SelectedAgeGroup).AgeRange;
+    public string SelectedAgeGroupHint => SelectedAgeGroup switch
+    {
+        AgeGroup.Toddler => "Daha buyuk gorseller, daha sakin tempo ve 2 secenekli oyunlar.",
+        AgeGroup.Explorer => "Daha fazla kesif, 4 secenekli mini oyunlar ve hizli tekrarlar.",
+        _ => "Biraz daha zorlayici etkinlikler, sureli bolumler ve daha akilli ipuclari."
+    };
+
+    public string ProfileReadinessText => string.IsNullOrWhiteSpace(NewProfileName)
+        ? "Ismi ekleyince profil tamamen hazir gorunecek."
+        : $"{ProfilePreviewName} icin {SelectedAgeGroupRange} akisi secili.";
+
+    public bool CanCreateProfile => IsNameValid(NewProfileName) && !HasDuplicateName(NewProfileName);
 
     public List<AgeGroupOption> AgeGroupOptions { get; } = new()
     {
@@ -42,6 +70,7 @@ public partial class ProfileSelectionViewModel : ObservableObject
     public void LoadProfiles()
     {
         Profiles = _profileService.GetAllProfiles();
+        UpdatePreviewState();
     }
 
     [RelayCommand]
@@ -62,13 +91,24 @@ public partial class ProfileSelectionViewModel : ObservableObject
     [RelayCommand]
     public async Task CreateProfileAsync()
     {
-        if (string.IsNullOrWhiteSpace(NewProfileName)) return;
+        var trimmedName = NewProfileName.Trim();
+        if (!IsNameValid(trimmedName))
+        {
+            ValidationMessage = "Profil adi en az 2 harf olmali.";
+            UpdatePreviewState();
+            return;
+        }
 
-        var option = AgeGroupOptions.First(o => o.AgeGroup == SelectedAgeGroup);
+        if (HasDuplicateName(trimmedName))
+        {
+            ValidationMessage = "Bu isimde bir profil zaten var. Biraz farkli bir isim deneyelim.";
+            UpdatePreviewState();
+            return;
+        }
 
         var profile = new ChildProfile
         {
-            Name = NewProfileName.Trim(),
+            Name = trimmedName,
             AgeGroup = SelectedAgeGroup,
             AvatarEmoji = SelectedAvatarEmoji
         };
@@ -78,6 +118,7 @@ public partial class ProfileSelectionViewModel : ObservableObject
         await StartBackgroundMusicSafelyAsync();
 
         NewProfileName = string.Empty;
+        ValidationMessage = string.Empty;
         await _navigationService.GoToHomeAsync();
     }
 
@@ -99,6 +140,34 @@ public partial class ProfileSelectionViewModel : ObservableObject
             System.Diagnostics.Debug.WriteLine($"[ProfileSelection] Müzik başlatılamadı: {ex.Message}");
         }
     }
+
+    partial void OnNewProfileNameChanged(string value) => UpdatePreviewState();
+    partial void OnSelectedAgeGroupChanged(AgeGroup value) => UpdatePreviewState();
+    partial void OnSelectedAvatarEmojiChanged(string value) => UpdatePreviewState();
+
+    private void UpdatePreviewState()
+    {
+        if (string.IsNullOrWhiteSpace(NewProfileName))
+            ValidationMessage = string.Empty;
+        else if (!IsNameValid(NewProfileName))
+            ValidationMessage = "Profil adi en az 2 harf olmali.";
+        else if (HasDuplicateName(NewProfileName))
+            ValidationMessage = "Ayni isim zaten kullaniliyor.";
+        else
+            ValidationMessage = "Hazir. Bu profil olusturulabilir.";
+
+        OnPropertyChanged(nameof(ProfilePreviewName));
+        OnPropertyChanged(nameof(SelectedAgeGroupName));
+        OnPropertyChanged(nameof(SelectedAgeGroupRange));
+        OnPropertyChanged(nameof(SelectedAgeGroupHint));
+        OnPropertyChanged(nameof(ProfileReadinessText));
+        OnPropertyChanged(nameof(CanCreateProfile));
+    }
+
+    private bool HasDuplicateName(string name) =>
+        Profiles.Any(profile => string.Equals(profile.Name?.Trim(), name.Trim(), StringComparison.OrdinalIgnoreCase));
+
+    private static bool IsNameValid(string name) => !string.IsNullOrWhiteSpace(name) && name.Trim().Length >= 2;
 }
 
 public class AgeGroupOption

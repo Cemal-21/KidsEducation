@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="KidsEducation.Views.Games.LearningModulesPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -22,17 +22,17 @@
                 BackgroundColor="#22FFFFFF" Stroke="#30FFFFFF"
                 StrokeThickness="1" StrokeShape="RoundRectangle 13"
                 VerticalOptions="Center">
-                <Label Text="‹" FontSize="26" TextColor="White"
+                <Label Text="â€¹" FontSize="26" TextColor="White"
                        HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-3,0,0" />
             </controls:TappableBorder>
 
             <VerticalStackLayout Grid.Column="1" Spacing="1" VerticalOptions="Center" Margin="12,0,0,0">
-                <Label Text="Konular" FontSize="20" FontAttributes="Bold" TextColor="White" />
-                <Label Text="Bir konu seç ve öğrenmeye başla" FontSize="12" TextColor="#BAFFFFFF" />
+                <HorizontalStackLayout Spacing="8" VerticalOptions="Center"><Image Source="ui_learning_3d.png" WidthRequest="30" HeightRequest="30" Aspect="AspectFit"/><Label Text="Konular" FontSize="20" FontAttributes="Bold" TextColor="White" VerticalOptions="Center"/></HorizontalStackLayout>
+                <Label Text="Bir konu seÃ§ ve Ã¶ÄŸrenmeye baÅŸla" FontSize="12" TextColor="#BAFFFFFF" />
             </VerticalStackLayout>
         </Grid>
 
-        <!-- Konu kartları -->
+        <!-- Konu kartlarÄ± -->
         <CollectionView Grid.Row="1"
                         x:Name="ModulesCollection"
                         ItemsSource="{Binding Categories}"
@@ -52,7 +52,7 @@
                             StrokeShape="RoundRectangle 20" Padding="0">
 
                             <Grid RowDefinitions="*,52">
-                                <!-- Resim alanı -->
+                                <!-- Resim alanÄ± -->
                                 <Border Grid.Row="0" Stroke="Transparent"
                                         BackgroundColor="{StaticResource AppBackground}"
                                         StrokeShape="RoundRectangle 20,20,0,0" Padding="0">
@@ -74,7 +74,7 @@
                                     </Grid>
                                 </Border>
 
-                                <!-- Alt bilgi şeridi -->
+                                <!-- Alt bilgi ÅŸeridi -->
                                 <VerticalStackLayout Grid.Row="1" Spacing="5" Padding="10,8">
                                     <Label Text="{Binding NameTr}" FontSize="13" FontAttributes="Bold"
                                            TextColor="{StaticResource TextPrimary}"
@@ -117,3 +117,4 @@
 
     </Grid>
 </ContentPage>
+

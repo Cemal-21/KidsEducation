@@ -103,6 +103,10 @@ public partial class DrawingGameViewModel : ObservableObject
         if (State != DrawingGameState.Drawing) return;
 
         var allPoints = Strokes.SelectMany(s => s).ToList();
+        if (CurrentStroke is { Count: > 2 })
+        {
+            allPoints.AddRange(CurrentStroke);
+        }
         if (allPoints.Count < 15)
         {
             ResultText = "Daha fazla çiz! ✏️";
@@ -112,7 +116,16 @@ public partial class DrawingGameViewModel : ObservableObject
             return;
         }
 
-        var result = _recognizer.Recognize(allPoints, canvasSize);
+        var strokesForRecognition = Strokes.Select(s => s.ToList()).ToList();
+        if (CurrentStroke is { Count: > 2 })
+        {
+            strokesForRecognition.Add(new List<PointF>(CurrentStroke));
+        }
+
+        var result = _recognizer.Recognize(strokesForRecognition, canvasSize);
+        var targetResult = CurrentChallenge is null
+            ? result
+            : _recognizer.RecognizeTarget(strokesForRecognition, canvasSize, CurrentChallenge.ShapeType);
 
         if (result.ErrorMessage is not null)
         {
@@ -124,13 +137,17 @@ public partial class DrawingGameViewModel : ObservableObject
         var recognized = DrawingRecognitionService.Challenges
             .FirstOrDefault(c => c.ShapeType == result.ShapeType);
 
-        bool correct = recognized?.Id == CurrentChallenge?.Id;
+        bool directMatch = recognized?.Id == CurrentChallenge?.Id;
+        bool closeEnoughForKids = targetResult.Confidence >= 38f
+            || (targetResult.Confidence >= 28f && result.Confidence - targetResult.Confidence <= 20f);
+        bool correct = directMatch || closeEnoughForKids;
         IsCorrect = correct;
 
         if (correct)
         {
             HapticService.Success();
-            Score += result.Confidence > 70f ? 10 : 7;
+            var confidence = Math.Max(result.Confidence, targetResult.Confidence);
+            Score += confidence > 70f ? 10 : 7;
             ResultText = $"Doğru! {CurrentChallenge!.Emoji}";
             ResultSubText = $"Sen bir {CurrentChallenge.NameTr} çizdin! 🎉";
             _ = _audioService.SpeakTextAsync(CurrentChallenge.NameTr);

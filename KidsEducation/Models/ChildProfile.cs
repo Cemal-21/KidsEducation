@@ -13,6 +13,8 @@ public class ChildProfile
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime LastPlayedAt { get; set; } = DateTime.UtcNow;
     public Dictionary<string, CategoryProgress> CategoryProgresses { get; set; } = new();
+    public int DailyGoalTarget { get; set; } = 3;
+    public string LearningMode { get; set; } = "balanced";
 
     // ── Streak ───────────────────────────────────────────────
     public int StreakDays { get; set; }
@@ -72,6 +74,13 @@ public class ChildProfile
     };
 
     public bool TimerEnabled => AgeGroup == AgeGroup.Adventurer;
+
+    public string LearningModeTitle => LearningMode switch
+    {
+        "focus" => "Odakli",
+        "gentle" => "Sakin",
+        _ => "Dengeli"
+    };
 }
 
 public class CategoryProgress

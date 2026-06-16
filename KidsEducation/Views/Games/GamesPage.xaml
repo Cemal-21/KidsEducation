@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="KidsEducation.Views.Games.GamesPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -19,12 +19,15 @@
                 BackgroundColor="#22FFFFFF" Stroke="#30FFFFFF"
                 StrokeThickness="1" StrokeShape="RoundRectangle 13"
                 VerticalOptions="Center">
-                <Label Text="‹" FontSize="26" TextColor="White"
+                <Label Text="" FontSize="26" TextColor="White"
                        HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-3,0,0" />
             </controls:TappableBorder>
 
             <VerticalStackLayout Grid.Column="1" Spacing="1" VerticalOptions="Center" Margin="12,0,0,0">
-                <Label Text="Oyunlar" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                    <Image Source="ui_games_3d.png" WidthRequest="30" HeightRequest="30" Aspect="AspectFit" />
+                    <Label Text="Oyunlar" FontSize="20" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" />
+                </HorizontalStackLayout>
                 <Label Text="Önce konu seç, sonra o konuya ait oyunları aç" FontSize="12" TextColor="#BAFFFFFF" />
             </VerticalStackLayout>
         </Grid>
@@ -45,7 +48,7 @@
                                 BackgroundColor="#26FFFFFF"
                                 Stroke="#44FFFFFF"
                                 StrokeShape="RoundRectangle 18">
-                            <Label Text="🎯" FontSize="28" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Image Source="ui_goal_3d.png" WidthRequest="42" HeightRequest="42" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
                         </Border>
                         <VerticalStackLayout Grid.Column="1" Spacing="3" VerticalOptions="Center">
                             <Label Text="Karışık Tekrar"
@@ -90,8 +93,7 @@
                                                 Stroke="Transparent"
                                                 StrokeShape="RoundRectangle 14"
                                                 HorizontalOptions="Start">
-                                            <Label Text="{Binding Emoji}" FontSize="22"
-                                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                                            <Image Source="{Binding IconImage}" WidthRequest="36" HeightRequest="36" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
                                         </Border>
                                         <VerticalStackLayout Grid.Row="1" Spacing="3" Margin="0,8,0,0">
                                             <Label Text="{Binding Title}" FontSize="13" FontAttributes="Bold"
@@ -103,7 +105,7 @@
                                                 BackgroundColor="{Binding AccentColor}"
                                                 Stroke="Transparent" StrokeShape="RoundRectangle 10"
                                                 Padding="10,5" HorizontalOptions="Start" Margin="0,4,0,0">
-                                            <Label Text="▶ Oyna" FontSize="11" FontAttributes="Bold" TextColor="White"/>
+                                            <Label Text="Oyna" FontSize="11" FontAttributes="Bold" TextColor="White"/>
                                         </Border>
                                     </Grid>
                                 </controls:TappableBorder>

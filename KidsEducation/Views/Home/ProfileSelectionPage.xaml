@@ -77,6 +77,7 @@
                 <!-- ── Mevcut Profiller ── -->
                 <VerticalStackLayout Spacing="10" IsVisible="{Binding HasProfiles}">
                     <Label Text="profiller" Style="{StaticResource SectionLabel}"/>
+                    <Label Text="{Binding ProfileCountText}" FontSize="12" TextColor="{StaticResource TextMuted}"/>
 
                     <VerticalStackLayout Spacing="10" BindableLayout.ItemsSource="{Binding Profiles}">
                         <BindableLayout.ItemTemplate>
@@ -264,6 +265,9 @@
                                        PlaceholderColor="{StaticResource TextMuted}"
                                        BackgroundColor="Transparent" HeightRequest="52"/>
                             </Border>
+                            <Label Text="{Binding ValidationMessage}"
+                                   FontSize="12"
+                                   TextColor="#7C3AED"/>
                         </VerticalStackLayout>
 
                         <!-- Yaş grubu -->
@@ -350,6 +354,33 @@
                         </VerticalStackLayout>
 
                         <!-- Oluştur butonu -->
+                        <Border BackgroundColor="#F8F7FF"
+                                Stroke="#DDD6FF"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 18"
+                                Padding="14,12">
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                <Border WidthRequest="58" HeightRequest="58"
+                                        BackgroundColor="#EEE9FF"
+                                        Stroke="#C7BFFF"
+                                        StrokeThickness="1"
+                                        StrokeShape="RoundRectangle 18">
+                                    <Label Text="{Binding SelectedAvatarEmoji}" FontSize="30"
+                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Border>
+                                <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                    <Label Text="{Binding ProfilePreviewName}" FontSize="16" FontAttributes="Bold"
+                                           TextColor="{StaticResource TextPrimary}"/>
+                                    <Label Text="{Binding SelectedAgeGroupName}" FontSize="12"
+                                           TextColor="#6C62F5" FontAttributes="Bold"/>
+                                    <Label Text="{Binding ProfileReadinessText}" FontSize="11"
+                                           TextColor="{StaticResource TextMuted}" LineBreakMode="WordWrap"/>
+                                    <Label Text="{Binding SelectedAgeGroupHint}" FontSize="11"
+                                           TextColor="{StaticResource TextMuted}" LineBreakMode="WordWrap"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+
                         <Border StrokeShape="RoundRectangle 18" Stroke="Transparent" Padding="0,16">
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding CreateProfileCommand}"/>

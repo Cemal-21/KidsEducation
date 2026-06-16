@@ -13,6 +13,7 @@ public partial class CategoryGamesViewModel : ObservableObject
 
     [ObservableProperty] private string _categoryId = "animals";
     [ObservableProperty] private string _categoryName = "Konu";
+    [ObservableProperty] private string _categoryImage = "ui_learning_3d.png";
     [ObservableProperty] private string _categoryEmoji = "🎮";
     [ObservableProperty] private List<GameLauncherCard> _gameCards = new();
 
@@ -38,6 +39,9 @@ public partial class CategoryGamesViewModel : ObservableObject
 
         var category = categories.FirstOrDefault(c => c.Id == CategoryId);
         CategoryName = category?.NameTr ?? CategoryId;
+        CategoryImage = string.IsNullOrWhiteSpace(category?.Image)
+            ? "ui_learning_3d.png"
+            : category.Image;
         CategoryEmoji = category?.Emoji ?? "🎮";
         GameCards = BuildCards(CategoryId);
     }
@@ -85,6 +89,7 @@ public partial class CategoryGamesViewModel : ObservableObject
         if (categoryId == "colors")
         {
             cards.Add(Card("🎨", "Boyama", "Bölgelere renk seç", "coloringgame", 13));
+            cards.Add(Card("🖼", "Şekil Boyama", "Örneğe bak, şekli boya", "shapecoloring", 14));
         }
 
         return cards;
@@ -96,14 +101,41 @@ public partial class CategoryGamesViewModel : ObservableObject
         Title = title,
         Description = description,
         Route = route,
+        IconImage = GetGameIcon(title),
         AccentColor = GameCardPalette.Accent(index),
         BackgroundColor = GameCardPalette.Background(index)
+    };
+
+    private static string GetGameIcon(string title) => title switch
+    {
+        "DoÄŸruyu SeÃ§" => "ui_check_3d.png",
+        "HafÄ±za KartlarÄ±" => "ui_games_3d.png",
+        "YakÄ±nlaÅŸtÄ±rma" => "category_objects.png",
+        "Sesli Tahmin" => "ui_songs_3d.png",
+        "Balon Patlat" => "color_red.png",
+        "Hikaye Modu" => "ui_tales_3d.png",
+        "Puzzle" => "shape_square.png",
+        "Flashcard" => "ui_learning_3d.png",
+        "EÅŸleÅŸtir" => "ui_goal_3d.png",
+        "Bul & Ä°ÅŸaretle" => "ui_check_3d.png",
+        "Zaman YarÄ±ÅŸÄ±" => "object_clock.png",
+        "Kavram SÄ±rala" => "ui_progress_3d.png",
+        "Telaffuz" => "ui_mic_3d.png",
+        "SayÄ± SÄ±rasÄ±" => "number_three.png",
+        "Matematik" => "number_ten.png",
+        "Harf Ä°zleme" => "letter_a.png",
+        "Harf YerleÅŸtirme" => "letter_b.png",
+        "Kelime Bul" => "letter_k.png",
+        "Boyama" => "category_colors.png",
+        "Åekil Boyama" => "shape_star.png",
+        _ => "ui_games_3d.png"
     };
 }
 
 public class GameLauncherCard
 {
     public string Emoji { get; set; } = string.Empty;
+    public string IconImage { get; set; } = "ui_games_3d.png";
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public string Route { get; set; } = string.Empty;

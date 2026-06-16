@@ -54,6 +54,8 @@ public class DailyQuestInfo
 {
     public string Id { get; set; } = string.Empty;
     public string Emoji { get; set; } = string.Empty;
+    public string IconSource { get; set; } = "ui_goal_3d.png";
+    public string ActionRoute { get; set; } = "games";
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public int Progress { get; set; }

@@ -67,6 +67,16 @@
             <VerticalStackLayout Padding="18,22,18,28" Spacing="20">
 
                 <VerticalStackLayout Spacing="10">
+                    <Label Text="ozet" Style="{StaticResource SectionLabel}" />
+                    <Border Style="{StaticResource SettingCard}">
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="Su anki tercihlerin" FontSize="15" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#172033, Dark=#F8FAFC}" />
+                            <Label Text="{Binding PreferencesSummaryText}" FontSize="12" TextColor="{AppThemeBinding Light=#6B7280, Dark=#AAB3C5}" LineBreakMode="WordWrap" />
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="10">
                     <Label Text="seslendirme" Style="{StaticResource SectionLabel}" />
                     <Border Style="{StaticResource SettingCard}">
                         <VerticalStackLayout Spacing="14">
@@ -168,6 +178,33 @@
                             <Label Grid.Column="1" Text="Efekt sesini dene" FontSize="14" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#172033, Dark=#F8FAFC}" VerticalOptions="Center" Margin="10,0,0,0" />
                         </Grid>
                     </controls:TappableBorder>
+
+                    <Border Style="{StaticResource SettingCard}">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Hizli ses modlari" FontSize="15" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#172033, Dark=#F8FAFC}" />
+                            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                                <controls:TappableBorder Grid.Column="0" Command="{Binding ApplySoundModeCommand}" CommandParameter="calm" BackgroundColor="{AppThemeBinding Light=#F1F5FF, Dark=#1A2942}" Stroke="{AppThemeBinding Light=#D9E4FF, Dark=#294265}" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="8,10">
+                                    <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                        <Label Text="🌙" FontSize="20" HorizontalTextAlignment="Center" />
+                                        <Label Text="Sakin" FontSize="12" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#172033, Dark=#F8FAFC}" HorizontalTextAlignment="Center" />
+                                    </VerticalStackLayout>
+                                </controls:TappableBorder>
+                                <controls:TappableBorder Grid.Column="1" Command="{Binding ApplySoundModeCommand}" CommandParameter="balanced" BackgroundColor="{AppThemeBinding Light=#F5F3FF, Dark=#261E43}" Stroke="{AppThemeBinding Light=#DDD6FF, Dark=#4B3A7A}" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="8,10">
+                                    <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                        <Label Text="✨" FontSize="20" HorizontalTextAlignment="Center" />
+                                        <Label Text="Dengeli" FontSize="12" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#172033, Dark=#F8FAFC}" HorizontalTextAlignment="Center" />
+                                    </VerticalStackLayout>
+                                </controls:TappableBorder>
+                                <controls:TappableBorder Grid.Column="2" Command="{Binding ApplySoundModeCommand}" CommandParameter="energetic" BackgroundColor="{AppThemeBinding Light=#FFF3E8, Dark=#3C2418}" Stroke="{AppThemeBinding Light=#FFDDB8, Dark=#7A4A31}" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="8,10">
+                                    <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                        <Label Text="🚀" FontSize="20" HorizontalTextAlignment="Center" />
+                                        <Label Text="Enerjik" FontSize="12" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#172033, Dark=#F8FAFC}" HorizontalTextAlignment="Center" />
+                                    </VerticalStackLayout>
+                                </controls:TappableBorder>
+                            </Grid>
+                            <Label Text="{Binding CurrentSoundMode, StringFormat='Aktif mod: {0}'}" FontSize="12" TextColor="{AppThemeBinding Light=#6B7280, Dark=#AAB3C5}" HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Border>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Spacing="10">
@@ -223,6 +260,23 @@
                             </Grid>
                         </VerticalStackLayout>
                     </Border>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="ek islemler" Style="{StaticResource SectionLabel}" />
+                    <controls:TappableBorder
+                        Command="{Binding ResetPreferencesCommand}"
+                        BackgroundColor="{AppThemeBinding Light=#FFF1F2, Dark=#3C1F28}"
+                        Stroke="{AppThemeBinding Light=#FFD6DB, Dark=#6A3343}"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 16"
+                        Padding="16,12">
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Label Grid.Column="0" Text="↺" FontSize="18" TextColor="{AppThemeBinding Light=#B42318, Dark=#FFB4AB}" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="Tercihleri varsayilana dondur" FontSize="14" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#172033, Dark=#F8FAFC}" VerticalOptions="Center" Margin="10,0,0,0" />
+                        </Grid>
+                    </controls:TappableBorder>
+                    <Label Text="{Binding PreferencesStatusText}" FontSize="12" TextColor="{AppThemeBinding Light=#6B7280, Dark=#AAB3C5}" HorizontalTextAlignment="Center" />
                 </VerticalStackLayout>
 
             </VerticalStackLayout>

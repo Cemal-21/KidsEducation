@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="KidsEducation.Views.Game.ShapeColoringGamePage"
+    x:Name="PageRoot"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:KidsEducation.ViewModels.Game"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#F0F2FA">
+
+    <ContentPage.Resources>
+        <Color x:Key="TextPrimary">#172033</Color>
+        <Color x:Key="TextMuted">#6B7280</Color>
+        <Color x:Key="SurfaceWhite">#FFFFFF</Color>
+        <Color x:Key="BorderLight">#E8E8F0</Color>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- HEADER -->
+        <Border Grid.Row="0" BackgroundColor="#FFFFFF" Stroke="{StaticResource BorderLight}"
+                StrokeThickness="0.5" StrokeShape="RoundRectangle 0,0,24,24" Padding="16,44,16,14">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <Border Grid.Column="0" WidthRequest="40" HeightRequest="40"
+                        BackgroundColor="#F1EEFF" Stroke="#DDD6FF" StrokeThickness="1"
+                        StrokeShape="RoundRectangle 14">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackCommand}" />
+                    </Border.GestureRecognizers>
+                    <Label Text="â†" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"
+                           TextColor="#6C62F5" />
+                </Border>
+
+                <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="1">
+                    <HorizontalStackLayout Spacing="8" HorizontalOptions="Center" VerticalOptions="Center"><Image Source="shape_star.png" WidthRequest="28" HeightRequest="28" Aspect="AspectFit"/><Label Text="{Binding ShapeName}" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/></HorizontalStackLayout>
+                    <Label FontSize="12" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding ColoredCount}" FontAttributes="Bold" TextColor="#6C62F5" />
+                                <Span Text="/" />
+                                <Span Text="{Binding Regions.Count}" />
+                                <Span Text=" bÃ¶lge boyandÄ±" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </VerticalStackLayout>
+
+                <Border Grid.Column="2" WidthRequest="40" HeightRequest="40"
+                        BackgroundColor="#F1EEFF" Stroke="#DDD6FF" StrokeThickness="1"
+                        StrokeShape="RoundRectangle 14">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ResetCommand}" />
+                    </Border.GestureRecognizers>
+                    <Label Text="ğŸ”„" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Ã‡Ä°ZÄ°M ALANI -->
+        <Grid Grid.Row="1" RowDefinitions="Auto,*" Padding="16,14,16,8" RowSpacing="12">
+
+            <!-- ÃœST: Renkli referans -->
+            <Border Grid.Row="0" BackgroundColor="#FFFFFF" Stroke="{StaticResource BorderLight}"
+                    StrokeThickness="1" StrokeShape="RoundRectangle 20" Padding="10" HeightRequest="190">
+                <Grid RowDefinitions="Auto,*">
+                    <Label Grid.Row="0" Text="ğŸ–¼ Ã–rnek" FontSize="11" FontAttributes="Bold"
+                           TextColor="{StaticResource TextMuted}" Margin="4,0,0,4" />
+                    <GraphicsView Grid.Row="1" x:Name="ReferenceCanvas" BackgroundColor="Transparent" />
+                </Grid>
+            </Border>
+
+            <!-- ALT: Boyanabilir iskelet -->
+            <Border Grid.Row="1" BackgroundColor="#FFFFFF" Stroke="{StaticResource BorderLight}"
+                    StrokeThickness="1" StrokeShape="RoundRectangle 20" Padding="10">
+                <Grid RowDefinitions="Auto,*">
+                    <Label Grid.Row="0" Text="ğŸ¨ Sen boya" FontSize="11" FontAttributes="Bold"
+                           TextColor="{StaticResource TextMuted}" Margin="4,0,0,4" />
+                    <GraphicsView Grid.Row="1" x:Name="PaintCanvas" BackgroundColor="Transparent"
+                                  StartInteraction="PaintCanvas_StartInteraction"
+                                  DragInteraction="PaintCanvas_DragInteraction" />
+
+                    <!-- YanlÄ±ÅŸ renk uyarÄ±sÄ± -->
+                    <Border Grid.Row="1" IsVisible="{Binding ShowWarning}" VerticalOptions="Start"
+                            HorizontalOptions="Center" Margin="0,4,0,0"
+                            BackgroundColor="#FFF7ED" Stroke="#F97316" StrokeThickness="1.5"
+                            StrokeShape="RoundRectangle 16" Padding="16,10">
+                        <Label Text="{Binding WarningText}" FontSize="13" FontAttributes="Bold"
+                               TextColor="#C2410C" HorizontalTextAlignment="Center" />
+                    </Border>
+
+                    <!-- TamamlandÄ± rozeti -->
+                    <Border Grid.Row="1" IsVisible="{Binding IsComplete}" VerticalOptions="End"
+                            HorizontalOptions="Center" Margin="0,0,0,8"
+                            BackgroundColor="#F0FFF4" Stroke="#22C55E" StrokeThickness="1.5"
+                            StrokeShape="RoundRectangle 16" Padding="16,10">
+                        <Label Text="ğŸ‰ Harika! TamamlandÄ±" FontSize="14" FontAttributes="Bold"
+                               TextColor="#15803D" />
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- RENK PALETÄ° -->
+        <Border Grid.Row="2" BackgroundColor="#FFFFFF" Stroke="{StaticResource BorderLight}"
+                StrokeThickness="0.5" StrokeShape="RoundRectangle 24,24,0,0" Padding="12,12,12,28">
+            <VerticalStackLayout Spacing="8">
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Grid.Column="0" Text="ğŸ¨ Renk SeÃ§" FontSize="11" FontAttributes="Bold"
+                           TextColor="{StaticResource TextMuted}" Margin="4,0,0,0" VerticalOptions="Center" />
+                    <Border Grid.Column="1" BackgroundColor="#F1EEFF" Stroke="#DDD6FF" StrokeThickness="1"
+                            StrokeShape="RoundRectangle 12" Padding="12,6">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NextShapeCommand}" />
+                        </Border.GestureRecognizers>
+                        <Label Text="â¡ Yeni Åekil" FontSize="12" FontAttributes="Bold" TextColor="#6C62F5" />
+                    </Border>
+                </Grid>
+                <CollectionView ItemsSource="{Binding Palette}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="vm:ColorChoice">
+                            <Border
+                                BackgroundColor="{Binding Color}"
+                                Stroke="{Binding BorderColor}"
+                                StrokeThickness="{Binding BorderWidth}"
+                                StrokeShape="RoundRectangle 14"
+                                WidthRequest="44" HeightRequest="44">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding BindingContext.SelectColorCommand, Source={x:Reference PageRoot}}"
+                                        CommandParameter="{Binding .}" />
+                                </Border.GestureRecognizers>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </Border>
+
+    </Grid>
+</ContentPage>
+

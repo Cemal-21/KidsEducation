@@ -54,6 +54,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute("matchinggame", typeof(MatchingGamePage));
         Routing.RegisterRoute("findmarkgame", typeof(FindMarkGamePage));
         Routing.RegisterRoute("coloringgame", typeof(ColoringGamePage));
+        Routing.RegisterRoute("shapecoloring", typeof(ShapeColoringGamePage));
         Routing.RegisterRoute("flashcard", typeof(FlashcardPage));
         Routing.RegisterRoute("memorygamev2", typeof(MemoryGameV2Page));
         Routing.RegisterRoute("sortinggame", typeof(SortingGamePage));

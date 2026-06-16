@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="KidsEducation.Views.Games.CategoryGamesPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -21,25 +21,17 @@
                 BackgroundColor="#22FFFFFF" Stroke="#30FFFFFF"
                 StrokeThickness="1" StrokeShape="RoundRectangle 13"
                 VerticalOptions="Center">
-                <Label Text="‹" FontSize="26" TextColor="White"
+                <Label Text="â€¹" FontSize="26" TextColor="White"
                        HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-3,0,0" />
             </controls:TappableBorder>
 
             <VerticalStackLayout Grid.Column="1" Spacing="1" VerticalOptions="Center" Margin="12,0,0,0">
-                <Label FontSize="20" FontAttributes="Bold" TextColor="White">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="{Binding CategoryEmoji}" />
-                            <Span Text=" " />
-                            <Span Text="{Binding CategoryName}" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label Text="Bu konuyla oynayabileceğin oyunlar" FontSize="12" TextColor="#BAFFFFFF" />
+                <HorizontalStackLayout Spacing="8" VerticalOptions="Center"><Image Source="{Binding CategoryImage}" WidthRequest="30" HeightRequest="30" Aspect="AspectFit"/><Label Text="{Binding CategoryName}" FontSize="20" FontAttributes="Bold" TextColor="White" VerticalOptions="Center"/></HorizontalStackLayout>
+                <Label Text="Bu konuyla oynayabileceÄŸin oyunlar" FontSize="12" TextColor="#BAFFFFFF" />
             </VerticalStackLayout>
         </Grid>
 
-        <!-- Oyun kartları grid -->
+        <!-- Oyun kartlarÄ± grid -->
         <CollectionView Grid.Row="1"
                         ItemsSource="{Binding GameCards}"
                         Margin="18,18,18,24">
@@ -57,18 +49,17 @@
                         Padding="14">
                         <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="4">
 
-                            <!-- Emoji ikon -->
+                            <!-- 3D ikon -->
                             <Border Grid.Row="0"
                                     WidthRequest="44" HeightRequest="44"
                                     BackgroundColor="{Binding BackgroundColor}"
                                     Stroke="Transparent"
                                     StrokeShape="RoundRectangle 14"
                                     HorizontalOptions="Start">
-                                <Label Text="{Binding Emoji}" FontSize="22"
-                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Image Source="{Binding IconImage}" WidthRequest="36" HeightRequest="36" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center"/>
                             </Border>
 
-                            <!-- Başlık + açıklama -->
+                            <!-- BaÅŸlÄ±k + aÃ§Ä±klama -->
                             <VerticalStackLayout Grid.Row="1" Spacing="3" Margin="0,8,0,0">
                                 <Label Text="{Binding Title}" FontSize="13" FontAttributes="Bold"
                                        TextColor="{StaticResource TextPrimary}" LineBreakMode="WordWrap"/>
@@ -84,7 +75,7 @@
                                     Padding="10,5"
                                     HorizontalOptions="Start"
                                     Margin="0,4,0,0">
-                                <Label Text="▶ Oyna" FontSize="11" FontAttributes="Bold" TextColor="White"/>
+                                <Label Text="â–¶ Oyna" FontSize="11" FontAttributes="Bold" TextColor="White"/>
                             </Border>
 
                         </Grid>
@@ -95,3 +86,4 @@
 
     </Grid>
 </ContentPage>
+

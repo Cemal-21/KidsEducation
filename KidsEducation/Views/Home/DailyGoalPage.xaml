@@ -11,9 +11,7 @@
     BackgroundColor="{StaticResource AppBackground}">
 
     <Grid RowDefinitions="Auto,*">
-
-        <!-- Header -->
-        <Grid Grid.Row="0" ColumnDefinitions="Auto,*" Padding="18,44,18,18"
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,Auto,*" Padding="18,44,18,18"
               BackgroundColor="{StaticResource BrandPurple}">
             <controls:TappableBorder Grid.Column="0" Command="{Binding GoBackCommand}"
                 WidthRequest="40" HeightRequest="40" BackgroundColor="#22FFFFFF"
@@ -22,7 +20,14 @@
                 <Label Text="‹" FontSize="26" TextColor="White"
                        HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-3,0,0"/>
             </controls:TappableBorder>
-            <VerticalStackLayout Grid.Column="1" Spacing="1" VerticalOptions="Center" Margin="12,0,0,0">
+
+            <Image Grid.Column="1" Source="ui_goal_3d.png"
+                   WidthRequest="48" HeightRequest="48"
+                   Aspect="AspectFit"
+                   Margin="12,0,10,0"
+                   VerticalOptions="Center"/>
+
+            <VerticalStackLayout Grid.Column="2" Spacing="1" VerticalOptions="Center">
                 <Label Text="Günlük Görevler" FontSize="20" FontAttributes="Bold" TextColor="White"/>
                 <Label Text="Her gün öğren, serini koru!" FontSize="12" TextColor="#BAFFFFFF"/>
             </VerticalStackLayout>
@@ -30,31 +35,36 @@
 
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="18,20" Spacing="16">
-
                 <ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}"
                                    Color="{StaticResource BrandPurple}" HorizontalOptions="Center"/>
 
                 <VerticalStackLayout IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}"
                                      Spacing="16">
-
-                    <!-- Streak Kartı -->
                     <Border BackgroundColor="{StaticResource BrandPurple}" Stroke="Transparent"
-                            StrokeShape="RoundRectangle 24" Padding="24,20">
+                            StrokeShape="RoundRectangle 24" Padding="20,18">
                         <Border.Shadow>
                             <Shadow Brush="#305148D4" Offset="0,6" Radius="16" Opacity="0.3"/>
                         </Border.Shadow>
-                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="18">
-                            <!-- Alev ikonu -->
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
                             <Border Grid.Column="0" WidthRequest="72" HeightRequest="72"
                                     BackgroundColor="#22FFFFFF" Stroke="#33FFFFFF" StrokeThickness="1"
                                     StrokeShape="RoundRectangle 22">
-                                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="0">
-                                    <Label Text="🔥" FontSize="34" HorizontalOptions="Center"/>
-                                    <Label Text="{Binding Profile.StreakDays}" FontSize="16" FontAttributes="Bold"
-                                           TextColor="White" HorizontalOptions="Center"/>
-                                </VerticalStackLayout>
+                                <Grid>
+                                    <Image Source="ui_streak_3d.png"
+                                           WidthRequest="46" HeightRequest="46"
+                                           Aspect="AspectFit"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                    <Label Text="{Binding Profile.StreakDays}"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           TextColor="White"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="End"
+                                           Margin="0,0,10,8"/>
+                                </Grid>
                             </Border>
-                            <!-- Mesaj -->
+
                             <VerticalStackLayout Grid.Column="1" Spacing="6" VerticalOptions="Center">
                                 <Label Text="{Binding StreakMessage}" FontSize="17" FontAttributes="Bold"
                                        TextColor="White" LineBreakMode="WordWrap"/>
@@ -67,10 +77,13 @@
                         </Grid>
                     </Border>
 
-                    <!-- Görev listesi başlık -->
-                    <Label Text="bugünün görevleri" Style="{StaticResource SectionLabel}"/>
+                    <Label Text="BUGÜNÜN GÖREVLERİ"
+                           FontSize="11"
+                           FontAttributes="Bold"
+                           TextColor="#9CA3AF"
+                           CharacterSpacing="2"
+                           Margin="2,0,0,0"/>
 
-                    <!-- Görev kartları -->
                     <VerticalStackLayout BindableLayout.ItemsSource="{Binding DailyGoal.Quests}" Spacing="12">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate x:DataType="models:DailyQuestInfo">
@@ -85,9 +98,8 @@
                                     </controls:TappableBorder.Shadow>
 
                                     <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
-                                        <!-- Emoji rozeti -->
-                                        <Border Grid.Column="0" WidthRequest="48" HeightRequest="48"
-                                                Stroke="Transparent" StrokeShape="RoundRectangle 14">
+                                        <Border Grid.Column="0" WidthRequest="52" HeightRequest="52"
+                                                Stroke="Transparent" StrokeShape="RoundRectangle 16">
                                             <Border.Triggers>
                                                 <DataTrigger TargetType="Border" Binding="{Binding IsCompleted}" Value="True">
                                                     <Setter Property="BackgroundColor" Value="#E6FBF7"/>
@@ -96,11 +108,14 @@
                                                     <Setter Property="BackgroundColor" Value="#EEF0FF"/>
                                                 </DataTrigger>
                                             </Border.Triggers>
-                                            <Label Text="{Binding Emoji}" FontSize="24"
-                                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                                            <Image Source="{Binding IconSource}"
+                                                   WidthRequest="38"
+                                                   HeightRequest="38"
+                                                   Aspect="AspectFit"
+                                                   HorizontalOptions="Center"
+                                                   VerticalOptions="Center"/>
                                         </Border>
 
-                                        <!-- Görev bilgisi -->
                                         <VerticalStackLayout Grid.Column="1" Spacing="5" VerticalOptions="Center">
                                             <Label Text="{Binding Title}" FontSize="14" FontAttributes="Bold"
                                                    TextColor="{StaticResource TextPrimary}" LineBreakMode="TailTruncation"/>
@@ -112,7 +127,6 @@
                                                          HeightRequest="5"/>
                                         </VerticalStackLayout>
 
-                                        <!-- Durum -->
                                         <Border Grid.Column="2" Padding="10,6" Stroke="Transparent"
                                                 StrokeShape="RoundRectangle 10" VerticalOptions="Center">
                                             <Border.Triggers>
@@ -141,18 +155,22 @@
                         </BindableLayout.ItemTemplate>
                     </VerticalStackLayout>
 
-                    <!-- Motivasyon notu -->
                     <Border BackgroundColor="{StaticResource SurfaceWhite}"
                             Stroke="{StaticResource BorderLight}" StrokeThickness="1"
                             StrokeShape="RoundRectangle 18" Padding="16,12">
-                        <HorizontalStackLayout Spacing="12">
-                            <Label Text="💡" FontSize="22" VerticalOptions="Center"/>
-                            <Label Text="{Binding DailyGoal.RewardText}" FontSize="13"
-                                   TextColor="{StaticResource TextMuted}" VerticalOptions="Center"
-                                   LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand"/>
-                        </HorizontalStackLayout>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Image Grid.Column="0" Source="ui_check_3d.png"
+                                   WidthRequest="28" HeightRequest="28"
+                                   Aspect="AspectFit"
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1"
+                                   Text="{Binding DailyGoal.RewardText}"
+                                   FontSize="13"
+                                   TextColor="{StaticResource TextMuted}"
+                                   VerticalOptions="Center"
+                                   LineBreakMode="WordWrap"/>
+                        </Grid>
                     </Border>
-
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </ScrollView>

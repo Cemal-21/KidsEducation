@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="KidsEducation.Views.Game.ColoringGamePage"
     x:Name="PageRoot"
@@ -32,23 +32,14 @@
                 </Border>
 
                 <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="1">
-                    <Label FontSize="20" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"
-                           HorizontalOptions="Center">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="{Binding SubjectEmoji}" FontSize="22" />
-                                <Span Text=" " />
-                                <Span Text="{Binding SubjectName}" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+                    <HorizontalStackLayout Spacing="8" HorizontalOptions="Center" VerticalOptions="Center"><Image Source="category_colors.png" WidthRequest="28" HeightRequest="28" Aspect="AspectFit"/><Label Text="{Binding SubjectName}" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/></HorizontalStackLayout>
                     <Label FontSize="12" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{Binding ColoredCount}" FontAttributes="Bold" TextColor="#6C62F5" />
                                 <Span Text="/" />
                                 <Span Text="{Binding Regions.Count}" />
-                                <Span Text=" bÃ¶lge boyandÄ±" />
+                                <Span Text=" bölge boyandı" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -146,3 +137,4 @@
 
     </Grid>
 </ContentPage>
+

@@ -213,6 +213,30 @@
                             </Border>
                         </VerticalStackLayout>
                     </Border>
+                    <Border Style="{StaticResource SettingCard}">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Simdiki tercih ozeti" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                            <Label Text="{Binding PreferenceSnapshotText}" FontSize="12" TextColor="{StaticResource TextMuted}" LineBreakMode="WordWrap" />
+                            <Border BackgroundColor="#F8F7FF" Stroke="#DDD6FF" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="12,10">
+                                <VerticalStackLayout Spacing="5">
+                                    <Label Text="{Binding NotificationPreviewTitle}" FontSize="13" FontAttributes="Bold" TextColor="#5148D4" />
+                                    <Label Text="{Binding NotificationPreviewBody}" FontSize="12" TextColor="{StaticResource TextMuted}" LineBreakMode="WordWrap" />
+                                </VerticalStackLayout>
+                            </Border>
+                            <controls:TappableBorder
+                                Command="{Binding SendTestNotificationCommand}"
+                                BackgroundColor="#EEF4FF"
+                                Stroke="#CADBFF"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 12"
+                                Padding="0,12">
+                                <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
+                                    <Label Text="🔔" FontSize="16" VerticalOptions="Center"/>
+                                    <Label Text="Test Bildirimi Gonder" FontSize="13" FontAttributes="Bold" TextColor="#3155C6" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                            </controls:TappableBorder>
+                        </VerticalStackLayout>
+                    </Border>
                 </VerticalStackLayout>
 
                 <!-- MEB Uyumlu Gelişim Alanları -->
@@ -666,6 +690,11 @@
                     Padding="0,16">
                     <Label Text="✅  Ayarları Kaydet" FontSize="16" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
                 </controls:TappableBorder>
+                <Label Text="{Binding SettingsSaveStatus}"
+                       FontSize="12"
+                       TextColor="{StaticResource TextMuted}"
+                       HorizontalTextAlignment="Center"
+                       IsVisible="{Binding SettingsSaveStatus, Converter={StaticResource StringNotEmptyConverter}}"/>
 
             </VerticalStackLayout>
         </ScrollView>

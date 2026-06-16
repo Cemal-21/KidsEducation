@@ -156,6 +156,112 @@
                 </VerticalStackLayout>
 
                 <!-- Profil Değiştir — TappableBorder -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="profil bilgileri" Style="{StaticResource SectionLabel}" />
+                    <Border BackgroundColor="{StaticResource SurfaceWhite}" Stroke="{StaticResource BorderLight}" StrokeThickness="0.5" StrokeShape="RoundRectangle 20" Padding="16,14">
+                        <VerticalStackLayout Spacing="14">
+                            <Border BackgroundColor="#F8F7FF" Stroke="#DDD6FF" StrokeThickness="1" StrokeShape="RoundRectangle 16" Padding="14,12">
+                                <VerticalStackLayout Spacing="4">
+                                    <Label Text="{Binding ProfileInsightText}" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                    <Label Text="{Binding ActivitySummaryText}" FontSize="12" TextColor="{StaticResource TextMuted}" LineBreakMode="WordWrap" />
+                                </VerticalStackLayout>
+                            </Border>
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Isim" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                <Border BackgroundColor="#F8FAFC" Stroke="{StaticResource BorderLight}" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="14,0">
+                                    <Entry Text="{Binding EditableName}" Placeholder="Profil adi" BackgroundColor="Transparent" HeightRequest="48" TextColor="{StaticResource TextPrimary}" />
+                                </Border>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Yas grubu" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                                    <controls:TappableBorder Grid.Column="0" Command="{Binding SelectEditAgeGroupCommand}" CommandParameter="1" BackgroundColor="{Binding EditToddlerBackground}" Stroke="#DCD6FF" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="8,10">
+                                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                            <Label Text="🐰" FontSize="22" HorizontalOptions="Center" />
+                                            <Label Text="Minikler" FontSize="11" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                            <Label Text="3-5 yas" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                        </VerticalStackLayout>
+                                    </controls:TappableBorder>
+                                    <controls:TappableBorder Grid.Column="1" Command="{Binding SelectEditAgeGroupCommand}" CommandParameter="2" BackgroundColor="{Binding EditExplorerBackground}" Stroke="#CBEFE1" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="8,10">
+                                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                            <Label Text="🦊" FontSize="22" HorizontalOptions="Center" />
+                                            <Label Text="Kesifciler" FontSize="11" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                            <Label Text="5-7 yas" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                        </VerticalStackLayout>
+                                    </controls:TappableBorder>
+                                    <controls:TappableBorder Grid.Column="2" Command="{Binding SelectEditAgeGroupCommand}" CommandParameter="3" BackgroundColor="{Binding EditAdventurerBackground}" Stroke="#FFDDB8" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="8,10">
+                                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                            <Label Text="🦉" FontSize="22" HorizontalOptions="Center" />
+                                            <Label Text="Kasifler" FontSize="11" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                            <Label Text="7-9 yas" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                        </VerticalStackLayout>
+                                    </controls:TappableBorder>
+                                </Grid>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Gunluk hedef" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                <Border BackgroundColor="#F8FBFF" Stroke="#D8E7FF" StrokeThickness="1" StrokeShape="RoundRectangle 16" Padding="12,10">
+                                    <VerticalStackLayout Spacing="8">
+                                        <Label Text="{Binding DailyGoalProgressText}" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                                            <controls:TappableBorder Grid.Column="0" Command="{Binding SelectDailyGoalTargetCommand}" CommandParameter="2" BackgroundColor="{Binding GoalMiniBackground}" Stroke="#D8E7FF" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="8,10">
+                                                <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                                    <Label Text="Mini" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                                    <Label Text="2 oyun" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                                </VerticalStackLayout>
+                                            </controls:TappableBorder>
+                                            <controls:TappableBorder Grid.Column="1" Command="{Binding SelectDailyGoalTargetCommand}" CommandParameter="3" BackgroundColor="{Binding GoalRoutineBackground}" Stroke="#DDD6FF" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="8,10">
+                                                <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                                    <Label Text="Rutin" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                                    <Label Text="3 oyun" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                                </VerticalStackLayout>
+                                            </controls:TappableBorder>
+                                            <controls:TappableBorder Grid.Column="2" Command="{Binding SelectDailyGoalTargetCommand}" CommandParameter="5" BackgroundColor="{Binding GoalSuperBackground}" Stroke="#FFDDB8" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="8,10">
+                                                <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                                    <Label Text="Super" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                                    <Label Text="5 oyun" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                                </VerticalStackLayout>
+                                            </controls:TappableBorder>
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </Border>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Ogrenme modu" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                                <Border BackgroundColor="#FCFBFF" Stroke="#E5DFFF" StrokeThickness="1" StrokeShape="RoundRectangle 16" Padding="12,10">
+                                    <VerticalStackLayout Spacing="8">
+                                        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                                            <controls:TappableBorder Grid.Column="0" Command="{Binding SelectLearningModeCommand}" CommandParameter="gentle" BackgroundColor="{Binding GentleModeBackground}" Stroke="#CBEFE1" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="8,10">
+                                                <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                                    <Label Text="Sakin" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                                    <Label Text="Rahat tempo" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                                </VerticalStackLayout>
+                                            </controls:TappableBorder>
+                                            <controls:TappableBorder Grid.Column="1" Command="{Binding SelectLearningModeCommand}" CommandParameter="balanced" BackgroundColor="{Binding BalancedModeBackground}" Stroke="#DDD6FF" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="8,10">
+                                                <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                                    <Label Text="Dengeli" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                                    <Label Text="Kararli akis" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                                </VerticalStackLayout>
+                                            </controls:TappableBorder>
+                                            <controls:TappableBorder Grid.Column="2" Command="{Binding SelectLearningModeCommand}" CommandParameter="focus" BackgroundColor="{Binding FocusModeBackground}" Stroke="#FFDDB8" StrokeThickness="1" StrokeShape="RoundRectangle 14" Padding="8,10">
+                                                <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                                                    <Label Text="Odak" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                                                    <Label Text="Hedefli akis" FontSize="10" TextColor="{StaticResource TextMuted}" HorizontalOptions="Center" />
+                                                </VerticalStackLayout>
+                                            </controls:TappableBorder>
+                                        </Grid>
+                                        <Label Text="{Binding LearningModeSummaryText}" FontSize="12" TextColor="{StaticResource TextMuted}" LineBreakMode="WordWrap" />
+                                    </VerticalStackLayout>
+                                </Border>
+                            </VerticalStackLayout>
+                            <controls:TappableBorder Command="{Binding SaveProfileDetailsCommand}" BackgroundColor="#6C62F5" Stroke="Transparent" StrokeShape="RoundRectangle 14" Padding="0,13">
+                                <Label Text="Profili Guncelle" FontSize="14" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" />
+                            </controls:TappableBorder>
+                            <Label Text="{Binding ProfileUpdateStatus}" FontSize="12" TextColor="{StaticResource TextMuted}" HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
                 <controls:TappableBorder
                     Command="{Binding SwitchProfileCommand}"
                     BackgroundColor="{StaticResource SurfaceWhite}"

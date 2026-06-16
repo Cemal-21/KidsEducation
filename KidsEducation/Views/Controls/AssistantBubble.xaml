@@ -114,6 +114,59 @@
                        HorizontalTextAlignment="Center"
                        Margin="0,0,0,18" />
 
+                <VerticalStackLayout x:Name="SuggestionPanel"
+                                     IsVisible="False"
+                                     Spacing="8"
+                                     Margin="0,0,0,14">
+                    <Label x:Name="SuggestionTitleLabel"
+                           Text="Belki bunlardan biri?"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           TextColor="#8B5CF6" />
+                    <FlexLayout x:Name="SuggestionChips"
+                                Wrap="Wrap"
+                                Direction="Row"
+                                JustifyContent="Start"
+                                AlignItems="Start"
+                                AlignContent="Start" />
+                    <Grid ColumnDefinitions="*,*"
+                          ColumnSpacing="8">
+                        <Border Grid.Column="0"
+                                BackgroundColor="#EEF0FF"
+                                Stroke="#C7CEFF"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 12"
+                                Padding="0,10">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnSuggestionConfirmTapped" />
+                            </Border.GestureRecognizers>
+                            <Label Text="Bunu kastettim"
+                                   FontSize="12"
+                                   FontAttributes="Bold"
+                                   TextColor="#5148D4"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                        </Border>
+
+                        <Border Grid.Column="1"
+                                BackgroundColor="#FFF7ED"
+                                Stroke="#FED7AA"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 12"
+                                Padding="0,10">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnSuggestionRetryTapped" />
+                            </Border.GestureRecognizers>
+                            <Label Text="Tekrar dinle"
+                                   FontSize="12"
+                                   FontAttributes="Bold"
+                                   TextColor="#C2410C"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                        </Border>
+                    </Grid>
+                </VerticalStackLayout>
+
                 <Border BackgroundColor="{AppThemeBinding Light=#F4F3FF, Dark=#2A2A3E}"
                         Stroke="#C7CEFF"
                         StrokeThickness="1.5"

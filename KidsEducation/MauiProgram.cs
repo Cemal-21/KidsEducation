@@ -161,6 +161,7 @@ public static class MauiProgram
         builder.Services.AddTransient<MatchingGameViewModel>();
         builder.Services.AddTransient<FindMarkGameViewModel>();
         builder.Services.AddTransient<ColoringGameViewModel>();
+        builder.Services.AddTransient<ShapeColoringGameViewModel>();
         builder.Services.AddTransient<FlashcardViewModel>();
         builder.Services.AddTransient<MemoryGameV2ViewModel>();
         builder.Services.AddTransient<SortingGameViewModel>();
@@ -177,6 +178,7 @@ public static class MauiProgram
         builder.Services.AddTransient<MatchingGamePage>();
         builder.Services.AddTransient<FindMarkGamePage>();
         builder.Services.AddTransient<ColoringGamePage>();
+        builder.Services.AddTransient<ShapeColoringGamePage>();
         builder.Services.AddTransient<FlashcardPage>();
         builder.Services.AddTransient<MemoryGameV2Page>();
         builder.Services.AddTransient<SortingGamePage>();

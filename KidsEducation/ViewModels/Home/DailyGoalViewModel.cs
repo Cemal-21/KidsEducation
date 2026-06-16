@@ -35,27 +35,23 @@ public partial class DailyGoalViewModel : ObservableObject
             StreakMessage = Profile.StreakDays switch
             {
                 0 or 1 => "Bugün harika bir başlangıç!",
-                <= 3 => $"🔥 {Profile.StreakDays} gün üst üste öğreniyorsun!",
-                <= 7 => $"🔥 {Profile.StreakDays} günlük seri — muhteşem!",
-                <= 14 => $"🔥 {Profile.StreakDays} gün — durmak yok!",
-                _ => $"🏆 {Profile.StreakDays} günlük efsane seri!"
+                <= 3 => $"{Profile.StreakDays} gün üst üste öğreniyorsun!",
+                <= 7 => $"{Profile.StreakDays} günlük seri, muhteşem!",
+                <= 14 => $"{Profile.StreakDays} gün, durmak yok!",
+                _ => $"{Profile.StreakDays} günlük efsane seri!"
             };
         }
-        finally { IsLoading = false; }
+        finally
+        {
+            IsLoading = false;
+        }
     }
 
-    // Her quest tipine göre ilgili oyuna git
     [RelayCommand]
     public async Task GoToQuestGameAsync(DailyQuestInfo quest)
     {
-        var route = quest.Id switch
-        {
-            "play_one_game" or "answer_five" => "quizgame?categoryId=animals",
-            "earn_stars" => "memorygamev2?categoryId=animals",
-            "sound_guess" or "try_sound_guess" => "soundgame?categoryId=animals",
-            _ => "quizgame?categoryId=animals"
-        };
-        await Shell.Current.GoToAsync(route);
+        if (string.IsNullOrWhiteSpace(quest.ActionRoute)) return;
+        await Shell.Current.GoToAsync(quest.ActionRoute);
     }
 
     [RelayCommand]

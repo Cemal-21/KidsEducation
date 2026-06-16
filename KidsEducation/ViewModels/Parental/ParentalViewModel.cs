@@ -34,6 +34,10 @@ public partial class ParentalViewModel : ObservableObject
     [ObservableProperty] private bool _hasSkillInsights;
     [ObservableProperty] private bool _hasCurriculumActivities;
     [ObservableProperty] private bool _isLoading = true;
+    [ObservableProperty] private string _notificationPreviewTitle = "";
+    [ObservableProperty] private string _notificationPreviewBody = "";
+    [ObservableProperty] private string _preferenceSnapshotText = "";
+    [ObservableProperty] private string _settingsSaveStatus = "";
 
     // AI Koç API key
     [ObservableProperty] private string _anthropicApiKey = string.Empty;
@@ -77,6 +81,7 @@ public partial class ParentalViewModel : ObservableObject
             _audioService.SetEffectsEnabled(value);
             Settings.SoundEnabled = value;
             OnPropertyChanged();
+            RefreshPreferenceSummary();
         }
     }
 
@@ -87,6 +92,7 @@ public partial class ParentalViewModel : ObservableObject
         {
             _audioService.SetMusicEnabled(value);
             OnPropertyChanged();
+            RefreshPreferenceSummary();
         }
     }
 
@@ -97,6 +103,7 @@ public partial class ParentalViewModel : ObservableObject
         {
             _audioService.SetMusicVolume(value);
             OnPropertyChanged();
+            RefreshPreferenceSummary();
         }
     }
 
@@ -107,6 +114,7 @@ public partial class ParentalViewModel : ObservableObject
         {
             _audioService.SetEffectsVolume(value);
             OnPropertyChanged();
+            RefreshPreferenceSummary();
         }
     }
 
@@ -118,6 +126,7 @@ public partial class ParentalViewModel : ObservableObject
             _appPreferences.SpeechRate = value;
             OnPropertyChanged();
             OnPropertyChanged(nameof(SpeechRateText));
+            RefreshPreferenceSummary();
         }
     }
 
@@ -133,7 +142,7 @@ public partial class ParentalViewModel : ObservableObject
     public bool WeeklyReportEnabled
     {
         get => Settings.WeeklyReportEnabled;
-        set { Settings.WeeklyReportEnabled = value; OnPropertyChanged(); }
+        set { Settings.WeeklyReportEnabled = value; OnPropertyChanged(); RefreshPreferenceSummary(); }
     }
 
     public bool DarkModeEnabled
@@ -143,6 +152,7 @@ public partial class ParentalViewModel : ObservableObject
         {
             _appPreferences.ThemePreference = value ? "dark" : "light";
             OnPropertyChanged();
+            RefreshPreferenceSummary();
         }
     }
 
@@ -170,11 +180,13 @@ public partial class ParentalViewModel : ObservableObject
 
     public bool NotificationEnabled
     {
-        get => Preferences.Get(NotificationEnabledKey, false);
+        get => Preferences.Get(NotificationEnabledKey, true);
         set
         {
             Preferences.Set(NotificationEnabledKey, value);
             OnPropertyChanged();
+            RefreshPreferenceSummary();
+            RefreshNotificationPreview();
             _ = value
                 ? _notificationService.ScheduleDailyReminderAsync(new TimeSpan(NotificationHour, NotificationMinute, 0))
                 : _notificationService.CancelDailyReminderAsync();
@@ -184,13 +196,27 @@ public partial class ParentalViewModel : ObservableObject
     public int NotificationHour
     {
         get => Preferences.Get(NotificationHourKey, 18);
-        set { Preferences.Set(NotificationHourKey, value); OnPropertyChanged(); OnPropertyChanged(nameof(NotificationTimeText)); }
+        set
+        {
+            Preferences.Set(NotificationHourKey, value);
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(NotificationTimeText));
+            RefreshPreferenceSummary();
+            RefreshNotificationPreview();
+        }
     }
 
     public int NotificationMinute
     {
-        get => Preferences.Get(NotificationMinuteKey, 0);
-        set { Preferences.Set(NotificationMinuteKey, value); OnPropertyChanged(); OnPropertyChanged(nameof(NotificationTimeText)); }
+        get => Preferences.Get(NotificationMinuteKey, 30);
+        set
+        {
+            Preferences.Set(NotificationMinuteKey, value);
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(NotificationTimeText));
+            RefreshPreferenceSummary();
+            RefreshNotificationPreview();
+        }
     }
 
     public TimeSpan NotificationTime
@@ -264,6 +290,8 @@ public partial class ParentalViewModel : ObservableObject
             LoadWeeklyInsight();
             AnthropicApiKey = _appPreferences.AnthropicApiKey;
             RefreshPinStatus();
+            RefreshNotificationPreview();
+            RefreshPreferenceSummary();
         }
         finally
         {
@@ -440,6 +468,7 @@ public partial class ParentalViewModel : ObservableObject
         foreach (var t in ColorThemes)
             t.IsSelected = t.Id == item.Id;
         OnPropertyChanged(nameof(ColorThemes));
+        RefreshPreferenceSummary();
     }
 
     [RelayCommand]
@@ -460,6 +489,17 @@ public partial class ParentalViewModel : ObservableObject
     public void SaveSettings()
     {
         _profileService.SaveParentalSettings(Settings);
+        SettingsSaveStatus = $"Ayarlar kaydedildi. Gunluk limit {DailyLimitText}, hatirlatma {(NotificationEnabled ? NotificationTimeText : "kapali")}.";
+        RefreshPreferenceSummary();
+    }
+
+    [RelayCommand]
+    public async Task SendTestNotificationAsync()
+    {
+        var title = string.IsNullOrWhiteSpace(NotificationPreviewTitle) ? "Test bildirimi" : NotificationPreviewTitle;
+        var body = string.IsNullOrWhiteSpace(NotificationPreviewBody) ? "Hatirlatma ornegi basariyla hazir." : NotificationPreviewBody;
+        await _notificationService.ShowCoachNotificationAsync("🔔", title, body);
+        SettingsSaveStatus = "Test bildirimi gonderildi.";
     }
 
     [ObservableProperty] private bool _hasPin;
@@ -512,6 +552,30 @@ public partial class ParentalViewModel : ObservableObject
     {
         var result = await _backupService.ImportAsync();
         BackupStatus = result.SummaryText;
+    }
+
+    partial void OnSettingsChanged(ParentalSettings value) => RefreshPreferenceSummary();
+
+    private void RefreshNotificationPreview()
+    {
+        var preview = _notificationService.GetReminderPreviewMessage();
+        NotificationPreviewTitle = preview.Title;
+        NotificationPreviewBody = preview.Body;
+    }
+
+    private void RefreshPreferenceSummary()
+    {
+        var pieces = new List<string>
+        {
+            NotificationEnabled ? $"Hatirlatma {NotificationTimeText}" : "Hatirlatma kapali",
+            DailyLimitMinutes > 0 ? $"Gunluk limit {DailyLimitMinutes} dk" : "Gunluk limit sinirsiz",
+            SoundEnabled ? "Efekt acik" : "Efekt kapali",
+            MusicEnabled ? "Muzik acik" : "Muzik kapali",
+            WeeklyReportEnabled ? "Haftalik rapor acik" : "Haftalik rapor kapali",
+            $"Konusma hizi {SpeechRateText}"
+        };
+
+        PreferenceSnapshotText = string.Join(" • ", pieces);
     }
 }
 
